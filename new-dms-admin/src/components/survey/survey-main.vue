@@ -1,0 +1,127 @@
+<template>
+  <div class="survey-editor" @keydown.enter="surveySubmit">
+    <div class="underbar-title">
+      <input class="survey-title" type="text" v-model="title" placeholder="설문의 제목을 쓰세요">
+    </div>
+    <p class="survey-date"><span>시작 날짜 : </span><br/><input type="date" v-model="start_date"></p><br />
+    <p class="survey-date"><span>종료 날짜 : </span><br/><input type="date" v-model="end_date"></p><br />
+    <p class="description-describe">설문 조사 설명 : </p>
+    <textarea class="description-text" name="" id="" cols="180" rows="3" v-model="description" fixed></textarea>
+    <div class="survey-target">
+      <p>대상 학년</p>
+      <label for="first-grade">1 학년</label><input type="checkbox" id="first-grade" value="1" v-model="target">
+      <label for="second-grade">2 학년</label><input type="checkbox" id="second-grade" value="2" v-model="target">
+      <label for="third-grade">3 학년</label><input type="checkbox" id="third-grade" value="3" v-model="target">
+    </div>
+    <div class="survey-btn-list">
+      <button @click="surveySubmit">등록</button>
+      <button @click="surveyWriteCancel">취소</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import eventBus from './eventBus'
+
+export default {
+  name: 'survey-submit',
+  data: function () {
+    return {
+      Authorization: '',
+      title: '',
+      start_date: '',
+      end_date: '',
+      description: '',
+      target: []
+    }
+  },
+  created: function () {
+    // this.Authorization = getCookie('JWT');
+  },
+  methods: {
+    surveySubmit: function () {
+            // this.$axios.post('/admin/survey',{
+            //   Authorization : this.Authorization,
+            //   title : this.title,
+            //   start_date : this.start_date,
+            //   end_date : this.end_date,
+            //   target : target
+            // })
+            //   .then((response) => {
+            //       console.log(response)
+            //       this.title = ''
+            //       this.start_date = ''
+            //       this.end_date = ''
+            //       this.target =  []
+            //   })
+      console.log('Authorization : ' + this.Authorization)
+      console.log('title : ' + this.title)
+      console.log('start_date : ' + this.start_date)
+      console.log('end_date : ' + this.end_date)
+      console.log('target : ' + this.target)
+    },
+    surveyWriteCancel: function () {
+      eventBus.$emit('change-view', 'test')
+    }
+  }
+}
+</script>
+<style scoped>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+* {
+  font-family: 'Jeju Gothic', serif;
+}
+.survey-editor {
+  width : 95vw;
+  border: 1px solid rgba(0,0,0,.125);
+  margin : auto;
+  background-color: #FFF;
+  padding : 2vh;
+}
+.underbar-title {
+  width : 93vw;
+  border-bottom : 2px solid #007BD3;
+}
+.survey-title {
+  border : none;
+  font-size: 30px;
+  margin-bottom:.7vh;
+  margin-left : 1vw;
+  display:block;
+}
+.survey-date {
+  margin-left : 1vw;
+  font-size : 20px;
+}
+.survey-date > input {
+  margin-top:1vh;
+  width : 30vw;
+  font-size : 20px;
+}
+.survey-target {
+  font-size : 20px;
+  margin-left : 1vw;
+}
+.survey-target > input {
+  margin-right: 2vw; 
+}
+.survey-btn-list {
+  margin-top:4vh;
+  text-align : right;
+}
+.survey-btn-list > button {
+  background-color: white;
+  border : 1px solid #c8c8c8;
+  border-radius: 1px;
+  padding : .5vw;
+}
+.description-describe {
+  margin-left : 1vw;
+  font-size : 20px;
+}
+.description-text {
+  margin-left : 1vw;
+  width : 93vw;
+}
+</style>
