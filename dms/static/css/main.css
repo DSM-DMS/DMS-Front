@@ -156,6 +156,7 @@ body {
   display: table;
   position: fixed;
   cursor: pointer;
+  will-change: transform;
 }
 
 #apply-wrapper .apply-card {
