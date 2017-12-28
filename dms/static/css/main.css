@@ -154,6 +154,7 @@ body {
   width: calc(50% - 10px);
   height: calc(100% - 10px);
   display: table;
+  cursor: pointer;
 }
 
 #apply-wrapper .apply-card {
@@ -163,12 +164,20 @@ body {
 #stay-apply-wrapper {
   background: url('../main/background/bg_homecoming.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   margin-right: 10px;
   margin-bottom: 10px;
+  -moz-transition: background-size 250ms ease;
+  -o-transition: background-size 250ms ease;
+  -webkit-transition: background-size 250ms ease;
+  transition: background-size 250ms ease;
+}
+
+#stay-apply-wrapper:hover{
+  background-size: 110%;
 }
 
 #stay-apply-wrapper:before {
@@ -214,12 +223,20 @@ body {
 #extention-apply-wrapper {
   background: url('../main/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   margin-left: 10px;
   margin-bottom: 10px;
+  -moz-transition: background-size 250ms ease;
+  -o-transition: background-size 250ms ease;
+  -webkit-transition: background-size 250ms ease;
+  transition: background-size 250ms ease;
+}
+
+#extention-apply-wrapper:hover{
+  background-size: 110%;
 }
 
 #extention-apply-wrapper:before {
@@ -276,12 +293,20 @@ body {
 #goingout-apply-wrapper {
   background: url('../main/background/bg_outing.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   margin-right: 10px;
   margin-top: 10px;
+  -moz-transition: background-size 250ms ease;
+  -o-transition: background-size 250ms ease;
+  -webkit-transition: background-size 250ms ease;
+  transition: background-size 250ms ease;
+}
+
+#goingout-apply-wrapper:hover{
+  background-size: 110%;
 }
 
 #goingout-apply-wrapper:before {
@@ -318,12 +343,20 @@ body {
 #survey-apply-wrapper {
   background: url('../main/background/bg_poll.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   margin-left: 10px;
   margin-top: 10px;
+  -moz-transition: background-size 250ms ease;
+  -o-transition: background-size 250ms ease;
+  -webkit-transition: background-size 250ms ease;
+  transition: background-size 250ms ease;
+}
+
+#survey-apply-wrapper:hover{
+  background-size: 110%;
 }
 
 #survey-apply-wrapper:before {
