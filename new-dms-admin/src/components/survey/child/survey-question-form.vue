@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="isObjective === true">
-          
+          <component :is="mulifulChoice"></component>
         </div>
         <div v-else>
           <p><span>질문 제목 : </span><input type="text" v-model="title"></p>
@@ -10,8 +10,11 @@
 </template>
 
 <script>
+import mulifulChoice from './multiful-choice'
+
 export default {
   name: 'survey-question-form',
+  components: { mulifulChoice },
   props: {
     isObjective: { type: Boolean },
     index: { type: Number }
@@ -19,7 +22,8 @@ export default {
   data: function () {
     return {
       title: '',
-      choice_paper: []
+      choice_paper: [],
+      mulifulChoice: mulifulChoice
     }
   },
   watch: {
@@ -31,8 +35,7 @@ export default {
   },
   methods: {
     submitQuestion: function () {
-      console.log(this.title)
-      this.$emit('submitQuestion', this.title, this.is_objective, this.choice_paper, this.index)
+      this.$emit('submitQuestion', this.title, this.is_objective, this.index)
     }
   }
 }

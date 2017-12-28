@@ -1,20 +1,27 @@
 <template>
     <div class="survey-question">
         <div class="underbar-question">
-            <header class="survey-title">설문조사</header>
+            <span class="survey-title">{{title}}</span>
+            <span class="survey-question-form-add-btn-group">
+              <span>객관식</span><img src="../../assets/icon/ic_plus.png" class="survey-question-form-add-btn" @click="multifulChoiceBtn()"/>
+              <span>주관식</span><img src="../../assets/icon/ic_plus.png" class="survey-question-form-add-btn" @click="descriptiveBtn()"/>
+            </span>
         </div>
-        <div>
-            <button @click="multifulChoiceBtn()">객관식</button><button @click="descriptiveBtn()">주관식</button>
+            
+        <div class="survey-question-form">
+          <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in surveyList" :key="index" :isObjective="surveyQuestion.isObjective" :choicePaper="choicePaper" :index="index" @submitQuestion="surveyQuestionGet" class="survey-question-add-component"></component>
         </div>
-        <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in surveyList" :key="index" :isObjective="surveyQuestion.is_objective" :index="index" @submitQuestion="surveyQuestionGet"></component>
-        <button @click="surveyQuestionSubmit">등록</button>
-        <button>취소</button>
+        <div class="survey-question-edit-btn-group">
+          <button @click="surveyQuestionSubmit">등록</button>
+          <button>취소</button>
+        </div>
+        
     </div>
 </template>
 
 <script>
 import surveyQuestionForm from './child/survey-question-form'
-// import eventBus from './event-bus'
+import eventBus from './eventBus'
 
 export default {
   name: 'Survey',
@@ -27,26 +34,42 @@ export default {
       //   title: '',
       //   is_objective: null,
       //   choice_paper: []}
-      surveyQuestionForm: surveyQuestionForm
+
+      // survey_id: '',
+      // Authorization: '',
+      // surveyTitle: '',
+      surveyQuestionForm: surveyQuestionForm,
+      id: '',
+      title: ''
     }
+  },
+  mounted: function () {
+    eventBus.$on('survey-question-upload', (id, title) => {
+      this.id = id
+      this.title = title
+    })
   },
   created: function () {
     //   this.surveyList.Authorization = getCookie('JWT')
+    // eventBus.$on('survey-question-upload', (id, title) => {
+    //   this.survey_id = id
+    //   this.surveyTitle = title
+    // })
   },
   methods: {
     multifulChoiceBtn: function () {
       this.surveyList.push({
         title: '',
-        is_objective: true,
-        choice_paper: []
+        isObjective: true,
+        choicePaper: []
       })
       console.log(this.surveyList)
     },
     descriptiveBtn: function () {
       this.surveyList.push({
         title: '',
-        is_objective: false,
-        choice_paper: []
+        isObjective: false,
+        choicePaper: []
       })
       console.log(this.surveyList)
     },
@@ -60,13 +83,11 @@ export default {
       // })
       // .then((response) => {
       //   EventBus.$on('changeView', 'SurveyList')
-      // })s
+      // })
     },
-    surveyQuestionGet: function (title, isObjective, choicePaper, index) {
-      // this.surveyList[index].title = title
-      // this.surverList[index].is_objective = isObjective
-      // this.surveyList[index].choicePaper = choicePaper
-      console.log(title)
+    surveyQuestionGet: function (title, choicePaper, index) {
+      this.surveyList[index].title = title
+      this.surveyList[index].choicePaper = choicePaper
     }
   }
 }
@@ -77,29 +98,58 @@ export default {
 * {
   font-family: 'Jeju Gothic', serif;
 }
-.survey-question {
-    width : 95vw;
-    border : 1px solid rgba(0,0,0,.125);
-    margin : auto;
-    background-color: white;
-    border-radius: 2px;
-    padding : 1vw;
-}
 .underbar-question {
-    width : 93vw;
-    border-bottom : 2px solid #007BD3;
+  width : 100%;
+  border-bottom : 2px solid grey;
+  display: flex;
+  justify-content: space-between;
+}
+.survey-question-form-add-btn {
+  cursor: pointer;
+  width: 1.7vw;
+  height: 1.7vw;
+}
+.survey-question-form-add-btn-group {
+  display: table;
+}
+.survey-question-form-add-btn-group > span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 3.5vw;
+  padding-right: 1.3vw;
 }
 .survey-title {
-    margin-left : 1vw;
-    font-size : 30px;
-    margin-bottom : .7vh;
+  margin-left : 1vw;
+  font-size : 30px;
+  margin-bottom : .7vh;
 }
 .survey-question-title {
-    margin-left : 1vw;
-    font-size : 20px;
+  margin-left : 1vw;
+  font-size : 20px;
 }
 .survey-question-text {
-    width: 91.6vw;
-    margin-left : 1vw;
+  width: 91.6vw;
+  margin-left : 1vw;
+}
+.survey-question-form {
+  height: 48vh;
+  overflow-y: auto; 
+}
+.survey-question-edit-btn-group {
+  margin-top:4vh;
+  text-align : center;
+}
+.survey-question-edit-btn-group > button {
+  background-color: #675094;
+  border : 1px solid #c8c8c8;
+  border-radius: 1px;
+  padding : 1.2vh 1.7vw 1.2vh 1.7vw;
+  color:white;
+  border-radius: 20px;
+}
+.survey-question-add-component {
+  margin-top: 2vh;
+  padding-bottom: 2vh;
+  border-bottom:1px solid grey;
 }
 </style>

@@ -62,10 +62,7 @@
 <script>
 
 export default {
-  name: 'surveyList',
-  data: function () {
-
-  }
+  name: 'surveyList'
 }
 </script>
 <style scoped>
@@ -78,6 +75,7 @@ export default {
     display: flex;
     align-items: center;
     margin-top:1vh;
+    margin-bottom:3.5vh;
 }
 .survey-list-title {
     font-weight: bold;
