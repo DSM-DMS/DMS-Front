@@ -2,10 +2,17 @@
   <div class="survey-index">
       <div class="survey-index-header">
         <img src="../../assets/logo/logo.png">
-        <span class="survey-back-wrapper"><span class="survey-back-text">돌아가기</span><img class="survey-back-button" src="../../assets/icon/ic_back.png"></span>
+        <span class="survey-back-wrapper">
+          <span class="survey-back-text">돌아가기</span>
+          <img class="survey-back-button" src="../../assets/icon/ic_back.png">
+        </span>
       </div>
-      <h1 class="DMS-Title">DSM Dormitory System</h1>
-      <component :is="surveyView"></component>
+      <div class="survey-main">
+        <button class="survey-main-btn" @click="changeView('surveyList')" :class="{ FormClicked : surveyMainBtnClicked1 }">설문조사</button><button class="survey-main-btn" @click="changeView('surveyMain')" :class="{ FormClicked : surveyMainBtnClicked2 }">작성</button>
+        <div class="survey-component">
+          <component :is="surveyView" class="Component"></component>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -22,7 +29,9 @@ export default {
   components: { test, surveyMain, surveyQuestion, surveyList },
   data: function () {
     return {
-      surveyView: surveyList
+      surveyView: surveyList,
+      surveyMainBtnClicked1: true,
+      surveyMainBtnClicked2: false
     }
   },
   mounted: function () {
@@ -32,6 +41,13 @@ export default {
   },
   methods: {
     changeView: function (view) {
+      if (view === 'surveyList') {
+        this.surveyMainBtnClicked1 = true
+        this.surveyMainBtnClicked2 = false
+      } else if (view === 'surveyMain') {
+        this.surveyMainBtnClicked1 = false
+        this.surveyMainBtnClicked2 = true
+      }
       this.surveyView = view
     }
   }
@@ -47,27 +63,75 @@ h1 {
 }
 .survey-index-header {
   padding :2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .survey-index-header > img {
   width: 8vw;
 }
 .survey-back-button {
   height: 4.5vh;
+  margin-left: 1.6vw;
 }
 .survey-back-wrapper {
   float: right;
   font-size: 15px;
+  display: table;
+  padding: 2vh 1vw 2vh 4vw;
+  margin-right: 2vw;
+  border-radius: 30px;
+}
+.survey-back-wrapper:hover{
+  background-color: #e4e5e8;
 }
 .survey-back-text {
   color: white;
   font-weight: bold;
-  display: 
+  display: table-cell;
+  vertical-align: middle;
 }
+.survey-main {
+  width: 80vw;
+  padding-left: 5.4vw;
+}
+.survey-main-btn {
+  width: 120px;
+  height: 60px;
+  background: rgba(14, 5, 5, 0.185);
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+.survey-component{
+  width: 100%;
+  height: 60vh;
+  max-height: 60vh;
+  background-color: rgba(255,255,255,0.88);
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 4vh 4vw 4vh 4vw;
+}
+.FormClicked {
+  background-color: rgba(255,255,255,0.88);
+}
+/* .Component{
+  max-height: 55vh;
+  overflow-y: scroll;
+} */
 </style>
 <style>
+html{
+  width:100vw;
+  height: 100vh;
+}
 body{
-  background: #F1F1F1;
-  background-image: url('../../assets/background/bg_notice.png')
+  background-image: url('../../assets/background/bg_notice.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 #app {
   margin-top : 0;
