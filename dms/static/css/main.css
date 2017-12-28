@@ -16,6 +16,7 @@ body {
   height: 60px;
   border-radius: 10px;
   background-color: white;
+  box-shadow: 3px 3px rgba(126, 126, 126, 0.3);
 }
 
 #brand-wrapper {
