@@ -6,7 +6,7 @@
     <p class="survey-date"><span>시작 날짜 : </span><br/><input type="date" v-model="start_date"></p><br />
     <p class="survey-date"><span>종료 날짜 : </span><br/><input type="date" v-model="end_date"></p><br />
     <p class="description-describe">설문 조사 설명 : </p>
-    <textarea class="description-text" name="" id="" cols="180" rows="3" v-model="description" fixed></textarea>
+    <textarea class="description-text" name="" id="" cols="60" rows="3" v-model="description" fixed></textarea>
     <div class="survey-target">
       <p>대상 학년</p>
       <label for="first-grade">1 학년</label><input type="checkbox" id="first-grade" value="1" v-model="target">
@@ -72,16 +72,9 @@ export default {
 * {
   font-family: 'Jeju Gothic', serif;
 }
-.survey-editor {
-  width : 95vw;
-  border: 1px solid rgba(0,0,0,.125);
-  margin : auto;
-  background-color: #FFF;
-  padding : 2vh;
-}
 .underbar-title {
-  width : 93vw;
-  border-bottom : 2px solid #007BD3;
+  width : 100%;
+  border-bottom : 2px solid grey;
 }
 .survey-title {
   border : none;
@@ -89,18 +82,20 @@ export default {
   margin-bottom:.7vh;
   margin-left : 1vw;
   display:block;
+  background-color: transparent;
 }
 .survey-date {
   margin-left : 1vw;
-  font-size : 20px;
+  font-size : 15px;
+  margin-bottom: 0;
 }
 .survey-date > input {
   margin-top:1vh;
   width : 30vw;
-  font-size : 20px;
+  font-size : 15px;
 }
 .survey-target {
-  font-size : 20px;
+  font-size : 15px;
   margin-left : 1vw;
 }
 .survey-target > input {
@@ -108,20 +103,23 @@ export default {
 }
 .survey-btn-list {
   margin-top:4vh;
-  text-align : right;
+  text-align : center;
 }
 .survey-btn-list > button {
-  background-color: white;
+  background-color: #675094;
   border : 1px solid #c8c8c8;
   border-radius: 1px;
-  padding : .5vw;
+  padding : 1.2vh 1.7vw 1.2vh 1.7vw;
+  color:white;
+  border-radius: 20px;
 }
 .description-describe {
   margin-left : 1vw;
-  font-size : 20px;
+  font-size : 15px;
 }
 .description-text {
   margin-left : 1vw;
-  width : 93vw;
+  width: 98%;
+  resize: none;
 }
 </style>
