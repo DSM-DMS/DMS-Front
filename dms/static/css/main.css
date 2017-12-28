@@ -154,6 +154,7 @@ body {
   width: calc(50% - 10px);
   height: calc(100% - 10px);
   display: table;
+  position: fixed;
   cursor: pointer;
 }
 
