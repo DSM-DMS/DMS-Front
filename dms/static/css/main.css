@@ -321,14 +321,21 @@ body {
   content: ' ';
 }
 
-#goingout-apply-text-wrapper {
+#goingout-apply-content-wrapper {
   display: table-cell;
   vertical-align: middle;
   position: relative;
   z-index: 100;
+  width: 100%;
 }
 
-#goingout-apply-text-wrapper:nth-child(n) {
+.goingout-apply-content{
+  float: left;
+  width: 50%;
+  position: relative;
+}
+
+.goingout-apply-content:nth-child(n) {
   text-align: center;
   font-weight: bold;
   color: white;
@@ -340,6 +347,43 @@ body {
 
 #goingout-apply-sub-text {
   font-size: 20px;
+}
+
+#goingout-apply-btn{
+  margin-top: 20px;
+  font-size: 20px;
+  width: 35%;
+  height: 40px;
+  border: 5px solid white;
+  border-radius: 30px;
+  display: table;
+  position: absolute;
+  left: 32%;
+}
+
+#goingout-apply-btn:hover{
+  -webkit-transform:scale(0.9); /*  크롬 */
+  -moz-transform:scale(0.9); /* FireFox */
+  -o-transform:scale(0.9); /* Opera */
+  transform:scale(0.9);
+  transition: transform .35s;
+  -o-transition: transform .35s;
+  -moz-transition: transform .35s;
+  -webkit-transition: transform .35s;
+}
+
+#goingout-apply-btn-text{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.goingout-apply-img {
+  width: 150px;
+  float: left;
+}
+
+.goingout-apply-img:first-child{
+  margin-right: 30px;
 }
 
 #survey-apply-wrapper {
@@ -356,6 +400,7 @@ body {
   -webkit-transition: background-size 250ms ease;
   transition: background-size 250ms ease;
 }
+
 
 #survey-apply-wrapper:hover{
   background-size: 110%;
@@ -412,6 +457,19 @@ body {
   width: 90%;
   height: 100%;
   margin: 0 auto;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.post-card:hover{
+  -webkit-transform:scale(1.05); /*  크롬 */
+  -moz-transform:scale(1.05); /* FireFox */
+  -o-transform:scale(1.05); /* Opera */
+  transform:scale(1.05);
+  transition: transform .35s;
+  -o-transition: transform .35s;
+  -moz-transition: transform .35s;
+  -webkit-transition: transform .35s;
 }
 
 .post-card-header {
