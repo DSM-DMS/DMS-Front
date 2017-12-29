@@ -35,12 +35,12 @@
     </div>
     <div id="dev-intro-img-wrapper">
       <div id="dev-intro-logo-img-wrapper">
-        <img id="dev-intro-logo-img" src="../assets/icon/ic_footer/ic_footer_logo.png" />
+        <img id="dev-intro-logo-img" src="../../assets/icon/ic_footer/ic_footer_logo.png" />
       </div>
       <div id="dev-intro-category-img-wrapper">
-        <img class="dev-intro-category-img" src="../assets/icon/ic_footer/ic_ios.png" />
-        <img class="dev-intro-category-img" src="../assets/icon/ic_footer/ic_android.png" />
-        <img class="dev-intro-category-img" src="../assets/icon/ic_footer/ic_window.png" />
+        <img class="dev-intro-category-img" src="../../assets/icon/ic_footer/ic_ios.png" />
+        <img class="dev-intro-category-img" src="../../assets/icon/ic_footer/ic_android.png" />
+        <img class="dev-intro-category-img" src="../../assets/icon/ic_footer/ic_window.png" />
       </div>
     </div>
     <div id="footer-wrapper">

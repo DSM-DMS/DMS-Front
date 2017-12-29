@@ -8,7 +8,7 @@
         <div class="post-card-body-wrapper">
           <div class="post-card-body">
             <div class="post-card-img-wrapper">
-              <img class="post-card-img" src="../assets/icon/ic_notice/ic_notice.png">
+              <img class="post-card-img" src="../../assets/icon/ic_notice/ic_notice.png">
             </div>
             <div class="post-card-body-text-wrapper" style="color: rgb(246, 99, 81);">
               <p class="post-card-body-text">공지사항</p>
@@ -26,7 +26,7 @@
         <div class="post-card-body-wrapper">
           <div class="post-card-body">
             <div class="post-card-img-wrapper">
-              <img class="post-card-img" src="../assets/icon/ic_notice/ic_rule.png">
+              <img class="post-card-img" src="../../assets/icon/ic_notice/ic_rule.png">
             </div>
             <div class="post-card-body-text-wrapper" style="color: rgb(255, 188, 71);">
               <p class="post-card-body-text">기숙사 규정</p>
@@ -44,7 +44,7 @@
         <div class="post-card-body-wrapper">
           <div class="post-card-body">
             <div class="post-card-img-wrapper">
-              <img class="post-card-img" src="../assets/icon/ic_notice/ic_question.png">
+              <img class="post-card-img" src="../../assets/icon/ic_notice/ic_question.png">
             </div>
             <div class="post-card-body-text-wrapper" style="color: rgb(53, 147, 211);">
               <p class="post-card-body-text">자주하는 질문</p>

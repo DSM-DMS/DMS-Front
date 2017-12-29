@@ -1,7 +1,7 @@
 <template>
   <div id="header-wrapper">
     <div id="brand-wrapper">
-      <img id="header-ic-logo" src="../assets/icon/ic_logo.png" />
+      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" />
     </div>
 
     <div id="header-menu-wrapper">
@@ -10,7 +10,7 @@
       <span class="header-menu">공지사항</span>
       <span class="header-menu">로그인</span>
       <span>메뉴</span>
-      <img id="header-ic-menu" src="../assets/icon/ic_menu.png" />
+      <img id="header-ic-menu" src="../../assets/icon/ic_menu.png" />
     </div>
 
   </div>
