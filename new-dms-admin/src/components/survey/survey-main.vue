@@ -1,5 +1,5 @@
 <template>
-  <div class="survey-editor" @keydown.enter="surveySubmit">
+  <div class="survey-editor">
     <div class="underbar-title">
       <input class="survey-title" type="text" v-model="title" placeholder="설문의 제목을 쓰세요">
     </div>
@@ -14,7 +14,7 @@
       <label for="third-grade">3 학년</label><input type="checkbox" id="third-grade" value="3" v-model="target">
     </div>
     <div class="survey-btn-list">
-      <button @click="surveySubmit">등록</button>
+      <button @click="surveyNext">다음</button>
       <button @click="surveyWriteCancel">취소</button>
     </div>
   </div>
@@ -39,26 +39,42 @@ export default {
     // this.Authorization = getCookie('JWT');
   },
   methods: {
-    surveySubmit: function () {
-            // this.$axios.post('/admin/survey',{
-            //   Authorization : this.Authorization,
-            //   title : this.title,
-            //   start_date : this.start_date,
-            //   end_date : this.end_date,
-            //   target : target
-            // })
-            //   .then((response) => {
-            //       console.log(response)
-            //       this.title = ''
-            //       this.start_date = ''
-            //       this.end_date = ''
-            //       this.target =  []
-            //   })
+    surveyNext: function () {
+      this.$axios.post('/admin/survey', JSON.stringify({
+        title: this.title,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        target: this.target
+      }),
+        {
+          headers: {
+            'Authorization': '1312312312312',
+            'Content-type': 'application/json'
+          }
+        })
+      .then((response) => {
+        console.log(response)
+        this.title = ''
+        this.start_date = ''
+        this.end_date = ''
+        this.target = []
+        this.$axios.get('/survey', {
+          'Authorization': '1312312312312'
+        })
+          .then((response) => {
+            for (var i = 0; i < response.data.length; i++) {
+              if (this.title === response.data[i].title && this.start_date === response.data[i].start_date && this.end_date === response.data[i].end_date) {
+                eventBus.$emit('survey-question-upload', response.data[i].id, response.data[i].title)
+              }
+            }
+          })
+      })
       console.log('Authorization : ' + this.Authorization)
       console.log('title : ' + this.title)
       console.log('start_date : ' + this.start_date)
       console.log('end_date : ' + this.end_date)
       console.log('target : ' + this.target)
+      eventBus.$emit('change-view', 'surveyQuestion')
     },
     surveyWriteCancel: function () {
       eventBus.$emit('change-view', 'test')
