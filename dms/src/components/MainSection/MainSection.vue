@@ -22,17 +22,17 @@
         </div>
         <div id="meal-btn-wrapper">
           <div class="meal-img-wrapper">
-            <img id="meal-up-img" src="../assets/icon/ic_up_down/ic_up.png" />
+            <img id="meal-up-img" src="../../assets/icon/ic_up_down/ic_up.png" />
           </div>
           <div class="meal-img-wrapper">
-            <img id="meal-down-img" src="../assets/icon/ic_up_down/ic_down.png" />
+            <img id="meal-down-img" src="../../assets/icon/ic_up_down/ic_down.png" />
           </div>
         </div>
       </div>
     </div>
     <div id="social-wrapper">
-      <img class="social-icon" src="../assets/icon/ic_git_facebook/ic_facebook.png" />
-      <img class="social-icon" src="../assets/icon/ic_git_facebook/ic_github.png" />
+      <img class="social-icon" src="../../assets/icon/ic_git_facebook/ic_facebook.png" />
+      <img class="social-icon" src="../../assets/icon/ic_git_facebook/ic_github.png" />
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
 
 <style>
 #main-section {
-  background: url('../assets/background/bg_main.png');
+  background: url('../../assets/background/bg_main.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -60,7 +60,7 @@ export default {
 
 #main-section-text {
   font-family: 'coolvetica rg';
-  src: url("../assets/font/coolvetica_rg.ttf") format('truetype');
+  src: url("../../assets/font/coolvetica_rg.ttf") format('truetype');
   display: table-cell;
   vertical-align: middle;
   width: 100%;

@@ -4,7 +4,7 @@
       <div class="apply-card" id="stay-apply-wrapper">
         <div id="stay-apply-content">
           <div id="stay-apply-img-wrapper">
-            <img id="stay-apply-img" src="../assets/icon/ic_homecoming/ic_friday.png" />
+            <img id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
           </div>
           <div id="stay-apply-text-wrapper">
             <p id="stay-apply-text">잔류신청</p>
@@ -20,10 +20,10 @@
           </div>
           <div id="extention-apply-img-wrapper">
             <div id="extention-apply-11-img-wrapper">
-              <img class="extention-apply-img" src="../assets/icon/ic_eleven_twelve/ic_eleven.png" />
+              <img class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
             </div>
             <div id="extention-apply-12-img-wrapper">
-              <img class="extention-apply-img" src="../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
+              <img class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
             </div>
           </div>
         </div>
@@ -41,8 +41,8 @@
             </div>
           </div>
           <div class="goingout-apply-content">
-            <img class="goingout-apply-img" src="../assets/icon/ic_outing/ic_saturday_outing.png">
-            <img class="goingout-apply-img" src="../assets/icon/ic_outing/ic_sunday_outing_light.png">
+            <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
+            <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default {
 }
 
 #stay-apply-wrapper {
-  background: url('../assets/background/bg_homecoming.png');
+  background: url('../../assets/background/bg_homecoming.png');
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 100%;
   background-position: center center;
@@ -151,7 +151,7 @@ export default {
 }
 
 #extention-apply-wrapper {
-  background: url('../assets/background/bg_study.png');
+  background: url('../../assets/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 100%;
   background-position: center center;
@@ -221,7 +221,7 @@ export default {
 }
 
 #goingout-apply-wrapper {
-  background: url('../assets/background/bg_outing.png');
+  background: url('../../assets/background/bg_outing.png');
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 100%;
   background-position: center center;
@@ -315,7 +315,7 @@ export default {
 }
 
 #survey-apply-wrapper {
-  background: url('../assets/background/bg_poll.png');
+  background: url('../../assets/background/bg_poll.png');
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 100%;
   background-position: center center;
