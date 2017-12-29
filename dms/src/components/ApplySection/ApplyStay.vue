@@ -1,0 +1,80 @@
+<template>
+  <div class="apply-card" id="stay-apply-wrapper">
+    <div id="stay-apply-content">
+      <div id="stay-apply-img-wrapper">
+        <img id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
+      </div>
+      <div id="stay-apply-text-wrapper">
+        <p id="stay-apply-text">잔류신청</p>
+        <p id="stay-apply-sub-text">귀가 여부를 확인하세요</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'ApplyStay'
+  }
+</script>
+
+<style>
+#stay-apply-wrapper {
+  background: url('../../assets/background/bg_homecoming.png');
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  -moz-transition: background-size 250ms ease;
+  -o-transition: background-size 250ms ease;
+  -webkit-transition: background-size 250ms ease;
+  transition: background-size 250ms ease;
+}
+
+#stay-apply-wrapper:hover{
+  background-size: 110%;
+}
+
+#stay-apply-wrapper:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: inherit;
+  content: ' ';
+}
+
+#stay-apply-content {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  z-index: 100;
+}
+
+#stay-apply-img-wrapper {
+  width: 8vw;
+  margin: 0 auto;
+}
+
+#stay-apply-img {
+  width: 100%
+}
+
+#stay-apply-text-wrapper:nth-child(n) {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+#stay-apply-text {
+  font-size: 40px;
+}
+
+#stay-apply-sub-text {
+  font-size: 20px;
+}
+</style>
