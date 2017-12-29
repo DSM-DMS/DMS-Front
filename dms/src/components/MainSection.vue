@@ -1,5 +1,5 @@
 <template>
-   <div id="main-section">
+  <div id="main-section">
     <div id="main-section-text">
       <span class="section-text-char">D</span>
       <span class="section-text-char">M</span>
@@ -53,6 +53,9 @@ export default {
   width: 100%;
   height: 100vh;
   display: table;
+  position: fixed;
+  z-index: -1;
+  top: 0;
 }
 
 #main-section-text {

@@ -3,6 +3,7 @@
     <header-nav/>
     <main-section/>
     <apply-section/>
+    <post-section/>
     <footer-section/>
   </div>
 </template>
@@ -12,11 +13,12 @@
 import HeaderNav from '../components/HeaderNav'
 import MainSection from '../components/MainSection'
 import ApplySection from '../components/ApplySection'
+import PostSection from '../components/PostSection'
 import FooterSection from '../components/FooterSection'
 
 export default {
   name: 'Main',
-  components: {HeaderNav, MainSection, ApplySection, FooterSection}
+  components: {HeaderNav, MainSection, PostSection, ApplySection, FooterSection}
 }
 </script>
 

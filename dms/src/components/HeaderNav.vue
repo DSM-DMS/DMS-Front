@@ -29,6 +29,7 @@ export default {
 #header-wrapper {
   margin: 20px 50px 0 50px;
   position: fixed;
+  top: 0;
   width: calc(100% - 100px);
   z-index: 10000;
   height: 60px;
