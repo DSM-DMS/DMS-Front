@@ -126,12 +126,12 @@ export default {
 }
 
 #stay-apply-img-wrapper {
-  width: 150px;
+  width: 8vw;
   margin: 0 auto;
 }
 
 #stay-apply-img {
-  width: 150px;
+  width: 100%
 }
 
 #stay-apply-text-wrapper:nth-child(n) {
@@ -304,7 +304,7 @@ export default {
 }
 
 .goingout-apply-img {
-  width: 150px;
+  width: 8vw;
   float: left;
 }
 
