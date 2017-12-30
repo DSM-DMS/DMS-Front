@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="choise-form">
-          <input type="text" v-model="title" placeholder="질문 제목을 입력하세요.">
+          <input type="text" v-model="title" placeholder="질문 제목을 입력하세요." @blur="formTitleAppend">
           <ul>
               <li v-for="i in choicePaper">{{i}}</li>
           </ul>
@@ -25,9 +25,14 @@ export default {
   methods: {
     formAppend: function () {
       this.choicePaper.push(this.multifulAnswerText)
-      console.log(this.choicePaper[this.formLength])
-      this.formLength++
+      this.$emit('multifulText', this.multifulAnswerText, this.formLength)
       this.multifulAnswerText = ''
+      this.formLength++
+    },
+    formTitleAppend: function () {
+      if (this.title !== '') {
+        this.$emit('multifulTitle', this.title)
+      }
     }
   }
 }

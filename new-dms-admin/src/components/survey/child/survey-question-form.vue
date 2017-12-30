@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-if="isObjective === true">
-          <component :is="mulifulChoice"></component>
+          <component :is="mulifulChoice" @multifulTitle="multifulTitleGet" @multifulText="multifulTextGet"></component>
         </div>
         <div v-else>
-          <p><span>질문 제목 : </span><input type="text" v-model="title"></p>
+          <p><span>질문 제목 : </span><input type="text" v-model="title" @blur="surveyQuestionEmit"></p>
         </div>
     </div>
 </template>
@@ -22,20 +22,24 @@ export default {
   data: function () {
     return {
       title: '',
-      choice_paper: [],
       mulifulChoice: mulifulChoice
-    }
-  },
-  watch: {
-    title: function (val) {
-      if (val.length >= 2) {
-        this.submitQuestion()
-      }
     }
   },
   methods: {
     submitQuestion: function () {
-      this.$emit('submitQuestion', this.title, this.is_objective, this.index)
+      console.log(this.title)
+      this.$emit('submitQuestion', this.title, this.index)
+    },
+    surveyQuestionEmit: function () {
+      if (this.title !== '') {
+        this.submitQuestion()
+      }
+    },
+    multifulTitleGet: function (title) {
+      this.$emit('multifulTitleGet', title, this.index)
+    },
+    multifulTextGet: function (text) {
+      this.$emit('multifulTextGet', text, this.index)
     }
   }
 }

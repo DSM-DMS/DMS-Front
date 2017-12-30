@@ -13,48 +13,12 @@
             <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
             <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
         </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
+        <!-- <div class="survey-list-tr" v-for="surveyList in surveyLists">
+            <span class="survey-list-title">{{ surveyList.title }}</span>
+            <span class="survey-list-term">{{ surveyList.start_date }} ~ {{ surveyList.end_date }}</span>
+            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn" @click="deleteSurvey(surveyList.id)"></span>
             <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
+        </div> -->
       </div>
   </div>
 </template>
@@ -62,7 +26,51 @@
 <script>
 
 export default {
-  name: 'surveyList'
+  name: 'surveyList',
+  data: function () {
+    return {
+      surveyLists: []
+    }
+  },
+  created: function () {
+    this.fetchSurveyList()
+    // this.$axios.get('/survey', {
+    //   headers: {
+    //     Authorization: 'JWT 1312312312312'
+    //   }
+    // })
+    // .then((response) => {
+    //   this.surveyLists = response.data
+    // })
+  },
+  methods: {
+    deleteSurvey: function (id) {
+      this.$axios.delete('/admin/survey', {
+        survey_id: id
+      },
+        {
+          headers: {
+            Authorization: 'JWT 1312312312312'
+          }
+        })
+      .then((response) => {
+        this.fetchSurveyList()
+      })
+      .catch((ex) => {
+        alert('삭제에 실패했습니다')
+      })
+    },
+    fetchSurveyList: function () {
+      this.$axios.get('/survey', {
+        headers: {
+          'Authorization': 'JWT 1312312312312'
+        }
+      })
+      .then((response) => {
+        this.surveyLists = response.data
+      })
+    }
+  }
 }
 </script>
 <style scoped>

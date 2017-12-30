@@ -6,7 +6,7 @@
     <p class="survey-date"><span>시작 날짜 : </span><br/><input type="date" v-model="start_date"></p><br />
     <p class="survey-date"><span>종료 날짜 : </span><br/><input type="date" v-model="end_date"></p><br />
     <p class="description-describe">설문 조사 설명 : </p>
-    <textarea class="description-text" name="" id="" cols="60" rows="3" v-model="description" fixed></textarea>
+    <textarea class="description-text" name="" id="" cols="60" rows="3" v-model="description"></textarea>
     <div class="survey-target">
       <p>대상 학년</p>
       <label for="first-grade">1 학년</label><input type="checkbox" id="first-grade" value="1" v-model="target">
@@ -15,13 +15,14 @@
     </div>
     <div class="survey-btn-list">
       <button @click="surveyNext">다음</button>
-      <button @click="surveyWriteCancel">취소</button>
     </div>
+    <component :is="'modal'" v-if="isModal" @modalClose="modalToggle"></component>
   </div>
 </template>
 
 <script>
 import eventBus from './eventBus'
+import modal from './child/modal'
 
 export default {
   name: 'survey-submit',
@@ -32,52 +33,44 @@ export default {
       start_date: '',
       end_date: '',
       description: '',
-      target: []
+      target: [],
+      isModal: false
     }
   },
-  created: function () {
-    // this.Authorization = getCookie('JWT');
-  },
+  components: { modal, eventBus },
   methods: {
     surveyNext: function () {
-      this.$axios.post('/admin/survey', JSON.stringify({
-        title: this.title,
-        start_date: this.start_date,
-        end_date: this.end_date,
-        target: this.target
-      }),
-        {
-          headers: {
-            'Authorization': '1312312312312',
-            'Content-type': 'application/json'
-          }
-        })
-      .then((response) => {
-        console.log(response)
-        this.title = ''
-        this.start_date = ''
-        this.end_date = ''
-        this.target = []
-        this.$axios.get('/survey', {
-          'Authorization': '1312312312312'
-        })
-          .then((response) => {
-            for (var i = 0; i < response.data.length; i++) {
-              if (this.title === response.data[i].title && this.start_date === response.data[i].start_date && this.end_date === response.data[i].end_date) {
-                eventBus.$emit('survey-question-upload', response.data[i].id, response.data[i].title)
-              }
-            }
-          })
-      })
-      console.log('Authorization : ' + this.Authorization)
-      console.log('title : ' + this.title)
-      console.log('start_date : ' + this.start_date)
-      console.log('end_date : ' + this.end_date)
-      console.log('target : ' + this.target)
-      eventBus.$emit('change-view', 'surveyQuestion')
+      // this.$axios.post('/admin/survey', JSON.stringify({
+      //   title: this.title,
+      //   description: this.description,
+      //   start_date: this.start_date,
+      //   end_date: this.end_date,
+      //   target: this.target
+      // }),
+      //   {
+      //     headers: {
+      //       'Authorization': 'JWT 1312312312312',
+      //       'Content-type': 'application/json'
+      //     }
+      //   })
+      // .then((response) => {
+      //   eventBus.$emit('survey-question-upload', response.data, this.title)
+      //   eventBus.$emit('change-view', 'surveyQuestion')
+      // })
+      // .catch((ex) => {
+      // })
+      // this.title = ''
+      // this.start_date = ''
+      // this.end_date = ''
+      // this.target = []
+      // console.log('title : ' + this.title)
+      // console.log('start_date : ' + this.start_date)
+      // console.log('end_date : ' + this.end_date)
+      // console.log('target : ' + this.target)
+      // this.modalToggle()
     },
-    surveyWriteCancel: function () {
-      eventBus.$emit('change-view', 'test')
+    modalToggle: function () {
+      this.isModal = !this.isModal
     }
   }
 }
@@ -89,7 +82,7 @@ export default {
   font-family: 'Jeju Gothic', serif;
 }
 .underbar-title {
-  width : 100%;
+  width : 80vw;
   border-bottom : 2px solid grey;
 }
 .survey-title {
@@ -118,7 +111,7 @@ export default {
   margin-right: 2vw; 
 }
 .survey-btn-list {
-  margin-top:4vh;
+  padding-top: 4vh;
   text-align : center;
 }
 .survey-btn-list > button {
@@ -135,7 +128,7 @@ export default {
 }
 .description-text {
   margin-left : 1vw;
-  width: 98%;
+  width: 77vw;
   resize: none;
 }
 </style>

@@ -18,7 +18,6 @@
 
 <script>
 import surveyMain from './survey-main.vue'
-import test from './test.vue'
 import surveyQuestion from './survey-question'
 import surveyList from './survey-list'
 
@@ -26,7 +25,7 @@ import eventBus from './eventBus'
 
 export default {
   name: 'survey',
-  components: { test, surveyMain, surveyQuestion, surveyList },
+  components: { surveyMain, surveyQuestion, surveyList },
   data: function () {
     return {
       surveyView: surveyList,
@@ -117,10 +116,6 @@ h1 {
 .FormClicked {
   background-color: rgba(255,255,255,0.88);
 }
-/* .Component{
-  max-height: 55vh;
-  overflow-y: scroll;
-} */
 </style>
 <style>
 html{
