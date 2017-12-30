@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios
+Vue.prototype.$axios.defaults.baseURL = 'http://dsm2015.cafe24.com:3001'
 
 /* eslint-disable no-new */
 new Vue({
