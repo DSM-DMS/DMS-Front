@@ -7,10 +7,7 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
-<<<<<<< HEAD
 Vue.prototype.$axios.defaults.baseURL = 'http://dsm2015.cafe24.com:3001'
-=======
->>>>>>> 21969eef6400a946685fd7fe242c65ae08496d84
 
 /* eslint-disable no-new */
 new Vue({
