@@ -43,15 +43,16 @@
         <img class="dev-intro-category-img" src="../../assets/icon/ic_footer/ic_window.png" />
       </div>
     </div>
-    <div id="footer-wrapper">
-      <p id="footer-text">©2017 Team DMS</p>
-    </div>
+    <credit/>
   </div>
 </template>
 
 <script>
+import Credit from './Credit'
+
 export default {
-  name: 'FooterSection'
+  name: 'FooterSection',
+  components: {Credit}
 }
 </script>
 
