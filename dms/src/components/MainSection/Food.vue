@@ -12,6 +12,10 @@
 </script>
 
 <style>
+  #food-wrapper{
+    width: 70%;
+    float: left;
+  }
   .food {
     font-size: 25px;
     font-weight: 100;
