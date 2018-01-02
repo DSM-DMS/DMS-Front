@@ -1,7 +1,7 @@
 <template>
   <div id="main-section">
     <main-title/>
-    <meal/>
+    <meal :meal="meal"/>
     <div id="social-wrapper">
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_facebook.png')"/>
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_github.png')"/>
@@ -16,7 +16,20 @@ import SocialBtn from './SocialBtn'
 
 export default {
   name: 'MainSection',
-  components: {MainTitle, Meal, SocialBtn}
+  components: {MainTitle, Meal, SocialBtn},
+  data: function () {
+    return {
+      meal: {
+        today: {
+          date: '2017년 12월 15일',
+          BreakFast: {
+            name: 'BreakFast',
+            food: ['새알심만두국', '안동찜닭', '양배추오이초무침', '파래돌김자반', '열무김치']
+          }
+        }
+      }
+    }
+  }
 }
 </script>
 
