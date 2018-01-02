@@ -57,6 +57,7 @@ export default {
         this.fetchSurveyList()
       })
       .catch((ex) => {
+        console.log('ERROR!!!!', ex)
         alert('삭제에 실패했습니다')
       })
     },
@@ -68,6 +69,9 @@ export default {
       })
       .then((response) => {
         this.surveyLists = response.data
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
       })
     }
   }

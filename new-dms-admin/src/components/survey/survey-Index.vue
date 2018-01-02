@@ -89,19 +89,21 @@ h1 {
   font-weight: bold;
   display: table-cell;
   vertical-align: middle;
+  font-size: 24px;
 }
 .survey-main {
   width: 80vw;
   padding-left: 5.4vw;
 }
 .survey-main-btn {
-  width: 120px;
-  height: 60px;
+  width: 8vw;
+  height: 7.5vh;
   background: rgba(14, 5, 5, 0.185);
   border: none;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+  font-family: 'Jeju Gothic', serif;
+  font-size: 20px;
 }
 .survey-component{
   width: 100%;
