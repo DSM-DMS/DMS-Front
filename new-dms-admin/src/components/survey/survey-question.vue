@@ -91,8 +91,8 @@ export default {
       // })
       // .catch((ex) => {
       //   console.log('ERROR!!!! : ', ex)
+      //   this.modalToggle()
       // })
-      this.modalToggle()
     },
     surveyQuestionGet: function (title, index) {
       this.surveyList[index].title = title
