@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import ApplyStay from '@/components/FooterSection/ApplyStay'
-import ApplyExtention from '@/components/FooterSection/ApplyExtention'
-import ApplyGoingout from '@/components/FooterSection/ApplyGoingout'
-import ApplySurvey from '@/components/FooterSection/ApplySurvey'
+import ApplyStay from '@/components/ApplySection/ApplyStay'
+import ApplyExtention from '@/components/ApplySection/ApplyExtention'
+import ApplyGoingout from '@/components/ApplySection/ApplyGoingout'
+import ApplySurvey from '@/components/ApplySection/ApplySurvey'
 
 export default {
   name: 'ApplySection',
