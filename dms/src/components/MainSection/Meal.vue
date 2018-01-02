@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Food from './Food'
+import Food from '@/components/MainSection/Food'
 
 export default {
   name: 'Meal',
