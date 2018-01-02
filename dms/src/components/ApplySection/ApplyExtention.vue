@@ -7,10 +7,12 @@
       </div>
       <div id="extention-apply-img-wrapper">
         <div id="extention-apply-11-img-wrapper">
-          <img class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
+          <img v-if="isEleven" class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven_light.png" />
+          <img v-else class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
         </div>
         <div id="extention-apply-12-img-wrapper">
-          <img class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
+          <img v-if="isTwelve" class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
+          <img v-else class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve.png" />
         </div>
       </div>
     </div>
@@ -19,7 +21,13 @@
 
 <script>
 export default {
-  name: 'ApplyExtention'
+  name: 'ApplyExtention',
+  data: function () {
+    return {
+      isEleven: false,
+      isTwelve: false
+    }
+  }
 }
 </script>
 
@@ -92,6 +100,7 @@ export default {
 
 .extention-apply-img {
   width: 100%;
+  cursor: pointer;
 }
 </style>
 

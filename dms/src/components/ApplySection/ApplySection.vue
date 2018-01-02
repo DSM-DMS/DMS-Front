@@ -1,7 +1,7 @@
 <template>
   <div id="apply-wrapper">
     <div class="apply-card-wrapper">
-      <apply-stay/>
+      <apply-stay :apply="apply"/>
       <apply-extention/>
     </div>
 
@@ -20,7 +20,12 @@ import ApplySurvey from './ApplySurvey'
 
 export default {
   name: 'ApplySection',
-  components: {ApplyStay, ApplyExtention, ApplyGoingout, ApplySurvey}
+  components: {ApplyStay, ApplyExtention, ApplyGoingout, ApplySurvey},
+  data: function () {
+    return {
+      apply: 'friday'
+    }
+  }
 }
 </script>
 
@@ -44,7 +49,6 @@ export default {
   height: calc(100% - 10px);
   display: table;
   position: fixed;
-  cursor: pointer;
   will-change: transform;
 }
 

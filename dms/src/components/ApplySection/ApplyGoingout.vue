@@ -9,8 +9,11 @@
         </div>
       </div>
       <div class="goingout-apply-content">
-        <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
-        <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-if="isSaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing_light.png">
+        <img v-else class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
+
+        <img v-if="isSunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-else class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing.png">
       </div>
     </div>
   </div>
@@ -18,7 +21,13 @@
 
 <script>
 export default {
-  name: 'ApplyGoingout'
+  name: 'ApplyGoingout',
+  data: function () {
+    return {
+      isSaturday: false,
+      isSunday: false
+    }
+  }
 }
 </script>
 
@@ -106,11 +115,13 @@ export default {
 #goingout-apply-btn-text{
   display: table-cell;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .goingout-apply-img {
   width: 8vw;
   float: left;
+  cursor: pointer;
 }
 
 .goingout-apply-img:first-child{

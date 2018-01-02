@@ -1,20 +1,27 @@
 <template>
   <div class="category">
-    <dev-category-title/>
-    <dev-category-member/>
+    <p class="category-title">{{ data.title }}</p>
+    <p class="category-member" :key="index" v-for="(member, index) in data.members">{{ member }}</p>
   </div>
 </template>
 
 <script>
-import DevCategoryTitle from './DevCategoryTitle'
-import DevCategoryMember from './DevCategoryMember'
-
 export default {
   name: 'DevCategory',
-  components: {DevCategoryTitle, DevCategoryMember}  
+  props: ['data']
 }
 </script>
 
 <style>
-
+.category-title{
+  color: #4D7E99;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.category-member{
+  color: #5E97B7;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
 </style>

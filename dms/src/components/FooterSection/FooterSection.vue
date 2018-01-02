@@ -1,37 +1,7 @@
 <template>
   <div id="footer-section-wrapper">
     <div id="dev-intro-wrapper">
-      <div id="dev-intro-developer-wrapper">
-        <div class="category">
-          <p class="category-title">App</p>
-          <p class="category-member">이병찬</p>
-          <p class="category-member">윤정현</p>
-          <p class="category-member">이성현</p>
-        </div>
-        <div class="category">
-          <p class="category-title">Server</p>
-          <p class="category-member">조민규</p>
-          <p class="category-member">인상민</p>
-        </div>
-        <div class="category">
-          <p class="category-title">Web Front</p>
-          <p class="category-member">서윤호</p>
-          <p class="category-member">김 건</p>
-          <p class="category-member">김형규</p>
-          <p class="category-member">오인서</p>
-          <p class="category-member">윤효상</p>
-        </div>
-        <div class="category">
-          <p class="category-title">Desktop</p>
-          <p class="category-member">김동현</p>
-          <p class="category-member">이종현</p>
-          <p class="category-member">류근찬</p>
-        </div>
-        <div class="category">
-          <p class="category-title">Design</p>
-          <p class="category-member">김동규</p>
-        </div>
-      </div>
+      <developer-intro/>
     </div>
     <div id="dev-intro-img-wrapper">
       <div id="dev-intro-logo-img-wrapper">
@@ -49,10 +19,11 @@
 
 <script>
 import Credit from './Credit'
+import DeveloperIntro from './DeveloperIntro'
 
 export default {
   name: 'FooterSection',
-  components: {Credit}
+  components: {Credit, DeveloperIntro}
 }
 </script>
 

@@ -1,18 +1,11 @@
 <template>
   <div id="meal-wrapper">
     <div id="meal-header-wrapper">
-      <p id="meal-date">2017년 12월 15일</p>
-      <p id="meal">BreakFast</p>
+      <p id="meal-date">{{ meal.today.date }}</p>
+      <p id="meal">{{ meal.today.BreakFast.name }}</p>
     </div>
     <div id="meal-body-wrapper">
-      <div id="food-wrapper">
-        <p class="food">흰밥(쌀밥)</p>
-        <p class="food">새알심만두국</p>
-        <p class="food">안동찜닭</p>
-        <p class="food">양배추오이초무침</p>
-        <p class="food">파래돌김자반</p>
-        <p class="food">열무김치</p>
-      </div>
+      <food :meal="meal.today.BreakFast.food"/>
       <div id="meal-btn-wrapper">
         <div class="meal-img-wrapper">
           <img id="meal-up-img" src="../../assets/icon/ic_up_down/ic_up.png" />
@@ -26,8 +19,12 @@
 </template>
 
 <script>
+import Food from './Food'
+
 export default {
-  name: 'Meal'
+  name: 'Meal',
+  components: {Food},
+  props: ['meal']
 }
 </script>
 
