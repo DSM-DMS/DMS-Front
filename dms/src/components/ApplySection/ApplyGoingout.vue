@@ -115,11 +115,13 @@ export default {
 #goingout-apply-btn-text{
   display: table-cell;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .goingout-apply-img {
   width: 8vw;
   float: left;
+  cursor: pointer;
 }
 
 .goingout-apply-img:first-child{

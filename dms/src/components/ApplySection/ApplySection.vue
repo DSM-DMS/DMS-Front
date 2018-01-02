@@ -49,7 +49,6 @@ export default {
   height: calc(100% - 10px);
   display: table;
   position: fixed;
-  cursor: pointer;
   will-change: transform;
 }
 

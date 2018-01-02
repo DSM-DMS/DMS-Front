@@ -100,6 +100,7 @@ export default {
 
 .extention-apply-img {
   width: 100%;
+  cursor: pointer;
 }
 </style>
 
