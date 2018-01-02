@@ -2,7 +2,10 @@
   <div class="apply-card" id="stay-apply-wrapper">
     <div id="stay-apply-content">
       <div id="stay-apply-img-wrapper">
-        <img id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
+        <img v-if="apply==='friday'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
+        <img v-else-if="apply==='saturdayBack'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
+        <img v-else-if="apply==='saturday'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
       </div>
       <div id="stay-apply-text-wrapper">
         <p id="stay-apply-text">잔류신청</p>
@@ -14,7 +17,8 @@
 
 <script>
   export default {
-    name: 'ApplyStay'
+    name: 'ApplyStay',
+    props: ['apply']
   }
 </script>
 

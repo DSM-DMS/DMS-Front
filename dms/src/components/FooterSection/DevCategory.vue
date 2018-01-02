@@ -2,7 +2,6 @@
   <div class="category">
     <p class="category-title">{{ data.title }}</p>
     <p class="category-member" :key="index" v-for="(member, index) in data.members">{{ member }}</p>
-    <dev-category-member/>
   </div>
 </template>
 
