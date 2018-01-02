@@ -3,7 +3,6 @@
       <div class="survey-index-header">
         <img src="../../assets/logo/logo.png">
         <span class="survey-back-wrapper">
-          <span class="survey-back-text">돌아가기</span>
           <img class="survey-back-button" src="../../assets/icon/ic_back.png">
         </span>
       </div>
@@ -77,12 +76,13 @@ h1 {
   float: right;
   font-size: 15px;
   display: table;
-  padding: 2vh 1vw 2vh 4vw;
+  padding: 1vh 1vw 1vh 1vw;
   margin-right: 2vw;
   border-radius: 30px;
+  cursor: pointer;
 }
 .survey-back-wrapper:hover{
-  background-color: #e4e5e8;
+  background-color: rgba(255, 255, 255, 0.3)
 }
 .survey-back-text {
   color: white;
@@ -96,6 +96,7 @@ h1 {
   padding-left: 5.4vw;
 }
 .survey-main-btn {
+  cursor: pointer;
   width: 8vw;
   height: 7.5vh;
   background: rgba(14, 5, 5, 0.185);
@@ -104,6 +105,9 @@ h1 {
   border-top-right-radius: 10px;
   font-family: 'Jeju Gothic', serif;
   font-size: 20px;
+}
+.survey-main-btn:focus {
+  outline: none;
 }
 .survey-component{
   width: 100%;

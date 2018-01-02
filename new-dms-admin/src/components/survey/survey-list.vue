@@ -122,7 +122,8 @@ export default {
     overflow-y: scroll;
 }
 .survey-list-btn {
-    width: 3vw;
+  width: 3vw;
+  cursor: pointer;
 }
 .underbar-survey-list {
     border-bottom: 1px solid grey;

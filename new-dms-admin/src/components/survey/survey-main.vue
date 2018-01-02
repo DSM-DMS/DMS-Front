@@ -43,35 +43,27 @@ export default {
   components: { modal, eventBus },
   methods: {
     surveyNext: function () {
-      // this.$axios.post('/admin/survey', JSON.stringify({
-      //   title: this.title,
-      //   description: this.description,
-      //   start_date: this.start_date,
-      //   end_date: this.end_date,
-      //   target: this.target
-      // }),
-      //   {
-      //     headers: {
-      //       'Authorization': 'JWT 1312312312312',
-      //       'Content-type': 'application/json'
-      //     }
-      //   })
-      // .then((response) => {
-      //   eventBus.$emit('survey-question-upload', response.data, this.title)
-      //   eventBus.$emit('change-view', 'surveyQuestion')
-      // })
-      // .catch((ex) => {
-      //   console.log('ERROR!!!! : ', ex)
-      //   this.modalToggle()
-      // })
-      // this.title = ''
-      // this.start_date = ''
-      // this.end_date = ''
-      // this.target = []
-      // console.log('title : ' + this.title)
-      // console.log('start_date : ' + this.start_date)
-      // console.log('end_date : ' + this.end_date)
-      // console.log('target : ' + this.target)
+      this.$axios.post('/admin/survey', JSON.stringify({
+        title: this.title,
+        description: this.description,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        target: this.target
+      }),
+        {
+          headers: {
+            'Authorization': 'JWT 1312312312312',
+            'Content-type': 'application/json'
+          }
+        })
+      .then((response) => {
+        eventBus.$emit('survey-question-upload', response.data, this.title)
+        eventBus.$emit('change-view', 'surveyQuestion')
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
+        this.modalToggle()
+      })
     },
     modalToggle: function () {
       this.isModal = !this.isModal
@@ -138,5 +130,9 @@ export default {
   padding : 1.2vh 1.7vw 1.2vh 1.7vw;
   color:white;
   border-radius: 20px;
+  cursor: pointer;
+}
+.survey-btn-list > button:focus {
+  outline: none;
 }
 </style>
