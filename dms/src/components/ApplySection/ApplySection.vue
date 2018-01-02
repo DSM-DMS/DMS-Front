@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import ApplyStay from './ApplyStay'
-import ApplyExtention from './ApplyExtention'
-import ApplyGoingout from './ApplyGoingout'
-import ApplySurvey from './ApplySurvey'
+import ApplyStay from '@/components/FooterSection/ApplyStay'
+import ApplyExtention from '@/components/FooterSection/ApplyExtention'
+import ApplyGoingout from '@/components/FooterSection/ApplyGoingout'
+import ApplySurvey from '@/components/FooterSection/ApplySurvey'
 
 export default {
   name: 'ApplySection',
@@ -36,6 +36,7 @@ export default {
   padding: 20px;
   background-color: #F9F7FC;
   display: table;
+  cursor: default;
 }
 
 .apply-card-wrapper {

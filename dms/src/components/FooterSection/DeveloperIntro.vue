@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import DevCategory from './DevCategory'
+import DevCategory from '@/components/FooterSection/DevCategory'
 
 export default {
   name: 'DeveloperIntro',

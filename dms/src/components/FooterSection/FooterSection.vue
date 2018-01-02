@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Credit from './Credit'
-import DeveloperIntro from './DeveloperIntro'
+import Credit from '@/components/FooterSection/Credit'
+import DeveloperIntro from '@/components/FooterSection/DeveloperIntro'
 
 export default {
   name: 'FooterSection',
