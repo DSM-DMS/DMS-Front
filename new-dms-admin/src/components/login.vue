@@ -1,12 +1,12 @@
 <template>
 <div class="login">
   <div class="bg">
-  <img id="bg" src='../assets/bg.png'>
+  <img id="bg" src='../assets/background/bg.png'>
   </div>
   <div class="bg2"></div>
   <div class="main">
     <div id="main-bg">
-      <img id="main-img" src="../assets/main-bg.png">
+      <img id="main-img" src="../assets/background/main-bg.png">
     </div>
     <div id="main-title">
         <h3>Dormitory</h3> 
@@ -14,7 +14,7 @@
         <h3>System</h3>
       </div>
     <div id="login-main">
-      <img id="logo" src="../assets/logo2.png">
+      <img id="logo" src="../assets/logo/logo2.png">
       <div id="login-from">
         <input type="text" v-model="id" placeholder="아이디">
         <input type="password" v-model="pw" placeholder="비밀번호">

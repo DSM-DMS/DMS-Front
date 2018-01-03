@@ -1,34 +1,34 @@
 <template>
 <div id="main-page">
     <div id="main-bg"></div>
-    <img id="logo"  src="../assets/logo.png">
+    <img id="logo"  src="../assets/logo/logo.png">
     <div id="contents">
         <div id="download-title">
             <h3 id="title">Download</h3>
         </div>
         <div id="download-contents">
             <div id="download-bg">
-                <img id="icon" src="../assets/ic_stay.png">
+                <img id="icon" src="../assets/icon/ic_stay.png">
                 <h3 id="conetnets-title">잔류신청</h3>
                 <p id="sentence">잔류 신청 결과를 다운로드합니다.</p>
             </div>
             <div id="download-bg">
-                <img id="icon" src="../assets/ic_goingout.png">
+                <img id="icon" src="../assets/icon/ic_goingout.png">
                 <h3 id="conetnets-title">외출신청</h3>
                 <p id="sentence">외출 신청 결과를 다운로드합니다.</p>
             </div>
             <div id="download-bg">
-                <img id="icon" src="../assets/ic_broken.png">
+                <img id="icon" src="../assets/icon/ic_broken.png">
                 <h3 id="conetnets-title">시설고장</h3>
                 <p id="sentence">시설 고장 목록을 다운로드합니다.</p>
             </div>
             <div id="download-bg">
-                <img id="icon" src="../assets/ic_eleven.png">
+                <img id="icon" src="../assets/icon/ic_eleven.png">
                 <h3 id="conetnets-title">11시연장</h3>
                 <p id="sentence">연장 신청 목록을 다운로드합니다.</p>
             </div>
             <div id="download-bg">
-                <img id="icon" src="../assets/ic_twelve.png">
+                <img id="icon" src="../assets/icon/ic_twelve.png">
                 <h3 id="conetnets-title">12시연장</h3>
                 <p id="sentence">연장 신청 목록을 다운로드합니다.</p>
             </div>
@@ -38,22 +38,22 @@
         </div>
          <div id="management-contents">
             <div id="management-bg">
-                <img id="icon" src="../assets/ic_notice.png">
+                <img id="icon" src="../assets/icon/ic_notice.png">
                 <h3 id="conetnets-title">공지사항</h3>
                 <p id="sentence">공지사항을 작성,관리합니다.</p>
             </div>
             <div id="management-bg">
-                <img id="icon" src="../assets/ic_rule.png">
+                <img id="icon" src="../assets/icon/ic_rule.png">
                 <h3 id="conetnets-title">기숙사규칙</h3>
                 <p id="sentence">기숙사규칙을 작성,관리합니다.</p>
             </div>
             <div id="management-bg">
-                <img id="icon" src="../assets/ic_question.png">
+                <img id="icon" src="../assets/icon/ic_question.png">
                 <h3 id="conetnets-title" >자주하는 질문</h3>
                 <p id="sentence">자주하는 질문을 작성,관리합니다.</p>
             </div>
-            <div id="management-bg">
-                <img id="icon" src="../assets/ic_poll.png">
+            <div id="management-bg" @click="changeView('survey')">
+                <img id="icon" src="../assets/icon/ic_poll.png">
                 <h3 id="conetnets-title">설문조사</h3>
                 <p id="sentence">설문조사를 작성,관리합니다.</p>
             </div>
@@ -63,9 +63,14 @@
 </template>
 
 <script>
-    export default {
-
+export default {
+  name: 'main',
+  methods: {
+    changeView: function (view) {
+      this.$router.push(view)
     }
+  }
+}
 </script>
 <style scoped>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -84,7 +89,7 @@
   #main-bg {
       width: 100vw;
       height: 100vh;
-      background-image: url("../assets/main-page.png");
+      background-image: url("../assets/background/bg_notice.png");
       position: absolute;
   }
   
