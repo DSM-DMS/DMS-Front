@@ -44,8 +44,8 @@ export default {
   methods: {
     surveyNext: function () {
       this.$axios.post('/admin/survey', JSON.stringify({
-        title: this.title,
         description: this.description,
+        title: this.title,
         start_date: this.start_date,
         end_date: this.end_date,
         target: this.target

@@ -54,7 +54,11 @@ export default {
           }
         })
       .then((response) => {
-        this.fetchSurveyList()
+        if (response.status === 200) {
+          this.fetchSurveyList()
+        } else if (response.status === 204) {
+          alert('삭제에 실패했습니다')
+        }
       })
       .catch((ex) => {
         console.log('ERROR!!!!', ex)
