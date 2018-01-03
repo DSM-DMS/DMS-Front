@@ -1,24 +1,17 @@
 <template>
   <div id="meal-wrapper">
     <div id="meal-header-wrapper">
-      <p id="meal-date">2017년 12월 15일</p>
-      <p id="meal">BreakFast</p>
+      <p id="meal-date">{{ this.$dateFormmater(selectedMeal.date) }}</p>
+      <p id="meal">{{ selectedMeal.selected }}</p>
     </div>
     <div id="meal-body-wrapper">
-      <div id="food-wrapper">
-        <p class="food">흰밥(쌀밥)</p>
-        <p class="food">새알심만두국</p>
-        <p class="food">안동찜닭</p>
-        <p class="food">양배추오이초무침</p>
-        <p class="food">파래돌김자반</p>
-        <p class="food">열무김치</p>
-      </div>
+      <food :meal="meal[selectedMeal.selected]"/>
       <div id="meal-btn-wrapper">
-        <div class="meal-img-wrapper">
-          <img id="meal-up-img" src="../../assets/icon/ic_up_down/ic_up.png" />
-        </div>
-        <div class="meal-img-wrapper">
-          <img id="meal-down-img" src="../../assets/icon/ic_up_down/ic_down.png" />
+        <div id="meal-img-wrapper">
+          <div id="meal-up-img-wrapper">
+            <img @click="preMeal" id="meal-up-img" src="../../assets/icon/ic_up_down/ic_up.png" />
+          </div>
+            <img @click="nextMeal" id="meal-down-img" src="../../assets/icon/ic_up_down/ic_down.png" />
         </div>
       </div>
     </div>
@@ -26,8 +19,20 @@
 </template>
 
 <script>
+import Food from '@/components/MainSection/Food'
+
 export default {
-  name: 'Meal'
+  name: 'Meal',
+  components: {Food},
+  props: ['meal', 'selectedMeal'],
+  methods: {
+    preMeal: function () {
+      this.$emit('preMeal')
+    },
+    nextMeal: function () {
+      this.$emit('nextMeal')
+    }
+  }
 }
 </script>
 
@@ -35,7 +40,7 @@ export default {
 #meal-wrapper {
   position: absolute;
   left: 100px;
-  bottom: 50px;
+  bottom: 70px;
   width: 25vw;
 }
 
@@ -45,13 +50,10 @@ export default {
 
 #meal-date {
   font-size: 25px;
-  font-weight: 100;
-  line-height: 0;
 }
 
 #meal {
   font-size: 70px;
-  font-weight: 100;
 }
 
 #meal-body-wrapper{
@@ -59,31 +61,20 @@ export default {
   display: inline-block;
 }
 
-#food-wrapper{
-  width: 70%;
-  float: left;
-}
-
-.food {
-  font-size: 25px;
-  font-weight: 100;
-  line-height: 1.7em;
-}
-
 #meal-btn-wrapper{
   width: 30%;
   height: 100%;
   float: left;
+  display: table;
 }
 
-.meal-img-wrapper{
-  height: 50%;
-  width:100%;
+#meal-img-wrapper{
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.meal-img-wrapper:first-child{
-  padding-top: calc(100% - 70px);
-  height: 70px;
+#meal-up-img-wrapper{
+  height: 50px;
 }
 
 #meal-up-img{

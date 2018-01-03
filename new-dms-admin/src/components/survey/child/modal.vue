@@ -7,7 +7,7 @@
       <div class="modal-text-wrapper">
           <p class="modal-title">게시글 작성에 실패했습니다.</p>
           <p class="modal-subtitle">올바른 접근인지 확인해주세요.</p>
-          <button class="modal-ok-button" @click="modalClose">확인</button>
+          <button class="modal-ok-button" @click="modalClose" autofocus>확인</button>
       </div>
     </div>
   </div>
@@ -72,6 +72,7 @@ export default {
     background-color: #675094;
     border-radius: 10px;
     font-size:20px;
+    cursor: pointer;
 }
 .modal-ok-button:before {
     content: "";

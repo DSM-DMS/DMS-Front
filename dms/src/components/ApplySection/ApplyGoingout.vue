@@ -9,8 +9,11 @@
         </div>
       </div>
       <div class="goingout-apply-content">
-        <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
-        <img class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-if="goingout.isSaturdayGoingout" @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing_light.png">
+        <img v-else @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
+
+        <img v-if="goingout.isSundayGoingout" @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-else @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing.png">
       </div>
     </div>
   </div>
@@ -18,7 +21,16 @@
 
 <script>
 export default {
-  name: 'ApplyGoingout'
+  name: 'ApplyGoingout',
+  props: ['goingout'],
+  methods: {
+    applySaturday: function () {
+      this.$emit('applySaturday')
+    },
+    applySunday: function () {
+      this.$emit('applySunday')
+    }
+  }
 }
 </script>
 
@@ -106,11 +118,13 @@ export default {
 #goingout-apply-btn-text{
   display: table-cell;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .goingout-apply-img {
   width: 8vw;
   float: left;
+  cursor: pointer;
 }
 
 .goingout-apply-img:first-child{

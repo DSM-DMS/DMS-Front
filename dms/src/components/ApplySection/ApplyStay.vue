@@ -2,7 +2,10 @@
   <div class="apply-card" id="stay-apply-wrapper">
     <div id="stay-apply-content">
       <div id="stay-apply-img-wrapper">
-        <img id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
+        <img v-if="day==='1'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
+        <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
+        <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
       </div>
       <div id="stay-apply-text-wrapper">
         <p id="stay-apply-text">잔류신청</p>
@@ -14,7 +17,8 @@
 
 <script>
   export default {
-    name: 'ApplyStay'
+    name: 'ApplyStay',
+    props: ['day']
   }
 </script>
 
@@ -32,6 +36,7 @@
   -o-transition: background-size 250ms ease;
   -webkit-transition: background-size 250ms ease;
   transition: background-size 250ms ease;
+  cursor: pointer;
 }
 
 #stay-apply-wrapper:hover{

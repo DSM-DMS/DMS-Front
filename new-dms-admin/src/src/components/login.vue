@@ -14,7 +14,7 @@
         <h3>System</h3>
       </div>
     <div id="login-main">
-      <img id="logo" src="../assets/logo.png">
+      <img id="logo" src="../assets/logo2.png">
       <div id="login-from">
         <input type="text" v-model="id" placeholder="아이디">
         <input type="password" v-model="pw" placeholder="비밀번호">
@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+const qs = require('query-string')
+
 export default {
   name: 'login',
   data: function () {
@@ -44,15 +45,21 @@ export default {
   },
   methods: {
     login: function (event) {
-      axios({
+      console.log(this.id, this.pw)
+      this.$axios({
         method: 'POST',
         url: '/admin/auth',
-        headers: {'Content-Type': 'application/json'},
-        data: JSON.stringify({id: this.id, pw: this.pw})
+        data: qs.stringify({id: this.id, pw: this.pw})
       })
       .then((response) => {
+        if (response.status === 200) {
+          console.log('성공')
+          this.$setCookie('JWT', response.data['access_token'], 1)
+          this.$router.push('main')
+        } else {
+          console.log('실패')
+        }
         console.log(response)
-        this.result = response.data
       })
       .catch((ex) => {
         console.log('error: ', ex)
@@ -113,6 +120,7 @@ export default {
     height: 100%;
     float: left;
   }
+
   img#main-img {
     width: 100%;
     height: 100%;
@@ -133,6 +141,7 @@ export default {
     color: white;
     line-height: 65px;
   }
+  
   img#logo {
     width: 35%;
     height: 25%;
