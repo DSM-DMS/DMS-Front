@@ -2,15 +2,13 @@
   <div id="apply-wrapper">
     <div class="apply-card-wrapper">
       <apply-stay :day="stay.day"/>
-      <apply-extention :eleven="extention.isEleven"
-                       :twelve="extention.isEleven"/>
+      <apply-extention :extention="extention"/>
     </div>
 
     <div class="apply-card-wrapper">
       <apply-goingout  @applySaturday="applySaturdayGoingout" 
                        @applySunday="applySundayGoingout" 
-                       :isSaturday="goingout.isSaturdayGoingout" 
-                       :isSunday="goingout.isSundayGoingout"/>
+                       :goingout="goingout"/>
       <apply-survey/>
     </div>
   </div>
@@ -36,8 +34,14 @@ export default {
         isSundayGoingout: false
       },
       extention: {
-        isEleven: false,
-        isTwelve: false
+        eleven: {
+          isApply: false,
+          class: ''
+        },
+        twelve: {
+          isApply: false,
+          class: ''
+        }
       }
     }
   },
@@ -64,6 +68,15 @@ export default {
     }
   }
   // created () {
+  //   axios({
+  //     method: 'GET',
+  //     url: 'dsm2015.cafe24.com:3001/goingout'
+  //   }).then(res => {
+  //     this.goingout.isSaturdayGoingout = res.sat
+  //     this.goingout.isSundayGoingout = res.sun
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
   //   axios({
   //     method: 'GET',
   //     url: 'dsm2015.cafe24.com:3001/goingout'
