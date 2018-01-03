@@ -7,52 +7,10 @@
         <span style="display : inline-block; width : 5vw">다운로드</span>
       </div>
       <div class="survey-list-tbody">
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
-            <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
-        </div>
-        <div class="survey-list-tr">
-            <span class="survey-list-title">DMS 개발 테스트</span>
-            <span class="survey-list-term">2017.12.26 ~ 2017.12.30</span>
-            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn"></span>
+        <div class="survey-list-tr" v-for="surveyList in surveyLists">
+            <span class="survey-list-title">{{ surveyList.title }}</span>
+            <span class="survey-list-term">{{ surveyList.start_date }} ~ {{ surveyList.end_date }}</span>
+            <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn" @click="deleteSurvey(surveyList.id)"></span>
             <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
         </div>
       </div>
@@ -60,9 +18,54 @@
 </template>
 
 <script>
+const qs = require('query-string')
 
 export default {
-  name: 'surveyList'
+  name: 'surveyList',
+  data: function () {
+    return {
+      surveyLists: []
+    }
+  },
+  created: function () {
+    this.fetchSurveyList()
+  },
+  methods: {
+    deleteSurvey: function (id) {
+      this.$axios.delete('/admin/survey', qs.stringify({
+        survey_id: id
+      }),
+        {
+          headers: {
+            Authorization: 'JWT ' + this.$getCookie('JWT')
+          }
+        })
+      .then((response) => {
+        if (response.status === 200) {
+          this.fetchSurveyList()
+        } else if (response.status === 204) {
+          alert('삭제에 실패했습니다')
+        }
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!!', ex)
+        alert('삭제에 실패했습니다')
+      })
+    },
+    fetchSurveyList: function () {
+      this.$axios.get('/survey', {
+        headers: {
+          'Authorization': 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+      .then((response) => {
+        this.surveyLists = response.data
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
+      })
+    }
+  }
 }
 </script>
 <style scoped>
@@ -110,7 +113,8 @@ export default {
     overflow-y: scroll;
 }
 .survey-list-btn {
-    width: 3vw;
+  width: 3vw;
+  cursor: pointer;
 }
 .underbar-survey-list {
     border-bottom: 1px solid grey;

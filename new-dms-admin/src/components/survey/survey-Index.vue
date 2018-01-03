@@ -3,8 +3,7 @@
       <div class="survey-index-header">
         <img src="../../assets/logo/logo.png">
         <span class="survey-back-wrapper">
-          <span class="survey-back-text">돌아가기</span>
-          <img class="survey-back-button" src="../../assets/icon/ic_back.png">
+          <img class="survey-back-button" src="../../assets/icon/ic_back.png" @click="goBack('main')">
         </span>
       </div>
       <div class="survey-main">
@@ -18,7 +17,6 @@
 
 <script>
 import surveyMain from './survey-main.vue'
-import test from './test.vue'
 import surveyQuestion from './survey-question'
 import surveyList from './survey-list'
 
@@ -26,7 +24,7 @@ import eventBus from './eventBus'
 
 export default {
   name: 'survey',
-  components: { test, surveyMain, surveyQuestion, surveyList },
+  components: { surveyMain, surveyQuestion, surveyList },
   data: function () {
     return {
       surveyView: surveyList,
@@ -49,6 +47,9 @@ export default {
         this.surveyMainBtnClicked2 = true
       }
       this.surveyView = view
+    },
+    goBack: function (view) {
+      this.$router.go(-1)
     }
   }
 }
@@ -78,31 +79,38 @@ h1 {
   float: right;
   font-size: 15px;
   display: table;
-  padding: 2vh 1vw 2vh 4vw;
+  padding: 1vh 1vw 1vh 1vw;
   margin-right: 2vw;
   border-radius: 30px;
+  cursor: pointer;
 }
 .survey-back-wrapper:hover{
-  background-color: #e4e5e8;
+  background-color: rgba(255, 255, 255, 0.3)
 }
 .survey-back-text {
   color: white;
   font-weight: bold;
   display: table-cell;
   vertical-align: middle;
+  font-size: 24px;
 }
 .survey-main {
   width: 80vw;
   padding-left: 5.4vw;
 }
 .survey-main-btn {
-  width: 120px;
-  height: 60px;
+  cursor: pointer;
+  width: 8vw;
+  height: 7.5vh;
   background: rgba(14, 5, 5, 0.185);
   border: none;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+  font-family: 'Jeju Gothic', serif;
+  font-size: 20px;
+}
+.survey-main-btn:focus {
+  outline: none;
 }
 .survey-component{
   width: 100%;
@@ -117,10 +125,6 @@ h1 {
 .FormClicked {
   background-color: rgba(255,255,255,0.88);
 }
-/* .Component{
-  max-height: 55vh;
-  overflow-y: scroll;
-} */
 </style>
 <style>
 html{

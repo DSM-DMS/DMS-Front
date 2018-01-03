@@ -9,23 +9,26 @@
         </div>
             
         <div class="survey-question-form">
-          <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in surveyList" :key="index" :isObjective="surveyQuestion.isObjective" :choicePaper="choicePaper" :index="index" @submitQuestion="surveyQuestionGet" class="survey-question-add-component"></component>
+          <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in surveyList" :key="index" :isObjective="surveyQuestion.is_objective" :index="index" @submitQuestion="surveyQuestionGet" @multifulTitleGet="multifulTitleEmit" @multifulTextGet="multifulTextEmit" class="survey-question-add-component"></component>
         </div>
         <div class="survey-question-edit-btn-group">
           <button @click="surveyQuestionSubmit">등록</button>
-          <button>취소</button>
+          <button @click="surveyEditCancel">취소</button>
         </div>
-        
+        <component :is="'modal'" v-if="isModal" @modalClose="modalToggle"></component>
     </div>
 </template>
 
 <script>
 import surveyQuestionForm from './child/survey-question-form'
+import modal from './child/modal'
 import eventBus from './eventBus'
+
+const qs = require('query-string')
 
 export default {
   name: 'Survey',
-  components: { surveyQuestionForm },
+  components: { surveyQuestionForm, modal },
   data: function () {
     return {
       surveyList: [],
@@ -40,7 +43,8 @@ export default {
       // surveyTitle: '',
       surveyQuestionForm: surveyQuestionForm,
       id: '',
-      title: ''
+      title: '',
+      isModal: false
     }
   },
   mounted: function () {
@@ -50,44 +54,61 @@ export default {
     })
   },
   created: function () {
-    //   this.surveyList.Authorization = getCookie('JWT')
     // eventBus.$on('survey-question-upload', (id, title) => {
-    //   this.survey_id = id
-    //   this.surveyTitle = title
+    //   this.id = id
+    //   this.Title = title
     // })
   },
   methods: {
     multifulChoiceBtn: function () {
       this.surveyList.push({
         title: '',
-        isObjective: true,
-        choicePaper: []
+        is_objective: true,
+        choice_paper: []
       })
       console.log(this.surveyList)
     },
     descriptiveBtn: function () {
       this.surveyList.push({
         title: '',
-        isObjective: false,
-        choicePaper: []
+        is_objective: false,
+        choice_paper: []
       })
       console.log(this.surveyList)
     },
     surveyQuestionSubmit: function () {
-      // axios.post('/admin/survey/question', {
-      //   Authorization: this.surveyList.Authorization,
-      //   id: this.surveyList.id,
-      //   title: this.surveyList.title,
-      //   is_objective: this.surveyList.is_objective,
-      //   choice_paper: this.surveyList.choice_paper
-      // })
-      // .then((response) => {
-      //   EventBus.$on('changeView', 'SurveyList')
-      // })
+      this.$axios.post('/admin/survey/question', qs.stringify({
+        id: this.id,
+        survey_list: this.surveyList
+      }),
+        {
+          headers: {
+            'Authorization': 'JWT ' + this.$getCookie('JWT')
+          }
+        })
+      .then((response) => {
+        eventBus.$on('changeView', 'SurveyList')
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
+        this.modalToggle()
+      })
     },
-    surveyQuestionGet: function (title, choicePaper, index) {
+    surveyQuestionGet: function (title, index) {
       this.surveyList[index].title = title
-      this.surveyList[index].choicePaper = choicePaper
+    },
+    multifulTitleEmit: function (title, index) {
+      this.surveyList[index].title = title
+    },
+    multifulTextEmit: function (text, index) {
+      this.surveyList[index].choice_paper.push(text)
+      console.log(this.surveyList[index].choice_paper)
+    },
+    surveyEditCancel: function () {
+      eventBus.$emit('change-view', 'surveyMain')
+    },
+    modalToggle: function () {
+      this.isModal = !this.isModal
     }
   }
 }
