@@ -15,7 +15,7 @@
       </div>
     <div id="login-main">
       <img id="logo" src="../assets/logo/logo2.png">
-      <div id="login-from">
+      <div id="login-from" @keyup.enter='login'>
         <input type="text" v-model="id" placeholder="아이디">
         <input type="password" v-model="pw" placeholder="비밀번호">
       </div>

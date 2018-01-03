@@ -18,6 +18,7 @@
 </template>
 
 <script>
+const qs = require('query-string')
 
 export default {
   name: 'surveyList',
@@ -28,23 +29,15 @@ export default {
   },
   created: function () {
     this.fetchSurveyList()
-    // this.$axios.get('/survey', {
-    //   headers: {
-    //     Authorization: 'JWT 1312312312312'
-    //   }
-    // })
-    // .then((response) => {
-    //   this.surveyLists = response.data
-    // })
   },
   methods: {
     deleteSurvey: function (id) {
-      this.$axios.delete('/admin/survey', {
+      this.$axios.delete('/admin/survey', qs.stringify({
         survey_id: id
-      },
+      }),
         {
           headers: {
-            Authorization: 'JWT 1312312312312'
+            Authorization: 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then((response) => {
@@ -62,7 +55,7 @@ export default {
     fetchSurveyList: function () {
       this.$axios.get('/survey', {
         headers: {
-          'Authorization': 'JWT 1312312312312'
+          'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
       })
       .then((response) => {
