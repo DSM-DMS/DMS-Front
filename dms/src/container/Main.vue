@@ -19,10 +19,10 @@ import FooterSection from '../components/FooterSection/FooterSection'
 export default {
   name: 'Main',
   components: {
-    HeaderNav, 
-    MainSection, 
-    PostSection, 
-    ApplySection, 
+    HeaderNav,
+    MainSection,
+    PostSection,
+    ApplySection,
     FooterSection
   }
 }
