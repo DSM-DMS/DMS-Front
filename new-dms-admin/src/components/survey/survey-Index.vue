@@ -56,6 +56,9 @@ export default {
 </script>
 <style scoped>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+* {
+  text-align: left;
+}
 h1 {
   font-family: 'Jeju Gothic', serif;
 }
@@ -108,6 +111,7 @@ h1 {
   border-top-right-radius: 10px;
   font-family: 'Jeju Gothic', serif;
   font-size: 20px;
+  text-align: center !important;
 }
 .survey-main-btn:focus {
   outline: none;
@@ -139,7 +143,6 @@ body{
 }
 #app {
   margin-top : 0;
-  text-align : left;
 }
 </style>
 
