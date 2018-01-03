@@ -49,7 +49,7 @@ export default {
       this.surveyView = view
     },
     goBack: function (view) {
-      this.$router.push(view)
+      this.$router.go(-1)
     }
   }
 }

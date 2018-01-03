@@ -27,6 +27,8 @@
 import eventBus from './eventBus'
 import modal from './child/modal'
 
+const qs = require('query-string')
+
 export default {
   name: 'survey-submit',
   data: function () {
@@ -43,7 +45,7 @@ export default {
   components: { modal, eventBus },
   methods: {
     surveyNext: function () {
-      this.$axios.post('/admin/survey', JSON.stringify({
+      this.$axios.post('/admin/survey', qs.stringify({
         description: this.description,
         title: this.title,
         start_date: this.start_date,
@@ -52,8 +54,7 @@ export default {
       }),
         {
           headers: {
-            'Authorization': 'JWT 1312312312312',
-            'Content-type': 'application/json'
+            'Authorization': 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then((response) => {

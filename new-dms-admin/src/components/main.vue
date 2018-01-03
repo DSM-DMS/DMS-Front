@@ -7,55 +7,55 @@
             <h3 id="title">Download</h3>
         </div>
         <div id="download-contents">
-            <div id="download-bg">
-                <img id="icon" src="../assets/icon/ic_stay.png">
-                <h3 id="conetnets-title">잔류신청</h3>
-                <p id="sentence">잔류 신청 결과를 다운로드합니다.</p>
+            <div class="download-bg">
+                <img class="icon" src="../assets/icon/ic_stay.png">
+                <h3 class="conetnets-title">잔류신청</h3>
+                <p class="sentence">잔류 신청 결과를 다운로드합니다.</p>
             </div>
-            <div id="download-bg">
-                <img id="icon" src="../assets/icon/ic_goingout.png">
-                <h3 id="conetnets-title">외출신청</h3>
-                <p id="sentence">외출 신청 결과를 다운로드합니다.</p>
+            <div class="download-bg">
+                <img class="icon" src="../assets/icon/ic_goingout.png">
+                <h3 class="conetnets-title">외출신청</h3>
+                <p class="sentence">외출 신청 결과를 다운로드합니다.</p>
             </div>
-            <div id="download-bg">
-                <img id="icon" src="../assets/icon/ic_broken.png">
-                <h3 id="conetnets-title">시설고장</h3>
-                <p id="sentence">시설 고장 목록을 다운로드합니다.</p>
+            <div class="download-bg">
+                <img class="icon" src="../assets/icon/ic_broken.png">
+                <h3 class="conetnets-title">시설고장</h3>
+                <p class="sentence">시설 고장 목록을 다운로드합니다.</p>
             </div>
-            <div id="download-bg">
-                <img id="icon" src="../assets/icon/ic_eleven.png">
-                <h3 id="conetnets-title">11시연장</h3>
-                <p id="sentence">연장 신청 목록을 다운로드합니다.</p>
+            <div class="download-bg">
+                <img class="icon" src="../assets/icon/ic_eleven.png">
+                <h3 class="conetnets-title">11시연장</h3>
+                <p class="sentence">연장 신청 목록을 다운로드합니다.</p>
             </div>
-            <div id="download-bg">
-                <img id="icon" src="../assets/icon/ic_twelve.png">
-                <h3 id="conetnets-title">12시연장</h3>
-                <p id="sentence">연장 신청 목록을 다운로드합니다.</p>
+            <div class="download-bg">
+                <img class="icon" src="../assets/icon/ic_twelve.png">
+                <h3 class="conetnets-title">12시연장</h3>
+                <p class="sentence">연장 신청 목록을 다운로드합니다.</p>
             </div>
         </div>
         <div id="management-title">
             <h3 id="title">Management</h3>
         </div>
          <div id="management-contents">
-            <div id="management-bg">
-                <img id="icon" src="../assets/icon/ic_notice.png">
-                <h3 id="conetnets-title">공지사항</h3>
-                <p id="sentence">공지사항을 작성,관리합니다.</p>
+            <div class="management-bg">
+                <img class="icon" src="../assets/icon/ic_notice.png">
+                <h3 class="conetnets-title">공지사항</h3>
+                <p class="sentence">공지사항을 작성,관리합니다.</p>
             </div>
-            <div id="management-bg">
-                <img id="icon" src="../assets/icon/ic_rule.png">
-                <h3 id="conetnets-title">기숙사규칙</h3>
-                <p id="sentence">기숙사규칙을 작성,관리합니다.</p>
+            <div class="management-bg">
+                <img class="icon" src="../assets/icon/ic_rule.png">
+                <h3 class="conetnets-title">기숙사규칙</h3>
+                <p class="sentence">기숙사규칙을 작성,관리합니다.</p>
             </div>
-            <div id="management-bg">
-                <img id="icon" src="../assets/icon/ic_question.png">
-                <h3 id="conetnets-title" >자주하는 질문</h3>
-                <p id="sentence">자주하는 질문을 작성,관리합니다.</p>
+            <div class="management-bg">
+                <img class="icon" src="../assets/icon/ic_question.png">
+                <h3 class="conetnets-title" >자주하는 질문</h3>
+                <p class="sentence">자주하는 질문을 작성,관리합니다.</p>
             </div>
-            <div id="management-bg" @click="changeView('survey')">
-                <img id="icon" src="../assets/icon/ic_poll.png">
-                <h3 id="conetnets-title">설문조사</h3>
-                <p id="sentence">설문조사를 작성,관리합니다.</p>
+            <div class="management-bg" @click="changeView('survey')">
+                <img class="icon" src="../assets/icon/ic_poll.png">
+                <h3 class="conetnets-title">설문조사</h3>
+                <p class="sentence">설문조사를 작성,관리합니다.</p>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  name: 'main',
+  name: 'index',
   methods: {
     changeView: function (view) {
       this.$router.push(view)
@@ -121,13 +121,13 @@ export default {
       color: #675094;
   }
 
-  h3#conetnets-title {
+  h3.conetnets-title {
       font-size: 30px;
       color: #675094;
       margin-top: 10px;
     }
   
-  #download-bg, #management-bg {
+  .download-bg, .management-bg {
       width: 300px;
       height: 200px;
       background-color: white;
@@ -135,13 +135,14 @@ export default {
       border-radius: 10px;
       display: inline-block;
       margin-top: 50px;
+      cursor: pointer;
   }
 
-  img#icon {
+  img.icon {
       margin-top: 20px;
   }
 
-  p#sentence {
+  p.sentence {
       font-weight: 600;
       font-size: 12px;
       margin-top: -15px;

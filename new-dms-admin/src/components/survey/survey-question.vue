@@ -24,6 +24,8 @@ import surveyQuestionForm from './child/survey-question-form'
 import modal from './child/modal'
 import eventBus from './eventBus'
 
+const qs = require('query-string')
+
 export default {
   name: 'Survey',
   components: { surveyQuestionForm, modal },
@@ -75,13 +77,13 @@ export default {
       console.log(this.surveyList)
     },
     surveyQuestionSubmit: function () {
-      this.$axios.post('/admin/survey/question', JSON.stringify({
+      this.$axios.post('/admin/survey/question', qs.stringify({
         id: this.id,
         survey_list: this.surveyList
       }),
         {
           headers: {
-            'Authorization': 'JWT 1312312312312'
+            'Authorization': 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then((response) => {
