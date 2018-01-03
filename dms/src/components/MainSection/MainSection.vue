@@ -23,16 +23,16 @@ export default {
       let selectedMeal = this.selectedMeal
 
       switch (selectedMeal.selected) {
-        case 'breakFast':
-          selectedMeal.selected = 'dinner'
+        case 'BreakFast':
+          selectedMeal.selected = 'Dinner'
           selectedMeal.date.setDate(selectedMeal.date.getDate() - 1)
           this.getMeal(selectedMeal.date)
           break
-        case 'lunch':
-          selectedMeal.selected = 'breakFast'
+        case 'Lunch':
+          selectedMeal.selected = 'BreakFast'
           break
-        case 'dinner':
-          selectedMeal.selected = 'lunch'
+        case 'Dinner':
+          selectedMeal.selected = 'Lunch'
           break
       }
     },
@@ -40,14 +40,14 @@ export default {
       let selectedMeal = this.selectedMeal
 
       switch (selectedMeal.selected) {
-        case 'breakFast':
-          selectedMeal.selected = 'lunch'
+        case 'BreakFast':
+          selectedMeal.selected = 'Lunch'
           break
-        case 'lunch':
-          selectedMeal.selected = 'dinner'
+        case 'Lunch':
+          selectedMeal.selected = 'Dinner'
           break
-        case 'dinner':
-          selectedMeal.selected = 'breakFast'
+        case 'Dinner':
+          selectedMeal.selected = 'BreakFast'
           selectedMeal.date.setDate(selectedMeal.date.getDate() + 1)
           this.getMeal(selectedMeal.date)
           break
@@ -56,9 +56,12 @@ export default {
     getMeal: function (date) {
       axios({
         method: 'GET',
-        url: 'dsm2015.cafe24.com:3001/meal/' + this.$dateFormmater(date)
+        url: 'http://dsm2015.cafe24.com:3001/meal/' + this.$dateFormmater(date)
       }).then(res => {
-        this.meal = res
+        this.meal.BreakFast = res.data.breakfast
+        this.meal.Lunch = res.data.lunch
+        this.meal.Dinner = res.data.dinner
+        console.log(this.meal)
       }).catch(err => {
         console.log(err)
       })
@@ -68,7 +71,7 @@ export default {
     return {
       selectedMeal: {
         date: new Date(),
-        selected: 'breakFast'
+        selected: 'BreakFast'
       },
       meal: {}
     }

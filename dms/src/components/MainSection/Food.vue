@@ -13,7 +13,7 @@
 
 <style>
   #food-wrapper{
-    width: 70%;
+    width: 90%;
     float: left;
   }
   .food {
