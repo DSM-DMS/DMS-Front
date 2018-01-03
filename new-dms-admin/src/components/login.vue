@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     login: function (event) {
-      console.log(this.id, this.pw)
       this.$axios({
         method: 'POST',
         url: '/admin/auth',
@@ -53,17 +52,16 @@ export default {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log('성공')
+          console.log('관리자 로그인 성공')
           this.$setCookie('JWT', response.data['access_token'], 1)
           this.$router.push('main')
         } else {
-          console.log('실패')
+          console.log('관리자 로그인 실패')
         }
-        console.log(response)
       })
       .catch((ex) => {
         console.log('error: ', ex)
-        alert('로그인에 실패하셨습니다.')
+        alert('아이디 또는 비밀번호를 확인 하세요.')
       })
     }
   }
