@@ -37,7 +37,7 @@ export default {
 #extention-apply-wrapper {
   background: url('../../assets/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 120%;
+  background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -50,7 +50,7 @@ export default {
 }
 
 #extention-apply-wrapper:hover{
-  background-size: 130%;
+  background-size: 140%;
 }
 
 #extention-apply-wrapper:before {

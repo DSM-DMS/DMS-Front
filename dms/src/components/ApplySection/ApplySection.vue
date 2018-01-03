@@ -101,7 +101,7 @@ export default {
 
 #apply-wrapper {
   margin-top: 100vh;
-  height: 750px;
+  height: 850px;
   width: calc(100% - 40px);
   padding: 20px;
   background-color: #F9F7FC;
