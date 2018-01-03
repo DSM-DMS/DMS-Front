@@ -24,6 +24,8 @@ import surveyQuestionForm from './child/survey-question-form'
 import modal from './child/modal'
 import eventBus from './eventBus'
 
+const qs = require('query-string')
+
 export default {
   name: 'Survey',
   components: { surveyQuestionForm, modal },
@@ -75,24 +77,22 @@ export default {
       console.log(this.surveyList)
     },
     surveyQuestionSubmit: function () {
-      // this.$axios.post('/admin/survey/question', JSON.stringify({
-      //   id: this.id,
-      //   title: this.surveyList.title,
-      //   is_objective: this.surveyList.is_objective,
-      //   choice_paper: this.surveyList.choice_paper
-      // }),
-      //   {
-      //     headers: {
-      //       'Authorization': 'JWT 1312312312312'
-      //     }
-      //   })
-      // .then((response) => {
-      //   eventBus.$on('changeView', 'SurveyList')
-      // })
-      // .catch((ex) => {
-      //   console.log('ERROR!!!! : ', ex)
-      //   this.modalToggle()
-      // })
+      this.$axios.post('/admin/survey/question', qs.stringify({
+        id: this.id,
+        survey_list: this.surveyList
+      }),
+        {
+          headers: {
+            'Authorization': 'JWT ' + this.$getCookie('JWT')
+          }
+        })
+      .then((response) => {
+        eventBus.$on('changeView', 'SurveyList')
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
+        this.modalToggle()
+      })
     },
     surveyQuestionGet: function (title, index) {
       this.surveyList[index].title = title

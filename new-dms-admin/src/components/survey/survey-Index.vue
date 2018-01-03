@@ -3,7 +3,7 @@
       <div class="survey-index-header">
         <img src="../../assets/logo/logo.png">
         <span class="survey-back-wrapper">
-          <img class="survey-back-button" src="../../assets/icon/ic_back.png">
+          <img class="survey-back-button" src="../../assets/icon/ic_back.png" @click="goBack('main')">
         </span>
       </div>
       <div class="survey-main">
@@ -47,6 +47,9 @@ export default {
         this.surveyMainBtnClicked2 = true
       }
       this.surveyView = view
+    },
+    goBack: function (view) {
+      this.$router.go(-1)
     }
   }
 }
