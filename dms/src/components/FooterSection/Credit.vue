@@ -11,9 +11,20 @@
 </script>
 
 <style>
+@media only screen and (min-width: 1101px){
+  #footer-wrapper{
+    height: 10%;
+  }
+}
+
+@media only screen and (max-width: 1100px){
+  #footer-wrapper{
+    height: 100%;
+  }
+}
+
 #footer-wrapper{
   width: 100%;
-  height: 10%;
   background-color: #7DB0DA;
   display: table;
 }
@@ -25,5 +36,4 @@
   display: table-cell;
   vertical-align: middle;
 }
-
 </style>

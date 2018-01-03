@@ -8,8 +8,8 @@
         <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
       </div>
       <div id="stay-apply-text-wrapper">
-        <p id="stay-apply-text">잔류신청</p>
-        <p id="stay-apply-sub-text">귀가 여부를 확인하세요</p>
+        <p class="apply-text">잔류신청</p>
+        <p class="apply-sub-text">귀가 여부를 확인하세요</p>
       </div>
     </div>
   </div>
@@ -23,6 +23,26 @@
 </script>
 
 <style>
+@media only screen and (min-width: 1025px){
+  .apply-text {
+    font-size: 40px;
+  }
+
+  .apply-sub-text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .apply-text {
+    font-size: 30px;
+  }
+
+  .apply-sub-text {
+    font-size: 10px;
+  }
+}
+
 #stay-apply-wrapper {
   background: url('../../assets/background/bg_homecoming.png');
   background-color: rgba(0, 0, 0, 0.5);
@@ -73,13 +93,5 @@
   text-align: center;
   font-weight: bold;
   color: white;
-}
-
-#stay-apply-text {
-  font-size: 40px;
-}
-
-#stay-apply-sub-text {
-  font-size: 20px;
 }
 </style>

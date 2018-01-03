@@ -2,8 +2,8 @@
   <div class="apply-card" id="extention-apply-wrapper">
     <div id="extention-apply-content">
       <div id="extention-apply-text-wrapper">
-        <p id="extention-apply-text">연장학습 신청</p>
-        <p id="extention-apply-sub-text">추가 연장학습을 신청하세요</p>
+        <p class="apply-text">연장학습 신청</p>
+        <p class="apply-sub-text">추가 연장학습을 신청하세요</p>
       </div>
       <div id="extention-apply-img-wrapper">
         <div id="extention-apply-11-img-wrapper">
@@ -27,6 +27,26 @@ export default {
 </script>
 
 <style>
+@media only screen and (min-width: 1025px){
+  .apply-text {
+    font-size: 40px;
+  }
+
+  .apply-sub-text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .apply-text {
+    font-size: 30px;
+  }
+
+  .apply-sub-text {
+    font-size: 10px;
+  }
+}
+
 #extention-apply-wrapper {
   background: url('../../assets/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
@@ -67,14 +87,6 @@ export default {
   text-align: center;
   font-weight: bold;
   color: white;
-}
-
-#extention-apply-text {
-  font-size: 40px;
-}
-
-#extention-apply-sub-text {
-  font-size: 20px;
 }
 
 #extention-apply-img-wrapper {
