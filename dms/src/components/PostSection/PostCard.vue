@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 1025px){
   .post-card-body-text {
     font-size: 30px;
     margin: 15px;
@@ -43,25 +42,6 @@ export default {
     display: table-cell;
     vertical-align: middle;
   }
-}
-
-@media only screen and (max-width: 1024px){
-  .post-card-body-text {
-    font-size: 25px;
-    margin: 10px;
-  }
-
-  .post-card-body-sub-text {
-    font-size: 10px;
-  }
-  .post-card-header-text {
-    text-align: center;
-    color: white;
-    font-size: 25px;
-    display: table-cell;
-    vertical-align: middle;
-  }
-}
 
 .post-card-wrapper {
   width: calc(100%/3);

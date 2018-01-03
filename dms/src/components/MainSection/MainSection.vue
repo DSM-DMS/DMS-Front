@@ -81,12 +81,22 @@ export default {
 
 
 <style>
+@media only screen and (min-width: 1271px){
+  #main-section {
+    width: 100%
+  }
+}
+
+@media only screen and (max-width: 1270px){
+  #main-section {
+    width: 1270px
+  }
+}
 #main-section {
   background: url('../../assets/background/bg_main.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
   height: 100vh;
   display: table;
   position: fixed;

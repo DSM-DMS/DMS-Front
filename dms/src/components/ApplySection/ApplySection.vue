@@ -91,38 +91,19 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (min-width: 1025px){
-  #apply-wrapper {
-    height: calc(100vh - 40px);
-    width: calc(100% - 40px);
-    padding: 20px;
-  }
-  .apply-text {
-    font-size: 40px;
-  }
-
-  .apply-sub-text {
-    font-size: 20px;
-  }
+.apply-text {
+  font-size: 40px;
 }
 
-@media only screen and (max-width: 1024px){
-  #apply-wrapper {
-    height: calc(50vh - 20px);
-    width: calc(100% - 20px);
-    padding: 10px;
-  }
-  .apply-text {
-    font-size: 30px;
-  }
-
-  .apply-sub-text {
-    font-size: 10px;
-  }
+.apply-sub-text {
+  font-size: 20px;
 }
 
 #apply-wrapper {
   margin-top: 100vh;
+  height: 750px;
+  width: calc(100% - 40px);
+  padding: 20px;
   background-color: #F9F7FC;
   display: table;
   cursor: default;

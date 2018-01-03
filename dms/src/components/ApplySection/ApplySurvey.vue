@@ -14,30 +14,17 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 1025px){
-  .apply-text {
-    font-size: 40px;
-  }
-
-  .apply-sub-text {
-    font-size: 20px;
-  }
+.apply-text {
+  font-size: 40px;
 }
 
-@media only screen and (max-width: 1024px){
-  .apply-text {
-    font-size: 30px;
-  }
-
-  .apply-sub-text {
-    font-size: 10px;
-  }
+.apply-sub-text {
+  font-size: 20px;
 }
-
 #survey-apply-wrapper {
   background: url('../../assets/background/bg_poll.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 120%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -52,7 +39,7 @@ export default {
 
 
 #survey-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 130%;
 }
 
 #survey-apply-wrapper:before {

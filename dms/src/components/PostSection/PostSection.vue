@@ -31,25 +31,13 @@
 
 <style>
   /*post-section*/
-@media only screen and (min-width: 1025px){
-  #post-wrapper {
-    height: 70vh;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-@media only screen and (max-width: 1024px){
-  #post-wrapper {
-    height: 30vh;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-}
 
   #post-wrapper {
     width: 100%;
     background-color: rgb(226, 226, 226);
+    height: 600px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .post-card-wrapper {

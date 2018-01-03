@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 1025px){
   .apply-text {
     font-size: 40px;
   }
@@ -35,22 +34,10 @@ export default {
   .apply-sub-text {
     font-size: 20px;
   }
-}
-
-@media only screen and (max-width: 1024px){
-  .apply-text {
-    font-size: 30px;
-  }
-
-  .apply-sub-text {
-    font-size: 10px;
-  }
-}
-
 #extention-apply-wrapper {
   background: url('../../assets/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 120%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -63,7 +50,7 @@ export default {
 }
 
 #extention-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 130%;
 }
 
 #extention-apply-wrapper:before {

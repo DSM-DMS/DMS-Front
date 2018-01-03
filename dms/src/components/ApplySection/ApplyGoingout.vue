@@ -35,46 +35,30 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 1025px){
-  .apply-text {
-    font-size: 40px;
-  }
-
-  .apply-sub-text {
-    font-size: 20px;
-  }
-
-  #goingout-apply-btn {
-    margin-top: 20px;
-    font-size: 20px;
-    width: 35%;
-    height: 40px;
-    border: 5px solid white;
+@media only screen and (min-width: 1201px){
+  .goingout-apply-img {
+    width: 8vw;
   }
 }
 
-@media only screen and (max-width: 1024px){
-  .apply-text {
-    font-size: 30px;
+@media only screen and (max-width: 1200px){
+  .goingout-apply-img {
+    width: 120px;
   }
+}
 
-  .apply-sub-text {
-    font-size: 10px;
-  }
-  
-  #goingout-apply-btn {
-    margin-top: 10px;
-    font-size: 13px;
-    width: 35%;
-    height: 20px;
-    border: 3px solid white;
-  }
+.apply-text {
+  font-size: 40px;
+}
+
+.apply-sub-text {
+  font-size: 20px;
 }
 
 #goingout-apply-wrapper {
   background: url('../../assets/background/bg_outing.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 120%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -87,7 +71,7 @@ export default {
 }
 
 #goingout-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 130%;
 }
 
 #goingout-apply-wrapper:before {
@@ -121,6 +105,11 @@ export default {
 }
 
 .goingout-apply-btn{
+  margin-top: 20px;
+  font-size: 20px;
+  width: 35%;
+  height: 40px;
+  border: 5px solid white;
   border-radius: 30px;
   display: table;
   position: absolute;
@@ -145,7 +134,6 @@ export default {
 }
 
 .goingout-apply-img {
-  width: 8vw;
   float: left;
   cursor: pointer;
 }

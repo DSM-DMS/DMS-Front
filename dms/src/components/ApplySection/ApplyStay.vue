@@ -1,7 +1,7 @@
 <template>
   <div class="apply-card" id="stay-apply-wrapper">
     <div id="stay-apply-content">
-      <div id="stay-apply-img-wrapper">
+      <div id="stay-apply-img-wrapper" class="stay-apply-img-wrapper">
         <img v-if="day==='1'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
         <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
         <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
@@ -23,30 +23,29 @@
 </script>
 
 <style>
-@media only screen and (min-width: 1025px){
-  .apply-text {
-    font-size: 40px;
-  }
-
-  .apply-sub-text {
-    font-size: 20px;
+@media only screen and (min-width: 1201px){
+  .stay-apply-img-wrapper {
+    width: 8vw;
   }
 }
 
-@media only screen and (max-width: 1024px){
-  .apply-text {
-    font-size: 30px;
+@media only screen and (max-width: 1200px){
+  .stay-apply-img-wrapper {
+    width: 150px;
   }
+}
+.apply-text {
+  font-size: 40px;
+}
 
-  .apply-sub-text {
-    font-size: 10px;
-  }
+.apply-sub-text {
+  font-size: 20px;
 }
 
 #stay-apply-wrapper {
   background: url('../../assets/background/bg_homecoming.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 120%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -60,7 +59,7 @@
 }
 
 #stay-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 130%;
 }
 
 #stay-apply-wrapper:before {
@@ -81,7 +80,6 @@
 }
 
 #stay-apply-img-wrapper {
-  width: 8vw;
   margin: 0 auto;
 }
 
