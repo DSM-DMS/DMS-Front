@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import PostCard from './PostCard'
+  import PostCard from '@/components/PostSection/PostCard'
 
   export default {
     name: 'PostSection',

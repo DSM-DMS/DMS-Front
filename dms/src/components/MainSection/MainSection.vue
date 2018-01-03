@@ -1,7 +1,7 @@
 <template>
   <div id="main-section">
     <main-title/>
-    <meal :meal="meal"/>
+    <meal :meal="meal" :selectedMeal="selectedMeal" @preMeal="preMeal" @nextMeal="nextMeal"/>
     <div id="social-wrapper">
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_facebook.png')"/>
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_github.png')"/>
@@ -10,25 +10,71 @@
 </template>
 
 <script>
-import MainTitle from './MainTitle'
-import Meal from './Meal'
-import SocialBtn from './SocialBtn'
+import MainTitle from '@/components/MainSection/MainTitle'
+import Meal from '@/components/MainSection/Meal'
+import SocialBtn from '@/components/MainSection/SocialBtn'
+import axios from 'axios'
 
 export default {
   name: 'MainSection',
   components: {MainTitle, Meal, SocialBtn},
+  methods: {
+    preMeal: function () {
+      let selectedMeal = this.selectedMeal
+
+      switch (selectedMeal.selected) {
+        case 'breakFast':
+          selectedMeal.selected = 'dinner'
+          selectedMeal.date.setDate(selectedMeal.date.getDate() - 1)
+          this.getMeal(selectedMeal.date)
+          break
+        case 'lunch':
+          selectedMeal.selected = 'breakFast'
+          break
+        case 'dinner':
+          selectedMeal.selected = 'lunch'
+          break
+      }
+    },
+    nextMeal: function () {
+      let selectedMeal = this.selectedMeal
+
+      switch (selectedMeal.selected) {
+        case 'breakFast':
+          selectedMeal.selected = 'lunch'
+          break
+        case 'lunch':
+          selectedMeal.selected = 'dinner'
+          break
+        case 'dinner':
+          selectedMeal.selected = 'breakFast'
+          selectedMeal.date.setDate(selectedMeal.date.getDate() + 1)
+          this.getMeal(selectedMeal.date)
+          break
+      }
+    },
+    getMeal: function (date) {
+      axios({
+        method: 'GET',
+        url: 'dsm2015.cafe24.com:3001/meal/' + this.$dateFormmater(date)
+      }).then(res => {
+        this.meal = res
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  },
   data: function () {
     return {
-      meal: {
-        today: {
-          date: '2017년 12월 15일',
-          BreakFast: {
-            name: 'BreakFast',
-            food: ['새알심만두국', '안동찜닭', '양배추오이초무침', '파래돌김자반', '열무김치']
-          }
-        }
-      }
+      selectedMeal: {
+        date: new Date(),
+        selected: 'breakFast'
+      },
+      meal: {}
     }
+  },
+  created () {
+    this.getMeal(this.selectedMeal.date)
   }
 }
 </script>
