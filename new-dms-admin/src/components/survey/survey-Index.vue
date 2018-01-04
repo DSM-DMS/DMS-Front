@@ -118,7 +118,11 @@ h1 {
   border-top-right-radius: 10px;
   font-family: 'Jeju Gothic', serif;
   font-size: 20px;
+<<<<<<< HEAD
   text-align: center;
+=======
+  text-align: center !important;
+>>>>>>> c448b72a57e8b0fe6d9c274fa21a55608c6dc118
 }
 .survey-main-btn:focus {
   outline: none;

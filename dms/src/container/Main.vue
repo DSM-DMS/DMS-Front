@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="min-width: 1200px;">
     <header-nav/>
     <main-section/>
     <apply-section/>
@@ -18,7 +18,13 @@ import FooterSection from '../components/FooterSection/FooterSection'
 
 export default {
   name: 'Main',
-  components: {HeaderNav, MainSection, PostSection, ApplySection, FooterSection}
+  components: {
+    HeaderNav,
+    MainSection,
+    PostSection,
+    ApplySection,
+    FooterSection
+  }
 }
 </script>
 

@@ -27,6 +27,22 @@ export default {
 </script>
 
 <style>
+  .post-card-body-text {
+    font-size: 30px;
+    margin: 15px;
+  }
+
+  .post-card-body-sub-text {
+    font-size: 20px;
+  }
+  .post-card-header-text {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
 .post-card-wrapper {
   width: calc(100%/3);
   height: 100%;
@@ -60,14 +76,6 @@ export default {
   border-top-right-radius: 20px;
 }
 
-.post-card-header-text {
-  text-align: center;
-  color: white;
-  font-size: 30px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .post-card-body-wrapper {
   width: 100%;
   height: 85%;
@@ -95,15 +103,6 @@ export default {
 .post-card-body-text-wrapper:nth-child(n) {
   text-align: center;
   font-weight: bold;
-}
-
-.post-card-body-text {
-  font-size: 30px;
-  margin: 15px;
-}
-
-.post-card-body-sub-text {
-  font-size: 15px;
 }
 </style>
 

@@ -21,138 +21,14 @@
                 <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
                 <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
             </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>제목</td>
-                <td>ㅅㄱㅅ</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
         </tbody>
     </table>
 </div>
 </template>
 
 <script>
+const qs = require('query-string')
+
 export default {
   data () {
     return {
@@ -161,20 +37,43 @@ export default {
     }
   },
   created: function () {
-    let self = this
-    console.log('Hello')
-    this.$axios.get('http://dsm2015.cafe24.com:3001/notice')
-      .then(function (response) {
-        self.posts = response.data
-      })
-      .catch(function (e) {
-        console.log(e)
-      })
-    console.log(this.posts)
+    this.fetchTable()
   },
-  computed: {
-    reverse: function () {
-      return this.posts.reverse()
+  methods: {
+    deleteTable: function (id) {
+      this.$axios.delete('/admin/notice', qs.stringify({
+        table_id: id
+      }),
+        {
+          headers: {
+            Authorization: 'JWT ' + this.$getCookie('JWT')
+          }
+        })
+      .then(response => {
+        if (response.status === 200) {
+          this.fetchTable()
+        } else if (response.status === 403) {
+          alert('삭제에 실패했습니다')
+        }
+      })
+      .catch(ex => {
+        console.log('ERROR!!!!', ex)
+        alert('삭제에 실패했습니다')
+      })
+    },
+    fetchTable: function () {
+      let self = this
+      self.$axios.get('/notice', {
+        headers: {
+          'Authorization': 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    .then(response => {
+      self.posts = response.data
+    })
+    .catch(e => {
+      console.log('error :' + e)
+    })
     }
   }
 }
@@ -188,11 +87,9 @@ export default {
 }
 
 #table-content {
-    margin: 0 auto;
-    margin-top: 40px;
     border-collapse: collapse;
     border-spacing: 0px;
-    width: 90%;
+    width: 100%;
     height: 95%;
     font-size: 20px;
     text-align: left;
@@ -250,8 +147,6 @@ export default {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #fff;
 }
-
-
 
 #table-content tbody>tr{
     display:table;

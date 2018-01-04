@@ -11,6 +11,8 @@
 <script>
 import Ckeditor from 'vue-ckeditor2'
 
+const qs = require('query-string')
+
 export default {
   components: { Ckeditor },
   data: function () {
@@ -29,9 +31,12 @@ export default {
           { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
           { name: 'about', items: [ 'About' ] }
         ],
-        height: 170
+        height: 200
       }
     }
+  },
+  methods: {
+    
   }
 }
 </script>
@@ -39,18 +44,20 @@ export default {
 <style scoped>
 #title-input {
   height: 30px;
-  width: 90%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #675094;
+  font-size: 30px;
+  padding-bottom: 20px;
 }
 
 #app {
-  margin: 0 auto;
-  width: 90%;
-  padding: 13px;
+  margin-top: 3vh;
+  width: 100%;
 }
 
 #submit {
+  margin-top: 3vh;
   height: 40px;
   width: 100px;
   border: none;

@@ -1,15 +1,15 @@
 <template>
   <div class="apply-card" id="stay-apply-wrapper">
     <div id="stay-apply-content">
-      <div id="stay-apply-img-wrapper">
+      <div id="stay-apply-img-wrapper" class="stay-apply-img-wrapper">
         <img v-if="day==='1'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
-        <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
-        <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
         <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
       </div>
       <div id="stay-apply-text-wrapper">
-        <p id="stay-apply-text">잔류신청</p>
-        <p id="stay-apply-sub-text">귀가 여부를 확인하세요</p>
+        <p class="apply-text">잔류신청</p>
+        <p class="apply-sub-text">귀가 여부를 확인하세요</p>
       </div>
     </div>
   </div>
@@ -23,10 +23,29 @@
 </script>
 
 <style>
+@media only screen and (min-width: 1201px){
+  .stay-apply-img-wrapper {
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .stay-apply-img-wrapper {
+    width: 120px;
+  }
+}
+.apply-text {
+  font-size: 40px;
+}
+
+.apply-sub-text {
+  font-size: 20px;
+}
+
 #stay-apply-wrapper {
   background: url('../../assets/background/bg_homecoming.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -40,7 +59,7 @@
 }
 
 #stay-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 140%;
 }
 
 #stay-apply-wrapper:before {
@@ -61,7 +80,6 @@
 }
 
 #stay-apply-img-wrapper {
-  width: 8vw;
   margin: 0 auto;
 }
 
@@ -73,13 +91,5 @@
   text-align: center;
   font-weight: bold;
   color: white;
-}
-
-#stay-apply-text {
-  font-size: 40px;
-}
-
-#stay-apply-sub-text {
-  font-size: 20px;
 }
 </style>

@@ -33,9 +33,10 @@
   /*post-section*/
 
   #post-wrapper {
+    font-family: 'NanumSquareRoundB';
     width: 100%;
-    height: 70vh;
     background-color: rgb(226, 226, 226);
+    height: 600px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -121,5 +122,4 @@
   .post-card-body-sub-text {
     font-size: 15px;
   }
-
 </style>

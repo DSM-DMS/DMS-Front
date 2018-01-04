@@ -38,10 +38,11 @@ export default {
 
 <style>
 #meal-wrapper {
+  font-family: 'NanumSquareRoundL';
   position: absolute;
   left: 100px;
   bottom: 70px;
-  width: 25vw;
+  width: 300px;
 }
 
 #meal-header-wrapper{
@@ -50,19 +51,22 @@ export default {
 
 #meal-date {
   font-size: 25px;
+  margin-left: 5px;
 }
 
 #meal {
+  font-family: 'RobotoThin';
   font-size: 70px;
 }
 
 #meal-body-wrapper{
   width: 100%;
+  height: 200px;
   display: inline-block;
 }
 
 #meal-btn-wrapper{
-  width: 30%;
+  width: 10%;
   height: 100%;
   float: left;
   display: table;

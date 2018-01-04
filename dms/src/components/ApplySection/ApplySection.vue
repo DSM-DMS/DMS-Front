@@ -27,21 +27,24 @@ export default {
   data: function () {
     return {
       stay: {
-        day: '1'
+        day: '4'
       },
       goingout: {
         isSaturdayGoingout: false,
         isSundayGoingout: false
       },
       extention: {
-        eleven: {
-          isApply: false,
-          class: ''
-        },
-        twelve: {
-          isApply: false,
-          class: ''
-        }
+        class: [
+          '1층<br/>가온실',
+          '1층<br/>나온실',
+          '1층<br/>다온실',
+          '1층<br/>라온실',
+          '3층<br/>독서실',
+          '4층<br/>독서실',
+          '5층<br/>연린교실'
+        ],
+        eleven: '',
+        twelve: ''
       }
     }
   },
@@ -70,19 +73,34 @@ export default {
   // created () {
   //   axios({
   //     method: 'GET',
-  //     url: 'dsm2015.cafe24.com:3001/goingout'
+  //     url: 'http://dsm2015.cafe24.com:3001/goingout'
   //   }).then(res => {
-  //     this.goingout.isSaturdayGoingout = res.sat
-  //     this.goingout.isSundayGoingout = res.sun
+  //     this.goingout.isSaturdayGoingout = res.data.sat
+  //     this.goingout.isSundayGoingout = res.data.sun
   //   }).catch(err => {
   //     console.log(err)
   //   })
   //   axios({
   //     method: 'GET',
-  //     url: 'dsm2015.cafe24.com:3001/goingout'
+  //     url: 'http://dsm2015.cafe24.com:3001/extention/11'
   //   }).then(res => {
-  //     this.goingout.isSaturdayGoingout = res.sat
-  //     this.goingout.isSundayGoingout = res.sun
+  //     this.extention.eleven = res.data.class
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  //   axios({
+  //     method: 'GET',
+  //     url: 'http://dsm2015.cafe24.com:3001/extention/12'
+  //   }).then(res => {
+  //     this.extention.twelve = res.data.class
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  //   axios({
+  //     method: 'GET',
+  //     url: 'http://dsm2015.cafe24.com:3001/stay'
+  //   }).then(res => {
+  //     this.stay.day = res.data.value
   //   }).catch(err => {
   //     console.log(err)
   //   })
@@ -91,9 +109,30 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (min-width: 1271px){
+  #apply-wrapper {
+    margin-top: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1270px){
+  #apply-wrapper {
+    margin-top: 0;
+  }
+}
+
+.apply-text {
+  font-size: 40px;
+}
+
+.apply-sub-text {
+  font-size: 20px;
+}
+
 #apply-wrapper {
-  margin-top: 100vh;
-  height: calc(100vh - 40px);
+  font-family: 'NanumSquareRoundB';
+  height: 850px;
+  width: calc(100% - 40px);
   padding: 20px;
   background-color: #F9F7FC;
   display: table;

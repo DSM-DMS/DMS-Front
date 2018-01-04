@@ -1,12 +1,10 @@
 <template>
   <div id="manage">
     <div id="main">
-
       <div id="upper-part">
         <img id="logo" src="../../assets/logo/logo.png" alt="">
-        <span id="back">
-          <span id="back-text">돌아가기</span>
-          <img id="back-icon" src="../../assets/icon/ic_back.png" alt="">
+        <span class="back-wrapper">
+          <img class="back-button" src="../../assets/icon/ic_back.png" @click="goBack('main')">
         </span>
       </div>
 
@@ -54,6 +52,9 @@ export default {
         this.case2 = true
         this.view = write
       }
+    },
+    goBack: function (view) {
+      this.$router.go(-1)
     }
   }
 }
@@ -61,23 +62,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-  font-size: 32px;
-  margin: 0;
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+#manage * {
+  font-family: 'Jeju Gothic', serif;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-
 #main {
   position: absolute;
   top: 0;
@@ -88,14 +76,14 @@ a {
 }
 
 #upper-part {
+  padding :2vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3vh 70px 3vh 70px;
 }
 
 #logo {
-  width: 100px;
+  width: 8vw;
 }
 
 #back {
@@ -106,27 +94,28 @@ a {
   display: table;
 }
 
-#back-icon {
-  width: 15px;
+.back-button {
+  height: 4.5vh;
+  margin-left: 1.6vw;
 }
 
-#back:hover {
-  border-radius: 40px;
-  background-color: #e4e5e8;
+.back-wrapper {
+  float: right;
+  font-size: 15px;
+  display: table;
+  padding: 1vh 1vw 1vh 1vw;
+  margin-right: 2vw;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-#back-text {
-  display: table-cell;
-  vertical-align: middle;
-  padding-right: 30px;
+.back-wrapper:hover{
+  background-color: rgba(255, 255, 255, 0.3)
 }
 
 #table-cont {
-  font-size: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
+  width: 80vw;
+  padding-left: 5.4vw;
 }
 
 #table-cont >*{
@@ -134,15 +123,20 @@ a {
 }
 
 #table-cont>nav {
-  display: flex;
+  display:table;
 }
 
 .btn {
-  display: inline;
+  cursor: pointer;
+  width: 8vw;
+  height: 7.5vh;
+  display:table-cell;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  padding: 20px 30px 20px 30px;
-  background-color: #fff;
+  background: rgba(14, 5, 5, 0.185);
+  font-family: 'Jeju Gothic', serif;
+  font-size: 20px;
+  vertical-align: middle;
 }
 
 .chk-btn {
@@ -158,11 +152,12 @@ a {
   padding: 20px 15px 20px 15px;
   background-color: #fff;
   opacity: 0.9;
-  width: 80vw;
+  width: 100%;
   height: 60vh;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  padding: 4vh 4vw 4vh 4vw;
 }
 
 #view {

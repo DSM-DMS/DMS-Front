@@ -1,8 +1,8 @@
 <template>
   <div class="apply-card" id="survey-apply-wrapper">
     <div id="survey-apply-text-wrapper">
-      <p id="survey-apply-text">설문조사</p>
-      <p id="survey-apply-sub-text">작성된 설문조사에 응답하세요</p>
+      <p class="apply-text">설문조사</p>
+      <p class="apply-sub-text">작성된 설문조사에 응답하세요</p>
     </div>
   </div>
 </template>
@@ -14,10 +14,17 @@ export default {
 </script>
 
 <style>
+.apply-text {
+  font-size: 40px;
+}
+
+.apply-sub-text {
+  font-size: 20px;
+}
 #survey-apply-wrapper {
   background: url('../../assets/background/bg_poll.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -32,7 +39,7 @@ export default {
 
 
 #survey-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 140%;
 }
 
 #survey-apply-wrapper:before {
@@ -56,14 +63,6 @@ export default {
   text-align: center;
   font-weight: bold;
   color: white;
-}
-
-#survey-apply-text {
-  font-size: 40px;
-}
-
-#survey-apply-sub-text {
-  font-size: 20px;
 }
 </style>
 

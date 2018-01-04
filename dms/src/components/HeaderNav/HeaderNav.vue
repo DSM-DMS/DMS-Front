@@ -25,8 +25,20 @@ export default {
 
 <style>
 /*header*/
+@media only screen and (min-width: 1025px){
+  .header-menu {
+    margin-right: 60px; 
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .header-menu {
+    margin-right: 30px; 
+  }
+}
 
 #header-wrapper {
+  font-family: 'NanumSquareB';
   margin: 20px 50px 0 50px;
   position: fixed;
   top: 0;
@@ -66,9 +78,5 @@ export default {
   font-family: 'Nanum Square';
   font-weight: bold;
   font-size: 15px;
-}
-
-.header-menu {
-  margin-right: 60px;
 }
 </style>

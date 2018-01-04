@@ -2,9 +2,9 @@
   <div class="apply-card" id="goingout-apply-wrapper">
     <div id="goingout-apply-content-wrapper">
       <div class="goingout-apply-content">
-        <p id="goingout-apply-text">외출신청</p>
-        <p id="goingout-apply-sub-text">외출예정 요일을 확인하세요</p>
-        <div id="goingout-apply-btn">
+        <p class="apply-text">외출신청</p>
+        <p class="apply-sub-text">외출예정 요일을 확인하세요</p>
+        <div class="goingout-apply-btn" id="goingout-apply-btn">
           <p id="goingout-apply-btn-text">신청</p>
         </div>
       </div>
@@ -35,10 +35,30 @@ export default {
 </script>
 
 <style>
+@media only screen and (min-width: 1201px){
+  .goingout-apply-img {
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .goingout-apply-img {
+    width: 120px;
+  }
+}
+
+.apply-text {
+  font-size: 40px;
+}
+
+.apply-sub-text {
+  font-size: 20px;
+}
+
 #goingout-apply-wrapper {
   background: url('../../assets/background/bg_outing.png');
   background-color: rgba(0, 0, 0, 0.5);
-  background-size: 100%;
+  background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -51,7 +71,7 @@ export default {
 }
 
 #goingout-apply-wrapper:hover{
-  background-size: 110%;
+  background-size: 140%;
 }
 
 #goingout-apply-wrapper:before {
@@ -84,15 +104,7 @@ export default {
   color: white;
 }
 
-#goingout-apply-text {
-  font-size: 40px;
-}
-
-#goingout-apply-sub-text {
-  font-size: 20px;
-}
-
-#goingout-apply-btn{
+.goingout-apply-btn{
   margin-top: 20px;
   font-size: 20px;
   width: 35%;
@@ -122,7 +134,6 @@ export default {
 }
 
 .goingout-apply-img {
-  width: 8vw;
   float: left;
   cursor: pointer;
 }

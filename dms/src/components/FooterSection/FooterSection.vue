@@ -28,8 +28,59 @@ export default {
 </script>
 
 <style>
+@media only screen and (min-width: 1101px){
+  #footer-section-wrapper{
+    font-family: 'NanumSquareB';
+    height: 610px;
+  }
+
+  #dev-intro-img-wrapper{
+    height: 20%;
+  }
+
+  #dev-intro-logo-img-wrapper{
+    width: calc(50% - 70px);
+    height: calc(100% - 50px);
+    float: left;
+    margin-left: 20px; 
+    margin-right: 50px;
+    margin-bottom: 50px;
+  }
+  
+  #dev-intro-logo-img{
+    height: 100%;
+  }
+
+  #dev-intro-category-img-wrapper{
+    width: calc(50% - 50px);
+    height: calc(100% - 50px);
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 50px;
+  }
+
+  .dev-intro-category-img{
+    float: right;
+    margin-right: 80px;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 1100px){
+  #footer-section-wrapper{
+    height: 10vh;
+  }
+
+  #dev-intro-wrapper{
+    display: none;
+  }
+
+  #dev-intro-img-wrapper{
+    display: none;
+  }
+}
+
 #footer-section-wrapper{
-  height: 80vh;
   width: 100%;
   background-color: #CCD8DD;
 }
@@ -65,34 +116,7 @@ export default {
   font-size: 20px;
 }
 
-#dev-intro-logo-img-wrapper{
-  width: calc(50% - 80px);
-  height: calc(100% - 80px);
-  float: left;
-  padding-left: 80px;
-  padding-bottom: 80px;
-}
-
-#dev-intro-logo-img{
-  height: 100%;
-}
-
-#dev-intro-category-img-wrapper{
-  width: calc(50% - 50px);
-  height: calc(100% - 80px);
-  float: left;
-  padding-right: 50px;
-  padding-bottom: 80px;
-}
-
-.dev-intro-category-img{
-  float: right;
-  margin-right: 80px;
-  height: 100%;
-}
-
 #dev-intro-img-wrapper{
-  height: 20%;
   width: 100%;
 }
 
@@ -102,13 +126,4 @@ export default {
   background-color: #7DB0DA;
   display: table;
 }
-
-#footer-text{
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
 </style>
