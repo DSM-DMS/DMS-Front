@@ -2,7 +2,7 @@
   <div id="map-table-wrapper">
     <table id="map-table">
       <tr v-for="(row, index) in rows" :row="row" :key="index">
-        <td v-for="(seat, index) in row" :key="index" @click="emit('extensionApply', seat)">{{ seat === 0? '': seat }}</td>
+        <td v-for="(seat, index) in row" :key="index" @click="$emit('extensionApply', seat)">{{ seat === 0? '': seat }}</td>
       </tr>
     </table>
   </div>
