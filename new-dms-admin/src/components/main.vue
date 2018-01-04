@@ -8,7 +8,7 @@
                 <img id="admin-create" src="../assets/icon/ic_create_account.png">
                 <p id="account-title">관리자 계정 삭제</p> 
             </div> 
-            <div id="account-contents">
+            <div id="account-contents" @click="showAdminAccount()">
                 <img id="admin-delete" src="../assets/icon/ic_return_account.png">
                 <p id="account-title">관리자 계정 생성</p>
             </div> 
@@ -71,15 +71,28 @@
             </div>
         </div>
     </div>
+    <component :is="adminView" v-if="isAdminAccount"></component>
 </div>
 </template>
 
 <script>
+import adminAccount from './adminAccount'
+
 export default {
   name: 'index',
+  component: {adminAccount},
+  data: function () {
+    return {
+      isAdminAccount: false,
+      adminView: adminAccount
+    }
+  },
   methods: {
     changeView: function (view) {
       this.$router.push(view)
+    },
+    showAdminAccount: function () {
+      this.isAdminAccount = !this.isAdminAccount
     }
   }
 }
@@ -108,6 +121,7 @@ export default {
   .top {
       width: 100%;
       height: 100px;
+      position: fixed;
   }
 
   #admin-account {
@@ -132,6 +146,7 @@ export default {
   #account-contents {
       display: inline-block;
       margin-left: 50px;
+      cursor: pointer;
   }
 
   img#logo {
@@ -145,6 +160,7 @@ export default {
       width: 100%;
       height: 88vh;
       position: absolute;
+      margin-top: 100px;
   }
   
   #download-title {
