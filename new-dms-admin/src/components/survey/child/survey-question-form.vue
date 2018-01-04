@@ -4,7 +4,7 @@
           <component :is="mulifulChoice" @multifulTitle="multifulTitleGet" @multifulText="multifulTextGet"></component>
         </div>
         <div v-else>
-          <p><span>질문 제목 : </span><input type="text" v-model="title" @blur="surveyQuestionEmit"></p>
+          <p><span class="not-multiful-choice-list-title">주관식 제목 : </span><input class="not-multiful-choice-list-input" type="text" v-model="title" @blur="surveyQuestionEmit" placeholder="질문 제목을 입력하세요."></p>
         </div>
     </div>
 </template>
@@ -44,3 +44,20 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+* {
+  font-family: 'Jeju Gothic', serif;
+}
+.not-multiful-choice-list-title {
+  color: #675094;
+  font-weight: 550;
+  font-size: 20px;
+}
+.not-multiful-choice-list-input {
+  border: none;
+  padding: 1.4vh 1vw 1.4vh 1vw;
+  border-radius: 10px;
+  width: 30vw;
+}
+</style>
