@@ -62,11 +62,11 @@ export default {
       console.log(this.questions)
     },
     surveyQuestionSubmit: function () {
-      console.log(this.surveyId)
+      console.log(this.surveyId.id)
       var questionFormData = new FormData()
-      questionFormData.append('id', this.surveyId)
-      console.log(questionFormData['id'])
-      questionFormData.append('survey_list', JSON.stringify(this.questions))
+      questionFormData.append('survey_id', this.surveyId.id)
+      console.log(questionFormData.id)
+      questionFormData.append('questions', JSON.stringify(this.questions))
       this.$axios.post('/admin/survey/question', questionFormData,
         {
           headers: {
@@ -74,6 +74,7 @@ export default {
           }
         })
       .then((response) => {
+        console.log('Good!!!')
         eventBus.$on('changeView', 'surveyList')
       })
       .catch((ex) => {

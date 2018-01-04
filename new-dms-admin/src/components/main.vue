@@ -48,8 +48,8 @@
         <div id="management-title">
             <h3 id="title">Management</h3>
         </div>
-         <div id="management-contents" @click="changeView('manage')">
-            <div class="management-bg">
+         <div id="management-contents">
+            <div class="management-bg" @click="changeView('manage')">
                 <img class="icon" src="../assets/icon/ic_notice.png">
                 <h3 class="conetnets-title">공지사항</h3>
                 <p class="sentence">공지사항을 작성,관리합니다.</p>

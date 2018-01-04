@@ -68,7 +68,7 @@ export default {
             }
           })
         .then((response) => {
-          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data)
+          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data.id)
         })
         .catch((ex) => {
           console.log('ERROR!!!! : ', ex)
