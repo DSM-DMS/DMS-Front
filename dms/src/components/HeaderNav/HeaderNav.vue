@@ -8,17 +8,43 @@
       <span class="header-menu">메인화면</span>
       <span class="header-menu">신청화면</span>
       <span class="header-menu">공지사항</span>
-      <span class="header-menu">로그인</span>
+      <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <span>메뉴</span>
       <img id="header-ic-menu" src="../../assets/icon/ic_menu.png" />
     </div>
 
+    <login-modal v-if="computedLoginModal" @close="loginModal = false"/>
   </div>
 </template>
 
 <script>
+import LoginModal from './LoginModal'
 export default {
-  name: 'HeaderNav'
+  name: 'HeaderNav',
+  components: {
+    LoginModal
+  },
+  data: function () {
+    return {
+      loginModal: false
+    }
+  },
+  methods: {
+    loginButton: function () {
+      if (this.$store.getters.isLogin) {
+        this.$store.dispatch('logout')
+        this.loginModal = false
+      } else {
+        this.loginModal = true
+      }
+    }
+  },
+  computed: {
+    computedLoginModal: function () {
+      console.log(this.$store.getters.isLogin)
+      return this.$store.getters.isLogin ? false : this.loginModal
+    }
+  }
 }
 </script>
 
