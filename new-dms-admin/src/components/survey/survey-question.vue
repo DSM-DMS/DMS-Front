@@ -9,7 +9,7 @@
         </div>
             
         <div class="survey-question-form">
-          <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in surveyList" :key="index" :isObjective="surveyQuestion.is_objective" :index="index" @submitQuestion="surveyQuestionGet" @multifulTitleGet="multifulTitleEmit" @multifulTextGet="multifulTextEmit" class="survey-question-add-component"></component>
+          <component :is="surveyQuestionForm" v-for="(surveyQuestion, index) in questions" :key="index" :isObjective="surveyQuestion.is_objective" :index="index" @submitQuestion="surveyQuestionGet" @multifulTitleGet="multifulTitleEmit" @multifulTextGet="multifulTextEmit" class="survey-question-add-component"></component>
         </div>
         <div class="survey-question-edit-btn-group">
           <button @click="surveyQuestionSubmit">등록</button>
@@ -30,7 +30,7 @@ export default {
   props: ['surveyTitle', 'surveyId'],
   data: function () {
     return {
-      surveyList: [],
+      questions: [],
       // { Authorization: '',
       //   id: '',
       //   title: '',
@@ -46,33 +46,35 @@ export default {
   },
   methods: {
     multifulChoiceBtn: function () {
-      this.surveyList.push({
+      this.questions.push({
         title: '',
         is_objective: true,
         choice_paper: []
       })
-      console.log(this.surveyList)
+      console.log(this.questions)
     },
     descriptiveBtn: function () {
-      this.surveyList.push({
+      this.questions.push({
         title: '',
         is_objective: false,
         choice_paper: []
       })
-      console.log(this.surveyList)
+      console.log(this.questions)
     },
     surveyQuestionSubmit: function () {
-      this.$axios.post('/admin/survey/question', JSON.stringify({
-        id: this.surveyId,
-        survey_list: this.surveyList
-      }),
+      console.log(this.surveyId)
+      var questionFormData = new FormData()
+      questionFormData.append('id', this.surveyId)
+      console.log(questionFormData['id'])
+      questionFormData.append('survey_list', JSON.stringify(this.questions))
+      this.$axios.post('/admin/survey/question', questionFormData,
         {
           headers: {
             'Authorization': 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then((response) => {
-        eventBus.$on('changeView', 'SurveyList')
+        eventBus.$on('changeView', 'surveyList')
       })
       .catch((ex) => {
         console.log('ERROR!!!! : ', ex)
@@ -80,14 +82,14 @@ export default {
       })
     },
     surveyQuestionGet: function (title, index) {
-      this.surveyList[index].title = title
+      this.questions[index].title = title
     },
     multifulTitleEmit: function (title, index) {
-      this.surveyList[index].title = title
+      this.questions[index].title = title
     },
     multifulTextEmit: function (text, index) {
-      this.surveyList[index].choice_paper.push(text)
-      console.log(this.surveyList[index].choice_paper)
+      this.questions[index].choice_paper.push(text)
+      console.log(this.questions[index].choice_paper)
     },
     surveyEditCancel: function () {
       eventBus.$emit('change-view', 'surveyMain')
