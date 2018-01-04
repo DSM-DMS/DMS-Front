@@ -98,20 +98,20 @@ export default {
 
 .extention-apply-class-text{
   position: absolute;
-  right: 28px;
+  right: 0;
   top: 0;
   text-align: left;
   font-weight: bold;
   color: white;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 #extention-apply-11-class{
-  right: 28px;
+  width: 95px;
 }
 
 #extention-apply-12-class{
-  right: 13px;
+  width: 88px
 }
 
 .extention-apply-img {

@@ -42,7 +42,7 @@ export default {
   position: absolute;
   left: 100px;
   bottom: 70px;
-  width: 300px;
+  width: 400px;
 }
 
 #meal-header-wrapper{
