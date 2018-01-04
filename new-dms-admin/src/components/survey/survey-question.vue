@@ -1,7 +1,7 @@
 <template>
     <div class="survey-question">
         <div class="underbar-question">
-            <span class="survey-title">{{title}}</span>
+            <span class="survey-title">{{surveyTitle}}</span>
             <span class="survey-question-form-add-btn-group">
               <span>객관식</span><img src="../../assets/icon/ic_plus.png" class="survey-question-form-add-btn" @click="multifulChoiceBtn()"/>
               <span>주관식</span><img src="../../assets/icon/ic_plus.png" class="survey-question-form-add-btn" @click="descriptiveBtn()"/>
@@ -24,11 +24,10 @@ import surveyQuestionForm from './child/survey-question-form'
 import modal from './child/modal'
 import eventBus from './eventBus'
 
-const qs = require('query-string')
-
 export default {
   name: 'Survey',
   components: { surveyQuestionForm, modal },
+  props: ['surveyTitle', 'surveyId'],
   data: function () {
     return {
       surveyList: [],
@@ -42,22 +41,8 @@ export default {
       // Authorization: '',
       // surveyTitle: '',
       surveyQuestionForm: surveyQuestionForm,
-      id: '',
-      title: '',
       isModal: false
     }
-  },
-  mounted: function () {
-    eventBus.$on('survey-question-upload', (id, title) => {
-      this.id = id
-      this.title = title
-    })
-  },
-  created: function () {
-    // eventBus.$on('survey-question-upload', (id, title) => {
-    //   this.id = id
-    //   this.Title = title
-    // })
   },
   methods: {
     multifulChoiceBtn: function () {
@@ -77,8 +62,8 @@ export default {
       console.log(this.surveyList)
     },
     surveyQuestionSubmit: function () {
-      this.$axios.post('/admin/survey/question', qs.stringify({
-        id: this.id,
+      this.$axios.post('/admin/survey/question', JSON.stringify({
+        id: this.surveyId,
         survey_list: this.surveyList
       }),
         {

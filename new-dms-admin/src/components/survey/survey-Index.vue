@@ -9,7 +9,7 @@
       <div class="survey-main">
         <button class="survey-main-btn" @click="changeView('surveyList')" :class="{ FormClicked : surveyMainBtnClicked1 }">설문조사</button><button class="survey-main-btn" @click="changeView('surveyMain')" :class="{ FormClicked : surveyMainBtnClicked2 }">작성</button>
         <div class="survey-component">
-          <component :is="surveyView" class="Component"></component>
+          <component :is="surveyView" class="Component" :surveyTitle='surveyTitle' :surveyId='surveyId' ></component>
         </div>
       </div>
   </div>
@@ -29,11 +29,18 @@ export default {
     return {
       surveyView: surveyList,
       surveyMainBtnClicked1: true,
-      surveyMainBtnClicked2: false
+      surveyMainBtnClicked2: false,
+      surveyTitle: '',
+      surveyId: ''
     }
   },
   mounted: function () {
     eventBus.$on('change-view', (view) => {
+      this.changeView(view)
+    })
+    eventBus.$on('go-question', (view, title, id) => {
+      this.surveyTitle = title
+      this.surveyId = id
       this.changeView(view)
     })
   },
@@ -56,6 +63,9 @@ export default {
 </script>
 <style scoped>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+* {
+  text-align: left;
+}
 h1 {
   font-family: 'Jeju Gothic', serif;
 }
@@ -108,6 +118,7 @@ h1 {
   border-top-right-radius: 10px;
   font-family: 'Jeju Gothic', serif;
   font-size: 20px;
+  text-align: center;
 }
 .survey-main-btn:focus {
   outline: none;
@@ -139,7 +150,6 @@ body{
 }
 #app {
   margin-top : 0;
-  text-align : left;
 }
 </style>
 
