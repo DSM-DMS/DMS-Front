@@ -61,7 +61,7 @@ export default {
 
 #meal-body-wrapper{
   width: 100%;
-  height: 150px;
+  height: 200px;
   display: inline-block;
 }
 

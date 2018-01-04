@@ -9,11 +9,11 @@
         </div>
       </div>
       <div class="goingout-apply-content">
-        <img v-if="goingout.isSaturdayGoingout" @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
-        <img v-else @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing_light.png">
+        <img v-if="goingout.isSaturdayGoingout" @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing_light.png">
+        <img v-else @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
 
-        <img v-if="goingout.isSundayGoingout" @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing.png">
-        <img v-else @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-if="goingout.isSundayGoingout" @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
+        <img v-else @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing.png">
       </div>
     </div>
   </div>
