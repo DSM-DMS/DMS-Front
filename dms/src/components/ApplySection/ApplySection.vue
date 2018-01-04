@@ -2,12 +2,13 @@
   <div id="apply-wrapper">
     <div class="apply-card-wrapper">
       <apply-stay :day="stay.day"/>
-      <apply-extention :extention="extention"/>
+      <apply-extension :extension="extension"/>
     </div>
 
     <div class="apply-card-wrapper">
       <apply-goingout  @applySaturday="applySaturdayGoingout" 
-                       @applySunday="applySundayGoingout" 
+                       @applySunday="applySundayGoingout"
+                       @applyGoingout="applyGoingout" 
                        :goingout="goingout"/>
       <apply-survey/>
     </div>
@@ -16,14 +17,13 @@
 
 <script>
 import ApplyStay from '@/components/ApplySection/ApplyStay'
-import ApplyExtention from '@/components/ApplySection/ApplyExtention'
+import ApplyExtension from '@/components/ApplySection/ApplyExtension'
 import ApplyGoingout from '@/components/ApplySection/ApplyGoingout'
 import ApplySurvey from '@/components/ApplySection/ApplySurvey'
-import axios from 'axios'
 
 export default {
   name: 'ApplySection',
-  components: {ApplyStay, ApplyExtention, ApplyGoingout, ApplySurvey},
+  components: {ApplyStay, ApplyExtension, ApplyGoingout, ApplySurvey},
   data: function () {
     return {
       stay: {
@@ -33,7 +33,7 @@ export default {
         isSaturdayGoingout: false,
         isSundayGoingout: false
       },
-      extention: {
+      extension: {
         class: [
           '1층<br/>가온실',
           '1층<br/>나온실',
@@ -41,7 +41,7 @@ export default {
           '1층<br/>라온실',
           '3층<br/>독서실',
           '4층<br/>독서실',
-          '5층<br/>연린교실'
+          '5층<br/>엶린교실'
         ],
         eleven: '',
         twelve: ''
@@ -56,55 +56,85 @@ export default {
       this.goingout.isSundayGoingout = !this.goingout.isSundayGoingout
     },
     applyGoingout: function () {
-      axios({
-        method: 'post',
-        url: 'dsm2015.cafe24.com:3001/goingout',
-        data: {
-          sat: this.goingout.isSaturdayGoingout,
-          sun: this.goingout.isSundayGoingout
+      let fd = new FormData()
+      fd.append('sat', this.goingout.isSaturdayGoingout)
+      fd.append('sun', this.goingout.isSundayGoingout)
+      this.$http({
+        method: 'POST',
+        url: '/goingout',
+        data: fd,
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
       }).then(res => {
+        if (res.status === 422) {
+        }
         alert('신청 완료')
       }).catch(err => {
         console.log(err)
       })
+    },
+    getApplyState: function () {
+      if (typeof (this.$cookie.getCookie('JWT')) === 'object' && !!this.this.$cookie.getCookie('JWT')) {
+      } else {
+        this.$http({
+          method: 'GET',
+          url: '/goingout',
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        }).then(res => {
+          this.goingout.isSaturdayGoingout = res.data.sat
+          this.goingout.isSundayGoingout = res.data.sun
+        }).catch(err => {
+          console.log(err)
+        })
+
+        this.$http({
+          method: 'GET',
+          url: '/extension/11',
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        }).then(res => {
+          console.log(res.data)
+          this.extension.eleven = res.data.class_num
+        }).catch(err => {
+          console.log(err)
+        })
+
+        this.$http({
+          method: 'GET',
+          url: '/extension/12',
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        }).then(res => {
+          this.extension.twelve = res.data.class_num
+        }).catch(err => {
+          console.log(err)
+        })
+
+        this.$http({
+          method: 'GET',
+          url: '/stay',
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        }).then(res => {
+          this.stay.day = res.data.value
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     }
+  },
+  created: function () {
+    this.getApplyState()
+  },
+  beforeUpdate: function () {
+    this.getApplyState()
   }
-  // created () {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'http://dsm2015.cafe24.com:3001/goingout'
-  //   }).then(res => {
-  //     this.goingout.isSaturdayGoingout = res.data.sat
-  //     this.goingout.isSundayGoingout = res.data.sun
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  //   axios({
-  //     method: 'GET',
-  //     url: 'http://dsm2015.cafe24.com:3001/extention/11'
-  //   }).then(res => {
-  //     this.extention.eleven = res.data.class
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  //   axios({
-  //     method: 'GET',
-  //     url: 'http://dsm2015.cafe24.com:3001/extention/12'
-  //   }).then(res => {
-  //     this.extention.twelve = res.data.class
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  //   axios({
-  //     method: 'GET',
-  //     url: 'http://dsm2015.cafe24.com:3001/stay'
-  //   }).then(res => {
-  //     this.stay.day = res.data.value
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  // }
 }
 </script>
 
