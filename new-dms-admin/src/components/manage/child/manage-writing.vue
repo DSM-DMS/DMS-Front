@@ -11,7 +11,7 @@
 <script>
 import Ckeditor from 'vue-ckeditor2'
 
-const qs = require('query-string')
+// const qs = require('query-string')
 
 export default {
   components: { Ckeditor },
@@ -36,7 +36,6 @@ export default {
     }
   },
   methods: {
-    
   }
 }
 </script>

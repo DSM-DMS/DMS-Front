@@ -9,7 +9,7 @@
       <div class="survey-list-tbody">
         <div class="survey-list-tr" v-for="surveyList in surveyLists">
             <span class="survey-list-title">{{ surveyList.title }}</span>
-            <span class="survey-list-term">{{ surveyList.start_date }} ~ {{ surveyList.end_date }}</span>
+            <span class="survey-list-term">{{ dateSplit(surveyList.start_date) }} ~ {{ dateSplit(surveyList.end_date) }}</span>
             <span class="survey-list-delete"><img src="../../assets/icon/ic_delete.png" class="survey-list-btn" @click="deleteSurvey(surveyList.id)"></span>
             <span class="survey-list-download"><img src="../../assets/icon/ic_download.png" class="survey-list-btn"></span>
         </div>
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-const qs = require('query-string')
-
 export default {
   name: 'surveyList',
   data: function () {
@@ -32,14 +30,15 @@ export default {
   },
   methods: {
     deleteSurvey: function (id) {
-      this.$axios.delete('/admin/survey', qs.stringify({
-        survey_id: id
-      }),
-        {
-          headers: {
-            Authorization: 'JWT ' + this.$getCookie('JWT')
-          }
-        })
+      var surveyId = new FormData()
+      surveyId.append('survey_id', id)
+      console.log(id)
+      this.$axios({
+        method: 'DELETE',
+        url: '/admin/survey',
+        data: surveyId,
+        headers: {'Authorization': 'JWT ' + this.$getCookie('JWT')}
+      })
       .then((response) => {
         if (response.status === 200) {
           this.fetchSurveyList()
@@ -55,7 +54,7 @@ export default {
     fetchSurveyList: function () {
       this.$axios.get('/admin/survey', {
         headers: {
-          'Authorization': 'JWT ' + this.$getCookie('JWT')
+          Authorization: 'JWT ' + this.$getCookie('JWT')
         }
       })
       .then((response) => {
@@ -65,8 +64,8 @@ export default {
         console.log('ERROR!!!! : ', ex)
       })
     },
-    dateSplice: function (date) {
-      return date.splice(0, 10)
+    dateSplit: function (date) {
+      return date.split(' ')[0]
     }
   }
 }

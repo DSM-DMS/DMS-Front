@@ -50,29 +50,31 @@ export default {
   components: { modal, eventBus },
   methods: {
     surveyNext: function () {
-      var formData = new FormData()
-      formData.append('description', this.description)
-      formData.append('title', this.title)
-      formData.append('start_date', this.start_date)
-      formData.append('end_date', this.end_date)
-      for (var i = 0; i < this.target.length; i++) {
-        this.target[i] = Number(this.target[i])
-      }
-      formData.append('target', this.target)
-      this.$axios.post('/admin/survey', formData,
-        {
-          headers: {
-            'Authorization': 'JWT ' + this.$getCookie('JWT'),
-            'Content-Type': 'multipart/form-data'
-          }
+      if (this.title !== '' && this.start_date !== '' && this.end_date !== '' && this.description !== '' && this.target !== []) {
+        var formData = new FormData()
+        formData.append('description', this.description)
+        formData.append('title', this.title)
+        formData.append('start_date', this.start_date)
+        formData.append('end_date', this.end_date)
+        for (var i = 0; i < this.target.length; i++) {
+          this.target[i] = Number(this.target[i])
+        }
+        formData.append('target', this.target)
+        this.$axios.post('/admin/survey', formData,
+          {
+            headers: {
+              'Authorization': 'JWT ' + this.$getCookie('JWT'),
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+        .then((response) => {
+          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data)
         })
-      .then((response) => {
-        eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data)
-      })
-      .catch((ex) => {
-        console.log('ERROR!!!! : ', ex)
-        this.modalToggle()
-      })
+        .catch((ex) => {
+          console.log('ERROR!!!! : ', ex)
+          this.modalToggle()
+        })
+      }
     },
     modalToggle: function () {
       this.isModal = !this.isModal
