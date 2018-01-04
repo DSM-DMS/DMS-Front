@@ -30,6 +30,7 @@ export default {
 <style>
 @media only screen and (min-width: 1101px){
   #footer-section-wrapper{
+    font-family: 'NanumSquareB';
     height: 610px;
   }
 

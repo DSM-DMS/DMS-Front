@@ -19,6 +19,6 @@
   .food {
     font-size: 25px;
     font-weight: 100;
-    line-height: 1.7em;
+    line-height: 1em;
   }
 </style>

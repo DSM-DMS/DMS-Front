@@ -33,7 +33,7 @@ export default {
   }
 
   .post-card-body-sub-text {
-    font-size: 15px;
+    font-size: 20px;
   }
   .post-card-header-text {
     text-align: center;
