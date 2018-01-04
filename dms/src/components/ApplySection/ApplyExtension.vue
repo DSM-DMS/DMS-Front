@@ -1,20 +1,20 @@
 <template>
-  <div class="apply-card" id="extention-apply-wrapper">
-    <div id="extention-apply-content">
-      <div id="extention-apply-text-wrapper">
+  <div class="apply-card" id="extension-apply-wrapper">
+    <div id="extension-apply-content">
+      <div id="extension-apply-text-wrapper">
         <p class="apply-text">연장학습 신청</p>
         <p class="apply-sub-text">추가 연장학습을 신청하세요</p>
       </div>
-      <div id="extention-apply-img-wrapper">
-        <div id="extention-apply-11-img-wrapper">
-          <img v-if="!!extention.eleven" class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven_light.png" />
-          <img v-else class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
-          <span class="extention-apply-class-text" id="extention-apply-11-class" v-html="extention.class[ extention.eleven - 1 ]"></span>
+      <div id="extension-apply-img-wrapper">
+        <div id="extension-apply-11-img-wrapper">
+          <img v-if="!!extension.eleven" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven_light.png" />
+          <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
+          <span class="extension-apply-class-text" id="extension-apply-11-class" v-html="extension.class[ extension.eleven - 1 ]"></span>
         </div>
-        <div id="extention-apply-12-img-wrapper">
-          <img v-if="!!extention.twelve" class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
-          <img v-else class="extention-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve.png" />
-          <span class="extention-apply-class-text" id="extention-apply-12-class" v-html="extention.class[ extention.twelve - 1 ]"></span>
+        <div id="extension-apply-12-img-wrapper">
+          <img v-if="!!extension.twelve" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
+          <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve.png" />
+          <span class="extension-apply-class-text" id="extension-apply-12-class" v-html="extension.class[ extension.twelve - 1 ]"></span>
         </div>
       </div>
     </div>
@@ -23,8 +23,8 @@
 
 <script>
 export default {
-  name: 'ApplyExtention',
-  props: ['extention']
+  name: 'Applyextension',
+  props: ['extension']
 }
 </script>
 
@@ -36,7 +36,7 @@ export default {
 .apply-sub-text {
   font-size: 20px;
 }
-#extention-apply-wrapper {
+#extension-apply-wrapper {
   background: url('../../assets/background/bg_study.png');
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 130%;
@@ -51,11 +51,11 @@ export default {
   transition: background-size 250ms ease;
 }
 
-#extention-apply-wrapper:hover{
+#extension-apply-wrapper:hover{
   background-size: 140%;
 }
 
-#extention-apply-wrapper:before {
+#extension-apply-wrapper:before {
   position: absolute;
   top: 0;
   right: 0;
@@ -65,38 +65,38 @@ export default {
   content: ' ';
 }
 
-#extention-apply-content {
+#extension-apply-content {
   display: table-cell;
   vertical-align: middle;
   position: relative;
   z-index: 100;
 }
 
-#extention-apply-text-wrapper:nth-child(n) {
+#extension-apply-text-wrapper:nth-child(n) {
   text-align: center;
   font-weight: bold;
   color: white;
   margin-bottom: 20px;
 }
 
-#extention-apply-img-wrapper {
+#extension-apply-img-wrapper {
   width: 450px;
   margin: 0 auto;
 }
 
-#extention-apply-11-img-wrapper {
+#extension-apply-11-img-wrapper {
   width: 200px;
   float: left;
   position: relative;
 }
 
-#extention-apply-12-img-wrapper {
+#extension-apply-12-img-wrapper {
   width: 200px;
   float: right;
   position: relative;
 }
 
-.extention-apply-class-text{
+.extension-apply-class-text{
   position: absolute;
   right: 0;
   top: 0;
@@ -106,15 +106,15 @@ export default {
   font-size: 20px;
 }
 
-#extention-apply-11-class{
+#extension-apply-11-class{
   width: 95px;
 }
 
-#extention-apply-12-class{
+#extension-apply-12-class{
   width: 88px
 }
 
-.extention-apply-img {
+.extension-apply-img {
   width: 100%;
   cursor: pointer;
 }
