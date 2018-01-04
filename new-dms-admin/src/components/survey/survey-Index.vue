@@ -9,7 +9,7 @@
       <div class="survey-main">
         <button class="survey-main-btn" @click="changeView('surveyList')" :class="{ FormClicked : surveyMainBtnClicked1 }">설문조사</button><button class="survey-main-btn" @click="changeView('surveyMain')" :class="{ FormClicked : surveyMainBtnClicked2 }">작성</button>
         <div class="survey-component">
-          <component :is="surveyView" class="Component"></component>
+          <component :is="surveyView" class="Component" :surveyTitle='surveyTitle' :surveyId='surveyId' ></component>
         </div>
       </div>
   </div>
@@ -29,11 +29,18 @@ export default {
     return {
       surveyView: surveyList,
       surveyMainBtnClicked1: true,
-      surveyMainBtnClicked2: false
+      surveyMainBtnClicked2: false,
+      surveyTitle: '',
+      surveyId: ''
     }
   },
   mounted: function () {
     eventBus.$on('change-view', (view) => {
+      this.changeView(view)
+    })
+    eventBus.$on('go-question', (view, title, id) => {
+      this.surveyTitle = title
+      this.surveyId = id
       this.changeView(view)
     })
   },
@@ -111,7 +118,11 @@ h1 {
   border-top-right-radius: 10px;
   font-family: 'Jeju Gothic', serif;
   font-size: 20px;
+<<<<<<< HEAD
+  text-align: center;
+=======
   text-align: center !important;
+>>>>>>> c448b72a57e8b0fe6d9c274fa21a55608c6dc118
 }
 .survey-main-btn:focus {
   outline: none;

@@ -2,7 +2,7 @@
   <div class="background">
     <div class="modal">
       <div class="modal-img-wrapper">
-        <img src="../../../assets/icon/ic_error.png"> 
+        <img src="../../../assets/icon/ic_error2.png"> 
       </div>
       <div class="modal-text-wrapper">
           <p class="modal-title">게시글 작성에 실패했습니다.</p>

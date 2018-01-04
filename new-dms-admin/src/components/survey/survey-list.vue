@@ -53,7 +53,7 @@ export default {
       })
     },
     fetchSurveyList: function () {
-      this.$axios.get('/survey', {
+      this.$axios.get('/admin/survey', {
         headers: {
           'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
@@ -64,6 +64,9 @@ export default {
       .catch((ex) => {
         console.log('ERROR!!!! : ', ex)
       })
+    },
+    dateSplice: function (date) {
+      return date.splice(0, 10)
     }
   }
 }

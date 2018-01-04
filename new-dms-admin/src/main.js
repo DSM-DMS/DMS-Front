@@ -8,7 +8,6 @@ import axios from 'axios'
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.$axios.defaults.baseURL = 'http://dsm2015.cafe24.com:3001'
-Vue.prototype.$axios.defaults.headers.common['content-type'] = 'application/x-www-form-urlencoded'
 
 Vue.prototype.$setCookie = function setCookie (name, value, days) {
   var expires = ''
