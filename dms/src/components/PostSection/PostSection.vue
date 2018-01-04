@@ -33,6 +33,7 @@
   /*post-section*/
 
   #post-wrapper {
+    font-family: 'NanumSquareRoundB';
     width: 100%;
     background-color: rgb(226, 226, 226);
     height: 600px;

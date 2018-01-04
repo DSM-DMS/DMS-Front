@@ -1,7 +1,10 @@
 <template>
   <div id="main-section">
     <main-title/>
-    <meal :meal="meal" :selectedMeal="selectedMeal" @preMeal="preMeal" @nextMeal="nextMeal"/>
+    <meal :meal="meal" 
+          :selectedMeal="selectedMeal" 
+          @preMeal="preMeal"
+          @nextMeal="nextMeal"/>
     <div id="social-wrapper">
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_facebook.png')"/>
       <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_github.png')"/>
@@ -18,6 +21,15 @@ import axios from 'axios'
 export default {
   name: 'MainSection',
   components: {MainTitle, Meal, SocialBtn},
+  data: function () {
+    return {
+      selectedMeal: {
+        date: new Date(),
+        selected: 'Dinner'
+      },
+      meal: {}
+    }
+  },
   methods: {
     preMeal: function () {
       let selectedMeal = this.selectedMeal
@@ -61,22 +73,17 @@ export default {
         this.meal.BreakFast = res.data.breakfast
         this.meal.Lunch = res.data.lunch
         this.meal.Dinner = res.data.dinner
-        console.log(this.meal)
+        if (res.status === 204) {
+          this.meal.BreakFast.push('급식이 없습니다')
+          this.meal.Lunch.push('급식이 없습니다')
+          this.meal.Dinner.push('급식이 없습니다')
+        }
       }).catch(err => {
         console.log(err)
       })
     }
   },
-  data: function () {
-    return {
-      selectedMeal: {
-        date: new Date(),
-        selected: 'BreakFast'
-      },
-      meal: {}
-    }
-  },
-  created () {
+  mounted: function () {
     this.getMeal(this.selectedMeal.date)
   }
 }
@@ -86,23 +93,24 @@ export default {
 <style>
 @media only screen and (min-width: 1271px){
   #main-section {
-    width: 100%
+    position: fixed;
   }
 }
 
 @media only screen and (max-width: 1270px){
   #main-section {
-    width: 1270px
+    position: relative;
   }
 }
+
 #main-section {
   background: url('../../assets/background/bg_main.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  width: 100%;
   height: 100vh;
   display: table;
-  position: fixed;
   z-index: -1;
   top: 0;
 }
