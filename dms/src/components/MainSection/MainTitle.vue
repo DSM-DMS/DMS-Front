@@ -16,8 +16,7 @@ export default {
 
 <style>
 #main-section-text {
-  font-family: 'coolvetica rg';
-  src: url("../../assets/font/coolvetica_rg.ttf") format('truetype');
+  font-family: 'Coolvetica';
   display: table-cell;
   vertical-align: middle;
   width: 100%;

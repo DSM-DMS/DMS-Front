@@ -1,7 +1,19 @@
 <template>
 <div id="main-page">
     <div id="main-bg"></div>
-    <img id="logo"  src="../assets/logo/logo.png">
+    <div class="top">
+        <img id="logo"  src="../assets/logo/logo.png">
+        <div id="admin-account">
+            <div id="account-contents">
+                <img id="admin-create" src="../assets/icon/ic_create_account.png">
+                <p id="account-title">관리자 계정 삭제</p> 
+            </div> 
+            <div id="account-contents">
+                <img id="admin-delete" src="../assets/icon/ic_return_account.png">
+                <p id="account-title">관리자 계정 생성</p>
+            </div> 
+        </div>
+    </div>
     <div id="contents">
         <div id="download-title">
             <h3 id="title">Download</h3>
@@ -92,7 +104,36 @@ export default {
       background-image: url("../assets/background/bg_notice.png");
       position: absolute;
   }
+
+  .top {
+      width: 100%;
+      height: 100px;
+  }
+
+  #admin-account {
+      width: 500px;
+      height: 100px;
+      position: relative;
+      top: 20px;
+      right: 30px;
+      float: right;
+  }
+
+  #account-title {
+      display: inline-block;
+      font-weight: 800;
+  }
+
+  #admin-create, #admin-delete {
+      vertical-align: middle;
+      margin-right: 10px;
+  }
   
+  #account-contents {
+      display: inline-block;
+      margin-left: 50px;
+  }
+
   img#logo {
       position: relative;
       float: left;
@@ -102,16 +143,24 @@ export default {
 
   #contents {
       width: 100%;
-      height: 100%;
+      height: 88vh;
       position: absolute;
   }
   
-  #download-title, #management-title {
+  #download-title {
       width: 220px;
       height: 50px;
       border-radius: 100px;
       background-color: rgba(202,182,177, 0.8);
-      margin-top: 150px;
+      margin-top: 100px;
+      margin-left: 100px;
+  }
+  #management-title {
+      width: 220px;
+      height: 50px;
+      border-radius: 100px;
+      background-color: rgba(202,182,177, 0.8);
+      margin-top: 80px;
       margin-left: 100px;
   }
 

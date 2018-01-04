@@ -38,6 +38,7 @@ export default {
 }
 
 #header-wrapper {
+  font-family: 'NanumSquareB';
   margin: 20px 50px 0 50px;
   position: fixed;
   top: 0;

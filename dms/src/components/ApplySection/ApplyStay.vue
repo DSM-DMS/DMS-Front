@@ -3,8 +3,8 @@
     <div id="stay-apply-content">
       <div id="stay-apply-img-wrapper" class="stay-apply-img-wrapper">
         <img v-if="day==='1'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
-        <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
-        <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else-if="day==='2'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
+        <img v-else-if="day==='3'" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
         <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
       </div>
       <div id="stay-apply-text-wrapper">
@@ -31,7 +31,7 @@
 
 @media only screen and (max-width: 1200px){
   .stay-apply-img-wrapper {
-    width: 150px;
+    width: 120px;
   }
 }
 .apply-text {
