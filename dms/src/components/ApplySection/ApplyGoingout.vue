@@ -5,7 +5,7 @@
         <p class="apply-text">외출신청</p>
         <p class="apply-sub-text">외출예정 요일을 확인하세요</p>
         <div class="goingout-apply-btn" id="goingout-apply-btn">
-          <p id="goingout-apply-btn-text">신청</p>
+          <p @click="apply" id="goingout-apply-btn-text">신청</p>
         </div>
       </div>
       <div class="goingout-apply-content">
@@ -29,6 +29,9 @@ export default {
     },
     applySunday: function () {
       this.$emit('applySunday')
+    },
+    apply: function () {
+      this.$emit('applyGoingout')
     }
   }
 }

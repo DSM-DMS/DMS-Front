@@ -59,7 +59,7 @@ export default {
         for (var i = 0; i < this.target.length; i++) {
           this.target[i] = Number(this.target[i])
         }
-        formData.append('target', this.target)
+        formData.append('target', JSON.stringify(this.target))
         this.$axios.post('/admin/survey', formData,
           {
             headers: {
@@ -68,7 +68,7 @@ export default {
             }
           })
         .then((response) => {
-          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data)
+          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data.id)
         })
         .catch((ex) => {
           console.log('ERROR!!!! : ', ex)
