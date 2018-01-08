@@ -153,7 +153,7 @@ export default {
       position: relative;
       float: left;
       top: 30px;
-      left: 40px;
+      left: 30px;
   }
 
   #contents {

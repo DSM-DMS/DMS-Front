@@ -1,9 +1,9 @@
 <template>
 <div class="login">
   <div class="bg">
-  <img id="bg" src='../assets/background/bg.png'>
+  <img id="bg" src="../assets/background/bg_notice.png">
   </div>
-  <div class="bg2"></div>
+  <img id="logo" src="../assets/logo/logo.png">
   <div class="main">
     <div id="main-bg">
       <img id="main-img" src="../assets/background/main-bg.png">
@@ -14,17 +14,16 @@
         <h3>System</h3>
       </div>
     <div id="login-main">
-      <img id="logo" src="../assets/logo/logo2.png">
       <div id="login-from" @keyup.enter='login'>
-        <input type="text" v-model="id" placeholder="아이디">
-        <input type="password" v-model="pw" placeholder="비밀번호">
+        <input type="text" class="login-input" v-model="id" placeholder="Username">
+        <input type="password" class="login-input" v-model="pw" placeholder="Password">
       </div>
       <div id="check">
         <input type="checkbox"> 
         <p id="remember">자동 로그인</p>
       </div>
       <div class="login-button">
-        <button id="login-btn" v-on:click="login">로그인</button>
+        <img id="login-btn" v-on:click="login" src="../assets/button/ic_enter.png">
       </div>
     </div>
 </div>
@@ -82,12 +81,6 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .bg2 {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    position: absolute;
-  }
   
   .main {
     width: 60%;
@@ -100,7 +93,7 @@ export default {
   }
 
   #login-main {
-    width: 35%;
+    width: 50%;
     height: 100%;
     position: relative;
     float: right;
@@ -108,14 +101,14 @@ export default {
 
   #login-from {
     margin: auto;
-    margin-top: 30px;
-    width: 19vw;
-    height: 10vh;
+    margin-top: 110px;
+    width: 20vw;
+    height: 23vh;
     
   }
 
   #main-bg {
-    width: 65%;
+    width: 50%;
     height: 100%;
     float: left;
   }
@@ -131,36 +124,34 @@ export default {
   }
 
   h3 {
-    font-size: 50px;
+    font-size: 40px;
     margin: auto;
     font-family: 'Noto Sans KR', sans-serif;
     text-align: left;
-    margin-top: 10px;
     margin-left: 50px;
     color: white;
     line-height: 65px;
   }
   
-  img#logo {
-    width: 35%;
-    height: 25%;
-    margin-top: 50px;
-  }
-
   input[type=text], input[type=password] {
-    width: 18vw;
+    width: 20vw;
     height: 5vh;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 50px;
     padding-left: 15px;
+    border: none;
+    border-bottom: 2px solid rgb(120, 173, 217);
+    outline: none;
+    font-size: 30px;
+    color: rgb(120, 173, 217);
   }
   
   #check {
-    width: 18vw;
+    width: 10vw;
     margin: auto;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #BDBDBD;
-    margin-top: 40px;
+    float: right;
+    margin-right: 50px;
+    
   }
   
   input[type=checkbox] {
@@ -171,22 +162,32 @@ export default {
 
   p#remember {
     display: inline-block;
-    font-size: 12px;
-    margin-top: 30px;
+    font-size: 15px;
     margin:  auto;
-  }
-  
-  .login-button {
-    width: 18vw;
-    margin: auto;
+    color: rgb(120, 173, 217);
   }
 
-  #login-btn {
-    width: 18vw;
-    height: 5vh;
-    background-color: #162D56;
-    color: white;
-    margin-top: 20px;
-  } 
+  .login-input::placeholder {
+    color: rgb(120, 173, 217);
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .login-button {
+    width: 200px;
+    height: 100px;
+    margin-left: 350px;
+    margin-top: 150px;
+  }
+
+    img#logo {
+    position: relative;
+    width: 148px;
+    height: 50px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+  
 </style>
 
