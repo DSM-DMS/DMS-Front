@@ -33,7 +33,6 @@ export default {
     deleteSurvey: function (id) {
       var surveyId = new FormData()
       surveyId.append('survey_id', id)
-      console.log(id)
       this.$axios({
         method: 'DELETE',
         url: '/admin/survey',

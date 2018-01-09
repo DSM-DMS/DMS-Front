@@ -51,7 +51,6 @@ export default {
         is_objective: true,
         choice_paper: []
       })
-      console.log(this.questions)
     },
     descriptiveBtn: function () {
       this.questions.push({
@@ -59,23 +58,22 @@ export default {
         is_objective: false,
         choice_paper: []
       })
-      console.log(this.questions)
     },
     surveyQuestionSubmit: function () {
-      console.log(this.surveyId.id)
-      var questionFormData = new FormData()
-      questionFormData.append('survey_id', this.surveyId.id)
-      console.log(questionFormData.id)
-      questionFormData.append('questions', JSON.stringify(this.questions))
-      this.$axios.post('/admin/survey/question', questionFormData,
+      this.$axios.post('/admin/survey/question', JSON.stringify({
+        survey_id: this.surveyId,
+        questions: this.questions
+      }),
         {
           headers: {
-            'Authorization': 'JWT ' + this.$getCookie('JWT')
+            'Authorization': 'JWT ' + this.$getCookie('JWT'),
+            'Content-Type': 'application/json'
           }
         })
       .then((response) => {
         console.log('Good!!!')
-        eventBus.$on('changeView', 'surveyList')
+        alert('질문 등록에 성공하셨습니다 !!!')
+        eventBus.$emit('change-view', 'surveyList')
       })
       .catch((ex) => {
         console.log('ERROR!!!! : ', ex)
@@ -90,7 +88,6 @@ export default {
     },
     multifulTextEmit: function (text, index) {
       this.questions[index].choice_paper.push(text)
-      console.log(this.questions[index].choice_paper)
     },
     surveyEditCancel: function () {
       eventBus.$emit('change-view', 'surveyMain')

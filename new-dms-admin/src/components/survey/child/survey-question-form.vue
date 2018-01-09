@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     submitQuestion: function () {
-      console.log(this.title)
       this.$emit('submitQuestion', this.title, this.index)
     },
     surveyQuestionEmit: function () {
