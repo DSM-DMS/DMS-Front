@@ -14,15 +14,17 @@
     </div>
 
     <login-modal v-if="computedLoginModal" @close="loginModal = false"/>
+    <menu/>
   </div>
 </template>
 
 <script>
 import LoginModal from './LoginModal'
+import Menu from './Menu'
 export default {
   name: 'HeaderNav',
   components: {
-    LoginModal
+    LoginModal, Menu
   },
   data: function () {
     return {

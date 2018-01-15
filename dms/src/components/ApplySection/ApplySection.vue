@@ -75,7 +75,7 @@ export default {
       })
     },
     getApplyState: function () {
-      if (typeof (this.$cookie.getCookie('JWT')) === 'object' && !!this.this.$cookie.getCookie('JWT')) {
+      if (typeof (this.$cookie.getCookie('JWT')) === 'object' && !this.$cookie.getCookie('JWT')) {
       } else {
         this.$http({
           method: 'GET',
@@ -162,7 +162,7 @@ export default {
 #apply-wrapper {
   font-family: 'NanumSquareRoundB';
   height: 850px;
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
   background-color: #F9F7FC;
   display: table;
