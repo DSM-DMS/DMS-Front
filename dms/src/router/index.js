@@ -17,5 +17,9 @@ export default new Router({
       path: '/apply/:category',
       name: 'apply',
       component: Apply
+    },
+    {
+      path: '*',
+      redirect: '/'
     }]
 })
