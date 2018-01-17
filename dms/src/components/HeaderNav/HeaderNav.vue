@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import LoginModal from './LoginModal'
+import LoginModal from '@/components/HeaderNav/LoginModal'
 export default {
   name: 'HeaderNav',
   components: {
