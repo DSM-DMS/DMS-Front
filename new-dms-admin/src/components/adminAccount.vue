@@ -5,11 +5,10 @@
         <img id="login-image" :src="require('../assets/icon/ic_createAccount.png')" alt="">
       </div>
       <div id="login-right">
-        <div id="login-form">
+        <div id="login-form" @keyup.enter="login">
           <input id="login-id" class="login-form-input" type="text" placeholder="ID" v-model="id">
-          <input id="login-password" class="login-form-input" type="password" placeholder="Password" v-model="password">
-          <input id="login-user-name" class="login-form-input" type="text" placeholder="Username" v-model="userName">
-          <input type="checkbox" hidden id="login-checkbox" v-model="checked">
+          <input id="login-password" class="login-form-input" type="password" placeholder="Password" v-model="pw">
+          <input id="login-user-name" class="login-form-input" type="text" placeholder="Username" v-model="name">
         </div>
         <img id="login-button" @click="login" :src="require('../assets/button/ic_enter.png')">
       </div>
@@ -18,18 +17,38 @@
 </template>
 
 <script>
+const qs = require('query-string')
+
 export default {
   name: 'LoginModal',
   data: function () {
     return {
-      userName: '',
-      password: '',
-      checked: false
+      id: '',
+      pw: '',
+      name: ''
     }
   },
   methods: {
-    login: function () {
-      this.$store.dispatch('login', {userName: this.userName, password: this.password, checked: this.checked})
+    login: function (evnet) {
+      this.$axios({
+        method: 'POST',
+        url: '/admin/new-account',
+        data: qs.stringify({id: this.id, pw: this.pw, name: this.name}),
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+      .then((response) => {
+        console.log(response.data)
+        if (response.status === 201) {
+          console.log('관리자 계정 생성 성공')
+        } else {
+          alert('관리자 계정 생성 실패')
+        }
+      })
+      .catch((ex) => {
+        console.log(ex)
+      })
     }
   }
 }

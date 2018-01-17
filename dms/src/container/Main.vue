@@ -1,6 +1,7 @@
 <template>
   <div style="min-width: 1200px;">
     <header-nav/>
+    <menu-section/>
     <main-section/>
     <apply-section/>
     <post-section/>
@@ -10,16 +11,18 @@
 
 <script>
 
-import HeaderNav from '../components/HeaderNav/HeaderNav'
-import MainSection from '../components/MainSection/MainSection'
-import ApplySection from '../components/ApplySection/ApplySection'
-import PostSection from '../components/PostSection/PostSection'
-import FooterSection from '../components/FooterSection/FooterSection'
+import HeaderNav from '@/components/HeaderNav/HeaderNav'
+import MenuSection from '@/components/MenuSection/MenuSection'
+import MainSection from '@/components/MainSection/MainSection'
+import ApplySection from '@/components/ApplySection/ApplySection'
+import PostSection from '@/components/PostSection/PostSection'
+import FooterSection from '@/components/FooterSection/FooterSection'
 
 export default {
   name: 'Main',
   components: {
     HeaderNav,
+    MenuSection,
     MainSection,
     PostSection,
     ApplySection,

@@ -9,8 +9,10 @@
       <span class="header-menu">신청화면</span>
       <span class="header-menu">공지사항</span>
       <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
-      <span>메뉴</span>
-      <img id="header-ic-menu" src="../../assets/icon/ic_menu.png" />
+      <div id="menu-btn-wrapper" @click="menuButton">
+        <span>메뉴</span>
+        <img id="header-ic-menu" src="../../assets/icon/ic_menu.png" />
+      </div>
     </div>
 
     <login-modal v-if="computedLoginModal" @close="loginModal = false"/>
@@ -18,7 +20,7 @@
 </template>
 
 <script>
-import LoginModal from './LoginModal'
+import LoginModal from '@/components/HeaderNav/LoginModal'
 export default {
   name: 'HeaderNav',
   components: {
@@ -26,7 +28,8 @@ export default {
   },
   data: function () {
     return {
-      loginModal: false
+      loginModal: false,
+      menu: false
     }
   },
   methods: {
@@ -37,11 +40,14 @@ export default {
       } else {
         this.loginModal = true
       }
+    },
+    menuButton: function () {
+      this.$store.dispatch('setMenuStatus')
+      this.loginModal = this.$store.dispatch('setMenuStatus')
     }
   },
   computed: {
     computedLoginModal: function () {
-      console.log('computed call')
       return this.$store.getters.isLogin ? false : this.loginModal
     }
   }
@@ -69,7 +75,7 @@ export default {
   position: fixed;
   top: 0;
   width: calc(100% - 100px);
-  z-index: 10000;
+  z-index: 10;
   height: 60px;
   border-radius: 10px;
   background-color: white;
@@ -100,9 +106,13 @@ export default {
   height: 30px;
 }
 
-#header-menu-wrapper span {
+#menu-btn-wrapper{
+  display: inline-block;
+}
+
+#menu-btn-wrapper span {
   font-family: 'Nanum Square';
   font-weight: bold;
-  font-size: 15px;
+  font-size: 15px;  
 }
 </style>

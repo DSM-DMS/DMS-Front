@@ -1,1 +1,2 @@
 export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS'
+export const SET_MENU_STATUS = 'SET_MENU_STATUS'
