@@ -16,14 +16,7 @@
       <tr>
         <td class="class-button" @click="classSelect(6)"><img :src="getImage(6)"></td>
         <td>
-          <div id="toggle-button">
-            <input type="checkbox" hidden name="time" id="toggle-time" v-model="thisTime" v-bind:true-value="12" v-bind:false-value="11">
-            <div id="toggle-slider">
-              <div id="toggle-text11">11시</div>
-              <label for="toggle-time" id="toggle-switch"></label>
-              <div id="toggle-text12">12시</div>
-            </div>
-          </div>
+          <div id="cancel-button" @click="applyCancel">취소</div>
         </td>
       </tr>
     </table>
@@ -31,6 +24,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'ExtensionApplyLeft',
   data: function () {
@@ -64,8 +59,7 @@ export default {
           require('../../assets/Study_application/icon/ic_fifth.png'),
           require('../../assets/Study_application/icon_selected/ic_fifth_selected.png')
         ]
-      ],
-      thisTime: this.selectedTime
+      ]
     }
   },
   methods: {
@@ -78,16 +72,26 @@ export default {
     },
     classSelect: function (val) {
       this.$emit('update:selectedClass', val)
+    },
+    applyCancel: function (val) {
+      axios.delete('/extension/' + String(this.selectedTime), {
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT'),
+          'Access-Control-Allow-Method': '*',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*'
+        }
+      })
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.log(error)
+      })
     }
   },
   props: {
     selectedClass: {type: Number},
     selectedTime: {type: Number}
-  },
-  watch: {
-    thisTime: function (val) {
-      this.$emit('update:selectedTime', val)
-    }
   }
 }
 </script>
@@ -120,52 +124,17 @@ export default {
   height: 130px;
 }
 
-#toggle-button {
+#cancel-button {
+  height: 50px;
   width: 100px;
-  height: 40px;
-  border-radius: 30px;
-  overflow: hidden;
-}
-
-#toggle-slider {
-  width: 160px;
-  height: 40px;
-  background-color: rgb(188, 188, 188);
-}
-
-#toggle-slider > div, #toggle-slider > label {
-  float: left;
-}
-
-#toggle-slider {
-  position: relative;
-  left: 0;
-  transition: left .8s;
-  color: white;
-  line-height: 40px;
-  text-align: center;
-}
-
-#toggle-time:checked + #toggle-slider{
-  left: -60px;
-}
-
-#toggle-text11 {
-  width: 60px;
-  height: 40px;
-}
-
-#toggle-switch {
-  width: 40px;
-  height: 40px;
-  border: 5px solid rgb(188, 188, 188);
+  margin: 0 auto;
+  line-height: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 8px;
   background-color: white;
-  border-radius: 50%;
-}
-
-#toggle-text12 {
-  width: 60px;
-  height: 40px;
+  color: rgb(255, 188, 71);
+  cursor: pointer;
 }
 </style>
 

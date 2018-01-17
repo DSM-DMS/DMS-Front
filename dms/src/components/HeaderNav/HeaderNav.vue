@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     computedLoginModal: function () {
-      console.log(this.$store.getters.isLogin)
+      console.log('computed call')
       return this.$store.getters.isLogin ? false : this.loginModal
     }
   }

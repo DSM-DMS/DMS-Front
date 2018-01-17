@@ -2,10 +2,10 @@
   <div id="apply-page-wrapper">
     <header-nav />
     <left>
-      <div :is="left[0]" :selectedClass.sync="selectedClass" :selectedTime.sync="selectedTime"></div>
+      <div :is="left[0]" :selectedClass.sync="selectedClass" :selectedTime="selectedTime"></div>
     </left>
     <right>
-      <div :is="right[0]" :selectedClass="selectedClass" :selectedTime="selectedTime"></div>
+      <div :is="right[0]" :selectedClass="selectedClass" :selectedTime.sync="selectedTime"></div>
     </right>
   </div>
 </template>
