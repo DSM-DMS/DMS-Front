@@ -69,7 +69,6 @@ export default {
   display: table-cell;
   vertical-align: middle;
   position: relative;
-  z-index: 100;
 }
 
 #extension-apply-text-wrapper:nth-child(n) {

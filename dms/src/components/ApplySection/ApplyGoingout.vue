@@ -91,7 +91,6 @@ export default {
   display: table-cell;
   vertical-align: middle;
   position: relative;
-  z-index: 100;
   width: 100%;
 }
 

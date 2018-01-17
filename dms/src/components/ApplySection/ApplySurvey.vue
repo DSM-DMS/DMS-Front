@@ -56,7 +56,6 @@ export default {
   display: table-cell;
   vertical-align: middle;
   position: relative;
-  z-index: 100;
 }
 
 #survey-apply-text-wrapper:nth-child(n) {

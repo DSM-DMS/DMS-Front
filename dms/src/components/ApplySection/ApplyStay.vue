@@ -76,7 +76,6 @@
   display: table-cell;
   vertical-align: middle;
   position: relative;
-  z-index: 100;
 }
 
 #stay-apply-img-wrapper {
