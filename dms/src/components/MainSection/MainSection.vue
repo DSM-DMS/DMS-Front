@@ -16,7 +16,6 @@
 import MainTitle from '@/components/MainSection/MainTitle'
 import Meal from '@/components/MainSection/Meal'
 import SocialBtn from '@/components/MainSection/SocialBtn'
-import axios from 'axios'
 
 export default {
   name: 'MainSection',
@@ -27,8 +26,19 @@ export default {
         date: new Date(),
         selected: 'Dinner'
       },
-      meal: {}
+      meal: {
+        BreakFast: ['급식이 없습니다.'],
+        Lunch: ['급식이 없습니다.'],
+        Dinner: ['급식이 없습니다.']
+      }
     }
+  },
+  created: function () {
+    this.getMeal(this.selectedMeal.date)
+    console.log(this.selectedMeal.date.getHours())
+  },
+  beforeUpdate: function () {
+    this.getMeal(this.selectedMeal.date)
   },
   methods: {
     preMeal: function () {
@@ -66,9 +76,9 @@ export default {
       }
     },
     getMeal: function (date) {
-      axios({
+      this.$http({
         method: 'GET',
-        url: 'http://dsm2015.cafe24.com:3001/meal/' + this.$dateFormmater(date)
+        url: '/meal/' + this.$dateFormmater(date)
       }).then(res => {
         this.meal.BreakFast = res.data.breakfast
         this.meal.Lunch = res.data.lunch
@@ -82,9 +92,6 @@ export default {
         console.log(err)
       })
     }
-  },
-  mounted: function () {
-    this.getMeal(this.selectedMeal.date)
   }
 }
 </script>

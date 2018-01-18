@@ -43,7 +43,7 @@ export default {
     },
     menuButton: function () {
       this.$store.dispatch('setMenuStatus')
-      this.loginModal = this.$store.dispatch('setMenuStatus')
+      this.menu = !this.menu
     }
   },
   computed: {
@@ -53,7 +53,6 @@ export default {
   }
 }
 </script>
-
 
 <style>
 /*header*/
