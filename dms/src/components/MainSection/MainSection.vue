@@ -24,7 +24,7 @@ export default {
     return {
       selectedMeal: {
         date: new Date(),
-        selected: 'Dinner'
+        selected: 'BreakFast'
       },
       meal: {
         BreakFast: ['급식이 없습니다.'],
@@ -35,7 +35,16 @@ export default {
   },
   created: function () {
     this.getMeal(this.selectedMeal.date)
-    console.log(this.selectedMeal.date.getHours())
+
+    let hours = this.selectedMeal.date.getHours()
+
+    if (hours < 9 && hours >= 18) {
+      this.selectedMeal.selected = 'BreakFast'
+    } else if (hours < 13 && hours >= 9) {
+      this.selectedMeal.selected = 'Lunch'
+    } else {
+      this.selectedMeal.selected = 'Dinner'
+    }
   },
   beforeUpdate: function () {
     this.getMeal(this.selectedMeal.date)
