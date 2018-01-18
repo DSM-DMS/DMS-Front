@@ -50,6 +50,11 @@ export default {
     computedLoginModal: function () {
       return this.$store.getters.isLogin ? false : this.loginModal
     }
+  },
+  watch: {
+    '$store.getters.isLogin': function () {
+      // this.$router.go(0)
+    }
   }
 }
 </script>

@@ -16,9 +16,11 @@ export default {
 @font-face{font-family:'NanumSquareRoundL'; src:url('./assets/font/나눔스퀘어라운드/nanumsquareroundl-webfont.woff') format('woff');}
 @font-face{font-family:'RobotoThin'; src:url('./assets/font/Roboto/roboto-thin-webfont.woff') format('woff');}
 @font-face{font-family:'Coolvetica'; src:url('./assets/font/coolvetica/coolvetica_rg-webfont.woff') format('woff');}
+
 html, body{
   width: 100%;
   height: 100%;
+  font-family: 'NanumSquareRoundB';
 }
 
 *{

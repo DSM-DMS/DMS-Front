@@ -44,6 +44,7 @@ export default {
   background-color: gray;
   color: white;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 #map-table td:empty {

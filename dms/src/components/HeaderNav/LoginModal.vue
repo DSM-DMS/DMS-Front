@@ -8,7 +8,7 @@
       <div id="login-right">
         <div id="login-form">
           <input id="login-user-name" class="login-form-input" type="text" placeholder="Username" v-model="userName">
-          <input id="login-password" class="login-form-input" type="password" placeholder="Password" v-model="password">
+          <input id="login-password" class="login-form-input" type="password" placeholder="Password" v-model="password" @keydown.enter="login">
           <input type="checkbox" hidden id="login-checkbox" v-model="checked">
           <label id="login-checkbox-label" for="login-checkbox">
             <img id="login-checkbox-image" :src="checked? require('../../assets/Main_login/button/ic_checked.png'): require('../../assets/Main_login/button/ic_unchecked.png')">
