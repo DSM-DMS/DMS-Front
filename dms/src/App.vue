@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created: function () {
+    this.$store.dispatch('authCheck')
+  },
+  beforeUpdate: function () {
+    this.$store.dispatch('authCheck')
+  }
 }
 </script>
 
