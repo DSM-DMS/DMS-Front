@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'ExtensionApplyLeft',
   data: function () {
@@ -74,12 +72,9 @@ export default {
       this.$emit('update:selectedClass', val)
     },
     applyCancel: function (val) {
-      axios.delete('/extension/' + String(this.selectedTime), {
+      this.$http.delete('/extension/' + String(this.selectedTime), {
         headers: {
-          Authorization: 'JWT ' + this.$cookie.getCookie('JWT'),
-          'Access-Control-Allow-Method': '*',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': '*'
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
       })
       .then(response => {
@@ -110,7 +105,7 @@ export default {
   position: relative;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 
 .class-button {

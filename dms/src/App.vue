@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created: function () {
+    this.$store.dispatch('authCheck')
+  },
+  beforeUpdate: function () {
+    this.$store.dispatch('authCheck')
+  }
 }
 </script>
 
@@ -20,6 +26,7 @@ export default {
 html, body{
   width: 100%;
   height: 100%;
+  font-family: 'NanumSquareRoundB';
 }
 
 *{

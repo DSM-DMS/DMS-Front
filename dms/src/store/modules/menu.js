@@ -12,7 +12,7 @@ const getters = {
 
 const actions = {
   setMenuStatus ({commit}) {
-    state.isMenu= !state.isMenu     
+    state.isMenu= !state.isMenu   
   }
 }
 

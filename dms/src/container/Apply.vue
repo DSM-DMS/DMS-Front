@@ -2,10 +2,10 @@
   <div id="apply-page-wrapper">
     <header-nav />
     <left>
-      <div :is="left[0]" :selectedClass.sync="selectedClass" :selectedTime="selectedTime"></div>
+      <div :is="left[routing()]" :selectedClass.sync="selectedClass" :selectedTime="selectedTime" :stay.sync="stay"></div>
     </left>
     <right>
-      <div :is="right[0]" :selectedClass="selectedClass" :selectedTime.sync="selectedTime"></div>
+      <div :is="right[routing()]" :selectedClass="selectedClass" :selectedTime.sync="selectedTime" :stay="stay"></div>
     </right>
   </div>
 </template>
@@ -14,6 +14,8 @@
 import HeaderNav from '@/components/HeaderNav/HeaderNav'
 import ExtensionApplyLeft from '@/components/ExtensionApply/ExtensionApplyLeft'
 import ExtensionApplyRight from '@/components/ExtensionApply/ExtensionApplyRight'
+import StayApplyLeft from '@/components/StayApply/StayApplyLeft'
+import StayApplyRight from '@/components/StayApply/StayApplyRight'
 
 var Left = {
   template: `<div style="float:left; height:100%; width:33%"><slot></slot></div>`
@@ -33,13 +35,26 @@ export default {
   data: function () {
     return {
       left: [
-        ExtensionApplyLeft
+        ExtensionApplyLeft,
+        StayApplyLeft
       ],
       right: [
-        ExtensionApplyRight
+        ExtensionApplyRight,
+        StayApplyRight
       ],
       selectedClass: 0,
-      selectedTime: 11
+      selectedTime: 11,
+      stay: 0
+    }
+  },
+  methods: {
+    routing: function () {
+      let category = this.$route.params.category
+      if (category === 'extension') {
+        return 0
+      } else if (category === 'stay') {
+        return 1
+      }
     }
   }
 }

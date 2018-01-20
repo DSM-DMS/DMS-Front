@@ -82,7 +82,7 @@ export default {
   text-align: center;
   color: rgb(53, 147, 211);
   font-size: 17px;  
-  padding-top: 7px;
+  padding-top: 3px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
