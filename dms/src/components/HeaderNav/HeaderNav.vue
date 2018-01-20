@@ -1,7 +1,7 @@
 <template>
   <div id="header-wrapper" v-bind:style="menu ? { width: 'calc(100% - 350px)'} : { width: 'calc(100% - 100px)'}">
     <div id="brand-wrapper">
-      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" /> 
+      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" @click="$router.push('/')"/>
     </div>
 
     <div id="header-menu-wrapper">
@@ -49,11 +49,6 @@ export default {
   computed: {
     computedLoginModal: function () {
       return this.$store.getters.isLogin ? false : this.loginModal
-    }
-  },
-  watch: {
-    '$store.getters.isLogin': function () {
-      // this.$router.go(0)
     }
   }
 }

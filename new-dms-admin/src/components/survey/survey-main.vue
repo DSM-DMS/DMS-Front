@@ -50,31 +50,30 @@ export default {
   components: { modal, eventBus },
   methods: {
     surveyNext: function () {
-      if (this.title !== '' && this.start_date !== '' && this.end_date !== '' && this.description !== '' && this.target !== []) {
-        var formData = new FormData()
-        formData.append('description', this.description)
-        formData.append('title', this.title)
-        formData.append('start_date', this.start_date)
-        formData.append('end_date', this.end_date)
-        for (var i = 0; i < this.target.length; i++) {
-          this.target[i] = Number(this.target[i])
-        }
-        formData.append('target', JSON.stringify(this.target))
-        this.$axios.post('/admin/survey', formData,
-          {
-            headers: {
-              'Authorization': 'JWT ' + this.$getCookie('JWT'),
-              'Content-Type': 'multipart/form-data'
-            }
-          })
-        .then((response) => {
-          eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data.id)
-        })
-        .catch((ex) => {
-          console.log('ERROR!!!! : ', ex)
-          this.modalToggle()
-        })
+      var formData = new FormData()
+      formData.append('description', this.description)
+      formData.append('title', this.title)
+      formData.append('start_date', this.start_date)
+      formData.append('end_date', this.end_date)
+      for (var i = 0; i < this.target.length; i++) {
+        this.target[i] = Number(this.target[i])
       }
+      formData.append('target', JSON.stringify(this.target))
+      this.$axios.post('/admin/survey', formData,
+        {
+          headers: {
+            'Authorization': 'JWT ' + this.$getCookie('JWT'),
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+      .then((response) => {
+        eventBus.$emit('go-question', 'surveyQuestion', this.title, response.data.id)
+        console.log(response.status)
+      })
+      .catch((ex) => {
+        console.log('ERROR!!!! : ', ex)
+        this.modalToggle()
+      })
     },
     modalToggle: function () {
       this.isModal = !this.isModal
@@ -103,7 +102,7 @@ export default {
 }
 .survey-title {
   border : none;
-  font-size: 30px;
+  font-size: 38px;
   margin-bottom:2vh;
   margin-left : 1vw;
   display:block;
@@ -121,7 +120,7 @@ export default {
   margin-right: 7vw;
 }
 .survey-date {
-  font-size : 22px;
+  font-size : 30px;
   margin-bottom: 0;
 }
 .survey-date > span {
@@ -129,14 +128,14 @@ export default {
 }
 .survey-date > input {
   margin-top:1vh;
-  width : 25vw;
+  width : 25%;
   padding-left: .7vw;
-  font-size : 18px;
+  font-size : 25px;
   border:none;
   border-radius: 8px;
 }
 .description-describe {
-  font-size : 23px;
+  font-size : 30px;
   color :#675094;
   padding-bottom: 2.2vh;
   border-bottom: 1.6px solid #675094;
@@ -148,7 +147,7 @@ export default {
   border: none;
   padding: 2vh 1vw 2vh 1vw;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 25px;
 }
 .survey-target {
   margin-top: 3vh;

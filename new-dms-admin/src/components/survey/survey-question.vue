@@ -138,11 +138,11 @@ export default {
   margin-left : 1vw;
 }
 .survey-question-form {
-  height: 48vh;
+  height: 50vh;
   overflow-y: auto; 
 }
 .survey-question-edit-btn-group {
-  margin-top:4vh;
+  margin-top:4.3vh;
   text-align : center;
 }
 .survey-question-edit-btn-group > button {
@@ -152,6 +152,7 @@ export default {
   padding : 1.2vh 1.7vw 1.2vh 1.7vw;
   color:white;
   border-radius: 20px;
+  cursor: pointer;
 }
 .survey-question-add-component {
   margin-top: 2vh;
