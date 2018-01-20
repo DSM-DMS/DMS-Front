@@ -1,7 +1,7 @@
 <template>
-  <div id="header-wrapper">
+  <div id="header-wrapper" v-bind:style="menu ? { width: 'calc(100% - 350px)'} : { width: 'calc(100% - 100px)'}">
     <div id="brand-wrapper">
-      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" />
+      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" /> 
     </div>
 
     <div id="header-menu-wrapper">
@@ -78,12 +78,15 @@ export default {
   margin: 20px 50px 0 50px;
   position: fixed;
   top: 0;
-  width: calc(100% - 100px);
   z-index: 10;
   height: 60px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 3px 3px rgba(126, 126, 126, 0.3);
+}
+
+.header-wrapper-isMenu{
+  width: calc(100% - 400px)
 }
 
 #brand-wrapper {
