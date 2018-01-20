@@ -57,6 +57,7 @@ export default {
 }
 .multiful-choice-list {
   font-size: 19px;
+  margin-top:2vh;
 }
 .multiful-choice-list-title {
   color: #675094;

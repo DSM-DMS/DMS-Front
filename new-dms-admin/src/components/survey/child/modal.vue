@@ -42,26 +42,27 @@ export default {
     border-radius: 10px;
 }
 .modal-img-wrapper {
-    height: 55%;
+    height: 54%;
 }
 .modal-img-wrapper > img {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 28%;
+    width: 23%;
 }
 .modal-text-wrapper {
     text-align: center;
 }
 .modal-title {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 35px;
     margin-bottom: 0;
 }
 .modal-subtitle {
     font-weight: 450;
     color: #a4a4a4;
+    font-size: 23px;
     margin-top: 0;
 }
 .modal-ok-button {
@@ -71,7 +72,7 @@ export default {
     border:none;
     background-color: #675094;
     border-radius: 10px;
-    font-size:20px;
+    font-size:25px;
     cursor: pointer;
 }
 .modal-ok-button:before {
