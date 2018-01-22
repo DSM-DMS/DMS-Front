@@ -110,6 +110,7 @@ export default {
 @media only screen and (min-width: 1271px){
   #main-section {
     position: fixed;
+    z-index: -1;
   }
 }
 
@@ -127,7 +128,6 @@ export default {
   width: 100%;
   height: 100vh;
   display: table;
-  z-index: -1;
   top: 0;
 }
 
