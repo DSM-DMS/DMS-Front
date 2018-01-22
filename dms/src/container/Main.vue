@@ -60,8 +60,7 @@ export default {
   },
   methods: {
     getStudentInfo: function () {
-      if (typeof (this.$cookie.getCookie('JWT')) === 'object' && !this.$cookie.getCookie('JWT')) {
-      } else {
+      if (this.$store.getters.isLogin) {
         this.$http({
           method: 'GET',
           url: '/mypage',
