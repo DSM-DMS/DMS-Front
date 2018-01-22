@@ -51,7 +51,7 @@ export default {
       }
     }
   },
-  mounted: function () {
+  beforeMount: function () {
     this.$http.get('/stay', {
       headers: {
         Authorization: 'JWT ' + this.$cookie.getCookie('JWT')

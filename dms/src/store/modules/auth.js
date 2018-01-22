@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as types from '../mutation-types'
-import Vue from 'vue'
 import router from '@/router'
+import App from '@/App'
 
 const state = {
   isLogin: false
@@ -17,12 +17,12 @@ const actions = {
       let fd = new FormData()
       fd.append('id', payload.userName)
       fd.append('pw', payload.password)
-      Vue.prototype.$http.post('/auth', fd)
+      this._vm.$http.post('/auth', fd)
       .then(response => {
         if (payload.checked) {
-          Vue.prototype.$cookie.setCookie('JWT', response.data['access_token'], 1)
+          this._vm.$cookie.setCookie('JWT', response.data['access_token'], 1)
         } else {
-          Vue.prototype.$cookie.setCookie('JWT', response.data['access_token'])
+          this._vm.$cookie.setCookie('JWT', response.data['access_token'])
         }
         router.go(0)
       }).catch(error => {
@@ -33,23 +33,26 @@ const actions = {
   },
   logout ({commit, getters}) {
     if(getters.isLogin) {
-      Vue.prototype.$cookie.deleteCookie('JWT')
+      this._vm.$cookie.deleteCookie('JWT')
       router.go(0)
     }
   },
   authCheck ({commit}) {
-    Vue.prototype.$http.get('/auth-check', {
-      headers: {
-        Authorization: 'JWT ' + Vue.prototype.$cookie.getCookie('JWT')
-      }
-    })
-    .then(response => {
-      console.log('auth check success')
-      commit(types.SET_LOGIN_STATUS, {isLogin: true})
-    }).catch(error => {
-      console.log('auth check failure')
-      commit(types.SET_LOGIN_STATUS, {isLogin: false})      
-    })
+    let jwt = this._vm.$cookie.getCookie('JWT')
+    if(jwt !== '') {
+      this._vm.$http.get('/auth-check', {
+        headers: {
+          Authorization: 'JWT ' + jwt
+        }
+      })
+      .then(response => {
+        console.log('auth check success')
+        commit(types.SET_LOGIN_STATUS, {isLogin: true})
+      }).catch(error => {
+        console.log('auth check failure')
+        commit(types.SET_LOGIN_STATUS, {isLogin: false})      
+      })
+    }
   }
 }
 
