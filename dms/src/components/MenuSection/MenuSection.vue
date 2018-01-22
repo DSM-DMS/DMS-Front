@@ -134,6 +134,7 @@ export default {
 .menu-apply-btn{
   width: 100%;
   padding: 50px 20px 10px 20px;
+  cursor: pointer;
 }
 
 .menu-apply-btn img{

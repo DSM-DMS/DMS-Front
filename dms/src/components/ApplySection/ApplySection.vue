@@ -1,15 +1,15 @@
 <template>
   <div id="apply-wrapper">
     <div class="apply-card-wrapper">
-      <apply-stay :day="stay.day"/>
-      <apply-extension :extension="extension"/>
+      <apply-stay :day="applyData.stay.day"/>
+      <apply-extension :extension="applyData.extension"/>
     </div>
 
     <div class="apply-card-wrapper">
-      <apply-goingout  @applySaturday="applySaturdayGoingout" 
-                       @applySunday="applySundayGoingout"
+      <apply-goingout  @applySaturday="applySaturday" 
+                       @applySunday="applySunday"
                        @applyGoingout="applyGoingout" 
-                       :goingout="goingout"/>
+                       :goingout="applyData.goingout"/>
       <apply-survey/>
     </div>
   </div>
@@ -24,116 +24,17 @@ import ApplySurvey from '@/components/ApplySection/ApplySurvey'
 export default {
   name: 'ApplySection',
   components: {ApplyStay, ApplyExtension, ApplyGoingout, ApplySurvey},
-  data: function () {
-    return {
-      stay: {
-        day: '4'
-      },
-      goingout: {
-        isSaturdayGoingout: false,
-        isSundayGoingout: false
-      },
-      extension: {
-        class: [
-          '1층<br/>가온실',
-          '1층<br/>나온실',
-          '1층<br/>다온실',
-          '1층<br/>라온실',
-          '3층<br/>독서실',
-          '4층<br/>독서실',
-          '5층<br/>엶린교실'
-        ],
-        eleven: '',
-        twelve: ''
-      }
-    }
-  },
+  props: ['applyData'],
   methods: {
-    applySaturdayGoingout: function () {
-      this.goingout.isSaturdayGoingout = !this.goingout.isSaturdayGoingout
+    applySaturday: function () {
+      this.$emit('applySaturday')
     },
-    applySundayGoingout: function () {
-      this.goingout.isSundayGoingout = !this.goingout.isSundayGoingout
+    applySunday: function () {
+      this.$emit('applySunday')
     },
     applyGoingout: function () {
-      let fd = new FormData()
-      fd.append('sat', this.goingout.isSaturdayGoingout)
-      fd.append('sun', this.goingout.isSundayGoingout)
-      this.$http({
-        method: 'POST',
-        url: '/goingout',
-        data: fd,
-        headers: {
-          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-        }
-      }).then(res => {
-        if (res.status === 422) {
-        }
-        alert('신청 완료')
-      }).catch(err => {
-        console.log(err)
-      })
-    },
-    getApplyState: function () {
-      if (typeof (this.$cookie.getCookie('JWT')) === 'object' && !this.$cookie.getCookie('JWT')) {
-      } else {
-        this.$http({
-          method: 'GET',
-          url: '/goingout',
-          headers: {
-            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-          }
-        }).then(res => {
-          this.goingout.isSaturdayGoingout = res.data.sat
-          this.goingout.isSundayGoingout = res.data.sun
-        }).catch(err => {
-          console.log(err)
-        })
-
-        this.$http({
-          method: 'GET',
-          url: '/extension/11',
-          headers: {
-            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-          }
-        }).then(res => {
-          console.log(res.data)
-          this.extension.eleven = res.data.class_num
-        }).catch(err => {
-          console.log(err)
-        })
-
-        this.$http({
-          method: 'GET',
-          url: '/extension/12',
-          headers: {
-            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-          }
-        }).then(res => {
-          this.extension.twelve = res.data.class_num
-        }).catch(err => {
-          console.log(err)
-        })
-
-        this.$http({
-          method: 'GET',
-          url: '/stay',
-          headers: {
-            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-          }
-        }).then(res => {
-          this.stay.day = res.data.value
-        }).catch(err => {
-          console.log(err)
-        })
-      }
+      this.$emit('applyGoingout')
     }
-  },
-  created: function () {
-    this.getApplyState()
-  },
-  beforeUpdate: function () {
-    this.getApplyState()
   }
 }
 </script>
