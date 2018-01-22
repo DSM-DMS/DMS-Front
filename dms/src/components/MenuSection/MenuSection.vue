@@ -3,23 +3,23 @@
     <div id="menu">
       <div id="menu-student-info">
         <div id="menu-student-number-info">
-          학번: 20104
+          학번: {{ menuData.number }}
         </div>
         <div id="menu-student-name-info">
-          <p id="menu-student-name">김동규 </p>
-          <p id="menu-student-name-info-sub-text">님 환영합니다</p>
+          <p id="menu-student-name">{{ menuData.name }} </p>
+          <p id="menu-student-name-info-sub-text">{{ menuData.name ? '님 환영합니다' : '로그인을 해주세요' }}</p>
         </div>
         <div id="menu-student-point-info-wrapper">
           <div class="menu-student-point-info">
             <p>상점</p>
             <div class="menu-student-point">
-              20
+              {{ menuData.goodPoint ? menuData.goodPoint : '0' }}
             </div>
           </div>
           <div class="menu-student-point-info">
             <p>벌점</p>
             <div class="menu-student-point">
-              20
+              {{ menuData.badPoint ? menuData.badPoint : '0' }}
             </div>
           </div>
         </div>
@@ -42,6 +42,7 @@
 <script>
 export default {
   name: 'MenuSection',
+  props: ['menuData'],
   computed: {
     computedMenu: function () {
       return this.$store.getters.isMenu
@@ -53,13 +54,12 @@ export default {
 <style>
 #menu-wrapper{
   width: 100%;
-  height: 100vh;
 }
 #menu{
   position: fixed;
+  z-index: 11;
   top: 0;
   right: 0;
-  z-index: 11;
   min-width: 300px;
   height: 100vh;
   float: right;
@@ -82,7 +82,7 @@ export default {
   text-align: center;
   color: rgb(53, 147, 211);
   font-size: 17px;  
-  padding-top: 3px;
+  padding-top: 5px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }

@@ -30,8 +30,8 @@ export default {
       menuData: {
         name: '',
         number: '',
-        badPoint: '',
-        goodPoint: ''
+        goodPoint: '',
+        badPoint: ''
       },
       // 신청 부분 데이터
       applyData: {
@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     getStudentInfo: function () {
+      console.log(this.$store.getters.isLogin)
       if (this.$store.getters.isLogin) {
         this.$http({
           method: 'GET',
@@ -68,6 +69,7 @@ export default {
             Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
           }
         }).then(res => {
+          console.log(res.data)
           this.menuData.name = res.data.name
           this.menuData.number = res.data.number
           this.menuData.goodPoint = res.data.good_point
