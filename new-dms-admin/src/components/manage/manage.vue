@@ -10,13 +10,13 @@
 
       <div id="table-cont">
         <nav>
-          <div @click="changeView1" :class="{ 'chk-btn': case1, 'dis-chk-btn': case2 }" id="look-up" class="btn">{{ title }}</div>
-          <div @click="changeView2" :class="{ 'chk-btn': case2, 'dis-chk-btn': case1 }" id="writing" class="btn">글작성</div>
+          <div @click="tableChangeView" :class="{ 'chk-btn': tableCase, 'dis-chk-btn': wrtieCase }" id="look-up" class="btn">공자사항</div>
+          <div @click="wrtieChangeView" :class="{ 'chk-btn': wrtieCase, 'dis-chk-btn': tableCase }" id="writing" class="btn">글작성</div>
         </nav>
         <div id="content">
-          <component id="view" :is="view"></component>
+          <component id="view" :is="view" @modify-table="modifyChangeView" @lookUp="lookUpChangeView" :modifyPostId="postId" :modifyPostTitle="postTitle" :modifyPostContent="postContent"
+          :modifyCase="modifyChk" :lookUpPostId="postId"></component>
         </div>
-        
       </div>
     </div>
   </div>
@@ -25,36 +25,61 @@
 <script>
 import table from './child/manage-table.vue'
 import write from './child/manage-writing.vue'
+import lookUp from './child/manage-look-up.vue'
 
 export default {
   comments: { table, write },
   data: function () {
     return {
-      title: '공지사항',
       view: table,
-      case1: true,
-      case2: false
+      tableCase: true,
+      wrtieCase: false,
+      lookUpCase: false,
+      postId: '',
+      postTitle: '',
+      postContent: '',
+      modifyChk: true
     }
   },
   methods: {
-    changeView1: function () {
-      if (this.case1 === true) {
+    tableChangeView: function () {
+      if (this.tableCase === true) {
       } else {
-        this.case1 = true
-        this.case2 = false
+        this.tableCase = true
+        this.wrtieCase = false
         this.view = table
       }
     },
-    changeView2: function () {
-      if (this.case2 === true) {
+    wrtieChangeView: function () {
+      this.modifyChk = false
+      if (this.wrtieCase === true) {
       } else {
-        this.case1 = false
-        this.case2 = true
+        this.tableCase = false
+        this.wrtieCase = true
         this.view = write
       }
     },
+    lookUpChangeView: function (postId) {
+      this.view = lookUp
+      this.lookUpCase = true
+      this.postId = postId
+      console.log(postId)
+    },
     goBack: function (view) {
       this.$router.go(-1)
+    },
+    modifyChangeView: function (postId, title, content) {
+      this.modifyChk = true
+      console.log('슈졍')
+      if (this.wrtieCase === true) {
+      } else {
+        this.tableCase = false
+        this.wrtieCase = true
+        this.view = write
+      }
+      this.postId = postId
+      this.postTitle = title
+      this.postContent = content
     }
   }
 }
@@ -158,6 +183,7 @@ export default {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 4vh 4vw 4vh 4vw;
+  overflow: auto;
 }
 
 #view {

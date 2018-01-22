@@ -1,66 +1,49 @@
 <template>
 <div id="container">
-    <table id="table-content">
-        <thead class="table-head">
-            <tr>
-                <th id="num">#</th>
-                <th id="content-title">제목</th>
-                <th id="writer">작성자</th>
-                <th class="icons">수정</th>
-                <th class="icons">삭제</th>
-                <th class="icons">프리뷰</th>
-            </tr>
-        </thead>
+  <table id="table-content">
+    <thead class="table-head">
+      <tr>
+        <th id="num">#</th>
+        <th id="content-title">제목</th>
+        <th id="writer">작성자</th>
+        <th class="icons">수정</th>
+        <th class="icons">삭제</th>
+        <th class="icons">프리뷰</th>
+      </tr>
+    </thead>
 
-        <tbody>
-            <tr v-for="post in posts">
-                <td>{{ number }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.author }}</td>
-                <td><img class="icon" src="../../../assets/icon/ic_edit.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_delete.png" alt=""></td>
-                <td><img class="icon" src="../../../assets/icon/ic_preview.png" alt=""></td>
-            </tr>
-        </tbody>
-    </table>
+    <tbody>
+      <tr v-for="(post,index) in posts">
+        <td>{{ index+1 }}</td>
+        <td @click="lookUpPost(post.id)" class="hoverItems">{{ post.title }}</td>
+        <td>{{ post.author }}</td>
+        <td><img @click="modifyTable(post.id)" class="icon hoverItems" src="../../../assets/icon/ic_edit.png" alt=""></td>
+        <td><img @click="deleteTable(post.id)" class="icon hoverItems" src="../../../assets/icon/ic_delete.png" alt=""></td>
+        <td><img @click="previewTable(post.id)" class="icon hoverItems" src="../../../assets/icon/ic_preview.png" alt=""></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </template>
 
 <script>
-const qs = require('query-string')
 
 export default {
   data () {
     return {
       posts: [],
-      errors: []
+      errors: [],
+      post_content: {},
+      modify_post: {
+        title: [],
+        content: []
+      }
     }
   },
   created: function () {
     this.fetchTable()
   },
   methods: {
-    deleteTable: function (id) {
-      this.$axios.delete('/admin/notice', qs.stringify({
-        table_id: id
-      }),
-        {
-          headers: {
-            Authorization: 'JWT ' + this.$getCookie('JWT')
-          }
-        })
-      .then(response => {
-        if (response.status === 200) {
-          this.fetchTable()
-        } else if (response.status === 403) {
-          alert('삭제에 실패했습니다')
-        }
-      })
-      .catch(ex => {
-        console.log('ERROR!!!!', ex)
-        alert('삭제에 실패했습니다')
-      })
-    },
     fetchTable: function () {
       let self = this
       self.$axios.get('/notice', {
@@ -69,11 +52,68 @@ export default {
         }
       })
     .then(response => {
+      console.log(response)
       self.posts = response.data
     })
     .catch(e => {
       console.log('error :' + e)
     })
+    },
+    modifyTable: function (postId) {
+      this.$axios.get('/notice/' + postId, {
+        headers: {
+          'Authorization': 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+      .then(response => {
+        this.post_content = response.data
+        this.$emit('modify-table', postId, this.post_content.title, this.post_content.content)
+      })
+      .catch(e => {
+        console.log('ERROR ==> ' + e)
+      })
+    },
+    deleteTable: function (id) {
+      var tableId = new FormData()
+      tableId.append('id', id)
+      this.$axios({
+        method: 'DELETE',
+        url: '/admin/notice',
+        data: tableId,
+        headers: {'Authorization': 'JWT ' + this.$getCookie('JWT')}
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.fetchTable()
+        } else if (response.status === 204) {
+          alert('존재하지 않는 게시글입니다')
+        }
+      })
+      .catch(ex => {
+        console.log('ERROR!!!!', ex)
+        alert('삭제에 실패했습니다')
+      })
+    },
+    lookUpPost: function (postId) {
+      this.$emit('lookUp', postId)
+    },
+    previewTable: function (postId) {
+      let formData = new FormData()
+      formData.append('id', postId)
+      this.$axios.post('/admin/preview/notice', formData,
+        {
+          headers: {
+            Authorization: 'JWT ' + this.$getCookie('JWT')
+          }
+        })
+      .then(response => {
+        if (response === 201) {
+          console.log('프리뷰 설정 성공')
+        }
+      })
+      .catch(e => {
+        console.log('ERROR ==> ' + e)
+      })
     }
   }
 }
@@ -110,19 +150,18 @@ export default {
     display:table;
     width: 100%;
     margin-bottom: 20px;
-
 }
 
 #table-content tr td:not(:nth-child(2)), #table-content tr th:not(:nth-child(2)){
-    width: 15%;
+    width: 10%;
 }
 
 #table-content tr td:nth-child(2), #table-content tr th:nth-child(2) {
-    width: 25%;
+    width: 50%;
 }
 
 #table-content tbody{
-    overflow:auto;
+    overflow-y:auto;
     float:left;
     width:100%;
     height:80%
@@ -152,6 +191,10 @@ export default {
     display:table;
     width:100%;
     height: 20%;
+}
+
+.hoverItems:hover {
+  cursor: pointer;
 }
 
 .icon {
