@@ -29,7 +29,11 @@
 <script>
 
 export default {
-  data () {
+  created: function () {
+    this.fetchTable()
+  },
+  props: ['url'],
+  data: function () {
     return {
       posts: [],
       errors: [],
@@ -40,19 +44,15 @@ export default {
       }
     }
   },
-  created: function () {
-    this.fetchTable()
-  },
   methods: {
     fetchTable: function () {
       let self = this
-      self.$axios.get('/notice', {
+      self.$axios.get('/' + this.url, {
         headers: {
           'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
       })
     .then(response => {
-      console.log(response)
       self.posts = response.data
     })
     .catch(e => {
@@ -60,7 +60,7 @@ export default {
     })
     },
     modifyTable: function (postId) {
-      this.$axios.get('/notice/' + postId, {
+      this.$axios.get('/' + this.url + '/' + postId, {
         headers: {
           'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
@@ -74,25 +74,26 @@ export default {
       })
     },
     deleteTable: function (id) {
-      var tableId = new FormData()
-      tableId.append('id', id)
-      this.$axios({
-        method: 'DELETE',
-        url: '/admin/notice',
-        data: tableId,
-        headers: {'Authorization': 'JWT ' + this.$getCookie('JWT')}
-      })
-      .then(response => {
-        if (response.status === 200) {
-          this.fetchTable()
-        } else if (response.status === 204) {
-          alert('존재하지 않는 게시글입니다')
-        }
-      })
-      .catch(ex => {
-        console.log('ERROR!!!!', ex)
-        alert('삭제에 실패했습니다')
-      })
+      if (confirm('삭제하시겠습니까?')) {
+        var tableId = new FormData()
+        tableId.append('id', id)
+        this.$axios({
+          method: 'DELETE',
+          url: '/admin/' + this.url,
+          data: tableId,
+          headers: {'Authorization': 'JWT ' + this.$getCookie('JWT')}
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.fetchTable()
+          } else if (response.status === 204) {
+            alert('존재하지 않는 게시글입니다')
+          }
+        })
+        .catch(ex => {
+          alert('삭제에 실패했습니다')
+        })
+      }
     },
     lookUpPost: function (postId) {
       this.$emit('lookUp', postId)
@@ -100,7 +101,7 @@ export default {
     previewTable: function (postId) {
       let formData = new FormData()
       formData.append('id', postId)
-      this.$axios.post('/admin/preview/notice', formData,
+      this.$axios.post('/admin/preview/' + this.url, formData,
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
@@ -171,20 +172,20 @@ export default {
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
-	background-color: lightgray;
+	background-color: white
 }
 
 #table-content tbody::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: lightgray;
+	width: 10px;
+	background-color: white;
 }
 
 #table-content tbody::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #fff;
+	background-color: gray
 }
 
 #table-content tbody>tr{

@@ -10,12 +10,12 @@
 
       <div id="table-cont">
         <nav>
-          <div @click="tableChangeView" :class="{ 'chk-btn': tableCase, 'dis-chk-btn': wrtieCase }" id="look-up" class="btn">공자사항</div>
+          <div @click="tableChangeView" :class="{ 'chk-btn': tableCase, 'dis-chk-btn': wrtieCase }" id="look-up" class="btn">{{navTitle}}</div>
           <div @click="wrtieChangeView" :class="{ 'chk-btn': wrtieCase, 'dis-chk-btn': tableCase }" id="writing" class="btn">글작성</div>
         </nav>
         <div id="content">
-          <component id="view" :is="view" @modify-table="modifyChangeView" @lookUp="lookUpChangeView" :modifyPostId="postId" :modifyPostTitle="postTitle" :modifyPostContent="postContent"
-          :modifyCase="modifyChk" :lookUpPostId="postId"></component>
+          <component id="view" :is="view" @modify-table="modifyChangeView" @lookUp="lookUpChangeView" @uploadComplete="tableChangeView" :modifyPostId="postId" :modifyPostTitle="postTitle" :modifyPostContent="postContent"
+          :modifyCase="modifyChk" :lookUpPostId="postId" :url="thisUrl"></component>
         </div>
       </div>
     </div>
@@ -28,7 +28,9 @@ import write from './child/manage-writing.vue'
 import lookUp from './child/manage-look-up.vue'
 
 export default {
-  comments: { table, write },
+  created: function () {
+    this.routing()
+  },
   data: function () {
     return {
       view: table,
@@ -38,10 +40,27 @@ export default {
       postId: '',
       postTitle: '',
       postContent: '',
-      modifyChk: true
+      modifyChk: true,
+      thisUrl: '',
+      navTitle: ''
     }
   },
   methods: {
+    routing: function () {
+      let category = this.$route.params.category
+      this.thisUrl = category
+      switch (category) {
+        case 'notice':
+          this.navTitle = '공지사항'
+          break
+        case 'rule':
+          this.navTitle = '기숙사규칙'
+          break
+        case 'faq':
+          this.navTitle = '자주하는 질문'
+          break
+      }
+    },
     tableChangeView: function () {
       if (this.tableCase === true) {
       } else {
@@ -153,7 +172,7 @@ export default {
 
 .btn {
   cursor: pointer;
-  width: 8vw;
+  width: 9vw;
   height: 7.5vh;
   display:table-cell;
   border-top-left-radius: 10px;
@@ -183,11 +202,32 @@ export default {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 4vh 4vw 4vh 4vw;
-  overflow: auto;
+  overflow-y:auto;
+}
+
+#content::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: white
+}
+
+#content::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: white;
+}
+
+#content::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: gray
 }
 
 #view {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 </style>

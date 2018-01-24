@@ -8,7 +8,7 @@
 <script>
 export default {
   created: function () {
-    this.$axios.get('/notice/' + this.lookUpPostId, {
+    this.$axios.get('/' + this.url + '/' + this.lookUpPostId, {
       headers: {
         'Authorization': 'JWT ' + this.$getCookie('JWT')
       }
@@ -21,7 +21,7 @@ export default {
       console.log('ERROR ==> ' + e)
     })
   },
-  props: ['lookUpPostId'],
+  props: ['lookUpPostId', 'url'],
   data: function () {
     return {
       content: '',
@@ -32,7 +32,5 @@ export default {
 </script>
 
 <style>
-  #look-up-container {
-    text-align: left;
-  }
+
 </style>

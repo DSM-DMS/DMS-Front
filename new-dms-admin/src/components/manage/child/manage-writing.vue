@@ -36,7 +36,7 @@ export default {
     }
   },
   components: { Ckeditor },
-  props: ['modifyPostId', 'modifyPostTitle', 'modifyPostContent', 'modifyCase'],
+  props: ['modifyPostId', 'modifyPostTitle', 'modifyPostContent', 'modifyCase', 'url'],
   data: function () {
     return {
       title: '',
@@ -44,7 +44,6 @@ export default {
       modifyId: '',
       config: {
         toolbar: [
-          { name: 'forms', items: [ 'Checkbox', 'Radio', 'Button' ] },
           { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ] },
           { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
           { name: 'links', items: [ 'Link', 'Unlink' ] },
@@ -71,16 +70,17 @@ export default {
       let formData = new FormData()
       formData.append('title', this.title)
       formData.append('content', this.content)
-      this.$axios.post('/admin/notice', formData,
+      this.$axios.post('/admin/' + this.url, formData,
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then(response => {
-        if (response === 201) {
-          console.log('공지사항 업로드 성공')
-          alert('공지사항 업로드 성공')
+        if (response.status === 201) {
+          console.log(this.url + '업로드 성공')
+          alert(this.url + '업로드 성공')
+          this.$emit('uploadComplete')
         }
       })
       .catch(e => {
@@ -88,12 +88,11 @@ export default {
       })
     },
     patchPosts: function () {
-      console.log('patch')
       let formData = new FormData()
       formData.append('id', this.modifyId)
       formData.append('title', this.title)
       formData.append('content', this.content)
-      this.$axios.patch('/admin/notice', formData,
+      this.$axios.patch('/admin/' + this.url, formData,
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
@@ -101,7 +100,8 @@ export default {
         })
       .then(response => {
         if (response === 200) {
-          console.log('공지사항 수정 성공')
+          console.log(this.url + '수정 성공')
+          this.$emit('uploadComplete')
         }
       })
       .catch(e => {
@@ -109,11 +109,13 @@ export default {
       })
     },
     finished: function () {
+      if (this.title === '' || this.content === '') {
+        alert('제목 혹은 내용이 없습니다')
+        return
+      }
       if (this.modifyCase) {
-        console.log('수정')
         this.patchPosts()
       } else {
-        console.log('제출')
         this.submitPosts()
       }
     }
@@ -137,6 +139,9 @@ export default {
 }
 
 #submit {
+  position: relative;
+  top:20px;
+  margin-bottom: 10px;
   height: 12%;
   width: 13%;
   border: none;
