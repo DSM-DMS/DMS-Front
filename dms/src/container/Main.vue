@@ -1,5 +1,5 @@
 <template>
-  <div style="min-width: 1200px;">
+  <div style="min-width: 1350px;">
     <header-nav/>
     <menu-section :menuData="menuData"/>
     <main-section/>

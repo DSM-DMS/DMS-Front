@@ -32,11 +32,22 @@
 <style>
   /*post-section*/
 
+  @media only screen and (min-width: 1271px){
+    #post-wrapper {
+      height: 50vh;
+    }
+  }
+
+  @media only screen and (max-width: 1270px){
+    #post-wrapper {
+      height: 600px;
+    }
+  }
+
   #post-wrapper {
     font-family: 'NanumSquareRoundB';
     width: 100%;
     background-color: rgb(226, 226, 226);
-    height: 600px;
     padding-top: 40px;
     padding-bottom: 40px;
   }

@@ -93,7 +93,7 @@ export default {
 
 #dev-intro-developer-wrapper{
   height: calc(100% - 50px);
-  width: calc(100% - 160px);
+  width: 100%;
   padding: 50px 80px 0 80px;
 }
 

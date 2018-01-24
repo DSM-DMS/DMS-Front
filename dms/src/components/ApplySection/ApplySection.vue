@@ -43,12 +43,14 @@ export default {
 @media only screen and (min-width: 1271px){
   #apply-wrapper {
     margin-top: 100vh;
+    height: 100vh;
   }
 }
 
 @media only screen and (max-width: 1270px){
   #apply-wrapper {
     margin-top: 0;
+    height: 850px;
   }
 }
 
@@ -62,7 +64,6 @@ export default {
 
 #apply-wrapper {
   font-family: 'NanumSquareRoundB';
-  height: 850px;
   width: 100%;
   padding: 20px;
   background-color: #F9F7FC;
