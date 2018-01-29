@@ -34,7 +34,7 @@
 
   @media only screen and (min-width: 1271px){
     #post-wrapper {
-      height: 50vh;
+      height: 70vh;
     }
   }
 
