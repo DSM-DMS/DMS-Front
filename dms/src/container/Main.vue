@@ -1,7 +1,6 @@
 <template>
   <div style="min-width: 1350px;">
-    <header-nav/>
-    <menu-section :menuData="menuData"/>
+    <header-nav :menuData="menuData"/>
     <main-section/>
     <apply-section :applyData="applyData"
                    @applySaturday="applySaturdayGoingout" 
@@ -15,7 +14,6 @@
 <script>
 
 import HeaderNav from '@/components/HeaderNav/HeaderNav'
-import MenuSection from '@/components/MenuSection/MenuSection'
 import MainSection from '@/components/MainSection/MainSection'
 import ApplySection from '@/components/ApplySection/ApplySection'
 import PostSection from '@/components/PostSection/PostSection'
@@ -23,7 +21,7 @@ import FooterSection from '@/components/FooterSection/FooterSection'
 
 export default {
   name: 'Main',
-  components: {HeaderNav, MenuSection, MainSection, PostSection, ApplySection, FooterSection},
+  components: {HeaderNav, MainSection, PostSection, ApplySection, FooterSection},
   data: function () {
     return {
       // 메뉴 부분 데이터

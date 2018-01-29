@@ -15,16 +15,21 @@
       </div>
     </div>
 
+    <menu-section :menuData="menuData" :menu="menu" @update:menu="val => menu = val"/>
+
     <login-modal v-if="computedLoginModal" @close="loginModal = false"/>
   </div>
 </template>
 
 <script>
 import LoginModal from '@/components/HeaderNav/LoginModal'
+import MenuSection from '@/components/MenuSection/MenuSection'
+
 export default {
   name: 'HeaderNav',
   components: {
-    LoginModal
+    LoginModal,
+    MenuSection
   },
   data: function () {
     return {
@@ -42,7 +47,6 @@ export default {
       }
     },
     menuButton: function () {
-      this.$store.dispatch('setMenuStatus')
       this.menu = !this.menu
     }
   },
@@ -50,6 +54,9 @@ export default {
     computedLoginModal: function () {
       return this.$store.getters.isLogin ? false : this.loginModal
     }
+  },
+  props: {
+    menuData: {type: Object}
   }
 }
 </script>
@@ -78,6 +85,8 @@ export default {
   border-radius: 10px;
   background-color: white;
   box-shadow: 3px 3px rgba(126, 126, 126, 0.3);
+
+  transition: .4s width ease-out;
 }
 
 .header-wrapper-isMenu{

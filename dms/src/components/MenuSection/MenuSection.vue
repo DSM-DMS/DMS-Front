@@ -1,6 +1,6 @@
 <template>
-  <div id="menu-wrapper" v-if="computedMenu" @click.self="$emit('close')">
-    <div id="menu">
+  <div id="menu-wrapper" @click.self="$emit('close')">
+    <div id="menu" :style="{right: computedMenu ? '0px' : '-300px'}">
       <div id="menu-student-info">
         <div id="menu-student-number-info">
           학번: {{ menuData.number }}
@@ -25,28 +25,52 @@
         </div>
       </div>
       <div id="menu-apply">
-        <div class="menu-apply-btn">
+        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 0">
           <img src="../../assets/Main_menu/ic_change_pw.png">
         </div>
-        <div class="menu-apply-btn">
+        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 1">
           <img src="../../assets/Main_menu/ic_report_broken.png">
         </div>
-        <div class="menu-apply-btn">
+        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 2">
           <img src="../../assets/Main_menu/ic_bug_report.png">
         </div>
       </div>
     </div>
+    <menu-modal v-if="menuModal.isShow" @close="menuModal.isShow = false; computedMenu = true" :modalData="menuModal"/>
   </div>
 </template>
 
 <script>
+import MenuModal from './MenuModal'
+
 export default {
   name: 'MenuSection',
-  props: ['menuData'],
-  computed: {
-    computedMenu: function () {
-      return this.$store.getters.isMenu
+  props: ['menuData', 'menu'],
+  data: function () {
+    return {
+      menuModal: {
+        isShow: false,
+        idx: 0
+      }
     }
+  },
+  computed: {
+    computedMenu: {
+      get: function () {
+        return this.menu && !this.menuModal.isShow
+      },
+      set: function (val) {
+        this.$emit('update:menu', val)
+      }
+    }
+  },
+  watch: {
+    computedMenu: function (val) {
+      this.$emit('update:menu', val)
+    }
+  },
+  components: {
+    MenuModal
   }
 }
 </script>
@@ -55,14 +79,19 @@ export default {
 #menu-wrapper{
   width: 100%;
 }
+
 #menu{
   position: fixed;
   z-index: 11;
   top: 0;
-  right: 0;
+  right: -300px;
   min-width: 300px;
+  width: 300px;
   height: 100vh;
   float: right;
+  /* 색 수정 하세요 */
+  border-left: 1px solid rgb(200, 200, 200);
+  transition: .4s right ease-out;
 }
 
 #menu-student-info{
