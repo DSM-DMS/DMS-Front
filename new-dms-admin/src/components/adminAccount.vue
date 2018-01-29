@@ -2,7 +2,7 @@
   <div id="login-modal-wrapper" @click.self="$emit('close')">
     <div id="login-modal">
       <div id="login-left">
-        <img id="login-image" :src="require('../assets/icon/ic_createAccount.png')" alt="">
+        <img id="login-image" :src="require('../assets/icon/ic_createAccount.png')">
       </div>
       <div id="login-right">
         <div id="login-form" @keyup.enter="login">
@@ -41,7 +41,7 @@ export default {
       .then((response) => {
         console.log(response.data)
         if (response.status === 201) {
-          console.log('관리자 계정 생성 성공')
+          alert('관리자 계정 생성 성공')
         } else {
           alert('관리자 계정 생성 실패')
         }

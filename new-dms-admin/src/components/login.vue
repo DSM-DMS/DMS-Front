@@ -15,7 +15,7 @@
       </div>
     <div id="login-main">
       <div id="login-from" @keyup.enter='login'>
-        <input type="text" class="login-input" v-model="id" placeholder="Username">
+        <input type="text" class="login-input" v-model="id" placeholder="ID">
         <input type="password" class="login-input" v-model="pw" placeholder="Password">
       </div>
       <div id="check">

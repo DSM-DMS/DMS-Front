@@ -4,12 +4,12 @@
     <div class="top">
         <img id="logo"  src="../assets/logo/logo.png">
         <div id="admin-account">
-            <div id="account-contents">
-                <img id="admin-create" src="../assets/icon/ic_create_account.png">
+            <div id="account-contents" @click="delete_account">
+                <img id="admin-delete" src="../assets/icon/ic_create_account.png">
                 <p id="account-title">관리자 계정 삭제</p> 
             </div> 
             <div id="account-contents" @click="showAdminAccount()">
-                <img id="admin-delete" src="../assets/icon/ic_return_account.png">
+                <img id="admin-create" src="../assets/icon/ic_return_account.png">
                 <p id="account-title">관리자 계정 생성</p>
             </div> 
         </div>
@@ -19,27 +19,27 @@
             <h3 id="title">Download</h3>
         </div>
         <div id="download-contents">
-            <div class="download-bg">
+            <div class="download-bg" @click="stay">
                 <img class="icon" src="../assets/icon/ic_stay.png">
                 <h3 class="conetnets-title">잔류신청</h3>
                 <p class="sentence">잔류 신청 결과를 다운로드합니다.</p>
             </div>
-            <div class="download-bg">
+            <div class="download-bg" @click="goingout">
                 <img class="icon" src="../assets/icon/ic_goingout.png">
                 <h3 class="conetnets-title">외출신청</h3>
                 <p class="sentence">외출 신청 결과를 다운로드합니다.</p>
             </div>
-            <div class="download-bg">
+            <div class="download-bg" @click="facility">
                 <img class="icon" src="../assets/icon/ic_broken.png">
                 <h3 class="conetnets-title">시설고장</h3>
                 <p class="sentence">시설 고장 목록을 다운로드합니다.</p>
             </div>
-            <div class="download-bg">
+            <div class="download-bg" @click="extension_11">
                 <img class="icon" src="../assets/icon/ic_eleven.png">
                 <h3 class="conetnets-title">11시연장</h3>
                 <p class="sentence">연장 신청 목록을 다운로드합니다.</p>
             </div>
-            <div class="download-bg">
+            <div class="download-bg" @click="extension_12">
                 <img class="icon" src="../assets/icon/ic_twelve.png">
                 <h3 class="conetnets-title">12시연장</h3>
                 <p class="sentence">연장 신청 목록을 다운로드합니다.</p>
@@ -93,6 +93,54 @@ export default {
     },
     showAdminAccount: function () {
       this.isAdminAccount = !this.isAdminAccount
+    },
+    stay: function (event) {
+      this.$axios({
+        methods: 'GET',
+        url: '/admin/stay',
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    },
+    goingout: function (event) {
+      this.$axios({
+        methods: 'GET',
+        url: '/admin/goingout',
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    },
+    facility: function (event) {
+      this.$axios({
+        methods: 'GET',
+        url: 'admin/report/facility',
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    },
+    extension_11: function (event) {
+      this.$axios({
+        methods: 'GET',
+        url: 'admin/extension/11',
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    },
+    extension_12: function (event) {
+      this.$axios({
+        methods: 'GET',
+        url: 'admin/extension/12',
+        headers: {
+          Authorization: 'JWT ' + this.$getCookie('JWT')
+        }
+      })
+    },
+    delete_account: function (event) {
+      alert('아직 준비 되지 않았습니다.')
     }
   }
 }
