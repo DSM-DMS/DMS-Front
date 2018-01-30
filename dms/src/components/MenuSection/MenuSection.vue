@@ -25,14 +25,8 @@
         </div>
       </div>
       <div id="menu-apply">
-        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 0">
-          <img src="../../assets/Main_menu/ic_change_pw.png">
-        </div>
-        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 1">
-          <img src="../../assets/Main_menu/ic_report_broken.png">
-        </div>
-        <div class="menu-apply-btn" @click="menuModal.isShow = true; menuModal.idx = 2">
-          <img src="../../assets/Main_menu/ic_bug_report.png">
+        <div class="menu-apply-btn" v-for="button in menuButtons" :key="button.id" @click="menuButton(button.id)">
+          <img :src="button.img">
         </div>
       </div>
     </div>
@@ -45,13 +39,36 @@ import MenuModal from './MenuModal'
 
 export default {
   name: 'MenuSection',
-  props: ['menuData', 'menu'],
+  props: {
+    menuData: {type: Object},
+    menu: {type: Boolean}
+  },
   data: function () {
     return {
       menuModal: {
         isShow: false,
         idx: 0
-      }
+      },
+      menuButtons: [
+        {
+          id: 0,
+          img: require('../../assets/Main_menu/ic_change_pw.png')
+        },
+        {
+          id: 1,
+          img: require('../../assets/Main_menu/ic_report_broken.png')
+        },
+        {
+          id: 2,
+          img: require('../../assets/Main_menu/ic_bug_report.png')
+        }
+      ]
+    }
+  },
+  methods: {
+    menuButton: function (idx) {
+      this.menuModal.isShow = true
+      this.menuModal.idx = idx
     }
   },
   computed: {

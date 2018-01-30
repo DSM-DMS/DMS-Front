@@ -31,8 +31,8 @@ export default {
 
 <style scoped>
 #menu-modal-wrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@ export default {
 
 #menu-modal {
   background-color: white;
-  width: 600px;
+  width: 500px;
   border-radius: 15px;
   position: fixed;
   left: 50%;
