@@ -40,7 +40,6 @@ import MenuModal from './MenuModal'
 export default {
   name: 'MenuSection',
   props: {
-    menuData: {type: Object},
     menu: {type: Boolean}
   },
   data: function () {
@@ -79,10 +78,16 @@ export default {
       set: function (val) {
         this.$emit('update:menu', val)
       }
+    },
+    menuData: function () {
+      return this.$store.getters.menuData
     }
   },
   watch: {
     computedMenu: function (val) {
+      if (val) {
+        this.$store.dispatch('getData')
+      }
       this.$emit('update:menu', val)
     }
   },

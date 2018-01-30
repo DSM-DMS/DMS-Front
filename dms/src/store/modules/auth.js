@@ -1,7 +1,6 @@
 /* eslint-disable */
 import * as types from '../mutation-types'
 import router from '@/router'
-import App from '@/App'
 
 const state = {
   isLogin: false
@@ -37,7 +36,7 @@ const actions = {
       router.go(0)
     }
   },
-  authCheck ({commit}) {
+  authCheck ({commit, dispatch}) {
     let jwt = this._vm.$cookie.getCookie('JWT')
     if(jwt !== '') {
       this._vm.$http.get('/auth-check', {
@@ -48,6 +47,7 @@ const actions = {
       .then(response => {
         console.log('auth check success')
         commit(types.SET_LOGIN_STATUS, {isLogin: true})
+        dispatch('getData')
       }).catch(error => {
         console.log('auth check failure')
         commit(types.SET_LOGIN_STATUS, {isLogin: false})      

@@ -9,12 +9,12 @@
         <div id="extension-apply-11-img-wrapper">
           <img v-if="!!extension.eleven" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven_light.png" />
           <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
-          <span class="extension-apply-class-text" id="extension-apply-11-class" v-html="extension.class[ extension.eleven - 1 ]"></span>
+          <span class="extension-apply-class-text" id="extension-apply-11-class" v-html="extensionRoom[ extension.eleven - 1 ]"></span>
         </div>
         <div id="extension-apply-12-img-wrapper">
           <img v-if="!!extension.twelve" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
           <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve.png" />
-          <span class="extension-apply-class-text" id="extension-apply-12-class" v-html="extension.class[ extension.twelve - 1 ]"></span>
+          <span class="extension-apply-class-text" id="extension-apply-12-class" v-html="extensionRoom[ extension.twelve - 1 ]"></span>
         </div>
       </div>
     </div>
@@ -24,7 +24,24 @@
 <script>
 export default {
   name: 'Applyextension',
-  props: ['extension']
+  data: function () {
+    return {
+      extensionRoom: [
+        '1층<br/>가온실',
+        '1층<br/>나온실',
+        '1층<br/>다온실',
+        '1층<br/>라온실',
+        '3층<br/>독서실',
+        '4층<br/>독서실',
+        '5층<br/>열린교실'
+      ]
+    }
+  },
+  computed: {
+    extension: function () {
+      return this.$store.getters.applyData.extension
+    }
+  }
 }
 </script>
 

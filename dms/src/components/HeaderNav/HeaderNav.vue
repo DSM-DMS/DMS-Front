@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <menu-section :menuData="menuData" :menu="menu" @update:menu="val => menu = val"/>
+    <menu-section :menu="menu" @update:menu="val => menu = val"/>
 
     <login-modal v-if="computedLoginModal" @close="loginModal = false"/>
   </div>
@@ -54,9 +54,6 @@ export default {
     computedLoginModal: function () {
       return this.$store.getters.isLogin ? false : this.loginModal
     }
-  },
-  props: {
-    menuData: {type: Object}
   }
 }
 </script>

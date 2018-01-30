@@ -6,10 +6,7 @@
     </div>
 
     <div class="apply-card-wrapper">
-      <apply-goingout  @applySaturday="applySaturday" 
-                       @applySunday="applySunday"
-                       @applyGoingout="applyGoingout" 
-                       :goingout="applyData.goingout"/>
+      <apply-goingout :goingout="applyData.goingout"/>
       <apply-survey/>
     </div>
   </div>
@@ -24,16 +21,9 @@ import ApplySurvey from '@/components/ApplySection/ApplySurvey'
 export default {
   name: 'ApplySection',
   components: {ApplyStay, ApplyExtension, ApplyGoingout, ApplySurvey},
-  props: ['applyData'],
-  methods: {
-    applySaturday: function () {
-      this.$emit('applySaturday')
-    },
-    applySunday: function () {
-      this.$emit('applySunday')
-    },
-    applyGoingout: function () {
-      this.$emit('applyGoingout')
+  computed: {
+    applyData: function () {
+      return this.$store.getters.applyData
     }
   }
 }

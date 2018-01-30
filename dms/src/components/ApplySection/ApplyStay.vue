@@ -2,10 +2,7 @@
   <div class="apply-card" id="stay-apply-wrapper">
     <div id="stay-apply-content">
       <div id="stay-apply-img-wrapper" class="stay-apply-img-wrapper">
-        <img v-if="day===1" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_friday.png" />
-        <img v-else-if="day===2" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday.png" />
-        <img v-else-if="day===3" id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_saturday_back.png" />
-        <img v-else id="stay-apply-img" src="../../assets/icon/ic_homecoming/ic_stay.png" />
+        <img id="stay-apply-img" :src="stayImg" />
       </div>
       <div id="stay-apply-text-wrapper">
         <p class="apply-text">잔류신청</p>
@@ -18,7 +15,20 @@
 <script>
   export default {
     name: 'ApplyStay',
-    props: ['day']
+    props: ['day'],
+    computed: {
+      stayImg: function () {
+        if (this.day === 1) {
+          return require('../../assets/icon/ic_homecoming/ic_friday.png')
+        } else if (this.day === 2) {
+          return require('../../assets/icon/ic_homecoming/ic_saturday.png')
+        } else if (this.day === 3) {
+          return require('../../assets/icon/ic_homecoming/ic_saturday_back.png')
+        } else if (this.day === 4) {
+          return require('../../assets/icon/ic_homecoming/ic_stay.png')
+        }
+      }
+    }
   }
 </script>
 

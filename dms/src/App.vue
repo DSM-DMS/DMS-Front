@@ -8,10 +8,10 @@
 export default {
   name: 'app',
   beforeCreate: function () {
-    this.$store.dispatch('authCheck')
+    this.$store.dispatch('getData')
   },
   beforeUpdate: function () {
-    this.$store.dispatch('authCheck')
+    this.$store.dispatch('getData')
   }
 }
 </script>

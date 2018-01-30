@@ -9,11 +9,8 @@
         </div>
       </div>
       <div class="goingout-apply-content">
-        <img v-if="goingout.isSaturdayGoingout" @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing_light.png">
-        <img v-else @click="applySaturday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_saturday_outing.png">
-
-        <img v-if="goingout.isSundayGoingout" @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing_light.png">
-        <img v-else @click="applySunday" class="goingout-apply-img" src="../../assets/icon/ic_outing/ic_sunday_outing.png">
+        <img @click="applySaturday" class="goingout-apply-img" :src="satImg">
+        <img @click="applySunday" class="goingout-apply-img" :src="sunImg">
       </div>
     </div>
   </div>
@@ -22,16 +19,51 @@
 <script>
 export default {
   name: 'ApplyGoingout',
-  props: ['goingout'],
+  props: {
+    goingout: {type: Object}
+  },
+  data: function () {
+    return {
+      outData: this.goingout
+    }
+  },
+  computed: {
+    satImg: function () {
+      return this.outData.isSaturdayGoingout ? require('@/assets/icon/ic_outing/ic_saturday_outing_light.png') : require('@/assets/icon/ic_outing/ic_saturday_outing.png')
+    },
+    sunImg: function () {
+      return this.outData.isSundayGoingout ? require('@/assets/icon/ic_outing/ic_sunday_outing_light.png') : require('@/assets/icon/ic_outing/ic_sunday_outing.png')
+    }
+  },
+  watch: {
+    goingout: function (val) {
+      console.log('hi')
+      this.outData = val
+    }
+  },
   methods: {
     applySaturday: function () {
-      this.$emit('applySaturday')
+      this.outData.isSaturdayGoingout = !this.outData.isSaturdayGoingout
     },
     applySunday: function () {
-      this.$emit('applySunday')
+      this.outData.isSundayGoingout = !this.outData.isSundayGoingout
     },
     apply: function () {
-      this.$emit('applyGoingout')
+      let fd = new FormData()
+      fd.append('sat', this.outData.isSaturdayGoingout)
+      fd.append('sun', this.outData.isSundayGoingout)
+      this.$http({
+        method: 'POST',
+        url: '/goingout',
+        data: fd,
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+        }
+      }).then(res => {
+        alert('신청 완료')
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
