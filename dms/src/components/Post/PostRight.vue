@@ -7,11 +7,11 @@
              id="post-notice-category" 
              class="post-category">공지사항</div>
         <div :style="{opacity: selected==='rule' ? '0.9' : '0.5'}" 
-             @click="changeCategory('notice')"
+             @click="changeCategory('rule')"
              id="post-rule-category" 
              class="post-category">기숙사 규정</div>
         <div :style="{opacity: selected==='question' ? '0.9' : '0.5'}" 
-             @click="changeCategory('notice')"
+             @click="changeCategory('question')"
              id="post-question-category" 
              class="post-category">자주하는 질문</div>
       </div>
