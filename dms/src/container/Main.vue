@@ -1,5 +1,5 @@
 <template>
-  <div style="min-width: 1350px;">
+  <div>
     <header-nav />
     <main-section />
     <apply-section />
