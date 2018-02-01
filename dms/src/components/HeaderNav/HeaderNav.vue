@@ -1,5 +1,5 @@
 <template>
-  <div id="header-wrapper" v-bind:style="menu ? { width: 'calc(100% - 350px)'} : { width: 'calc(100% - 100px)'}">
+  <div id="header-wrapper" v-bind:style="menu ? { width: 'calc(100% - 350px)', 'border-top-right-radius' : '0', 'border-bottom-right-radius' : '0'} : { width: 'calc(100% - 100px)'}">
     <div id="brand-wrapper">
       <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" @click="$router.push('/')"/>
     </div>
@@ -11,7 +11,8 @@
       <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <div id="menu-btn-wrapper" @click="menuButton">
         <span>메뉴</span>
-        <img id="header-ic-menu" src="../../assets/icon/ic_menu.png" />
+        <img v-if="menu" id="header-ic-menu" src="../../assets/Main_menu/ic_navigation/ic_nav_back.png" />
+        <img v-else id="header-ic-menu" src="../../assets/Main_menu/ic_navigation/ic_menu.png" />
       </div>
     </div>
 
@@ -72,7 +73,7 @@ export default {
   }
 }
 
-#header-wrapper {
+#header-wrapper { 
   font-family: 'NanumSquareB';
   margin: 20px 50px 0 50px;
   position: fixed;
