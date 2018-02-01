@@ -1,8 +1,4 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-
-import Main from '@/container/Main'
-import Apply from '@/container/Apply'
 
 Vue.use(Router)
 
@@ -21,5 +17,10 @@ export default new Router({
     {
       path: '*',
       redirect: '/'
+    },
+    {
+      path: '/post/:category',
+      name: 'post',
+      component: Post
     }]
 })

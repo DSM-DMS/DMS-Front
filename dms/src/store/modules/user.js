@@ -31,9 +31,9 @@ const getters = {
 
 const actions = {
   getData ({commit}) {
-    let jwt = this._vm.$cookie.getCookie('JWT')
+    const jwt = this._vm.$cookie.getCookie('JWT')
 
-    if(jwt != '') {
+    if(jwt !== '') {
       this._vm.$http({
         method: 'GET',
         url: '/mypage',
