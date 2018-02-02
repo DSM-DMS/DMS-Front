@@ -10,8 +10,8 @@
              @click="changeCategory('rule')"
              id="post-rule-category" 
              class="post-category">기숙사 규정</div>
-        <div :style="{opacity: selected==='question' ? '0.9' : '0.5'}" 
-             @click="changeCategory('question')"
+        <div :style="{opacity: selected==='faq' ? '0.9' : '0.5'}" 
+             @click="changeCategory('faq')"
              id="post-question-category" 
              class="post-category">자주하는 질문</div>
       </div>
@@ -22,11 +22,7 @@
           <div>작성자</div>
         </div>
         <div id="post-container">
-          <div class="post-list-content">
-            <div>1</div>
-            <div>상점은 어디서 활용할 수 있나요?</div>
-            <div>사감부</div>
-          </div>
+          <post-list-contents :post="post" :key="post.id" v-for="post in posts" @click="$emit('selectedPost', key)"/>
         </div>
       </div>
     </div>
@@ -34,18 +30,42 @@
 </template>
 
 <script>
+import postListContents from '@/components/Post/PostListContents'
+
 export default {
   name: 'PostRight',
   props: ['category'],
+  components: { postListContents },
   data: function () {
     return {
-      selected: this.category
+      selected: this.category,
+      posts: []
     }
   },
   methods: {
     changeCategory: function (selectedCategory) {
       this.selected = selectedCategory
+    },
+    getPosts: function () {
+      this.$http({
+        methods: 'GET',
+        url: '/' + this.selected,
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+        }
+      })
+      .then(res => {
+        this.posts = res.data
+      }).catch(error => {
+        console.log(error)
+      })
     }
+  },
+  created: function () {
+    this.getPosts()
+  },
+  beforeUpdate: function () {
+    this.getPosts()
   }
 }
 </script>
@@ -132,28 +152,5 @@ export default {
   padding: 20px;
   overflow-x: auto;
     overflow-y: auto;
-}
-
-.post-list-content{
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.post-list-content div:nth-child(1){
-  flex-basis: 20%;
-  display: inline-block;
-}
-
-.post-list-content div:nth-child(2){
-  flex-basis: 60%;
-  display: inline-block;
-}
-
-.post-list-content div:nth-child(3){
-  flex-basis: 20%;
-  display: inline-block;
 }
 </style>
