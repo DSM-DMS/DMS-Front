@@ -49,6 +49,20 @@ Vue.prototype.$dateFormmater = function (date) {
   ].join('-')
 }
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    store.dispatch('authCheck', (isLogin) => {
+      if (isLogin) {
+        next()
+      } else {
+        next('/login')
+      }
+    })
+  } else {
+    next() // 반드시 next()를 호출하십시오!
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

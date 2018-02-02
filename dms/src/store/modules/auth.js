@@ -42,7 +42,7 @@ const actions = {
       alert('로그아웃을 실패하였습니다.')
     }
   },
-  authCheck ({commit, dispatch}) {
+  authCheck ({commit, dispatch}, payload) {
     let jwt = this._vm.$cookie.getCookie('JWT')
     if(jwt !== '') {
       this._vm.$http.get('/auth-check', {
@@ -51,13 +51,15 @@ const actions = {
         }
       })
       .then(response => {
-        console.log('auth check success')
         commit(types.SET_LOGIN_STATUS, {isLogin: true})
-        dispatch('getData')
+        payload(true)
       }).catch(error => {
-        console.log('auth check failure')
-        commit(types.SET_LOGIN_STATUS, {isLogin: false})      
+        commit(types.SET_LOGIN_STATUS, {isLogin: false})  
+        payload(false)    
       })
+    } else {
+      commit(types.SET_LOGIN_STATUS, {isLogin: false})  
+      payload(false)
     }
   }
 }

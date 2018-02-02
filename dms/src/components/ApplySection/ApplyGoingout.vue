@@ -63,9 +63,9 @@ export default {
         if (res.status === 201) {
           alert('주말외출 신청을 성공하였습니다.')
         } else {
-          alert('주말외출 신청을 실패하였습니다.')          
+          alert('주말외출 신청을 실패하였습니다.')
         }
-      }).catch(err => {
+      }).catch(() => {
         alert('주말외출 신청을 실패하였습니다.')
       })
     }
