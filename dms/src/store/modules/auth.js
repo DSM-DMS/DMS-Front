@@ -18,22 +18,28 @@ const actions = {
       fd.append('pw', payload.password)
       this._vm.$http.post('/auth', fd)
       .then(response => {
-        if (payload.checked) {
-          this._vm.$cookie.setCookie('JWT', response.data['access_token'], 1)
-        } else {
-          this._vm.$cookie.setCookie('JWT', response.data['access_token'])
+        if (response.status == 200) {
+          alert('로그인을 성공하였습니다.')
+          if (payload.checked) {
+            this._vm.$cookie.setCookie('JWT', response.data['access_token'], 1)
+          } else {
+            this._vm.$cookie.setCookie('JWT', response.data['access_token'])
+          }
+          router.go(0)
         }
-        router.go(0)
       }).catch(error => {
-        console.log(error)
+        alert('로그인을 실패하였습니다.')
         router.go(0)     
       })
     }
   },
   logout ({commit, getters}) {
     if(getters.isLogin) {
+      alert('로그아웃을 성공하였습니다.')
       this._vm.$cookie.deleteCookie('JWT')
       router.go(0)
+    } else {
+      alert('로그아웃을 실패하였습니다.')
     }
   },
   authCheck ({commit, dispatch}) {

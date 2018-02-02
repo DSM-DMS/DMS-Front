@@ -60,9 +60,13 @@ export default {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
       }).then(res => {
-        alert('신청 완료')
+        if (res.status === 201) {
+          alert('주말외출 신청을 성공하였습니다.')
+        } else {
+          alert('주말외출 신청을 실패하였습니다.')          
+        }
       }).catch(err => {
-        console.log(err)
+        alert('주말외출 신청을 실패하였습니다.')
       })
     }
   }

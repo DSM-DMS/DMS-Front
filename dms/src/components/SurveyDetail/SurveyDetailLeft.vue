@@ -26,12 +26,34 @@ export default {
   name: 'SurveyDetailLeft',
   data: function () {
     return {
+      surveyInfo: {
+        title: '',
+        creation_time: '',
+        end_date: '',
+        description: ''
+      }
     }
   },
-  computed: {
+  methods: {
+    load: function () {
+      this.$http.get('/survey', {
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+        }
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.surveyInfo = response.data.filter((item) => {
+            return item['id'] === this.$route.params.id
+          })[0]
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    }
   },
-  props: {
-    surveyInfo: {type: Object}
+  beforeMount: function () {
+    this.load()
   }
 }
 </script>

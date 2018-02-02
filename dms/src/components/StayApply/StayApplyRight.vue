@@ -67,9 +67,13 @@ export default {
         }
       })
       .then(response => {
-        console.log(response)
-      }).catch(error => {
-        console.log(error)
+        if (response.status === 201) {
+          alert('주말잔류 신청을 성공하였습니다.')
+        } else if (response.status === 204) {
+          alert('주말잔류 신청 가능 시간이 아닙니다.')
+        }
+      }).catch(() => {
+        alert('주말잔류 신청을 실패하였습니다.')
       })
     }
   }

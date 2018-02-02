@@ -36,7 +36,9 @@ export default {
           class_num: this.selectedClass + 1
         }
       }).then(response => {
-        this.rows = response.data
+        if (response.status === 200) {
+          this.rows = response.data
+        }
       }).catch(error => {
         console.log(error)
       })
@@ -48,7 +50,9 @@ export default {
           class_num: this.selectedClass + 1
         }
       }).then(response => {
-        this.rows = response.data
+        if (response.status === 200) {
+          this.rows = response.data
+        }
       }).catch(error => {
         console.log(error)
       })
@@ -65,18 +69,24 @@ export default {
         }
       })
       .then(response => {
-        console.log(response)
-        this.$http.get('/extension/map/' + String(this.time), {
-          params: {
-            class_num: this.selectedClass + 1
-          }
-        }).then(response => {
-          this.rows = response.data
-        }).catch(error => {
-          console.log(error)
-        })
-      }).catch(error => {
-        console.log(error)
+        if (response.status === 201) {
+          alert('연장학습이 신청을 성공하였습니다.')
+          this.$http.get('/extension/map/' + String(this.time), {
+            params: {
+              class_num: this.selectedClass + 1
+            }
+          }).then(response => {
+            if (response.status === 200) {
+              this.rows = response.data
+            }
+          }).catch(error => {
+            console.log(error)
+          })
+        } else if (response.status === 204) {
+          alert('연장학습 신청 가능 시간이 아닙니다.')
+        }
+      }).catch(() => {
+        alert('연장학습 신청을 실패하였습니다.')
       })
     }
   },
@@ -86,7 +96,9 @@ export default {
         class_num: this.selectedClass + 1
       }
     }).then(response => {
-      this.rows = response.data
+      if (response.status === 200) {
+        this.rows = response.data
+      }
     }).catch(error => {
       console.log(error)
     })

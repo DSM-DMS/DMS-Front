@@ -33,9 +33,13 @@ export default {
         }
       })
       .then(response => {
-        alert('신고 완료')
-      }).catch(error => {
-        console.log(error)
+        if (response.status === 201) {
+          alert('시설고장 신고를 성공하였습니다.')
+        } else {
+          alert('시설고장 신고를 실패하였습니다.')
+        }
+      }).catch(() => {
+        alert('시설고장 신고를 실패하였습니다.')
       })
     }
   }

@@ -32,7 +32,9 @@ export default {
         }
       })
       .then(response => {
-        this.surveyList = response.data
+        if (response.status === 200) {
+          this.surveyList = response.data
+        }
       }).catch(error => {
         console.log(error)
       })
