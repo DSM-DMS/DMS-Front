@@ -1,12 +1,13 @@
 <template>
   <div id="post-left-wrapper">
-    <img src="../../assets/Question/ic_please_select.png">
+    <img v-if="selected === ''" src="../../assets/Question/ic_please_select.png">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PostLeft'
+  name: 'PostLeft',
+  props: ['selected']
 }
 </script>
 

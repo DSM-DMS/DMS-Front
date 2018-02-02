@@ -2,10 +2,12 @@
   <div id="post-page-wrapper">
     <header-nav />
     <left>
-      <post-left/>
+      <post-left :selected="selectedId"
+                 :category="category"/>
     </left>
     <right>
-      <post-right :category="category"/>
+      <post-right :category="category"
+                  @selectedPost="selectedPost"/>
     </right>
   </div>
 </template>
@@ -34,12 +36,16 @@ export default {
   },
   data: function () {
     return {
-      category: ''
+      category: '',
+      selectedId: ''
     }
   },
   methods: {
     routing: function () {
       this.category = this.$route.params.category
+    },
+    selectedPost: function (id) {
+      this.selectedId = id
     }
   },
   created: function () {
