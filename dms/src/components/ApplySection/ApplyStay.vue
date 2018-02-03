@@ -1,5 +1,5 @@
 <template>
-  <div class="apply-card" id="stay-apply-wrapper">
+  <div class="apply-card" id="stay-apply-wrapper" @click="$router.push({name: 'apply', params: {category: 'stay'}})">
     <div id="stay-apply-content">
       <div id="stay-apply-img-wrapper" class="stay-apply-img-wrapper">
         <img id="stay-apply-img" :src="stayImg" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="apply-card" id="extension-apply-wrapper">
+  <div class="apply-card" id="extension-apply-wrapper" @click="$router.push({name: 'apply', params: {category: 'extension'}})">
     <div id="extension-apply-content">
       <div id="extension-apply-text-wrapper">
         <p class="apply-text">연장학습 신청</p>

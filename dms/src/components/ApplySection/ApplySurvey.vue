@@ -1,5 +1,5 @@
 <template>
-  <div class="apply-card" id="survey-apply-wrapper">
+  <div class="apply-card" id="survey-apply-wrapper" @click="$router.push('/apply/survey')">
     <div id="survey-apply-text-wrapper">
       <p class="apply-text">설문조사</p>
       <p class="apply-sub-text">작성된 설문조사에 응답하세요</p>
