@@ -5,10 +5,10 @@
       <p>{{ detail.author }}</p>
       <p>{{ detail.title }}</p>
       <div id="post-detail-wrapper" v-html="detail.content"></div>
-      <div id="more-info">
+      <!-- <div id="more-info">
         자세히
         <img src="">
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -97,6 +97,6 @@ export default {
 
 #post-detail-wrapper{
   height: 500px;
-  overflow: auto;
+  overflow-y: auto;
 }
 </style>
