@@ -78,8 +78,11 @@ export default {
         }
       })
       .then(response => {
-      }).catch(error => {
-        console.log(error)
+        if (response.status === 200) {
+          alert('연장학습 신청을 취소되었습니다.')
+        }
+      }).catch(() => {
+        alert('연장학습 신청 취소를 실패하였습니다.')
       })
     }
   },

@@ -5,6 +5,7 @@ import Main from '@/container/Main'
 import Apply from '@/container/Apply'
 import Post from '@/container/Post'
 import Survey from '@/container/Survey'
+import Login from '@/container/Login'
 
 Vue.use(Router)
 
@@ -16,27 +17,37 @@ export default new Router({
       component: Main
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
       path: '/apply/survey',
       name: 'surveyList',
-      component: Survey
+      component: Survey,
+      meta: { requiresAuth: true }
     },
     {
       path: '/apply/survey/:id',
       name: 'surveyDetail',
-      component: Apply
+      component: Apply,
+      meta: { requiresAuth: true }
     },
     {
       path: '/apply/:category',
       name: 'apply',
-      component: Apply
-    },
-    {
-      path: '*',
-      redirect: '/'
+      component: Apply,
+      meta: { requiresAuth: true }
     },
     {
       path: '/post/:category',
       name: 'post',
-      component: Post
-    }]
+      component: Post,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '*',
+      redirect: '/'
+    }
+  ]
 })

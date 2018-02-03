@@ -33,7 +33,7 @@ export default {
       }
     }
   },
-  created: function () {
+  beforeMount: function () {
     this.getMeal(this.selectedMeal.date)
 
     let hours = this.selectedMeal.date.getHours()
@@ -45,9 +45,6 @@ export default {
     } else {
       this.selectedMeal.selected = 'Dinner'
     }
-  },
-  beforeUpdate: function () {
-    this.getMeal(this.selectedMeal.date)
   },
   methods: {
     preMeal: function () {
@@ -89,13 +86,14 @@ export default {
         method: 'GET',
         url: '/meal/' + this.$dateFormmater(date)
       }).then(res => {
-        this.meal.BreakFast = res.data.breakfast
-        this.meal.Lunch = res.data.lunch
-        this.meal.Dinner = res.data.dinner
         if (res.status === 204) {
-          this.meal.BreakFast.push('급식이 없습니다')
-          this.meal.Lunch.push('급식이 없습니다')
-          this.meal.Dinner.push('급식이 없습니다')
+          this.meal.BreakFast = ['급식이 없습니다']
+          this.meal.Lunch = ['급식이 없습니다']
+          this.meal.Dinner = ['급식이 없습니다']
+        } else {
+          this.meal.BreakFast = res.data.breakfast
+          this.meal.Lunch = res.data.lunch
+          this.meal.Dinner = res.data.dinner
         }
       }).catch(err => {
         console.log(err)

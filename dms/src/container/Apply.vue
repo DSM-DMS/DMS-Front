@@ -2,7 +2,7 @@
   <div id="apply-page-wrapper">
     <header-nav />
     <left>
-      <div :is="left[componentIdx]" :selectedClass.sync="selectedClass" :selectedTime="selectedTime" :stay.sync="stay" :surveyInfo="surveyInfo"></div>
+      <div :is="left[componentIdx]" :selectedClass.sync="selectedClass" :selectedTime="selectedTime" :stay.sync="stay"></div>
     </left>
     <right>
       <div :is="right[componentIdx]" :selectedClass="selectedClass" :selectedTime.sync="selectedTime" :stay="stay"></div>
@@ -49,15 +49,7 @@ export default {
       selectedClass: 0,
       selectedTime: 11,
       stay: 0,
-      componentIdx: {},
-      surveyInfo: {
-        'creation_time': '2017-12-26',
-        'description': '설명!',
-        'end_date': '2017-10-25',
-        'id': 's3qldmc13opeflds',
-        'start_date': '2017-10-24',
-        'title': '내일 저녁 치킨먹기 찬반설문'
-      }
+      componentIdx: {}
     }
   },
   methods: {
@@ -76,8 +68,13 @@ export default {
       }
     }
   },
-  mounted: function () {
+  beforeMount: function () {
     this.routing()
+  },
+  watch: {
+    '$route': function () {
+      this.routing()
+    }
   }
 }
 </script>

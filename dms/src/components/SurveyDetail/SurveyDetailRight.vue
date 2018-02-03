@@ -3,7 +3,7 @@
     <div id="survey-form-wrapper">
       <survey-question v-for="question in questions" :key="question.id" :question.sync="question" />
       
-      <div id="airplane-button"></div>
+      <div id="airplane-button" @click="submit"></div>
     </div>
   </div>
 </template>
@@ -34,9 +34,42 @@ export default {
         }
       })
       .then(response => {
-        this.questions = response.data
+        if (response.status === 200) {
+          this.questions = response.data
+        } else if (response.status === 204) {
+          alert('존재하지 않는 설문조사입니다.')
+        }
       }).catch(error => {
         console.log(error)
+      })
+    },
+    submit: function () {
+      let requests = []
+
+      this.questions.forEach(question => {
+        let fd = new FormData()
+        fd.append('question_id', question['id'])
+        fd.append('answer', question['answer'])
+        let req = this.$http.post('/survey/question', fd, {
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        })
+        requests.push(req)
+      })
+
+      this.$http.all(requests)
+      .then(response => {
+        let success = response.filter(res => {
+          return res.status === 201
+        })
+        if (response.length === success.length) {
+          alert('설문조사 제출을 성공하였습니다.')
+        } else {
+          alert('설문조사 제출을 실패하였습니다.')
+        }
+      }).catch(() => {
+        alert('설문조사 제출을 실패하였습니다.')
       })
     }
   },

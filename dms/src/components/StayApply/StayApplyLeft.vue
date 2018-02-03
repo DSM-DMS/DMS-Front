@@ -58,7 +58,9 @@ export default {
       }
     })
     .then(response => {
-      this.$emit('update:stay', response.data.value)
+      if (response.status === 200) {
+        this.$emit('update:stay', response.data.value)
+      }
     }).catch(error => {
       console.log(error)
     })
