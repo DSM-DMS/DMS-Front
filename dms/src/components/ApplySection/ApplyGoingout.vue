@@ -37,7 +37,6 @@ export default {
   },
   watch: {
     goingout: function (val) {
-      console.log('hi')
       this.outData = val
     }
   },

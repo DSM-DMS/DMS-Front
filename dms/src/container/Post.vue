@@ -44,8 +44,9 @@ export default {
     routing: function () {
       this.category = this.$route.params.category
     },
-    selectedPost: function (id) {
+    selectedPost: function (id, category) {
       this.selectedId = id
+      this.category = category
     }
   },
   created: function () {

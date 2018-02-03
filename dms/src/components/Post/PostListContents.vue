@@ -1,5 +1,5 @@
 <template>
-<div class="post-list-content">
+<div class="post-list-content" @click="selectedPost(post.id)">
   <div>1</div>
   <div>{{ post.title }}</div>
   <div>{{ post.author }}</div>
@@ -9,7 +9,12 @@
 <script>
 export default {
   name: 'PostListContents',
-  props: ['post']
+  props: ['post'],
+  methods: {
+    selectedPost: function (key) {
+      this.$emit('selectedPost', key)
+    }
+  }
 }
 </script>
 

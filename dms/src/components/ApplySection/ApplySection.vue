@@ -63,7 +63,7 @@ export default {
 
 .apply-card-wrapper {
   width: 100%;
-  height: 50%;
+  height: 50vh;
   position: relative;
 }
 

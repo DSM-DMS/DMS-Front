@@ -65,7 +65,6 @@ export default {
         }
       })
       .then(response => {
-        console.log(response)
         this.$http.get('/extension/map/' + String(this.time), {
           params: {
             class_num: this.selectedClass + 1

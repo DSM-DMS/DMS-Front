@@ -53,7 +53,6 @@ const actions = {
 
 const mutations = {
   [types.SET_USER_DATA] (state, payload) {
-    console.log(payload)
     state.menuData.name = payload.name
     state.menuData.number = payload.number
     state.menuData.goodPoint = payload.good_point

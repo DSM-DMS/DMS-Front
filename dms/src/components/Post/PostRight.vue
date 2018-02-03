@@ -22,7 +22,7 @@
           <div>작성자</div>
         </div>
         <div id="post-container">
-          <post-list-contents :post="post" :key="post.id" v-for="post in posts" @click="$emit('selectedPost', key)"/>
+          <post-list-contents :post="post" :key="post.id" v-for="post in posts" @selectedPost="selectedPost"/>
         </div>
       </div>
     </div>
@@ -46,6 +46,9 @@ export default {
     changeCategory: function (selectedCategory) {
       this.selected = selectedCategory
     },
+    selectedPost: function (key) {
+      this.$emit('selectedPost', key, this.selected)
+    },
     getPosts: function () {
       this.$http({
         methods: 'GET',
@@ -64,8 +67,10 @@ export default {
   created: function () {
     this.getPosts()
   },
-  beforeUpdate: function () {
-    this.getPosts()
+  watch: {
+    selected: function () {
+      this.getPosts()
+    }
   }
 }
 </script>
@@ -94,24 +99,26 @@ export default {
 
 #post-category-wrapper{
   width: 400px;
-  height: 10%;
+  height: 70px;
 }
 
 .post-category{
   width: calc(100% / 3);
-  height: 100%;
-  display: inline-block;
+  height: 70px;
   float: left;
   text-align: center;
   background-color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 70px;
 }
 
 #post-list{
   width: 100%;
-  height: 90%;
+  height: calc(100% - 70px);
   opacity: 0.9;
   background-color: white;
   border-bottom-right-radius: 15px;
