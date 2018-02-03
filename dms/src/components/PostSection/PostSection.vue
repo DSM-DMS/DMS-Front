@@ -4,17 +4,20 @@
                :bodyText="'공지사항'" 
                :bodySubText="'사감부의 공지사항을 확인하세요'"
                :mainColor="'rgb(246, 99, 81)'" 
-               :imgPath="require('../../assets/icon/ic_notice/ic_notice.png')"/>
+               :imgPath="require('../../assets/icon/ic_notice/ic_notice.png')"
+               @click="$route.push('/post/notice')"/>
     <post-card :headerText="'Rule'" 
                :bodyText="'기숙사 규정'" 
                :bodySubText="'기숙사 관련 규정을 확인하세요'"
                :mainColor="'rgb(255, 188, 71)'" 
-               :imgPath="require('../../assets/icon/ic_notice/ic_rule.png')"/> 
+               :imgPath="require('../../assets/icon/ic_notice/ic_rule.png')"
+               @click="$route.push('/post/rule')"/> 
     <post-card :headerText="'Question'" 
                :bodyText="'자주하는 질문'" 
                :bodySubText="'기숙사 관련 질문과 대답을 확인하세요'"
                :mainColor="'rgb(53, 147, 211)'" 
-               :imgPath="require('../../assets/icon/ic_notice/ic_question.png')"/>
+               :imgPath="require('../../assets/icon/ic_notice/ic_question.png')"
+               @click="$route.push('/post/faq')"/>
   </div>
 </template>
 
