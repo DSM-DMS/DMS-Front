@@ -1,5 +1,5 @@
 <template>
-  <div class="post-card-wrapper">
+  <div class="post-card-wrapper" @click="$router.push({name: 'post', params: {category: routingPath}})">
     <div class="post-card">
       <div class="post-card-header" :style="{backgroundColor: mainColor}">
         <p class="post-card-header-text">{{ headerText }}</p>
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'PostCard',
-  props: ['headerText', 'bodyText', 'bodySubText', 'mainColor', 'imgPath']
+  props: ['headerText', 'bodyText', 'bodySubText', 'mainColor', 'imgPath', 'routingPath']
 }
 </script>
 
