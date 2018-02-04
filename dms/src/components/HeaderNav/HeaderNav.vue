@@ -11,8 +11,7 @@
       <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <div id="menu-btn-wrapper" @click="menuButton">
         <span>메뉴</span>
-        <img v-if="menu" id="header-ic-menu" src="../../assets/Main_menu/ic_navigation/ic_nav_back.png" />
-        <img v-else id="header-ic-menu" src="../../assets/Main_menu/ic_navigation/ic_menu.png" />
+        <img id="header-ic-menu" :src="menu ? require('../../assets/Main_menu/ic_navigation/ic_nav_back.png') : require('../../assets/Main_menu/ic_navigation/ic_menu.png')" />
       </div>
     </div>
 
