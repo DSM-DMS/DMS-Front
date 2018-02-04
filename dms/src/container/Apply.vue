@@ -64,6 +64,8 @@ export default {
           this.componentIdx = 0
         } else if (category === 'stay') {
           this.componentIdx = 1
+        } else {
+          this.$router.replace('/')
         }
       }
     }
