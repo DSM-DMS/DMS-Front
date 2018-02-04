@@ -61,9 +61,7 @@ export default new Router({
     }
   ],
   scrollBehavior (to, from, savedPosition) {
-    console.log(to.hash)
     if (to.meta.scroll !== {} && to.meta.scroll) {
-      console.log(to.meta.scroll)
       return { selector: to.meta.scroll.selector }
     } else {
       return { x: 0, y: 0 }
