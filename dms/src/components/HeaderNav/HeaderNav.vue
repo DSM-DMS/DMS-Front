@@ -5,9 +5,9 @@
     </div>
 
     <div id="header-menu-wrapper">
-      <span class="header-menu">메인화면</span>
-      <span class="header-menu">신청화면</span>
-      <span class="header-menu">공지사항</span>
+      <span class="header-menu" @click="$router.push('/')">메인화면</span>
+      <span class="header-menu" @click="$router.push('/apply')">신청화면</span>
+      <span class="header-menu" @click="$router.push('/notice')">공지사항</span>
       <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <div id="menu-btn-wrapper" @click="menuButton">
         <span>메뉴</span>
