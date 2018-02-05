@@ -50,7 +50,6 @@ export default {
   height: 200px;
   margin-top: 20px;
   border-radius: 15px;
-  resize: none;
 }
 
 .sbj-content::placeholder {

@@ -64,4 +64,8 @@ html, body{
 ::-webkit-scrollbar-thumb:hover {
   background: #f1f1f1;   
 }
+
+textarea {
+   resize: none;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="stay-apply-right-wrapper">
     <div id="stay-apply-form">
-      <stay-apply-information :info="informations[0]" />
+      <stay-apply-information :info="informations[stay - 1]" />
       <div id="airplane-button" @click="stayApply"></div>
     </div>
   </div>
