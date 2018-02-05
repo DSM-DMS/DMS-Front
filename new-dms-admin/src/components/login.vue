@@ -19,7 +19,7 @@
         <input type="password" class="login-input" v-model="pw" placeholder="Password">
       </div>
       <div id="check">
-        <input type="checkbox"> 
+        <input type="checkbox" v-model="checked"> 
         <p id="remember">자동 로그인</p>
       </div>
       <div class="login-button">
@@ -39,7 +39,8 @@ export default {
     return {
       msg: '기숙사 관리(DMS)',
       id: '',
-      pw: ''
+      pw: '',
+      checked: false
     }
   },
   methods: {
@@ -52,7 +53,11 @@ export default {
       .then((response) => {
         if (response.status === 200) {
           console.log('관리자 로그인 성공')
-          this.$setCookie('JWT', response.data['access_token'], 1)
+          if (this.checked === true) {
+            this.$setCookie('JWT', response.data['access_token'], '')
+          } else {
+            this.$setCookie('JWT', response.data['access_token'], 1)
+          }
           this.$router.push('main')
         } else {
           console.log('관리자 로그인 실패')
@@ -60,7 +65,7 @@ export default {
       })
       .catch((ex) => {
         console.log('error: ', ex)
-        alert('아이디 또는 비밀번호를 확인 하세요.')
+        alert('아이디 또는 비밀번호를 확인하세요.')
       })
     }
   }
