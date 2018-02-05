@@ -7,13 +7,11 @@
       </div>
       <div id="extension-apply-img-wrapper">
         <div id="extension-apply-11-img-wrapper">
-          <img v-if="!!extension.eleven" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven_light.png" />
-          <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_eleven.png" />
+          <time-button :light="!!extension.eleven" :eleven="true"/>
           <span class="extension-apply-class-text" id="extension-apply-11-class" v-html="extensionRoom[ extension.eleven - 1 ]"></span>
         </div>
         <div id="extension-apply-12-img-wrapper">
-          <img v-if="!!extension.twelve" class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve_light.png" />
-          <img v-else class="extension-apply-img" src="../../assets/icon/ic_eleven_twelve/ic_twelve.png" />
+          <time-button :light="!!extension.twelve" :eleven="false"/>
           <span class="extension-apply-class-text" id="extension-apply-12-class" v-html="extensionRoom[ extension.twelve - 1 ]"></span>
         </div>
       </div>
@@ -22,6 +20,8 @@
 </template>
 
 <script>
+import TimeButton from './TimeButton'
+
 export default {
   name: 'Applyextension',
   data: function () {
@@ -41,6 +41,9 @@ export default {
     extension: function () {
       return this.$store.getters.applyData.extension
     }
+  },
+  components: {
+    TimeButton
   }
 }
 </script>
@@ -54,8 +57,7 @@ export default {
   font-size: 20px;
 }
 #extension-apply-wrapper {
-  background: url('../../assets/background/bg_study.png');
-  background-color: rgba(0, 0, 0, 0.5);
+  background: url('../../assets/background/bg_study.svg');
   background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -97,19 +99,10 @@ export default {
 
 #extension-apply-img-wrapper {
   width: 450px;
-  margin: 0 auto;
-}
-
-#extension-apply-11-img-wrapper {
-  width: 200px;
-  float: left;
-  position: relative;
-}
-
-#extension-apply-12-img-wrapper {
-  width: 200px;
-  float: right;
-  position: relative;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
 }
 
 .extension-apply-class-text{
