@@ -186,6 +186,7 @@ export default {
   justify-content: center;
   -webkit-align-items: center;
   align-items: center;
+  overflow: auto;
 }
 
 .menu-apply-btn{
@@ -197,6 +198,5 @@ export default {
 .menu-apply-btn img{
   display: block  ;
   margin: 0 auto;
-  width: 100px;
 }
 </style>
