@@ -64,12 +64,12 @@ export default {
           return res.status === 201
         })
         if (response.length === success.length) {
-          alert('설문조사 제출을 성공하였습니다.')
+          alert('설문조사 제출에 성공하였습니다.')
         } else {
-          alert('설문조사 제출을 실패하였습니다.')
+          alert('설문조사 제출에 실패하였습니다.')
         }
       }).catch(() => {
-        alert('설문조사 제출을 실패하였습니다.')
+        alert('설문조사 제출에 실패하였습니다.')
       })
     }
   },

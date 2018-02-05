@@ -34,12 +34,12 @@ export default {
       })
       .then(response => {
         if (response.status === 201) {
-          alert('시설고장 신고를 성공하였습니다.')
+          alert('시설고장 신고에 성공하였습니다.')
         } else {
-          alert('시설고장 신고를 실패하였습니다.')
+          alert('시설고장 신고에 실패하였습니다.')
         }
       }).catch(() => {
-        alert('시설고장 신고를 실패하였습니다.')
+        alert('시설고장 신고에 실패하였습니다.')
       })
     }
   }

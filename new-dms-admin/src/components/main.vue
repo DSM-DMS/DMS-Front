@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    <component :is="adminView" v-if="isAdminAccount"></component>
+    <admin-account v-if="isAdminAccount" @close="isAdminAccount = false" />
 </div>
 </template>
 
@@ -80,11 +80,12 @@ import adminAccount from './adminAccount'
 
 export default {
   name: 'index',
-  component: {adminAccount},
+  components: {
+    adminAccount
+  },
   data: function () {
     return {
-      isAdminAccount: false,
-      adminView: adminAccount
+      isAdminAccount: false
     }
   },
   methods: {
