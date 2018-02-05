@@ -10,7 +10,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios
-Vue.prototype.$http.defaults.baseURL = 'http://dsm2015.cafe24.com:3001/'
+Vue.prototype.$http.defaults.baseURL = 'http://dsm2015.cafe24.com:80/'
 
 Vue.prototype.$cookie = {}
 Vue.prototype.$cookie.setCookie = function setCookie (name, value, days) {
