@@ -118,9 +118,9 @@ export default {
 
 #menu-student-info{
   background-color: rgb(53, 147, 211);
-  height: 30%;
   padding-top: 90px;
   color: white;
+  min-height: 250px;
 }
 
 #menu-student-number-info{
@@ -177,19 +177,26 @@ export default {
   margin-top: 5px;
 }
 #menu-apply{
-  height: 70%;
+  height: calc(100% - 250px);
   padding: 60px 50px;
   background-color: white;  
+  display: flex;
+  flex-flow: column nowrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 .menu-apply-btn{
   width: 100%;
-  padding: 50px 20px 10px 20px;
   cursor: pointer;
+  padding: 15px;
 }
 
 .menu-apply-btn img{
   display: block  ;
   margin: 0 auto;
+  width: 100px;
 }
 </style>
