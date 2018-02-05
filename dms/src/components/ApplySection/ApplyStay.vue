@@ -53,8 +53,7 @@
 }
 
 #stay-apply-wrapper {
-  background: url('../../assets/background/bg_homecoming.png');
-  background-color: rgba(0, 0, 0, 0.5);
+  background: url('../../assets/background/bg_homecoming.svg');
   background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;

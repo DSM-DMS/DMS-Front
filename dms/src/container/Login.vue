@@ -36,7 +36,7 @@ export default {
 #login-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url('../assets/Login/bg_main.png');
+  background-image: url('../assets/Login/bg_main.svg');
   background-size: cover;
   background-attachment: fixed;
 }

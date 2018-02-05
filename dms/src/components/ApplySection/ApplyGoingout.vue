@@ -94,8 +94,7 @@ export default {
 }
 
 #goingout-apply-wrapper {
-  background: url('../../assets/background/bg_outing.png');
-  background-color: rgba(0, 0, 0, 0.5);
+  background: url('../../assets/background/bg_outing.svg');
   background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;

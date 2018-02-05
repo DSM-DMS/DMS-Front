@@ -27,6 +27,7 @@
       <div id="menu-apply">
         <div class="menu-apply-btn" v-for="button in menuButtons" :key="button.id" @click="menuButton(button.id)">
           <img :src="button.img">
+          <div class="menu-apply-text">{{ button.text }}</div>
         </div>
       </div>
     </div>
@@ -51,15 +52,18 @@ export default {
       menuButtons: [
         {
           id: 0,
-          img: require('../../assets/Main_menu/ic_change_pw.png')
+          img: require('../../assets/Main_menu/ic_change_pw.svg'),
+          text: '비밀번호 변경'
         },
         {
           id: 1,
-          img: require('../../assets/Main_menu/ic_report_broken.png')
+          img: require('../../assets/Main_menu/ic_report_broken.svg'),
+          text: '시설물 고장 신고'
         },
         {
           id: 2,
-          img: require('../../assets/Main_menu/ic_bug_report.png')
+          img: require('../../assets/Main_menu/ic_bug_report.svg'),
+          text: '버그 신고'
         }
       ]
     }
@@ -176,14 +180,15 @@ export default {
   font-size: 25px;
   margin-top: 5px;
 }
+
 #menu-apply{
   height: calc(100% - 250px);
   padding: 60px 50px;
   background-color: white;  
   display: flex;
   flex-flow: column nowrap;
-  -webkit-justify-content: center;
-  justify-content: center;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
   -webkit-align-items: center;
   align-items: center;
   overflow: auto;
@@ -193,10 +198,20 @@ export default {
   width: 100%;
   cursor: pointer;
   padding: 15px;
+  text-align: center;
 }
 
 .menu-apply-btn img{
   display: block  ;
   margin: 0 auto;
+  width: 80px;
+}
+
+.menu-apply-text {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  color: #555555;
+  margin-top: 10px;
 }
 </style>

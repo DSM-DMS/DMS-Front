@@ -130,7 +130,7 @@ export default {
 }
 
 #main-section {
-  background: url('../../assets/background/bg_main.png');
+  background: url('../../assets/background/bg_main.svg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
