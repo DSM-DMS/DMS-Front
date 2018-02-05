@@ -38,13 +38,13 @@ export default {
         })
         .then(response => {
           if (response.status === 200) {
-            alert('비밀번호 변경을 성공하였습니다.')
+            alert('비밀번호 변경에 성공하였습니다.')
             this.$store.dispatch('logout')
           } else {
-            alert('비밀번호 변경을 실패하였습니다.')
+            alert('비밀번호 변경에 실패하였습니다.')
           }
         }).catch(() => {
-          alert('비밀번호 변경을 실패하였습니다.')
+          alert('비밀번호 변경에 실패하였습니다.')
         })
       } else {
         alert('새로운 비밀번호와 비밀번호 확인이 다릅니다.')

@@ -32,12 +32,12 @@ export default {
       })
       .then(response => {
         if (response.status === 201) {
-          alert('버그 신고를 성공하였습니다.')
+          alert('버그 신고에 성공하였습니다.')
         } else {
-          alert('버그 신고가 실패하였습니다.')
+          alert('버그 신고에 실패하였습니다.')
         }
       }).catch(() => {
-        alert('버그 신고가 실패하였습니다.')
+        alert('버그 신고에 실패하였습니다.')
       })
     }
   }

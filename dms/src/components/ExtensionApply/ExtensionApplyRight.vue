@@ -70,7 +70,7 @@ export default {
       })
       .then(response => {
         if (response.status === 201) {
-          alert('연장학습이 신청을 성공하였습니다.')
+          alert('연장학습이 신청에 성공하였습니다.')
           this.$http.get('/extension/map/' + String(this.time), {
             params: {
               class_num: this.selectedClass + 1
@@ -86,7 +86,7 @@ export default {
           alert('연장학습 신청 가능 시간이 아닙니다.')
         }
       }).catch(() => {
-        alert('연장학습 신청을 실패하였습니다.')
+        alert('연장학습 신청에 실패하였습니다.')
       })
     }
   },

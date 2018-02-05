@@ -62,7 +62,7 @@ export default {
       this.$http.post('/signup', fd)
       .then(response => {
         if (response.status === 201) {
-          alert('회원가입을 성공하였습니다.')
+          alert('회원가입에 성공하였습니다.')
         } else if (response.status === 204) {
           alert('이미 가입된 ID 입니다.')
         } else if (response.status === 205) {

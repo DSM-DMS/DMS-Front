@@ -1,11 +1,16 @@
 <template>
-  <img class="social-icon" :src="imgPath" />
+  <img class="social-icon" :src="imgPath" @click="redirect"/>
 </template>
 
 <script>
 export default {
   name: 'SocialBtn',
-  props: ['imgPath']
+  props: ['imgPath', 'redirectPath'],
+  methods: {
+    redirect: function () {
+      window.location.href = this.redirectPath
+    }
+  }
 }
 </script>
 
@@ -19,7 +24,7 @@ export default {
   -webkit-transform:scale(0.9); /*  크롬 */
   -moz-transform:scale(0.9); /* FireFox */
   -o-transform:scale(0.9); /* Opera */
-  transform:scale(0.9);
+  transform: scale(0.9);
   transition: transform .35s;
   -o-transition: transform .35s;
   -moz-transition: transform .35s;

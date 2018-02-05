@@ -6,8 +6,7 @@
           @preMeal="preMeal"
           @nextMeal="nextMeal"/>
     <div id="social-wrapper">
-      <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_facebook.png')"/>
-      <social-btn :imgPath="require('../../assets/icon/ic_git_facebook/ic_github.png')"/>
+      <social-btn v-for="socialBtn in socialBtns" :key="socialBtn.id" :imgPath="socialBtn.imgPath" :redirectPath="socialBtn.redirectPath"/>
     </div>
   </div>
 </template>
@@ -30,7 +29,19 @@ export default {
         BreakFast: ['급식이 없습니다.'],
         Lunch: ['급식이 없습니다.'],
         Dinner: ['급식이 없습니다.']
-      }
+      },
+      socialBtns: [
+        {
+          id: 1,
+          imgPath: require('../../assets/icon/ic_git_facebook/ic_facebook.png'),
+          redirectPath: 'https://www.facebook.com/DMSforDSM/'
+        },
+        {
+          id: 2,
+          imgPath: require('../../assets/icon/ic_git_facebook/ic_github.png'),
+          redirectPath: 'https://github.com/DSM-DMS'
+        }
+      ]
     }
   },
   beforeMount: function () {

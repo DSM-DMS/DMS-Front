@@ -79,10 +79,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          alert('연장학습 신청을 취소되었습니다.')
+          alert('연장학습 신청에 취소되었습니다.')
         }
       }).catch(() => {
-        alert('연장학습 신청 취소를 실패하였습니다.')
+        alert('연장학습 신청 취소에 실패하였습니다.')
       })
     }
   },
