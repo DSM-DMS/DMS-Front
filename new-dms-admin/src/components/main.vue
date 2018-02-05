@@ -80,7 +80,9 @@ import adminAccount from './adminAccount'
 
 export default {
   name: 'index',
-  component: {adminAccount},
+  components: {
+    adminAccount
+  },
   data: function () {
     return {
       isAdminAccount: false

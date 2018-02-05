@@ -20,7 +20,7 @@
 const qs = require('query-string')
 
 export default {
-  name: 'LoginModal',
+  name: 'adminAccount',
   data: function () {
     return {
       id: '',
