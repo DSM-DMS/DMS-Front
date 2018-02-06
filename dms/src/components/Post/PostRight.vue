@@ -22,7 +22,7 @@
           <div>작성자</div>
         </div>
         <div id="post-container">
-          <post-list-contents :post="post" :key="post.id" v-for="post in posts" @selectedPost="selectedPost"/>
+          <post-list-contents :post="post" :no="index" :key="post.id" v-for="(post, index) in posts" @selectedPost="selectedPost"/>
         </div>
       </div>
     </div>
