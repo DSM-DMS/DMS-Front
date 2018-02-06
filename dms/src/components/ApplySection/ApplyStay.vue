@@ -54,7 +54,11 @@
 
 #stay-apply-wrapper {
   background: url('../../assets/background/bg_homecoming.svg');
+<<<<<<< HEAD
   background-size: 110% 110%;
+=======
+  background-size: 140%;
+>>>>>>> 2a0916f7cf0ed4eb312a92762eb5950b1f3ad8f5
   background-position: center center;
   background-repeat: no-repeat;
   -moz-transition: background-size 250ms ease;
@@ -64,8 +68,13 @@
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 #stay-apply-wrapper:hover {
   background-size: 120% 120%;
+=======
+#stay-apply-wrapper:hover{
+  background-size: 150%;
+>>>>>>> 2a0916f7cf0ed4eb312a92762eb5950b1f3ad8f5
 }
 
 #stay-apply-wrapper:before {
