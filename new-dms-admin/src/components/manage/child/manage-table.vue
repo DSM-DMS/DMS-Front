@@ -53,7 +53,7 @@ export default {
         }
       })
     .then(response => {
-      self.posts = response.data
+      self.posts = response.data.reverse()
     })
     .catch(e => {
       console.log('error :' + e)
