@@ -52,15 +52,12 @@ export default {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log('관리자 로그인 성공')
           if (this.checked === true) {
             this.$setCookie('JWT', response.data['access_token'], '')
           } else {
             this.$setCookie('JWT', response.data['access_token'], 1)
           }
           this.$router.push('main')
-        } else {
-          console.log('관리자 로그인 실패')
         }
       })
       .catch((ex) => {

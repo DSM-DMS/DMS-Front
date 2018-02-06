@@ -39,9 +39,10 @@ export default {
         }
       })
       .then((response) => {
-        console.log(response.data)
         if (response.status === 201) {
           alert('관리자 계정 생성 성공')
+        } else if (response.status === 204) {
+          alert('이미 존재하는 아이디입니다.')
         } else {
           alert('관리자 계정 생성 실패')
         }
