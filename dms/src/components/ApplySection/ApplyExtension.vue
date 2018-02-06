@@ -68,6 +68,7 @@ export default {
   -o-transition: background-size 250ms ease;
   -webkit-transition: background-size 250ms ease;
   transition: background-size 250ms ease;
+  cursor: pointer;
 }
 
 #extension-apply-wrapper:hover{
