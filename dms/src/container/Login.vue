@@ -1,6 +1,6 @@
 <template>
   <div id="login-wrapper">
-    <login-modal />
+    <login-modal @close="$router.go(-1)"/>
   </div>
 </template>
 
