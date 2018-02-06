@@ -44,13 +44,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #modal-img {
   display: block;
   margin: auto;
   margin-top: 60px;
   margin-bottom: 40px;
-  width: 15%;
+  width: 17%;
 }
 
 #bug-form {

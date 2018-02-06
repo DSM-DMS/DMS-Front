@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #modal-img {
   display: block;
   margin: auto;
