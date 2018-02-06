@@ -56,14 +56,12 @@ export default {
 .apply-sub-text {
   font-size: 20px;
 }
+
 #extension-apply-wrapper {
   background: url('../../assets/background/bg_study.svg');
-  background-size: 130%;
+  background-size: 110% 110%;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative;
-  margin-left: 10px;
-  margin-bottom: 10px;
   -moz-transition: background-size 250ms ease;
   -o-transition: background-size 250ms ease;
   -webkit-transition: background-size 250ms ease;
@@ -72,7 +70,7 @@ export default {
 }
 
 #extension-apply-wrapper:hover{
-  background-size: 140%;
+  background-size: 120% 120%;
 }
 
 #extension-apply-wrapper:before {

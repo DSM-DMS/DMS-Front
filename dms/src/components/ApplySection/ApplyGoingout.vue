@@ -95,12 +95,9 @@ export default {
 
 #goingout-apply-wrapper {
   background: url('../../assets/background/bg_outing.svg');
-  background-size: 130%;
+  background-size: 110% 110%;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative;
-  margin-right: 10px;
-  margin-top: 10px;
   -moz-transition: background-size 250ms ease;
   -o-transition: background-size 250ms ease;
   -webkit-transition: background-size 250ms ease;
@@ -108,7 +105,7 @@ export default {
 }
 
 #goingout-apply-wrapper:hover{
-  background-size: 140%;
+  background-size: 120% 120%;
 }
 
 #goingout-apply-wrapper:before {

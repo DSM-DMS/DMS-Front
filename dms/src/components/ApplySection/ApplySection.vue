@@ -1,15 +1,23 @@
 <template>
-  <div id="apply-wrapper">
-    <div class="apply-card-wrapper">
-      <apply-stay :day="applyData.stay.day"/>
-      <apply-extension :extension="applyData.extension"/>
-    </div>
+  <table id="apply-wrapper">
+    <tr class="apply-card-wrapper">
+      <td>
+        <apply-stay :day="applyData.stay.day"/>
+      </td>
+      <td>
+        <apply-extension :extension="applyData.extension"/>
+      </td>
+    </tr>
 
-    <div class="apply-card-wrapper">
-      <apply-goingout :goingout="applyData.goingout"/>
-      <apply-survey/>
-    </div>
-  </div>
+    <tr class="apply-card-wrapper">
+      <td>
+        <apply-goingout :goingout="applyData.goingout"/>
+      </td>
+      <td>
+        <apply-survey/>
+      </td>
+    </tr>
+  </table>
 </template>
 
 <script>
@@ -57,25 +65,25 @@ export default {
   width: 100%;
   padding: 20px;
   background-color: #F9F7FC;
-  display: table;
   cursor: default;
 }
 
 .apply-card-wrapper {
   width: 100%;
   height: 50vh;
-  position: relative;
+}
+
+.apply-card-wrapper > td {
+  width: 50%;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .apply-card {
-  width: calc(50% - 10px);
-  height: calc(100% - 10px);
-  display: table;
-  position: fixed;
-  will-change: transform;
-}
-
-#apply-wrapper .apply-card {
-  float: left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
