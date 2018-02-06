@@ -77,6 +77,7 @@
 
 <script>
 import adminAccount from './adminAccount'
+const fileSaver = require('file-saver')
 
 export default {
   name: 'index',
@@ -101,7 +102,11 @@ export default {
         url: '/admin/stay',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
+      }).then(res => {
+        let blob = new Blob([res.data], {type: res.headers['content-type']})
+        fileSaver.saveAs(blob, '잔류자명단.xlsx')
       })
     },
     goingout: function (event) {
@@ -110,7 +115,11 @@ export default {
         url: '/admin/goingout',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
+      }).then(res => {
+        let blob = new Blob([res.data], {type: res.headers['content-type']})
+        fileSaver.saveAs(blob, '외출자명단.xlsx')
       })
     },
     facility: function (event) {
@@ -119,7 +128,9 @@ export default {
         url: 'admin/report/facility',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
+      }).then(res => {
       })
     },
     extension_11: function (event) {
@@ -128,7 +139,11 @@ export default {
         url: 'admin/extension/11',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
+      }).then(res => {
+        let blob = new Blob([res.data], {type: res.headers['content-type']})
+        fileSaver.saveAs(blob, '11시연장.xlsx')
       })
     },
     extension_12: function (event) {
@@ -137,7 +152,11 @@ export default {
         url: 'admin/extension/12',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
+      }).then(res => {
+        let blob = new Blob([res.data], {type: res.headers['content-type']})
+        fileSaver.saveAs(blob, '12시연장.xlsx')
       })
     },
     delete_account: function (event) {

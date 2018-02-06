@@ -21,9 +21,10 @@ export default {
 .apply-sub-text {
   font-size: 20px;
 }
+
 #survey-apply-wrapper {
   background: url('../../assets/background/bg_poll.svg');
-  background-color: rgba(0, 0, 0, 0.5);
+  background-size: 130%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -33,7 +34,6 @@ export default {
   -o-transition: background-size 250ms ease;
   -webkit-transition: background-size 250ms ease;
   transition: background-size 250ms ease;
-  cursor: pointer;
 }
 
 
