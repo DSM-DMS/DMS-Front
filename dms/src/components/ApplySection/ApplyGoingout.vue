@@ -108,16 +108,6 @@ export default {
   background-size: 120% 120%;
 }
 
-#goingout-apply-wrapper:before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: inherit;
-  content: ' ';
-}
-
 #goingout-apply-content-wrapper {
   display: table-cell;
   vertical-align: middle;

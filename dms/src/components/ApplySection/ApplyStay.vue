@@ -68,16 +68,6 @@
   background-size: 120% 120%;
 }
 
-#stay-apply-wrapper:before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: inherit;
-  content: ' ';
-}
-
 #stay-apply-content {
   display: table-cell;
   vertical-align: middle;

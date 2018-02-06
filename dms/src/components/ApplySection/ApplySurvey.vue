@@ -39,16 +39,6 @@ export default {
   background-size: 120% 120%;
 }
 
-#survey-apply-wrapper:before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: inherit;
-  content: ' ';
-}
-
 #survey-apply-text-wrapper {
   display: table-cell;
   vertical-align: middle;
