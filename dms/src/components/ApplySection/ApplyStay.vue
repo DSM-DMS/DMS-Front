@@ -54,7 +54,7 @@
 
 #stay-apply-wrapper {
   background: url('../../assets/background/bg_homecoming.svg');
-  background-size: 130%;
+  background-size: 140%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -68,7 +68,7 @@
 }
 
 #stay-apply-wrapper:hover{
-  background-size: 140%;
+  background-size: 150%;
 }
 
 #stay-apply-wrapper:before {

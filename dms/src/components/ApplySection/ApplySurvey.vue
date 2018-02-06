@@ -24,7 +24,7 @@ export default {
 
 #survey-apply-wrapper {
   background: url('../../assets/background/bg_poll.svg');
-  background-size: 130%;
+  background-size: 140%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -39,7 +39,7 @@ export default {
 
 
 #survey-apply-wrapper:hover{
-  background-size: 140%;
+  background-size: 150%;
 }
 
 #survey-apply-wrapper:before {

@@ -58,7 +58,7 @@ export default {
 }
 #extension-apply-wrapper {
   background: url('../../assets/background/bg_study.svg');
-  background-size: 130%;
+  background-size: 140%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -72,7 +72,7 @@ export default {
 }
 
 #extension-apply-wrapper:hover{
-  background-size: 140%;
+  background-size: 150%;
 }
 
 #extension-apply-wrapper:before {
