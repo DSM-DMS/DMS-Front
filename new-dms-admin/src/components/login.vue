@@ -153,6 +153,7 @@ export default {
     margin: auto;
     float: right;
     margin-right: 50px;
+    margin-top: 15px;
     
   }
   
@@ -178,8 +179,8 @@ export default {
   .login-button {
     width: 200px;
     height: 100px;
-    margin-left: 350px;
-    margin-top: 150px;
+    margin-left: 18em;
+    margin-top: 7em;
   }
 
     img#logo {
