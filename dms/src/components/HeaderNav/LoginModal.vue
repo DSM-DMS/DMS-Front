@@ -229,6 +229,7 @@ export default {
   float: right;
   color: rgb(120, 173, 217);
   height: 20px;
+  cursor: pointer;
 }
 
 #login-checkbox-label > img {
