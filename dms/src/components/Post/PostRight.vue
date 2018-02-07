@@ -58,7 +58,7 @@ export default {
         }
       })
       .then(res => {
-        this.posts = res.data
+        this.posts = res.data.reverse()
       }).catch(error => {
         console.log(error)
       })
