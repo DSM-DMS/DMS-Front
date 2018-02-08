@@ -4,6 +4,7 @@
       <p>{{ detail.author }}</p>
       <p>{{ detail.title }}</p>
       <div id="detail-content" v-html="detail.content"></div>
+      <img id="modal-close-btn" src="../../assets/Post_detail_modal/closeBtn.png" @click.self="$emit('close')">
     </div>
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
   position: fixed;
   width: 1000px;
   height: 700px;
-  top: 50%;
+  top: 51%;
   left: 50%;
   opacity: 0.9;
   background-color: white;
@@ -63,8 +64,16 @@ export default {
 #detail-content > table{
   margin: 0 auto;
 }
+
 #detail-content td, th {
   border: 0.5px solid black;
   padding: 10px;
+}
+
+#modal-close-btn{
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  cursor: pointer;
 }
 </style>

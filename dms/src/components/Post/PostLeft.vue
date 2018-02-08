@@ -6,8 +6,8 @@
       <p>{{ detail.title }}</p>
       <div id="post-detail-content" v-html="detail.content"></div>
       <div id="more-info" @click="detailModal">
-        자세히
-        <img src="">
+        <p>자세히</p>
+        <img src="../../assets/Post_detail_modal/openBtn.png">
       </div>
     </div>
     
@@ -87,21 +87,30 @@ export default {
   color: white;
 }
 
-#post-detail-wrapper p:nth-child(1){
+#post-detail-wrapper > p:nth-child(1){
   font-size: 40px;
   margin-bottom: 20px;
 }
-#post-detail-wrapper p:nth-child(2){
+#post-detail-wrapper > p:nth-child(2){
   font-size: 20px;
   margin-bottom: 70px;
 }
 
 #more-info{
   position: absolute;
-  right: 70px;
-  bottom: 70px;
+  right: 50px;
+  bottom: 50px;
   font-size: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+}
+
+#more-info > p{
+  display: inline-block;
+  margin-right: 50px;
 }
 
 #post-detail-content{
