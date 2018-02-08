@@ -100,7 +100,7 @@ export default {
 }
 
 #login-left {
-  background-image: url('../../assets/Main_login/background/background.png');
+  background-image: url('../../assets/Main_login/background/bg_log_in.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
@@ -110,7 +110,7 @@ export default {
 }
 
 #signup-left {
-  background-image: url('../../assets/Main_sign_up/background/background.png');
+  background-image: url('../../assets/Main_sign_up/background/bg_sign_up.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
@@ -229,6 +229,7 @@ export default {
   float: right;
   color: rgb(120, 173, 217);
   height: 20px;
+  cursor: pointer;
 }
 
 #login-checkbox-label > img {

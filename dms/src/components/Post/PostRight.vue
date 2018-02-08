@@ -78,7 +78,7 @@ export default {
 <style scoped>
 #post-right-wrapper{
   box-sizing: border-box;
-  background-image: url('../../assets/Question/background.png');
+  background-image: url('../../assets/Question/bg_notice.svg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed; 

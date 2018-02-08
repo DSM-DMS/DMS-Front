@@ -3,9 +3,11 @@
     <div id="select-button-wrapper">
       <div class="stay-apply-button">
         <div v-for="button in buttons" class="stay-button" :key="button.id">
-          <input type="radio" name="stay" :value="button.val" :id="button.id" v-model="staySelect" hidden>
-          <label :for="button.id" class="stay-button-dot"></label>
-          <div>{{ button.text }}</div>
+          <label :for="button.id">
+            <input type="radio" name="stay" :value="button.val" :id="button.id" v-model="staySelect" hidden>
+            <div class="stay-button-dot"></div>
+            <div>{{ button.text }}</div>
+          </label>
         </div>
       </div>
     </div>
@@ -103,10 +105,9 @@ export default {
   background-color: white;
   border-radius: 50%;
   margin-bottom: 20px;
-  cursor: pointer;
 }
 
-#select-button-wrapper input[type=radio][name=stay]:checked + label::before {
+#select-button-wrapper input[type=radio][name=stay]:checked + .stay-button-dot::before {
   display: block;
   content: '';
   border: 5px solid white;
@@ -128,6 +129,10 @@ export default {
     left: calc(-100% / 2);
     top: calc(-100% / 2);
   }
+}
+
+label {
+  cursor: pointer;
 }
 
 </style>

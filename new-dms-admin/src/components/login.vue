@@ -1,30 +1,27 @@
 <template>
 <div class="login">
-  <div class="bg">
-  <img id="bg" src="../assets/background/bg_notice.png">
-  </div>
-  <img id="logo" src="../assets/logo/logo.png">
+  <div class = "logo"></div>
   <div class="main">
+
     <div id="main-bg">
-      <img id="main-img" src="../assets/background/main-bg.png">
+      <div id="main-title">
+        <div>Login</div>
+        <div>Please enter your user info</div>
+      </div>
     </div>
-    <div id="main-title">
-        <h3>Dormitory</h3> 
-        <h3>Management</h3> 
-        <h3>System</h3>
-      </div>
+    
     <div id="login-main">
-      <div id="login-from" @keyup.enter='login'>
-        <input type="text" class="login-input" v-model="id" placeholder="ID">
-        <input type="password" class="login-input" v-model="pw" placeholder="Password">
+      <div>
+        <div id="login-from" @keyup.enter='login'>
+          <input type="text" class="login-input" v-model="id" placeholder="Username">
+          <input type="password" class="login-input" v-model="pw" placeholder="Password">
+        </div>
+        <div id="check">
+          <input type="checkbox" v-model="checked"> 
+          <p id="remember">자동 로그인</p>
+        </div>
       </div>
-      <div id="check">
-        <input type="checkbox" v-model="checked"> 
-        <p id="remember">자동 로그인</p>
-      </div>
-      <div class="login-button">
-        <img id="login-btn" v-on:click="login" src="../assets/button/ic_enter.png">
-      </div>
+      <div class="login-button" v-on:click = "login"></div>
     </div>
 </div>
 </div>  
@@ -72,26 +69,32 @@ export default {
 
 <style scoped>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-  img#bg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    margin-left: -50%;
-  }
-  
+
+  .bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  } 
+
   .login {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/background/bg_notice.png');
+    background-size: 100% 100%;
+
   }
   
   .main {
-    width: 60%;
-    height: 60%;
+    width: 970px;
+    height: 500px;
     background-color: white;
     box-shadow: 5px 5px 50px rgba(0,0,0,0.7);
     position: absolute;
-    top: 20%;
-    left: 20%;
+    border-radius: 8px;
   }
 
   #login-main {
@@ -99,20 +102,26 @@ export default {
     height: 100%;
     position: relative;
     float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   #login-from {
     margin: auto;
-    margin-top: 110px;
-    width: 20vw;
-    height: 23vh;
-    
   }
 
   #main-bg {
     width: 50%;
     height: 100%;
     float: left;
+    background-position: center;
+    background-size: auto 100%;
+    background-image: url('../assets/background/main-bg.png');
+    background-repeat: no-repeat;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
 
   img#main-img {
@@ -122,38 +131,64 @@ export default {
 
   #main-title {
     position: absolute;
-    margin-top: 30px;
+    margin: 30px; 
+    text-align: left;
   }
+
+  #main-title div:nth-child(1) {
+     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    letter-spacing: -2px;   
+  }
+
+  #main-title div:nth-child(2) {
+     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+  }
+  
 
   h3 {
     font-size: 40px;
     margin: auto;
-    font-family: 'Noto Sans KR', sans-serif;
     text-align: left;
     margin-left: 50px;
     color: white;
     line-height: 65px;
   }
   
-  input[type=text], input[type=password] {
-    width: 20vw;
-    height: 5vh;
+  input[type=password] {
+    width: 80%;
+    height: 40px;
     margin: auto;
-    margin-top: 50px;
-    padding-left: 15px;
+    margin-top: 40px;
     border: none;
-    border-bottom: 2px solid rgb(120, 173, 217);
+    border-bottom: 1px solid rgb(120, 173, 217);
+    outline: none;
+    font-size: 30px;
+    color: rgb(120, 173, 217);
+  }
+
+  input[type=text] {
+    border: none;
+    width: 80%;
+    height: 40px;
+    margin: auto;
+    border-bottom: 1px solid rgb(120, 173, 217);
     outline: none;
     font-size: 30px;
     color: rgb(120, 173, 217);
   }
   
   #check {
-    width: 10vw;
-    margin: auto;
+    /* width: 10vw; */
+    /* margin: auto; */
     float: right;
     margin-right: 50px;
-    
+    margin-top: 20px;
   }
   
   input[type=checkbox] {
@@ -176,10 +211,17 @@ export default {
   }
 
   .login-button {
-    width: 200px;
-    height: 100px;
-    margin-left: 350px;
-    margin-top: 150px;
+    margin: 1.5em;
+    position: absolute;
+    cursor: pointer;
+    bottom: 0;
+    right: 0;
+    background-image: url('../assets/button/ic_enter.png');
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 44px;
+    background-size: auto 80%;
+    background-position: center;
   }
 
     img#logo {
@@ -190,6 +232,22 @@ export default {
     margin-left: 30px;
     margin-top: 30px;
   }
+
+  .logo {
+    background-image: url('../assets/logo/logo.png');
+    /* width: auto;
+    height: auto; */
+    background-size: 80% 80%;
+    width: 148px;
+    height: 50px;
+    margin: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+  }
+
   
 </style>
+
 
