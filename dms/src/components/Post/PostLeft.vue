@@ -118,11 +118,11 @@ export default {
   overflow: auto;
 }
 
-#post-detail-content > table {
+#post-detail-content >>> table {
   border: 0.5px solid white;
 }
 
-#post-detail-content td, th{
+#post-detail-content >>> td, th{
   border: 0.5px solid white;
   padding: 10px;
 }
