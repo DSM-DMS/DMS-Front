@@ -1,27 +1,33 @@
 <template>
   <div id="post-left-wrapper">
     <img v-if="selected === ''" src="../../assets/Question/ic_please_select.png">
-    <div v-else id="post-detail-content">
+    <div v-else id="post-detail-wrapper">
       <p>{{ detail.author }}</p>
       <p>{{ detail.title }}</p>
-      <div id="post-detail-wrapper" v-html="detail.content"></div>
-      <!-- <div id="more-info">
+      <div id="post-detail-content" v-html="detail.content"></div>
+      <div id="more-info" @click="detailModal">
         자세히
         <img src="">
-      </div> -->
+      </div>
     </div>
+    
+    <detail-modal v-if="isDetailModal" @close="isDetailModal = false" :detail="detail"/>
   </div>
 </template>
 
 <script>
+import DetailModal from '@/components/Post/DetailModal'
+
 export default {
   name: 'PostLeft',
   props: ['selected', 'category'],
   data: function () {
     return {
-      detail: []
+      detail: [],
+      isDetailModal: false
     }
   },
+  components: { DetailModal },
   methods: {
     getDetail: function () {
       this.$http({
@@ -36,6 +42,9 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+    detailModal: function () {
+      this.isDetailModal = !this.isDetailModal
     }
   },
   watch: {
@@ -49,13 +58,13 @@ export default {
 <style scoped>
 
 @media only screen and (min-width: 1801px){
-  #post-detail-wrapper{
+  #post-detail-content{
     width: 550px;
   }
 }
 
 @media only screen and (max-width: 1800px){
-  #post-detail-wrapper{
+  #post-detail-content{
     width: 400px;
   }
 }
@@ -73,16 +82,16 @@ export default {
   align-items: center;
 }
 
-#post-detail-content{
+#post-detail-wrapper{
   text-align: center;
   color: white;
 }
 
-#post-detail-content p:nth-child(1){
+#post-detail-wrapper p:nth-child(1){
   font-size: 40px;
   margin-bottom: 20px;
 }
-#post-detail-content p:nth-child(2){
+#post-detail-wrapper p:nth-child(2){
   font-size: 20px;
   margin-bottom: 70px;
 }
@@ -95,8 +104,17 @@ export default {
   cursor: pointer;
 }
 
-#post-detail-wrapper{
+#post-detail-content{
   height: 500px;
-  overflow-y: auto;
+  overflow: auto;
+}
+
+#post-detail-content > table {
+  border: 0.5px solid white;
+}
+
+#post-detail-content td, th{
+  border: 0.5px solid white;
+  padding: 10px;
 }
 </style>
