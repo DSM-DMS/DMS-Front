@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   name: 'DetailModal',
   props: ['detail']
@@ -61,11 +61,11 @@ export default {
   margin: 0 auto;
 }
 
-#detail-content > table{
+#detail-content >>> table{
   margin: 0 auto;
 }
 
-#detail-content td, th {
+#detail-content >>> td, th {
   border: 0.5px solid black;
   padding: 10px;
 }

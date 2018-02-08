@@ -118,7 +118,7 @@ export default {
   overflow: auto;
 }
 
-#post-detail-content td, th{
+#post-detail-content >>> td, th{
   border: 0.5px solid white;
   padding: 10px;
 }
