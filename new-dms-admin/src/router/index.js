@@ -5,6 +5,7 @@ import main from '@/components/main'
 import Survey from '@/components/survey/survey-index'
 import Manage from '@/components/manage/manage'
 import adminAccount from '@/components/adminAccount'
+import adminDelete from '@/components/adminDelete'
 
 Vue.use(Router)
 
@@ -38,6 +39,11 @@ export default new Router({
       path: '/adminAccount',
       name: 'adminAccount',
       component: adminAccount
+    },
+    {
+      path: '/adminDelete',
+      name: 'adminDelete',
+      component: adminDelete
     }
   ]
 })

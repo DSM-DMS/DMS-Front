@@ -4,7 +4,7 @@
     <div class="top">
         <img id="logo"  src="../assets/logo/logo.png">
         <div id="admin-account">
-            <div id="account-contents" @click="delete_account">
+            <div id="account-contents" @click="showAdminDelete()">
                 <img id="admin-delete" src="../assets/icon/ic_create_account.png">
                 <p id="account-title">관리자 계정 삭제</p> 
             </div> 
@@ -72,21 +72,25 @@
         </div>
     </div>
     <admin-account v-if="isAdminAccount" @close="isAdminAccount = false" />
+    <admin-delete v-if="isAdminDelete" @close="isAdminDelete = false" />
 </div>
 </template>
 
 <script>
 import adminAccount from './adminAccount'
+import adminDelete from './adminDelete'
 const fileSaver = require('file-saver')
 
 export default {
   name: 'index',
   components: {
-    adminAccount
+    adminAccount,
+    adminDelete
   },
   data: function () {
     return {
-      isAdminAccount: false
+      isAdminAccount: false,
+      isAdminDelete: false
     }
   },
   methods: {
@@ -96,6 +100,9 @@ export default {
     showAdminAccount: function () {
       this.isAdminAccount = !this.isAdminAccount
     },
+    showAdminDelete: function (event) {
+      this.isAdminDelete = !this.isAdminDelete
+    },
     stay: function (event) {
       this.$axios({
         methods: 'GET',
@@ -104,7 +111,8 @@ export default {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
         responseType: 'arraybuffer'
-      }).then(res => {
+      })
+      .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
         fileSaver.saveAs(blob, '잔류자명단.xlsx')
       })
@@ -117,7 +125,8 @@ export default {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
         responseType: 'arraybuffer'
-      }).then(res => {
+      })
+      .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
         fileSaver.saveAs(blob, '외출자명단.xlsx')
       })
@@ -130,7 +139,9 @@ export default {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
         responseType: 'arraybuffer'
-      }).then(res => {
+      })
+      .then(res => {
+        console.log(res.data)
       })
     },
     extension_11: function (event) {
@@ -141,7 +152,8 @@ export default {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
         responseType: 'arraybuffer'
-      }).then(res => {
+      })
+      .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
         fileSaver.saveAs(blob, '11시연장.xlsx')
       })
@@ -154,13 +166,11 @@ export default {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
         responseType: 'arraybuffer'
-      }).then(res => {
+      })
+      .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
         fileSaver.saveAs(blob, '12시연장.xlsx')
       })
-    },
-    delete_account: function (event) {
-      alert('아직 준비 되지 않았습니다.')
     }
   }
 }
@@ -196,7 +206,7 @@ export default {
       width: 500px;
       height: 100px;
       position: relative;
-      top: 20px;
+      top: 25px;
       right: 30px;
       float: right;
   }
@@ -236,7 +246,7 @@ export default {
       height: 50px;
       border-radius: 100px;
       background-color: rgba(202,182,177, 0.8);
-      margin-top: 100px;
+      margin-top: 70px;
       margin-left: 100px;
   }
   #management-title {
@@ -261,13 +271,13 @@ export default {
     }
   
   .download-bg, .management-bg {
-      width: 300px;
-      height: 200px;
+      width: 17vw;
+      height: 23vh;
       background-color: white;
       margin-left: 30px;
       border-radius: 10px;
       display: inline-block;
-      margin-top: 50px;
+      margin-top: 30px;
       cursor: pointer;
   }
 
