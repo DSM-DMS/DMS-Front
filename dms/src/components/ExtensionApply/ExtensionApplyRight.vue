@@ -110,7 +110,7 @@ export default {
 #extension-apply-right-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/Study_application/background.png');
+  background-image: url('../../assets/Study_application/bg_study_application.svg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

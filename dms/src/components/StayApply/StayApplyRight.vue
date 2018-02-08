@@ -1,7 +1,7 @@
 <template>
   <div id="stay-apply-right-wrapper">
     <div id="stay-apply-form">
-      <stay-apply-information :info="informations[stay - 1]" />
+      <stay-apply-information :info="informations[computedStay]" />
       <div id="airplane-button" @click="stayApply"></div>
     </div>
   </div>
@@ -54,6 +54,15 @@ export default {
       ]
     }
   },
+  computed: {
+    computedStay: function () {
+      if (this.stay <= 0) {
+        return 0
+      } else {
+        return this.stay - 1
+      }
+    }
+  },
   props: {
     stay: {type: Number}
   },
@@ -84,7 +93,7 @@ export default {
 #stay-apply-right-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/Stay_application/background/background.png');
+  background-image: url('../../assets/Stay_application/background/bg_homecoming_application.svg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

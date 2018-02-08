@@ -83,7 +83,7 @@ export default {
 #survey-detail-right-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/Survey_detail/background.png');
+  background-image: url('../../assets/Survey_detail/bg_poll.svg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

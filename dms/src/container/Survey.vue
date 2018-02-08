@@ -51,7 +51,7 @@ export default {
 #survey-page-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url('../assets/Survey/background.png');
+  background-image: url('../assets/Survey/bg_poll.svg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
