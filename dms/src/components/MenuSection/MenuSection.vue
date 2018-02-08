@@ -124,7 +124,7 @@ export default {
   background-color: rgb(53, 147, 211);
   padding-top: 90px;
   color: white;
-  min-height: 250px;
+  min-height: 270px;
 }
 
 #menu-student-number-info{
