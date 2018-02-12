@@ -82,10 +82,10 @@ export default {
     position: relative;
     display: flex;
     justify-content: center;
+    overflow: auto;
     align-items: center;
     background-image: url('../assets/background/bg_notice.png');
-    background-size: 100% 100%;
-
+    background-size: cover;
   }
   
   .main {
