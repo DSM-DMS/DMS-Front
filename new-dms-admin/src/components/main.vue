@@ -4,7 +4,8 @@
         <div class = "logo"></div>
         <div id = "admin-account">
             <div class = "admin-create" @click="showAdminAccount()"><div class = "create-icon"></div>관리자 계정 생성</div>
-            <div class = "admin-delete" @click="showAdminDelete()"><div class = "delete-icon"></div>계정 초기화</div>
+            <div class = "admin-delete" @click="showAdminDelete()"><div class = "delete-icon"></div>관리자 계정 삭제</div>
+            <div class = "student-delete" @click="showStudentDelete()"><div class="delete-icon"></div>학생 계정 삭제</div>
         </div>
     </div>
     <div id="contents">
@@ -45,24 +46,28 @@
     </div>
     <admin-account v-if="isAdminAccount" @close="isAdminAccount = false" />
     <admin-delete v-if="isAdminDelete" @close="isAdminDelete = false" />
+    <student-delete v-if="isStudentDelete" @clese="isStudentDelete = false" />
 </div>
 </template>
 
 <script>
 import adminAccount from './adminAccount'
 import adminDelete from './adminDelete'
+import studentDelete from './studentDelete'
 const fileSaver = require('file-saver')
 
 export default {
   name: 'index',
   components: {
     adminAccount,
-    adminDelete
+    adminDelete,
+    studentDelete
   },
   data: function () {
     return {
       isAdminAccount: false,
       isAdminDelete: false,
+      isStudentDelete: false,
       downloadList: [
         {
           logo: require('../assets/icon/ic_stay.png'),
@@ -128,6 +133,9 @@ export default {
     },
     showAdminDelete: function (event) {
       this.isAdminDelete = !this.isAdminDelete
+    },
+    showStudentDelete: function (event) {
+      this.isStudentDelete = !this.isStudentDelete
     },
     selectMode: function (mode) {
       if (mode === '잔류신청') {
@@ -306,7 +314,7 @@ export default {
 
   /* 계정 초기화  */
 
-  .admin-delete {
+  .admin-delete, .student-delete {
       width:200px;
       height: 50px;
       display: flex;
@@ -315,6 +323,7 @@ export default {
       font-weight: bold;
       font-size: 18px;
       cursor: pointer;
+      margin-left: 20px;
   }
   
 
@@ -326,6 +335,15 @@ export default {
       margin-right: 15px;
       background-repeat: no-repeat;
   }
+
+   .student-delete > .delete-icon {
+     background-image: url('../assets/icon/ic_create_account.png');
+      background-size: 100% auto; 
+      width: 25px; 
+      height: 25px;
+      margin-right: 15px;
+      background-repeat: no-repeat;
+   }
 
 
 /* 다운로드 */
