@@ -1,38 +1,40 @@
 <template>
-  <div id="meal-wrapper">
-    <div id="meal-header-date"> 
-      {{ selectedMeal.date.getFullYear()}}년 
-      {{ selectedMeal.date.getMonth() }}월
-      {{ selectedMeal.date.getDate() }}일 
-    </div>
-    <div id="meal-content-wrapper">
-      <div class="meal">
-        <img class="meal-img" src="../../assets/Main/ic_breakfast.png">
-        <div class="meal-content">
-          <p class="meal-content-title">Breakfast</p>
-          <food :meal="meal.BreakFast"
-                :mealLength="meal.BreakFast.length"/>
-        </div>
+  <div id="left-section-wrapper">
+    <div id="meal-wrapper">
+      <div id="meal-header-date"> 
+        {{ selectedMeal.date.getFullYear()}}년 
+        {{ selectedMeal.date.getMonth() }}월
+        {{ selectedMeal.date.getDate() }}일 
       </div>
-      <div class="meal">
-        <img class="meal-img" src="../../assets/Main/ic_lunch.png">
-        <div class="meal-content">
-          <p class="meal-content-title">Lunch</p>
-          <food :meal="meal.Lunch"
-                :mealLength="meal.Lunch.length"/>
+      <div id="meal-content-wrapper">
+        <div class="meal">
+          <img class="meal-img" src="../../assets/Main/ic_breakfast.png">
+          <div class="meal-content">
+            <p class="meal-content-title">Breakfast</p>
+            <food :meal="meal.BreakFast"
+                  :mealLength="meal.BreakFast.length"/>
+          </div>
         </div>
-      </div>
-      <div class="meal">
-        <img class="meal-img" src="../../assets/Main/ic_dinner.png">
-        <div class="meal-content">
-          <p class="meal-content-title">Dinner</p>
-          <food :meal="meal.Dinner"
-                :mealLength="meal.Dinner.length"/>
+        <div class="meal">
+          <img class="meal-img" src="../../assets/Main/ic_lunch.png">
+          <div class="meal-content">
+            <p class="meal-content-title">Lunch</p>
+            <food :meal="meal.Lunch"
+                  :mealLength="meal.Lunch.length"/>
+          </div>
         </div>
-      </div>
-      <div id="meal-img-wrapper">
-        <img @click="preMeal" class="meal-btn" src="../../assets/Main/ic_up.png" />
-        <img @click="nextMeal" class="meal-btn" src="../../assets/Main/ic_down.png" />
+        <div class="meal">
+          <img class="meal-img" src="../../assets/Main/ic_dinner.png">
+          <div class="meal-content">
+            <p class="meal-content-title">Dinner</p>
+            <food :meal="meal.Dinner"
+                  :mealLength="meal.Dinner.length"/>
+          </div>
+        </div>
+        <div id="meal-img-wrapper">
+          <img @click="preMeal" class="meal-btn" src="../../assets/Main/ic_up.png" />
+          <img @click="nextMeal" class="meal-btn" src="../../assets/Main/ic_down.png" />
+        </div>
       </div>
     </div>
   </div>
@@ -56,13 +58,18 @@ export default {
 }
 </script>
 <style>
-#meal-wrapper {
+#left-section-wrapper {
   font-family: 'NanumSquareRoundB';
   width: 600px;
   height: 100%;
   background-color: #589AC6;
   color: white;
-  padding: 150px 60px 100px 60px;
+  padding: 150px 60px 0 60px;
+  overflow: auto;
+}
+
+#meal-wrapper{
+  height: 600px;
   overflow: auto;
 }
 
