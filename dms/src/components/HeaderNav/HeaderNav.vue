@@ -81,8 +81,7 @@ export default {
   height: 60px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 3px 3px rgba(126, 126, 126, 0.3);
-
+  box-shadow: 4px 4px rgba(126, 126, 126, 0.6);
   transition: .4s width ease-out;
 }
 

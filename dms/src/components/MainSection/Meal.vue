@@ -1,18 +1,38 @@
 <template>
   <div id="meal-wrapper">
-    <div id="meal-header-wrapper">
-      <p id="meal-date">{{ this.$dateFormmater(selectedMeal.date) }}</p>
-      <p id="meal">{{ selectedMeal.selected }}</p>
+    <div id="meal-header-date"> 
+      {{ selectedMeal.date.getFullYear()}}년 
+      {{ selectedMeal.date.getMonth() }}월
+      {{ selectedMeal.date.getDate() }}일 
     </div>
-    <div id="meal-body-wrapper">
-      <food :meal="meal[selectedMeal.selected]"/>
-      <div id="meal-btn-wrapper">
-        <div id="meal-img-wrapper">
-          <div id="meal-up-img-wrapper">
-            <img @click="preMeal" id="meal-up-img" src="../../assets/icon/ic_up_down/ic_up.png" />
-          </div>
-            <img @click="nextMeal" id="meal-down-img" src="../../assets/icon/ic_up_down/ic_down.png" />
+    <div id="meal-content-wrapper">
+      <div class="meal">
+        <img class="meal-img" src="../../assets/Main/ic_breakfast.png">
+        <div class="meal-content">
+          <p class="meal-content-title">Breakfast</p>
+          <food :meal="meal.BreakFast"
+                :mealLength="meal.BreakFast.length"/>
         </div>
+      </div>
+      <div class="meal">
+        <img class="meal-img" src="../../assets/Main/ic_lunch.png">
+        <div class="meal-content">
+          <p class="meal-content-title">Lunch</p>
+          <food :meal="meal.Lunch"
+                :mealLength="meal.Lunch.length"/>
+        </div>
+      </div>
+      <div class="meal">
+        <img class="meal-img" src="../../assets/Main/ic_dinner.png">
+        <div class="meal-content">
+          <p class="meal-content-title">Dinner</p>
+          <food :meal="meal.Dinner"
+                :mealLength="meal.Dinner.length"/>
+        </div>
+      </div>
+      <div id="meal-img-wrapper">
+        <img @click="preMeal" class="meal-btn" src="../../assets/Main/ic_up.png" />
+        <img @click="nextMeal" class="meal-btn" src="../../assets/Main/ic_down.png" />
       </div>
     </div>
   </div>
@@ -35,76 +55,75 @@ export default {
   }
 }
 </script>
-
 <style>
 #meal-wrapper {
-  font-family: 'NanumSquareRoundL';
-  position: absolute;
-  left: 100px;
-  bottom: 70px;
-  width: 400px;
-}
-
-#meal-header-wrapper{
-  width: 100%;
-}
-
-#meal-date {
-  font-size: 25px;
-  margin-left: 5px;
-}
-
-#meal {
-  font-family: 'RobotoThin';
-  font-size: 70px;
-}
-
-#meal-body-wrapper{
-  width: 100%;
-  height: 200px;
-  display: inline-block;
-}
-
-#meal-btn-wrapper{
-  width: 10%;
+  font-family: 'NanumSquareRoundB';
+  width: 600px;
   height: 100%;
+  background-color: #589AC6;
+  color: white;
+  padding: 150px 60px 100px 60px;
+  overflow: auto;
+}
+
+#meal-header-date {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 70px;
+  height: 30px;
+}
+
+#meal-content-wrapper{
+  height: calc(100% - 100px);
+}
+
+.meal{
+  width: 90%;
+  height: calc(100% / 3);
+  display: inline-block;
   float: left;
-  display: table;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.meal-img{
+  width: 120px;
+  margin-right: 20px;
+}
+
+.meal-content{
+  width: calc(100% - 120px);
+  height: 100%;
+  overflow: auto;
+}
+
+.meal-content-title{
+  font-size: 30px;
+  height: 30px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 #meal-img-wrapper{
-  display: table-cell;
-  vertical-align: middle;
+  width: 10%;
+  height: 100%;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-#meal-up-img-wrapper{
-  height: 50px;
-}
-
-#meal-up-img{
-  width: 30px;
+.meal-btn{
+  width: 40px;
   float: left;
+  margin-bottom: 50px;
   cursor: pointer;
 }
 
-#meal-up-img:hover{
-  -webkit-transform:scale(0.9); /*  크롬 */
-  -moz-transform:scale(0.9); /* FireFox */
-  -o-transform:scale(0.9); /* Opera */
-  transform:scale(0.9);
-  transition: transform .35s;
-  -o-transition: transform .35s;
-  -moz-transition: transform .35s;
-  -webkit-transition: transform .35s;
-}
-
-#meal-down-img{
-  width: 30px;
-  float: left;
-  cursor: pointer;
-}
-
-#meal-down-img:hover{
+.meal-btn:hover{
   -webkit-transform:scale(0.9); /*  크롬 */
   -moz-transform:scale(0.9); /* FireFox */
   -o-transform:scale(0.9); /* Opera */
