@@ -28,24 +28,28 @@ export default {
     submit: function () {
       this.styling()
       if (this.confirm()) {
-        let fd = new FormData()
-        fd.append('current_pw', this.password.old)
-        fd.append('new_pw', this.password.new)
-        this.$http.post('/change/pw', fd, {
-          headers: {
-            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-          }
-        })
-        .then(response => {
-          if (response.status === 200) {
-            alert('비밀번호 변경에 성공하였습니다.')
-            this.$store.dispatch('logout')
-          } else {
+        if (this.password.old === '' || this.password.confirm === '') {
+          alert('입력하지 않은 칸이 있습니다.')
+        } else {
+          let fd = new FormData()
+          fd.append('current_pw', this.password.old)
+          fd.append('new_pw', this.password.new)
+          this.$http.post('/change/pw', fd, {
+            headers: {
+              Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+            }
+          })
+          .then(response => {
+            if (response.status === 200) {
+              alert('비밀번호 변경에 성공하였습니다.')
+              this.$store.dispatch('logout')
+            } else {
+              alert('비밀번호 변경에 실패하였습니다.')
+            }
+          }).catch(() => {
             alert('비밀번호 변경에 실패하였습니다.')
-          }
-        }).catch(() => {
-          alert('비밀번호 변경에 실패하였습니다.')
-        })
+          })
+        }
       } else {
         alert('새로운 비밀번호와 비밀번호 확인이 다릅니다.')
       }

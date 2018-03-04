@@ -52,27 +52,35 @@ export default {
   },
   methods: {
     login: function () {
-      this.$store.dispatch('login', {userName: this.userName, password: this.password, checked: this.checked})
+      if (this.userName === '' || this.password === '') {
+        alert('입력하지 않은 칸이 있습니다.')
+      } else {
+        this.$store.dispatch('login', {userName: this.userName, password: this.password, checked: this.checked})
+      }
     },
     signup: function () {
-      let fd = new FormData()
-      fd.append('uuid', this.code)
-      fd.append('id', this.userName)
-      fd.append('pw', this.password)
-      this.$http.post('/signup', fd)
-      .then(response => {
-        if (response.status === 201) {
-          alert('회원가입에 성공하였습니다.')
-        } else if (response.status === 204) {
-          alert('이미 가입된 ID 입니다.')
-        } else if (response.status === 205) {
-          alert('유효하지 않은 코드입니다.')
-        } else {
+      if (this.code === '' || this.userName === '' || this.password === '') {
+        alert('입력하지 않은 칸이 있습니다.')
+      } else {
+        let fd = new FormData()
+        fd.append('uuid', this.code)
+        fd.append('id', this.userName)
+        fd.append('pw', this.password)
+        this.$http.post('/signup', fd)
+        .then(response => {
+          if (response.status === 201) {
+            alert('회원가입에 성공하였습니다.')
+          } else if (response.status === 204) {
+            alert('이미 가입된 ID 입니다.')
+          } else if (response.status === 205) {
+            alert('유효하지 않은 코드입니다.')
+          } else {
+            alert('회원가입에 실패하였습니다.')
+          }
+        }).catch(() => {
           alert('회원가입에 실패하였습니다.')
-        }
-      }).catch(() => {
-        alert('회원가입에 실패하였습니다.')
-      })
+        })
+      }
     }
   }
 }
