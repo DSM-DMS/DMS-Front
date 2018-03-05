@@ -46,7 +46,7 @@
     </div>
     <admin-account v-if="isAdminAccount" @close="isAdminAccount = false" />
     <admin-delete v-if="isAdminDelete" @close="isAdminDelete = false" />
-    <student-delete v-if="isStudentDelete" @clese="isStudentDelete = false" />
+    <student-delete v-if="isStudentDelete" @close="isStudentDelete = false" />
 </div>
 </template>
 
