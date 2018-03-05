@@ -38,7 +38,7 @@ export default {
 
       .then((response) => {
         if (response.status === 201) {
-          alert('학생 계정 삭제 성공')
+          alert('학생 계정 삭제 성공 \n' + '학생 uuid : ' + response.data.uuid)
         } else {
           alert('학생 계정 삭제 실패')
         }
