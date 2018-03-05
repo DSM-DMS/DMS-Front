@@ -3,7 +3,7 @@
     <div id="meal-wrapper">
       <div id="meal-header-date"> 
         {{ selectedMeal.date.getFullYear()}}년 
-        {{ selectedMeal.date.getMonth() }}월
+        {{ selectedMeal.date.getMonth()+1 }}월
         {{ selectedMeal.date.getDate() }}일 
       </div>
       <div id="meal-content-wrapper">
@@ -64,12 +64,15 @@ export default {
   height: 100%;
   background-color: #589AC6;
   color: white;
-  padding: 150px 60px 0 60px;
+  padding: 0 60px 0 60px;
   overflow: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 #meal-wrapper{
-  height: 600px;
+  height: 650px;
   overflow: auto;
 }
 
