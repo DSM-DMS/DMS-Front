@@ -54,6 +54,7 @@ export default {
   padding: 1.4vh 1vw 1.4vh 1vw;
   border-radius: 10px;
   width: 30vw;
+  font-size: 18px;
 }
 .multiful-choice-list {
   font-size: 19px;
@@ -69,6 +70,7 @@ export default {
   padding: 1.4vh 1vw 1.4vh 1vw;
   border-radius: 10px;
   width: 30vw;
+  font-size: 18px;
 }
 .multiful-choice-list-btn-wrapper {
   margin-left:1vw;

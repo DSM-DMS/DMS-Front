@@ -58,5 +58,6 @@ export default {
   padding: 1.4vh 1vw 1.4vh 1vw;
   border-radius: 10px;
   width: 30vw;
+  font-size: 18px;
 }
 </style>

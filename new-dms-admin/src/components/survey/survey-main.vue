@@ -178,7 +178,7 @@ export default {
   background-color: #675094;
   border : 1px solid #c8c8c8;
   border-radius: 1px;
-  padding : 1.2vh 1.7vw 1.2vh 1.7vw;
+  padding : 1.8vh 2vw 1.8vh 2vw;
   color:white;
   border-radius: 20px;
   cursor: pointer;
