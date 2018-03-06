@@ -6,11 +6,11 @@
         <p class="apply-sub-text">추가 연장학습을 신청하세요</p>
       </div>
       <div id="extension-apply-img-wrapper">
-        <div id="extension-apply-11-img-wrapper">
+        <div id="extension-apply-11-img-wrapper" class="apply-img">
           <time-button :light="!!extension.eleven" :eleven="true"/>
           <span class="extension-apply-class-text" id="extension-apply-11-class" v-html="extensionRoom[ extension.eleven - 1 ]"></span>
         </div>
-        <div id="extension-apply-12-img-wrapper">
+        <div id="extension-apply-12-img-wrapper" class="apply-img">
           <time-button :light="!!extension.twelve" :eleven="false"/>
           <span class="extension-apply-class-text" id="extension-apply-12-class" v-html="extensionRoom[ extension.twelve - 1 ]"></span>
         </div>
@@ -115,6 +115,10 @@ export default {
 .extension-apply-img {
   width: 100%;
   cursor: pointer;
+}
+
+.apply-img{
+  position: relative;
 }
 </style>
 
