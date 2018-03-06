@@ -114,11 +114,15 @@ export default {
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 #toggle-button {
   box-sizing: content-box;
-  position: relative;
+  position: absolute;
   float: left;
   top: 15%;
   left: 50px;

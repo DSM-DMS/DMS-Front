@@ -79,7 +79,8 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          alert('연장학습 신청에 취소되었습니다.')
+          alert('연장학습 신청이 취소되었습니다.')
+          this.$router.go(0)
         }
       }).catch(() => {
         alert('연장학습 신청 취소에 실패하였습니다.')

@@ -19,13 +19,9 @@ export default {
 
 <style scoped>
 #map-table-wrapper {
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  top: 50%;
+  margin-top: 100px;
   width: 80%;
   height: 60%;
-  transform: translate(-50%, -50%);
   overflow-x: auto;
   overflow-y: auto;
 }
