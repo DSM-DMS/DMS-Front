@@ -102,12 +102,14 @@ export default {
 }
 .survey-title {
   border : none;
-  font-size: 38px;
+  font-size: 25px;
   margin-bottom:2vh;
-  margin-left : 1vw;
   display:block;
   background-color: transparent;
-  width: 60%;
+  width: 80%;
+  background-color: white;
+  padding : 1.3vh 1vw 1.3vh 1vw;
+  border-radius: 11px;
 }
 .survey-main {
   height: 23vw;
@@ -178,7 +180,7 @@ export default {
   background-color: #675094;
   border : 1px solid #c8c8c8;
   border-radius: 1px;
-  padding : 1.8vh 2vw 1.8vh 2vw;
+  padding : 2.3vh 2.6vw 2.3vh 2.6vw;
   color:white;
   border-radius: 20px;
   cursor: pointer;

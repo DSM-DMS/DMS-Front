@@ -149,7 +149,7 @@ export default {
   background-color: #675094;
   border : 1px solid #c8c8c8;
   border-radius: 1px;
-  padding : 1.8vh 2vw 1.8vh 2vw;
+  padding : 2.3vh 2.6vw 2.3vh 2.6vw;
   color:white;
   border-radius: 20px;
   cursor: pointer;
