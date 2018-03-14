@@ -5,6 +5,7 @@
         {{ selectedMeal.date.getFullYear()}}년 
         {{ selectedMeal.date.getMonth()+1 }}월
         {{ selectedMeal.date.getDate() }}일 
+        {{ this.$getDayOfWeek(selectedMeal.date) }}
       </div>
       <div id="meal-content-wrapper">
         <div class="meal">

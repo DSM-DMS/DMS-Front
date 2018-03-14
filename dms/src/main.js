@@ -49,6 +49,11 @@ Vue.prototype.$dateFormmater = function (date) {
   ].join('-')
 }
 
+Vue.prototype.$getDayOfWeek = function getDayOfWeek (date) {
+  const week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+  return week[date.getDay()]
+}
+
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     store.dispatch('authCheck', (isLogin) => {
