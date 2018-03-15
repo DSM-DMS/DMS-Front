@@ -42,6 +42,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               alert('비밀번호 변경에 성공하였습니다.')
+              this.$emit('close')
               this.$store.dispatch('logout')
             } else {
               alert('비밀번호 변경에 실패하였습니다.')

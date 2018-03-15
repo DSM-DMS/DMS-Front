@@ -21,7 +21,7 @@ const actions = {
         if (response.status == 200) {
           alert('로그인에 성공하였습니다.')
           if (payload.checked) {
-            this._vm.$cookie.setCookie('JWT', response.data['access_token'], 1)
+            this._vm.$cookie.setCookie('JWT', response.data['access_token'], 30)
           } else {
             this._vm.$cookie.setCookie('JWT', response.data['access_token'])
           }

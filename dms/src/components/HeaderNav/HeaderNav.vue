@@ -5,9 +5,9 @@
     </div>
 
     <div id="header-menu-wrapper">
-      <span class="header-menu" @click="$router.replace('/')">메인화면</span>
-      <span class="header-menu" @click="$router.replace('/apply')">신청화면</span>
-      <span class="header-menu" @click="$router.replace('/notice')">공지사항</span>
+      <span class="header-menu" @click="scrollRouting('/')">메인화면</span>
+      <span class="header-menu" @click="scrollRouting('/apply')">신청화면</span>
+      <span class="header-menu" @click="scrollRouting('/notice')">공지사항</span>
       <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <div id="menu-btn-wrapper" @click="menuButton">
         <span>메뉴</span>
@@ -48,6 +48,13 @@ export default {
     },
     menuButton: function () {
       this.menu = !this.menu
+    },
+    scrollRouting: function (path) {
+      if (this.$route.path === path) {
+        document.querySelector(this.$route.meta.scroll.selector).scrollIntoView()
+      } else {
+        this.$router.replace(path)
+      }
     }
   },
   computed: {
