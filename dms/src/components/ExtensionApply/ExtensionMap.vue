@@ -2,7 +2,7 @@
   <div id="map-table-wrapper">
     <table id="map-table">
       <tr v-for="(row, index) in rows" :row="row" :key="index">
-        <td v-for="(seat, index) in row" :key="index" @click="$emit('extensionApply', seat)">{{ seat === 0? '': seat }}</td>
+        <td v-for="(seat, index) in row" :key="index" @click="click(seat)">{{ seat === 0? '': seat }}</td>
       </tr>
     </table>
   </div>
@@ -13,6 +13,13 @@ export default {
   name: 'ExtensionMap',
   props: {
     rows: {type: Array}
+  },
+  methods: {
+    click: function (seat) {
+      if (seat !== 0) {
+        this.$emit('extensionApply', seat)
+      }
+    }
   }
 }
 </script>
@@ -45,5 +52,6 @@ export default {
 
 #map-table td:empty {
   background-color: rgba(0,0,0,0);
+  cursor: default;
 }
 </style>

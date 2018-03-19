@@ -1,6 +1,6 @@
 <template>
   <div id="menu-modal-wrapper" @click.self="$emit('close')">
-    <div id="menu-modal" :is="modals[modalData.idx]">
+    <div id="menu-modal" :is="modals[modalData.idx]" @close="$emit('close')">
     </div>
   </div>
 </template>

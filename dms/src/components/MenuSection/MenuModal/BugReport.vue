@@ -33,6 +33,7 @@ export default {
       .then(response => {
         if (response.status === 201) {
           alert('버그 신고에 성공하였습니다.')
+          this.$emit('close')
         } else {
           alert('버그 신고에 실패하였습니다.')
         }
