@@ -10,17 +10,13 @@
           <p id="menu-student-name-info-sub-text">{{ menuData.name ? '님 환영합니다' : '로그인을 해주세요' }}</p>
         </div>
         <div id="menu-student-point-info-wrapper">
-          <div class="menu-student-point-info">
-            <p>상점</p>
-            <div class="menu-student-point">
-              {{ menuData.goodPoint ? menuData.goodPoint : '0' }}
-            </div>
+          <div class="menu-student-point-info" v-for="point in points" :key="point.id">
+            {{ point.text }} : {{ menuData[point.kind] ? menuData[point.kind] : '0' }}
           </div>
-          <div class="menu-student-point-info">
-            <p>벌점</p>
-            <div class="menu-student-point">
-              {{ menuData.badPoint ? menuData.badPoint : '0' }}
-            </div>
+        </div>
+        <div id="menu-point-list-wrapper">
+          <div id="menu-point-list-btn">
+            내역확인
           </div>
         </div>
       </div>
@@ -49,6 +45,18 @@ export default {
         isShow: false,
         idx: 0
       },
+      points: [
+        {
+          id: 0,
+          text: '상점',
+          kind: 'goodPoint'
+        },
+        {
+          id: 1,
+          text: '벌점',
+          kind: 'badPoint'
+        }
+      ],
       menuButtons: [
         {
           id: 0,
@@ -144,7 +152,7 @@ export default {
 
 #menu-student-name-info{
   text-align: center;
-  height: 20%;
+  height: 50px;
 }
 
 #menu-student-name{
@@ -159,8 +167,8 @@ export default {
 
 #menu-student-point-info-wrapper{
   width: 100%;
-  height: 80%;
-  padding: 30px 60px 0 60px;
+  height: 50px;
+  padding: 15px 60px 0 60px;
 }
 
 #menu-student-point-info-wrapper .menu-student-point-info:last-child{
@@ -173,12 +181,36 @@ export default {
   float: left;
 }
 
-.menu-student-point{
-  border: 3px solid white;
-  border-radius: 100%;
-  padding: 15px;  
-  font-size: 25px;
-  margin-top: 5px;
+#menu-point-list-wrapper{
+  margin-top: 10px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-point-list-btn{
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  display: inline-block;
+  background-color: white;
+  color: rgb(53, 147, 211);
+  text-align: center;
+  border-radius: 70px;
+  line-height: 40px;
+}
+
+#menu-point-list-btn:hover{
+  -webkit-transform:scale(0.9); /*  크롬 */
+  -moz-transform:scale(0.9); /* FireFox */
+  -o-transform:scale(0.9); /* Opera */
+  transform:scale(0.9);
+  transition: transform .35s;
+  -o-transition: transform .35s;
+  -moz-transition: transform .35s;
+  -webkit-transition: transform .35s;
 }
 
 #menu-apply{
