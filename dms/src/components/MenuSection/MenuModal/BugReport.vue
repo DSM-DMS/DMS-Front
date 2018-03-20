@@ -22,24 +22,28 @@ export default {
   },
   methods: {
     submit: function () {
-      let fd = new FormData()
-      fd.append('title', this.title)
-      fd.append('content', this.content)
-      this.$http.post('/report/bug', fd, {
-        headers: {
-          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-        }
-      })
-      .then(response => {
-        if (response.status === 201) {
-          alert('버그 신고에 성공하였습니다.')
-          this.$emit('close')
-        } else {
+      if (this.title === '' || this.content === '') {
+        alert('입력하지 않은 칸이 있습니다.')
+      } else {
+        let fd = new FormData()
+        fd.append('title', this.title)
+        fd.append('content', this.content)
+        this.$http.post('/report/bug', fd, {
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        })
+        .then(response => {
+          if (response.status === 201) {
+            alert('버그 신고에 성공하였습니다.')
+            this.$emit('close')
+          } else {
+            alert('버그 신고에 실패하였습니다.')
+          }
+        }).catch(() => {
           alert('버그 신고에 실패하였습니다.')
-        }
-      }).catch(() => {
-        alert('버그 신고에 실패하였습니다.')
-      })
+        })
+      }
     }
   }
 }
