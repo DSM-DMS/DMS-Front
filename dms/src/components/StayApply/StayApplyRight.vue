@@ -77,7 +77,17 @@ export default {
       })
       .then(response => {
         if (response.status === 201) {
-          alert('주말잔류 신청에 성공하였습니다.')
+          if (this.stay === 1) {
+            alert('금요귀가 신청에 성공하였습니다.')
+          } else if (this.stay === 2) {
+            alert('토요귀가 신청에 성공하였습니다')
+          } else if (this.stay === 3) {
+            alert('토요귀사 신청에 성공하였습니다')
+          } else if (this.stay === 4) {
+            alert('잔류 신청에 성공하였습니다')
+          } else {
+            alert('주말 잔류 신청에 실패하였습니다')
+          }
         } else if (response.status === 204) {
           alert('주말잔류 신청 가능 시간이 아닙니다.')
         }
