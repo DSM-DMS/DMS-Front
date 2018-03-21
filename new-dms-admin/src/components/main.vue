@@ -83,7 +83,7 @@ export default {
         {
           logo: require('../assets/icon/ic_broken.png'),
           title: '시설고장',
-          description: '시설 고장 목록을 다운로드 합니다.'
+          description: '시설 고장 목록을 조회 합니다.'
         },
         {
           logo: require('../assets/icon/ic_eleven.png'),
@@ -154,13 +154,13 @@ export default {
         this.extension_12()
       }
       if (mode === '공지사항') {
-        this.changeView('notice')
+        this.changeView('/post/notice')
       }
       if (mode === '기숙사규칙') {
-        this.changeView('rule')
+        this.changeView('/post/rule')
       }
       if (mode === '자주하는 질문') {
-        this.changeView('faq')
+        this.changeView('/post/faq')
       }
       if (mode === '설문조사') {
         this.changeView('survey')
@@ -194,18 +194,8 @@ export default {
         fileSaver.saveAs(blob, '외출자명단.xlsx')
       })
     },
-    facility: function (event) {
-      this.$axios({
-        methods: 'GET',
-        url: 'admin/report/facility',
-        headers: {
-          Authorization: 'JWT ' + this.$getCookie('JWT')
-        },
-        responseType: 'arraybuffer'
-      })
-      .then(res => {
-        console.log(res.data)
-      })
+    facility: function () {
+      this.changeView('facility')
     },
     extension_11: function (event) {
       this.$axios({

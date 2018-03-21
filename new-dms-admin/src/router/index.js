@@ -7,6 +7,7 @@ import Manage from '@/components/manage/manage'
 import adminAccount from '@/components/adminAccount'
 import adminDelete from '@/components/adminDelete'
 import studentDelete from '@/components/studentDelete'
+import facilityFailure from '@/components/facilityFailure/facilityFailure'
 
 Vue.use(Router)
 
@@ -32,11 +33,6 @@ export default new Router({
       component: Survey
     },
     {
-      path: '/:category',
-      name: 'manage',
-      component: Manage
-    },
-    {
       path: '/adminAccount',
       name: 'adminAccount',
       component: adminAccount
@@ -48,8 +44,18 @@ export default new Router({
     },
     {
       path: '/studentDelete',
-      name: './studentDelete',
+      name: 'studentDelete',
       component: studentDelete
+    },
+    {
+      path: '/facility',
+      name: 'facility',
+      component: facilityFailure
+    },
+    {
+      path: '/post/:category',
+      name: 'manage',
+      component: Manage
     }
   ]
 })
