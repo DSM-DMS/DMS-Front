@@ -344,7 +344,7 @@ export default {
       height: 60px;
       position: relative;
       left: 0;
-      z-index: 3;
+      z-index: 0;
       display: flex;
       justify-content: center;
       align-items: center;
