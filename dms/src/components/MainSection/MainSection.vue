@@ -83,16 +83,17 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 1271px){
+@media (min-height: 851px), screen and (min-width: 1271px){
   #main-section {
     position: fixed;
     z-index: -1;
   }
 }
 
-@media only screen and (max-width: 1270px){
+@media (max-height: 850px), screen and (max-width: 1270px){
   #main-section {
     position: relative;
+    min-height: 850px;
   }
 }
 
