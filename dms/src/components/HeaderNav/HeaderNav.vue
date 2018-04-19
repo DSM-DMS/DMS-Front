@@ -5,10 +5,10 @@
     </div>
 
     <div id="header-menu-wrapper">
-      <span class="header-menu" @click="scrollRouting('/')">메인화면</span>
-      <span class="header-menu" @click="scrollRouting('/apply')">신청화면</span>
-      <span class="header-menu" @click="scrollRouting('/notice')">공지사항</span>
-      <span class="header-menu" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/')">메인화면</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/apply')">신청화면</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/notice')">공지사항</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
       <div id="menu-btn-wrapper" @click="menuButton">
         <span>메뉴</span>
         <img id="header-ic-menu" :src="menu ? require('../../assets/Main_menu/ic_navigation/ic_nav_back.png') : require('../../assets/Main_menu/ic_navigation/ic_menu.png')" />
@@ -67,15 +67,27 @@ export default {
 
 <style>
 /*header*/
-@media only screen and (min-width: 1025px){
+@media screen and (min-width: 1025px){
   .header-menu {
     margin-right: 60px; 
   }
 }
 
-@media only screen and (max-width: 1024px){
+@media screen and (max-width: 1024px){
   .header-menu {
     margin-right: 30px; 
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .header-menu:not(:last-of-type) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .header-menu-responsive {
+    display: none;
   }
 }
 

@@ -99,27 +99,26 @@ export default {
   background-color: rgb(255, 188, 71);
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #button-table {
   text-align: center;
   border-collapse: separate;
-  border-spacing: 60px;
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  border-spacing: 50px;
 }
 
 .class-button {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   cursor: pointer;
 }
 
 .class-button > img {
-  width: 130px;
-  height: 130px;
+  width: 100%;
+  height: 100%;
 }
 
 #cancel-button {
@@ -133,6 +132,21 @@ export default {
   background-color: white;
   color: rgb(255, 188, 71);
   cursor: pointer;
+}
+
+@media screen and (max-height: 800px) {
+  .class-button {
+    height: 90px;
+    width: 90px;
+  }
+
+  #cancel-button {
+    width: 90px;
+  }
+
+  #button-table {
+    border-spacing: 25px;
+  }
 }
 </style>
 

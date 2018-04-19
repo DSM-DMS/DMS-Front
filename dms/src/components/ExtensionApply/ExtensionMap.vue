@@ -27,8 +27,10 @@ export default {
 <style scoped>
 #map-table-wrapper {
   margin-top: 100px;
-  width: 80%;
-  height: 60%;
+  max-width: 70%;
+  max-height: 65%;
+  justify-self: center;
+  align-self: center;
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -37,12 +39,12 @@ export default {
   text-align: center;
   font-size: 20px;
   border-spacing: 15px;
-  margin: 0 auto;
   table-layout: fixed;
 }
 
 #map-table td {
   width: 70px;
+  min-width: 70px;
   height: 70px;
   background-color: gray;
   color: white;
@@ -53,5 +55,13 @@ export default {
 #map-table td:empty {
   background-color: rgba(0,0,0,0);
   cursor: default;
+}
+
+@media screen and (max-height: 800px) {
+  #map-table td {
+    height: 50px;
+    min-width: 50px;
+    width: 50px;
+  }
 }
 </style>
