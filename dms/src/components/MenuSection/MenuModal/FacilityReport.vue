@@ -23,25 +23,29 @@ export default {
   },
   methods: {
     submit: function () {
-      let fd = new FormData()
-      fd.append('title', this.title)
-      fd.append('content', this.content)
-      fd.append('room', this.roomNum)
-      this.$http.post('/report/facility', fd, {
-        headers: {
-          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-        }
-      })
-      .then(response => {
-        if (response.status === 201) {
-          alert('시설고장 신고에 성공하였습니다.')
-          this.$emit('close')
-        } else {
+      if (this.title === '' || this.roomNum === '' || this.content === '') {
+        alert('입력하지 않은 칸이 있습니다.')
+      } else {
+        let fd = new FormData()
+        fd.append('title', this.title)
+        fd.append('content', this.content)
+        fd.append('room', this.roomNum)
+        this.$http.post('/report/facility', fd, {
+          headers: {
+            Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+          }
+        })
+        .then(response => {
+          if (response.status === 201) {
+            alert('시설고장 신고에 성공하였습니다.')
+            this.$emit('close')
+          } else {
+            alert('시설고장 신고에 실패하였습니다.')
+          }
+        }).catch(() => {
           alert('시설고장 신고에 실패하였습니다.')
-        }
-      }).catch(() => {
-        alert('시설고장 신고에 실패하였습니다.')
-      })
+        })
+      }
     }
   }
 }

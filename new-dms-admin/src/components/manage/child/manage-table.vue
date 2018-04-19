@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-      <tr v-for="(post,index) in posts">
+      <tr v-for="(post,index) in posts" :key="index">
         <td>{{ index+1 }}</td>
         <td @click="lookUpPost(post.id)" class="hoverItems">{{ post.title }}</td>
         <td>{{ post.author }}</td>
@@ -170,8 +170,7 @@ export default {
 
 #table-content tbody::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
+  border-radius: 10px;
 	background-color: white
 }
 
@@ -184,7 +183,6 @@ export default {
 #table-content tbody::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: gray
 }
 

@@ -9,6 +9,7 @@
 import PasswordChange from '@/components/MenuSection/MenuModal/PasswordChange'
 import FacilityReport from '@/components/MenuSection/MenuModal/FacilityReport'
 import BugReport from '@/components/MenuSection/MenuModal/BugReport'
+import PointCheck from '@/components/MenuSection/MenuModal/PointCheck'
 
 export default {
   name: 'LoginModal',
@@ -17,7 +18,8 @@ export default {
       modals: [
         PasswordChange,
         FacilityReport,
-        BugReport
+        BugReport,
+        PointCheck
       ]
     }
   },

@@ -18,7 +18,7 @@ const actions = {
       fd.append('pw', payload.password)
       this._vm.$http.post('/auth', fd)
       .then(response => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           alert('로그인에 성공하였습니다.')
           if (payload.checked) {
             this._vm.$cookie.setCookie('JWT', response.data['access_token'], 30)

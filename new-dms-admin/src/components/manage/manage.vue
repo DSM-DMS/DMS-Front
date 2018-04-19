@@ -148,7 +148,6 @@ export default {
   font-size: 15px;
   display: table;
   padding: 1vh 1vw 1vh 1vw;
-  margin-right: 2vw;
   border-radius: 30px;
   cursor: pointer;
 }
@@ -160,6 +159,7 @@ export default {
 #table-cont {
   width: 80vw;
   padding-left: 5.4vw;
+  text-align: center;
 }
 
 #table-cont >*{
@@ -207,7 +207,6 @@ export default {
 
 #content::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color: white
 }
@@ -221,7 +220,6 @@ export default {
 #content::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: gray
 }
 

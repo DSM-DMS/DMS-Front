@@ -15,7 +15,7 @@
           </div>
         </div>
         <div id="menu-point-list-wrapper">
-          <div id="menu-point-list-btn">
+          <div id="menu-point-list-btn" @click="menuButton(3)">
             내역확인
           </div>
         </div>
