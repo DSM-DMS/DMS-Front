@@ -15,7 +15,10 @@
       </tr>
       <tr>
         <td class="class-button" @click="classSelect(6)"><img :src="getImage(6)"></td>
-        <td>
+        <td class="class-button" @click="classSelect(7)"><img :src="getImage(7)"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
           <div id="cancel-button" @click="applyCancel">취소</div>
         </td>
       </tr>
@@ -56,6 +59,10 @@ export default {
         [
           require('../../assets/Study_application/icon/ic_fifth.png'),
           require('../../assets/Study_application/icon_selected/ic_fifth_selected.png')
+        ],
+        [
+          require('../../assets/Study_application/icon/ic_second.png'),
+          require('../../assets/Study_application/icon_selected/ic_second_selected.png')
         ]
       ]
     }
@@ -81,6 +88,8 @@ export default {
         if (response.status === 200) {
           alert('연장학습 신청이 취소되었습니다.')
           this.$router.go(0)
+        } else if (response.status === 204) {
+          alert('연장학습이 신청되어있지 않습니다.')
         }
       }).catch(() => {
         alert('연장학습 신청 취소에 실패하였습니다.')
@@ -107,12 +116,12 @@ export default {
 #button-table {
   text-align: center;
   border-collapse: separate;
-  border-spacing: 50px;
+  border-spacing: 45px;
 }
 
 .class-button {
-  width: 130px;
-  height: 130px;
+  width: 115px;
+  height: 115px;
   cursor: pointer;
 }
 
