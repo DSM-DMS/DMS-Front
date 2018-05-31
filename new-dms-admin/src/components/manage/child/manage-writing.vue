@@ -36,7 +36,7 @@ export default {
     }
   },
   components: { Ckeditor },
-  props: ['modifyPostId', 'modifyPostTitle', 'modifyPostContent', 'modifyCase', 'url'],
+  props: ['modifyPostId', 'modifyPostTitle', 'modifyPostContent', 'modifyCase', 'category'],
   data: function () {
     return {
       title: '',
@@ -67,10 +67,11 @@ export default {
     },
     submitPosts: function () {
       console.log('submit')
-      let formData = new FormData()
-      formData.append('title', this.title)
-      formData.append('content', this.content)
-      this.$axios.post('/admin/' + this.url, formData,
+      this.$axios.post('/v2/admin/post/' + this.category,
+        {
+          title: this.title,
+          content: this.content
+        },
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
@@ -78,8 +79,8 @@ export default {
         })
       .then(response => {
         if (response.status === 201) {
-          console.log(this.url + '업로드 성공')
-          alert(this.url + '업로드 성공')
+          console.log(this.category.toUpperCase() + ' 업로드 성공')
+          alert(this.category.toUpperCase() + ' 업로드 성공')
           this.$emit('uploadComplete')
         }
       })
@@ -88,11 +89,13 @@ export default {
       })
     },
     patchPosts: function () {
-      let formData = new FormData()
-      formData.append('id', this.modifyId)
-      formData.append('title', this.title)
-      formData.append('content', this.content)
-      this.$axios.patch('/admin/' + this.url, formData,
+      this.$axios.patch('/v2/admin/post/' + this.category + '/' + this.modifyId,
+        {
+          category: this.category,
+          title: this.title,
+          content: this.content,
+          post_id: this.modifyId
+        },
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
@@ -100,7 +103,7 @@ export default {
         })
       .then(response => {
         if (response === 200) {
-          console.log(this.url + '수정 성공')
+          console.log(this.category + '수정 성공')
           this.$emit('uploadComplete')
         }
       })

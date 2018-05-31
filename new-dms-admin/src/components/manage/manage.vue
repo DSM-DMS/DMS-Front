@@ -15,7 +15,7 @@
         </nav>
         <div id="content">
           <component id="view" :is="view" @modify-table="modifyChangeView" @lookUp="lookUpChangeView" @uploadComplete="tableChangeView" :modifyPostId="postId" :modifyPostTitle="postTitle" :modifyPostContent="postContent"
-          :modifyCase="modifyChk" :lookUpPostId="postId" :url="thisUrl"></component>
+          :modifyCase="modifyChk" :lookUpPostId="postId" :category="category"></component>
         </div>
       </div>
     </div>
@@ -41,14 +41,14 @@ export default {
       postTitle: '',
       postContent: '',
       modifyChk: true,
-      thisUrl: '',
+      category: '',
       navTitle: ''
     }
   },
   methods: {
     routing: function () {
       let category = this.$route.params.category
-      this.thisUrl = category
+      this.category = category
       switch (category) {
         case 'notice':
           this.navTitle = '공지사항'
@@ -82,14 +82,13 @@ export default {
       this.view = lookUp
       this.lookUpCase = true
       this.postId = postId
-      console.log(postId)
+      console.log('lookUp')
     },
     goBack: function (view) {
       this.$router.go(-1)
     },
     modifyChangeView: function (postId, title, content) {
       this.modifyChk = true
-      console.log('슈졍')
       if (this.wrtieCase === true) {
       } else {
         this.tableCase = false
