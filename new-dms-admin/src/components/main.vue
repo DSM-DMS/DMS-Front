@@ -169,11 +169,10 @@ export default {
     stay: function (event) {
       this.$axios({
         methods: 'GET',
-        url: '/admin/stay',
+        url: '/v2/admin/excel/stay',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        },
-        responseType: 'arraybuffer'
+        }
       })
       .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
@@ -183,7 +182,7 @@ export default {
     goingout: function (event) {
       this.$axios({
         methods: 'GET',
-        url: '/admin/goingout',
+        url: '/v2/admin/excel/goingout',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
@@ -200,7 +199,7 @@ export default {
     extension_11: function (event) {
       this.$axios({
         methods: 'GET',
-        url: 'admin/extension/11',
+        url: '/v2/admin/excel/extension/11',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },
@@ -214,7 +213,7 @@ export default {
     extension_12: function (event) {
       this.$axios({
         methods: 'GET',
-        url: 'admin/extension/12',
+        url: '/v2/admin/excel/extension/12',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         },

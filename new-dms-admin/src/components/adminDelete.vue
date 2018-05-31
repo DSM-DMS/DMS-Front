@@ -25,20 +25,20 @@ export default {
   },
   methods: {
     adminDelete: function (evnet) {
-      let fd = new FormData()
-      fd.append('id', this.id)
       this.$axios({
         method: 'DELETE',
-        url: 'admin/account-control',
-        data: fd,
+        url: '/v2/admin/account-management/admin',
+        data: {id: this.id},
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         }
       })
 
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           alert('관리자 계정 삭제 성공')
+        } else if (response.status === 204) {
+          alert('존재하지 않는 계정 ID')
         } else {
           alert('관리자 계정 삭제 실패')
         }

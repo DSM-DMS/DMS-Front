@@ -17,8 +17,6 @@
 </template>
 
 <script>
-const qs = require('query-string')
-
 export default {
   name: 'adminAccount',
   data: function () {
@@ -32,23 +30,25 @@ export default {
     login: function (evnet) {
       this.$axios({
         method: 'POST',
-        url: '/admin/new-account',
-        data: qs.stringify({id: this.id, pw: this.pw, name: this.name}),
+        url: '/v2/admin/account-management/admin',
+        data: {id: this.id, password: this.pw, name: this.name},
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         }
       })
       .then((response) => {
+        console.log(response)
         if (response.status === 201) {
           alert('관리자 계정 생성 성공')
-        } else if (response.status === 204) {
-          alert('이미 존재하는 아이디입니다.')
-        } else {
-          alert('관리자 계정 생성 실패')
         }
       })
       .catch((ex) => {
         console.log(ex)
+        if (ex.response.status === 403) {
+          alert('권한 없음')
+        } else if (ex.response.status === 409) {
+          alert('이미 존재하는 ID')
+        }
       })
     }
   }

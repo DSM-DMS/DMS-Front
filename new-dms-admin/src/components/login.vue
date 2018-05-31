@@ -28,8 +28,6 @@
 </template>
 
 <script>
-const qs = require('query-string')
-
 export default {
   name: 'login',
   data: function () {
@@ -44,15 +42,15 @@ export default {
     login: function (event) {
       this.$axios({
         method: 'POST',
-        url: '/admin/auth',
-        data: qs.stringify({id: this.id, pw: this.pw})
+        url: '/v2/admin/auth',
+        data: {id: this.id, password: this.pw}
       })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           if (this.checked === true) {
-            this.$setCookie('JWT', response.data['access_token'], '')
+            this.$setCookie('JWT', response.data['accessToken'], '')
           } else {
-            this.$setCookie('JWT', response.data['access_token'], 1)
+            this.$setCookie('JWT', response.data['accessToken'], 1)
           }
           this.$router.push('main')
         }

@@ -25,12 +25,10 @@ export default {
   },
   methods: {
     adminDelete: function (evnet) {
-      let fd = new FormData()
-      fd.append('number', this.number)
       this.$axios({
-        method: 'POST',
-        url: 'admin/account-control',
-        data: fd,
+        method: 'DELETE',
+        url: '/v2/admin/account-management/student',
+        data: {number: this.number},
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
         }
