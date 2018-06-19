@@ -102,7 +102,8 @@ export default {
           }
         })
       .then(response => {
-        if (response === 200) {
+        if (response.status === 200) {
+          alert('수정 성공')
           console.log(this.category + '수정 성공')
           this.$emit('uploadComplete')
         }
