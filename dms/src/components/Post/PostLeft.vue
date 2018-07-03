@@ -11,7 +11,7 @@
       </div>
     </div>
     
-    <detail-modal v-if="isDetailModal" @close="isDetailModal = false" :detail="detail"/>
+    <detail-modal v-show="isDetailModal" @close="isDetailModal = false" :detail="detail"/>
   </div>
 </template>
 
@@ -20,19 +20,20 @@ import DetailModal from '@/components/Post/DetailModal'
 
 export default {
   name: 'PostLeft',
-  props: ['selected', 'category'],
+  props: {
+    selected: { type: String },
+    category: { type: String }
+  },
   data: function () {
     return {
-      detail: [],
+      detail: {},
       isDetailModal: false
     }
   },
   components: { DetailModal },
   methods: {
     getDetail: function () {
-      this.$http({
-        methods: 'GET',
-        url: '/' + this.category + '/' + this.selected,
+      this.$http.get('/post/' + this.category + '/' + this.selected, {
         headers: {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }

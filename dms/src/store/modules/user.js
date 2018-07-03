@@ -10,9 +10,7 @@ const state = {
     badPoint: 0
   },
   applyData: {
-    stay: {
-      day: 0
-    },
+    stay: 0,
     goingout: {
       isSaturdayGoingout: false,
       isSundayGoingout: false
@@ -30,18 +28,31 @@ const getters = {
 }
 
 const actions = {
-  getData ({commit}) {
-    const jwt = this._vm.$cookie.getCookie('JWT')
-
-    if(jwt !== '') {
-      this._vm.$http({
-        method: 'GET',
-        url: '/mypage',
+  getApplyData ({commit}) {
+    let jwt = this._vm.$cookie.getCookie('JWT')
+    if(jwt) {
+      this._vm.$http.get('/student/info/apply',{
         headers: {
           Authorization: 'JWT ' + jwt
         }
       }).then(res => {
-        commit(types.SET_USER_DATA, res.data)
+        commit(types.SET_APPLY_DATA, res.data)
+        commit(types.SET_LOGIN_STATUS, {isLogin: true})
+      }).catch(err => {
+        commit(types.SET_LOGIN_STATUS, {isLogin: false})
+        console.log(err)
+      })
+    }
+  },
+  getMenuData ({commit}) {
+    let jwt = this._vm.$cookie.getCookie('JWT')
+    if(jwt) {
+      this._vm.$http.get('/student/info/mypage',{
+        headers: {
+          Authorization: 'JWT ' + jwt
+        }
+      }).then(res => {
+        commit(types.SET_MENU_DATA, res.data)
         commit(types.SET_LOGIN_STATUS, {isLogin: true})
       }).catch(err => {
         commit(types.SET_LOGIN_STATUS, {isLogin: false})
@@ -52,17 +63,18 @@ const actions = {
 }
 
 const mutations = {
-  [types.SET_USER_DATA] (state, payload) {
-    state.menuData.name = payload.name
-    state.menuData.number = payload.number
-    state.menuData.goodPoint = payload.good_point
-    state.menuData.badPoint = payload.bad_point
-
-    state.applyData.stay.day = payload.stay_value
+  [types.SET_APPLY_DATA] (state, payload) {
+    state.applyData.stay = payload.stay
     state.applyData.goingout.isSaturdayGoingout = payload.goingout.sat
     state.applyData.goingout.isSundayGoingout = payload.goingout.sun
     state.applyData.extension.eleven = payload.extension_11 ? payload.extension_11.class_num : null
     state.applyData.extension.twelve = payload.extension_12 ? payload.extension_12.class_num : null
+  },
+  [types.SET_MENU_DATA] (state, payload) {
+    state.menuData.name = payload.name
+    state.menuData.number = payload.number
+    state.menuData.goodPoint = payload.goodPoint
+    state.menuData.badPoint = payload.badPoint
   }
 }
 

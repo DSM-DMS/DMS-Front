@@ -2,10 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Main from '@/container/Main'
-import Apply from '@/container/Apply'
 import Post from '@/container/Post'
-import Survey from '@/container/Survey'
 import Login from '@/container/Login'
+
+import Apply from '@/container/Apply'
+import StayApplyLeft from '@/components/StayApply/StayApplyLeft'
+import StayApplyRight from '@/components/StayApply/StayApplyRight'
+import ExtensionApplyLeft from '@/components/ExtensionApply/ExtensionApplyLeft'
+import ExtensionApplyRight from '@/components/ExtensionApply/ExtensionApplyRight'
 
 Vue.use(Router)
 
@@ -32,22 +36,28 @@ export default new Router({
       component: Login
     },
     {
-      path: '/apply/survey',
-      name: 'surveyList',
-      component: Survey,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/apply/survey/:id',
-      name: 'surveyDetail',
-      component: Apply,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/apply/:category',
+      path: '/apply',
       name: 'apply',
       component: Apply,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+      children: [
+        {
+          name: 'applyStay',
+          path: 'stay',
+          components: {
+            left: StayApplyLeft,
+            right: StayApplyRight
+          }
+        },
+        {
+          name: 'applyExtension',
+          path: 'extension',
+          components: {
+            left: ExtensionApplyLeft,
+            right: ExtensionApplyRight
+          }
+        }
+      ]
     },
     {
       path: '/post/:category',

@@ -98,7 +98,7 @@ export default {
   watch: {
     computedMenu: function (val) {
       if (val) {
-        this.$store.dispatch('getData')
+        this.$store.dispatch('getMenuData')
       }
       this.$emit('update:menu', val)
     }

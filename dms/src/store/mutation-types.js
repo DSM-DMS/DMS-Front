@@ -1,2 +1,3 @@
 export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS'
-export const SET_USER_DATA = 'SET_USER_DATA'
+export const SET_APPLY_DATA = 'SET_APPLY_DATA'
+export const SET_MENU_DATA = 'SET_MENU_DATA'

@@ -2,7 +2,7 @@
   <table id="apply-wrapper">
     <tr class="apply-card-wrapper">
       <td>
-        <apply-stay :day="applyData.stay.day"/>
+        <apply-stay :day="applyData.stay"/>
       </td>
       <td>
         <apply-extension :extension="applyData.extension"/>
