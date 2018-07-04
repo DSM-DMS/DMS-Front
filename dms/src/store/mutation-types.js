@@ -1,3 +1,5 @@
 export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS'
 export const SET_APPLY_DATA = 'SET_APPLY_DATA'
 export const SET_MENU_DATA = 'SET_MENU_DATA'
+export const RESET_APPLY_DATA = 'RESET_APPLY_DATA'
+export const RESET_MENU_DATA = 'RESET_MENU_DATA'

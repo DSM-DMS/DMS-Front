@@ -29,7 +29,6 @@ const actions = {
         }
       }).catch(error => {
         alert('로그인에 실패하였습니다.')
-        router.go(0)     
       })
     }
   },
@@ -37,7 +36,7 @@ const actions = {
     if(getters.isLogin) {
       alert('로그아웃에 성공하였습니다.')
       this._vm.$cookie.deleteCookie('JWT')
-      router.go(0)
+      commit(types.SET_LOGIN_STATUS, { isLogin: false })
     } else {
       alert('로그아웃에 실패하였습니다.')
     }

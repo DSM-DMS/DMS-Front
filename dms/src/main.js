@@ -55,7 +55,9 @@ Vue.prototype.$getDayOfWeek = function getDayOfWeek (date) {
 }
 
 router.beforeEach(async function (to, from, next) {
-  await store.dispatch('getApplyData')
+  try {
+    await store.dispatch('getApplyData')
+  } catch (_) {}
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLogin) {
