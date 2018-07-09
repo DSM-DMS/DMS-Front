@@ -83,8 +83,8 @@ const mutations = {
     applyData.stay = payload.stay
     applyData.goingout.isSaturdayGoingout = payload.goingout.sat
     applyData.goingout.isSundayGoingout = payload.goingout.sun
-    applyData.extension.eleven = payload.extension_11 ? payload.extension_11.class_num : null
-    applyData.extension.twelve = payload.extension_12 ? payload.extension_12.class_num : null
+    applyData.extension.eleven = payload.extension11.classNum ? payload.extension11.classNum : null
+    applyData.extension.twelve = payload.extension12.classNum ? payload.extension12.classNum : null
   },
   [types.SET_MENU_DATA] ({ menuData }, payload) {
     menuData.name = payload.name

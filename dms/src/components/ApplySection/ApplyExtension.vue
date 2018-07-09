@@ -37,10 +37,8 @@ export default {
       ]
     }
   },
-  computed: {
-    extension: function () {
-      return this.$store.getters.applyData.extension
-    }
+  props: {
+    extension: { type: Object }
   },
   components: {
     TimeButton
