@@ -47,7 +47,7 @@ export default {
     })
     .then(response => {
       if (response.status === 200) {
-        this.points = response.data
+        this.points = response.data.reverse()
       }
     }).catch(error => {
       console.log(error)
