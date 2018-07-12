@@ -21,49 +21,37 @@ export default {
   },
   data: function () {
     return {
-      rows: [],
-      time: this.selectedTime
+      rows: []
     }
   },
   props: {
-    selectedClass: {type: Number},
-    selectedTime: {type: Number}
+    applyStatus: { type: Object }
+  },
+  computed: {
+    selectedClass () {
+      return this.applyStatus.selectedClass
+    },
+    time: {
+      get () {
+        return this.applyStatus.selectedTime
+      },
+      set (val) {
+        this.$emit('changeTimeValue', val)
+        this.getMap(val, this.selectedClass + 1)
+      }
+    }
   },
   watch: {
     selectedClass: function (val) {
-      this.$http.get('/extension/map/' + String(this.time), {
-        params: {
-          class_num: this.selectedClass + 1
-        }
-      }).then(response => {
-        if (response.status === 200) {
-          this.rows = response.data
-        }
-      }).catch(error => {
-        console.log(error)
-      })
-    },
-    time: function (val) {
-      this.$emit('update:selectedTime', val)
-      this.$http.get('/extension/map/' + String(this.time), {
-        params: {
-          class_num: this.selectedClass + 1
-        }
-      }).then(response => {
-        if (response.status === 200) {
-          this.rows = response.data
-        }
-      }).catch(error => {
-        console.log(error)
-      })
+      this.getMap(this.time, this.selectedClass + 1)
     }
   },
   methods: {
     apply: function (seat) {
-      let fd = new FormData()
-      fd.append('class_num', this.selectedClass + 1)
-      fd.append('seat_num', seat)
-      this.$http.post('/extension/' + String(this.time), fd, {
+      this.$http.post('/student/apply/extension/' + this.time, {
+        classNum: this.selectedClass + 1,
+        seatNum: seat
+      }, {
         headers: {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
@@ -71,37 +59,33 @@ export default {
       .then(response => {
         if (response.status === 201) {
           alert('연장학습이 신청에 성공하였습니다.')
-          this.$http.get('/extension/map/' + String(this.time), {
-            params: {
-              class_num: this.selectedClass + 1
-            }
-          }).then(response => {
-            if (response.status === 200) {
-              this.rows = response.data
-            }
-          }).catch(error => {
-            console.log(error)
-          })
+          this.getMap(this.time, this.selectedClass + 1)
         } else if (response.status === 204) {
           alert('연장학습 신청 가능 시간이 아닙니다.')
         }
       }).catch(() => {
         alert('연장학습 신청에 실패하였습니다.')
       })
+    },
+    getMap (time, classNum) {
+      this.$http.get('/student/apply/extension/' + time + '/map', {
+        params: {
+          classNum: classNum
+        },
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+        }
+      }).then(response => {
+        if (response.status === 200) {
+          this.rows = response.data
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     }
   },
   created: function () {
-    this.$http.get('/extension/map/' + String(this.time), {
-      params: {
-        class_num: this.selectedClass + 1
-      }
-    }).then(response => {
-      if (response.status === 200) {
-        this.rows = response.data
-      }
-    }).catch(error => {
-      console.log(error)
-    })
+    this.getMap(this.time, this.selectedClass + 1)
   }
 }
 </script>

@@ -2,8 +2,7 @@
   <div>
     <img id="modal-img" :src="require('@/assets/Menu_modal/ic_report_broken.png')">
     <div id="facility-form">
-      <input type="text" placeholder="제목" v-model="title">
-      <input type="text" placeholder="호실" v-model="roomNum">
+      <input type="text" placeholder="호실번호" v-model.number="roomNum">
       <textarea v-model="content"></textarea>
 
       <img :src="require('@/assets/Menu_modal/ic_report_broken_enter.png')" id="facility-enter" @click="submit">
@@ -16,21 +15,19 @@ export default {
   name: 'FacilityReport',
   data: function () {
     return {
-      title: '',
       roomNum: '',
       content: ''
     }
   },
   methods: {
     submit: function () {
-      if (this.title === '' || this.roomNum === '' || this.content === '') {
+      if (this.roomNum === '' || this.content === '') {
         alert('입력하지 않은 칸이 있습니다.')
       } else {
-        let fd = new FormData()
-        fd.append('title', this.title)
-        fd.append('content', this.content)
-        fd.append('room', this.roomNum)
-        this.$http.post('/report/facility', fd, {
+        this.$http.post('/student/report/facility', {
+          content: this.content,
+          room: +this.roomNum
+        }, {
           headers: {
             Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
           }

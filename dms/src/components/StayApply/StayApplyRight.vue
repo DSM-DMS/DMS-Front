@@ -1,7 +1,7 @@
 <template>
   <div id="stay-apply-right-wrapper">
     <div id="stay-apply-form">
-      <stay-apply-information :info="informations[computedStay]" />
+      <stay-apply-information :info="informations[stay - 1]" />
       <div id="airplane-button" @click="stayApply"></div>
     </div>
   </div>
@@ -55,22 +55,18 @@ export default {
     }
   },
   computed: {
-    computedStay: function () {
-      if (this.stay <= 0) {
-        return 0
-      } else {
-        return this.stay - 1
-      }
+    stay: function () {
+      return this.applyStatus.stay
     }
   },
   props: {
-    stay: {type: Number}
+    applyStatus: {type: Object}
   },
   methods: {
     stayApply: function () {
-      let fd = new FormData()
-      fd.append('value', this.stay)
-      this.$http.post('/stay', fd, {
+      this.$http.post('/student/apply/stay', {
+        value: this.stay
+      }, {
         headers: {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }

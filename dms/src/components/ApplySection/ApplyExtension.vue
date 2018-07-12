@@ -1,5 +1,5 @@
 <template>
-  <div class="apply-card" id="extension-apply-wrapper" @click="$router.push({name: 'apply', params: {category: 'extension'}})">
+  <div class="apply-card" id="extension-apply-wrapper" @click="$router.push({name: 'applyExtension'})">
     <div id="extension-apply-content">
       <div id="extension-apply-text-wrapper">
         <p class="apply-text">연장학습 신청</p>
@@ -37,10 +37,8 @@ export default {
       ]
     }
   },
-  computed: {
-    extension: function () {
-      return this.$store.getters.applyData.extension
-    }
+  props: {
+    extension: { type: Object }
   },
   components: {
     TimeButton

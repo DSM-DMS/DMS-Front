@@ -4,7 +4,7 @@
       <div class="stay-apply-button">
         <div v-for="button in buttons" class="stay-button" :key="button.id">
           <label :for="button.id">
-            <input type="radio" name="stay" :value="button.val" :id="button.id" v-model="staySelect" hidden>
+            <input type="radio" name="stay" :value="button.val" :id="button.id" v-model.number="staySelect" hidden>
             <div class="stay-button-dot"></div>
             <div>{{ button.text }}</div>
           </label>
@@ -45,30 +45,16 @@ export default {
   },
   computed: {
     staySelect: {
-      get: function () {
-        return this.stay
+      get () {
+        return this.applyStatus.stay
       },
-      set: function (val) {
-        this.$emit('update:stay', Number(val))
+      set (val) {
+        this.$emit('changeStayValue', val)
       }
     }
   },
-  beforeMount: function () {
-    this.$http.get('/stay', {
-      headers: {
-        Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-      }
-    })
-    .then(response => {
-      if (response.status === 200) {
-        this.$emit('update:stay', response.data.value)
-      }
-    }).catch(error => {
-      console.log(error)
-    })
-  },
   props: {
-    stay: {type: Number}
+    applyStatus: {type: Object}
   }
 }
 </script>

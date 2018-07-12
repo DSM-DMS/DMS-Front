@@ -2,20 +2,20 @@
   <div id="extension-apply-left-wrapper">
     <table id="button-table">
       <tr>
-        <td class="class-button" @click="classSelect(0)"><img :src="getImage(0)"></td>
-        <td class="class-button" @click="classSelect(1)"><img :src="getImage(1)"></td>
+        <td class="class-button" @click="selectedClass = 0"><img :src="getImage(0)"></td>
+        <td class="class-button" @click="selectedClass = 1"><img :src="getImage(1)"></td>
       </tr>
       <tr>
-        <td class="class-button" @click="classSelect(2)"><img :src="getImage(2)"></td>
-        <td class="class-button" @click="classSelect(3)"><img :src="getImage(3)"></td>
+        <td class="class-button" @click="selectedClass = 2"><img :src="getImage(2)"></td>
+        <td class="class-button" @click="selectedClass = 3"><img :src="getImage(3)"></td>
       </tr>
       <tr>
-        <td class="class-button" @click="classSelect(4)"><img :src="getImage(4)"></td>
-        <td class="class-button" @click="classSelect(5)"><img :src="getImage(5)"></td>
+        <td class="class-button" @click="selectedClass = 4"><img :src="getImage(4)"></td>
+        <td class="class-button" @click="selectedClass = 5"><img :src="getImage(5)"></td>
       </tr>
       <tr>
-        <td class="class-button" @click="classSelect(6)"><img :src="getImage(6)"></td>
-        <td class="class-button" @click="classSelect(7)"><img :src="getImage(7)"></td>
+        <td class="class-button" @click="selectedClass = 6"><img :src="getImage(6)"></td>
+        <td class="class-button" @click="selectedClass = 7"><img :src="getImage(7)"></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -75,11 +75,8 @@ export default {
         return this.classImages[classNum][0]
       }
     },
-    classSelect: function (val) {
-      this.$emit('update:selectedClass', val)
-    },
-    applyCancel: function (val) {
-      this.$http.delete('/extension/' + String(this.selectedTime), {
+    applyCancel: function () {
+      this.$http.delete('/student/apply/extension/' + this.selectedTime, {
         headers: {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
@@ -89,16 +86,31 @@ export default {
           alert('연장학습 신청이 취소되었습니다.')
           this.$router.go(0)
         } else if (response.status === 204) {
-          alert('연장학습이 신청되어있지 않습니다.')
+          alert('연장학습 취소 가능 시간이 아닙니다.')
         }
-      }).catch(() => {
+      }).catch((err) => {
+        console.log(err)
         alert('연장학습 신청 취소에 실패하였습니다.')
       })
     }
   },
   props: {
-    selectedClass: {type: Number},
-    selectedTime: {type: Number}
+    applyStatus: { type: Object }
+  },
+  computed: {
+    selectedClass: {
+      get () {
+        return this.applyStatus.selectedClass
+      },
+      set (val) {
+        this.$emit('changeClassValue', val)
+      }
+    },
+    selectedTime: {
+      get () {
+        return this.applyStatus.selectedTime
+      }
+    }
   }
 }
 </script>
