@@ -172,7 +172,8 @@ export default {
         url: '/v2/admin/excel/stay',
         headers: {
           Authorization: 'JWT ' + this.$getCookie('JWT')
-        }
+        },
+        responseType: 'arraybuffer'
       })
       .then(res => {
         let blob = new Blob([res.data], {type: res.headers['content-type']})
