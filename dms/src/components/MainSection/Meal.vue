@@ -2,34 +2,34 @@
   <div id="left-section-wrapper">
     <div id="meal-wrapper">
       <div id="meal-header-date"> 
-        {{ selectedMeal.date.getFullYear()}}년 
-        {{ selectedMeal.date.getMonth()+1 }}월
-        {{ selectedMeal.date.getDate() }}일 
-        {{ this.$getDayOfWeek(selectedMeal.date) }}
+        {{ selectedMeal.getFullYear()}}년 
+        {{ selectedMeal.getMonth()+1 }}월
+        {{ selectedMeal.getDate() }}일 
+        {{ this.$getDayOfWeek(selectedMeal) }}
       </div>
       <div id="meal-content-wrapper">
         <div class="meal">
           <img class="meal-img" src="../../assets/Main/ic_breakfast.png">
           <div class="meal-content">
             <p class="meal-content-title">Breakfast</p>
-            <food :meal="meal.BreakFast"
-                  :mealLength="meal.BreakFast.length"/>
+            <food :meal="meal.breakFast"
+                  :mealLength="meal.breakFast.length"/>
           </div>
         </div>
         <div class="meal">
           <img class="meal-img" src="../../assets/Main/ic_lunch.png">
           <div class="meal-content">
             <p class="meal-content-title">Lunch</p>
-            <food :meal="meal.Lunch"
-                  :mealLength="meal.Lunch.length"/>
+            <food :meal="meal.lunch"
+                  :mealLength="meal.lunch.length"/>
           </div>
         </div>
         <div class="meal">
           <img class="meal-img" src="../../assets/Main/ic_dinner.png">
           <div class="meal-content">
             <p class="meal-content-title">Dinner</p>
-            <food :meal="meal.Dinner"
-                  :mealLength="meal.Dinner.length"/>
+            <food :meal="meal.dinner"
+                  :mealLength="meal.dinner.length"/>
           </div>
         </div>
         <div id="meal-img-wrapper">
@@ -46,7 +46,9 @@ import Food from '@/components/MainSection/Food'
 
 export default {
   name: 'Meal',
-  components: {Food},
+  components: {
+    Food
+  },
   props: ['meal', 'selectedMeal'],
   methods: {
     preMeal: function () {

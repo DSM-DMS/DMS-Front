@@ -8,11 +8,12 @@
 <script>
 export default {
   created: function () {
-    this.$axios.get('/' + this.url + '/' + this.lookUpPostId, {
-      headers: {
-        'Authorization': 'JWT ' + this.$getCookie('JWT')
-      }
-    })
+    this.$axios.get('/v2/post/' + this.category + '/' + this.lookUpPostId,
+      {
+        headers: {
+          'Authorization': 'JWT ' + this.$getCookie('JWT')
+        }
+      })
     .then(response => {
       this.content = response.data.content
       this.title = response.data.title
@@ -21,7 +22,7 @@ export default {
       console.log('ERROR ==> ' + e)
     })
   },
-  props: ['lookUpPostId', 'url'],
+  props: ['lookUpPostId', 'category'],
   data: function () {
     return {
       content: '',

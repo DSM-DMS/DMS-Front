@@ -1,14 +1,17 @@
 <template>
   <div id="post-page-wrapper">
     <header-nav />
-    <left>
-      <post-left :selected="selectedId"
-                 :category="category"/>
-    </left>
-    <right>
-      <post-right :category="category"
-                  @selectedPost="selectedPost"/>
-    </right>
+    <post-left
+      :selected="selectedId"
+      :category="category"
+      class="left"
+    />
+    <post-right
+      :category.sync="category"
+      :posts="posts"
+      @selectedPost="val => selectedId = val"
+      class="right"
+    />
   </div>
 </template>
 
@@ -17,40 +20,53 @@ import HeaderNav from '@/components/HeaderNav/HeaderNav'
 import PostLeft from '@/components/Post/PostLeft'
 import PostRight from '@/components/Post/PostRight'
 
-var Left = {
-  template: `<div style="float:left; height:100%; width:33%"><slot></slot></div>`
-}
-
-var Right = {
-  template: `<div style="float:right; height:100%; width:67%"><slot></slot></div>`
-}
-
 export default {
   name: 'Post',
   components: {
     HeaderNav,
-    Left,
-    Right,
     PostLeft,
     PostRight
   },
   data: function () {
     return {
-      category: '',
-      selectedId: ''
+      selectedId: '',
+      posts: []
     }
   },
   methods: {
-    routing: function () {
-      this.category = this.$route.params.category
-    },
-    selectedPost: function (id, category) {
-      this.selectedId = id
-      this.category = category
+    getPosts: function () {
+      return this.$http.get('/post/' + this.category, {
+        headers: {
+          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
+        }
+      })
+      .then(res => {
+        this.posts = res.data.reverse()
+      }).catch(error => {
+        this.posts = []
+        console.log(error)
+      })
     }
   },
-  created: function () {
-    this.routing()
+  computed: {
+    category: {
+      get () {
+        return this.$route.params.category
+      },
+      set (val) {
+        this.$router.replace({ name: 'post', params: { category: val } })
+      }
+    }
+  },
+  watch: {
+    category (val) {
+      this.getPosts().then(() => {
+        this.selectedId = ''
+      })
+    }
+  },
+  created () {
+    this.getPosts()
   }
 }
 </script>
@@ -59,5 +75,17 @@ export default {
 #post-page-wrapper {
   width: 100%;
   height: 100%;
+}
+
+.left {
+  float:left !important;
+  height:100% !important;
+  width:33% !important;
+}
+
+.right {
+  float:right !important;
+  height:100% !important;
+  width:67% !important;
 }
 </style>

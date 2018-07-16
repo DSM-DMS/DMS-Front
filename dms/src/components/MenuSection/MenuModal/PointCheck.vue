@@ -4,7 +4,7 @@
         상벌점 조회
     </div>
     <div id="point-list">
-      <div class="point" :class="point.point_type ? 'plus' : 'minus'"  v-for="(point, index) in points" :key="index">
+      <div class="point" :class="point.pointType ? 'plus' : 'minus'"  v-for="(point, index) in points" :key="index">
         <div class="point-reason">
           <div>
             {{ dateFormatting(point.time) }}
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="point-value">
-          {{ pointFormatting(point.point, point.point_type) }}
+          {{ pointFormatting(point.point, point.pointType) }}
         </div>
       </div>
     </div>
@@ -40,14 +40,14 @@ export default {
     }
   },
   mounted: function () {
-    this.$http.get('/point/history', {
+    this.$http.get('/student/info/point-history', {
       headers: {
         Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
       }
     })
     .then(response => {
       if (response.status === 200) {
-        this.points = response.data
+        this.points = response.data.reverse()
       }
     }).catch(error => {
       console.log(error)

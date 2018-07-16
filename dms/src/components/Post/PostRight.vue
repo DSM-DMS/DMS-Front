@@ -2,15 +2,15 @@
   <div id="post-right-wrapper">
     <div id="post-list-wrapper">
       <div id="post-category-wrapper">
-        <div :style="{opacity: selected==='notice' ? '0.9' : '0.5'}"
+        <div :style="{opacity: category ==='notice' ? '0.9' : '0.5'}"
              @click="changeCategory('notice')" 
              id="post-notice-category" 
              class="post-category">공지사항</div>
-        <div :style="{opacity: selected==='rule' ? '0.9' : '0.5'}" 
+        <div :style="{opacity: category ==='rule' ? '0.9' : '0.5'}" 
              @click="changeCategory('rule')"
              id="post-rule-category" 
              class="post-category">기숙사 규정</div>
-        <div :style="{opacity: selected==='faq' ? '0.9' : '0.5'}" 
+        <div :style="{opacity: category ==='faq' ? '0.9' : '0.5'}" 
              @click="changeCategory('faq')"
              id="post-question-category" 
              class="post-category">자주하는 질문</div>
@@ -22,7 +22,7 @@
           <div>작성자</div>
         </div>
         <div id="post-container">
-          <post-list-contents :post="post" :no="index" :key="post.id" v-for="(post, index) in posts" @selectedPost="selectedPost"/>
+          <post-list-contents :post="post" :no="index" :key="post.id" v-for="(post, index) in posts" @selectedPost="selectedPost(post.id)"/>
         </div>
       </div>
     </div>
@@ -34,42 +34,17 @@ import postListContents from '@/components/Post/PostListContents'
 
 export default {
   name: 'PostRight',
-  props: ['category'],
+  props: {
+    category: { type: String },
+    posts: { type: Array }
+  },
   components: { postListContents },
-  data: function () {
-    return {
-      selected: this.category,
-      posts: []
-    }
-  },
   methods: {
-    changeCategory: function (selectedCategory) {
-      this.selected = selectedCategory
+    changeCategory: function (category) {
+      this.$emit('update:category', category)
     },
-    selectedPost: function (key) {
-      this.$emit('selectedPost', key, this.selected)
-    },
-    getPosts: function () {
-      this.$http({
-        methods: 'GET',
-        url: '/' + this.selected,
-        headers: {
-          Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
-        }
-      })
-      .then(res => {
-        this.posts = res.data.reverse()
-      }).catch(error => {
-        console.log(error)
-      })
-    }
-  },
-  created: function () {
-    this.getPosts()
-  },
-  watch: {
-    selected: function () {
-      this.getPosts()
+    selectedPost: function (id) {
+      this.$emit('selectedPost', id)
     }
   }
 }

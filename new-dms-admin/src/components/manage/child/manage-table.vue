@@ -1,4 +1,4 @@
-<template>
+a<template>
 <div id="container">
   <table id="table-content">
     <thead class="table-head">
@@ -32,7 +32,7 @@ export default {
   created: function () {
     this.fetchTable()
   },
-  props: ['url'],
+  props: ['category'],
   data: function () {
     return {
       posts: [],
@@ -46,21 +46,20 @@ export default {
   },
   methods: {
     fetchTable: function () {
-      let self = this
-      self.$axios.get('/' + this.url, {
+      this.$axios.get('/v2/post/' + this.category, {
         headers: {
           'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
       })
     .then(response => {
-      self.posts = response.data.reverse()
+      this.posts = response.data.reverse()
     })
     .catch(e => {
       console.log('error :' + e)
     })
     },
     modifyTable: function (postId) {
-      this.$axios.get('/' + this.url + '/' + postId, {
+      this.$axios.get('/v2/post/' + this.category + '/' + postId, {
         headers: {
           'Authorization': 'JWT ' + this.$getCookie('JWT')
         }
@@ -75,16 +74,14 @@ export default {
     },
     deleteTable: function (id) {
       if (confirm('삭제하시겠습니까?')) {
-        var tableId = new FormData()
-        tableId.append('id', id)
         this.$axios({
           method: 'DELETE',
-          url: '/admin/' + this.url,
-          data: tableId,
+          url: '/v2/admin/post/' + this.category + '/' + id,
           headers: {'Authorization': 'JWT ' + this.$getCookie('JWT')}
         })
         .then(response => {
           if (response.status === 200) {
+            alert('삭제 성공')
             this.fetchTable()
           } else if (response.status === 204) {
             alert('존재하지 않는 게시글입니다')
@@ -99,17 +96,18 @@ export default {
       this.$emit('lookUp', postId)
     },
     previewTable: function (postId) {
-      let formData = new FormData()
-      formData.append('id', postId)
-      this.$axios.post('/admin/preview/' + this.url, formData,
+      this.$axios.patch('/v2/admin/post-preview/' + this.category,
+        {
+          id: postId
+        },
         {
           headers: {
             Authorization: 'JWT ' + this.$getCookie('JWT')
           }
         })
       .then(response => {
-        if (response === 201) {
-          console.log('프리뷰 설정 성공')
+        if (response === 200) {
+          alert('프리뷰 설정 성공')
         }
       })
       .catch(e => {

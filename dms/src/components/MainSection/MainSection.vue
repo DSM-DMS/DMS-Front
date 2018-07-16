@@ -21,14 +21,11 @@ export default {
   components: {MainTitle, Meal, SocialBtn},
   data: function () {
     return {
-      selectedMeal: {
-        date: new Date(),
-        selected: 'BreakFast'
-      },
+      selectedMeal: new Date(),
       meal: {
-        BreakFast: ['급식이 없습니다.'],
-        Lunch: ['급식이 없습니다.'],
-        Dinner: ['급식이 없습니다.']
+        breakFast: ['급식이 없습니다.'],
+        lunch: ['급식이 없습니다.'],
+        dinner: ['급식이 없습니다.']
       },
       socialBtns: [
         {
@@ -45,38 +42,37 @@ export default {
     }
   },
   beforeMount: function () {
-    this.getMeal(this.selectedMeal.date)
+    this.getMeal(this.selectedMeal)
   },
   methods: {
     preMeal: function () {
-      let selectedMeal = this.selectedMeal
-
-      selectedMeal.date.setDate(selectedMeal.date.getDate() - 1)
-      this.getMeal(selectedMeal.date)
+      let date = this.selectedMeal.getDate()
+      this.selectedMeal = new Date(this.selectedMeal.setDate(date - 1))
     },
     nextMeal: function () {
-      let selectedMeal = this.selectedMeal
-
-      selectedMeal.date.setDate(selectedMeal.date.getDate() + 1)
-      this.getMeal(selectedMeal.date)
+      let date = this.selectedMeal.getDate()
+      this.selectedMeal = new Date(this.selectedMeal.setDate(date + 1))
     },
     getMeal: function (date) {
-      this.$http({
-        method: 'GET',
-        url: '/meal/' + this.$dateFormmater(date)
-      }).then(res => {
+      this.$http.get('/meal/' + this.$dateFormmater(date))
+      .then(res => {
         if (res.status === 204) {
-          this.meal.BreakFast = ['급식이 없습니다']
-          this.meal.Lunch = ['급식이 없습니다']
-          this.meal.Dinner = ['급식이 없습니다']
+          this.meal.breakFast = ['급식이 없습니다']
+          this.meal.lunch = ['급식이 없습니다']
+          this.meal.dinner = ['급식이 없습니다']
         } else {
-          this.meal.BreakFast = res.data.breakfast
-          this.meal.Lunch = res.data.lunch
-          this.meal.Dinner = res.data.dinner
+          this.meal.breakFast = res.data.breakfast
+          this.meal.lunch = res.data.lunch
+          this.meal.dinner = res.data.dinner
         }
       }).catch(err => {
         console.log(err)
       })
+    }
+  },
+  watch: {
+    selectedMeal (val) {
+      this.getMeal(val)
     }
   }
 }

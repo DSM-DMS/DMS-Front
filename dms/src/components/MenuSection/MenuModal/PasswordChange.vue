@@ -31,10 +31,10 @@ export default {
         if (this.password.old === '' || this.password.confirm === '') {
           alert('입력하지 않은 칸이 있습니다.')
         } else {
-          let fd = new FormData()
-          fd.append('current_pw', this.password.old)
-          fd.append('new_pw', this.password.new)
-          this.$http.post('/change/pw', fd, {
+          this.$http.post('/student/account/change-pw', {
+            currentPassword: this.password.old,
+            newPassword: this.password.new
+          }, {
             headers: {
               Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
             }
@@ -47,7 +47,8 @@ export default {
             } else {
               alert('비밀번호 변경에 실패하였습니다.')
             }
-          }).catch(() => {
+          }).catch((err) => {
+            console.log(err)
             alert('비밀번호 변경에 실패하였습니다.')
           })
         }

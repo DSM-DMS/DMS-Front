@@ -35,11 +35,7 @@ export default {
       return this.outData.isSundayGoingout ? require('@/assets/icon/ic_outing/ic_sunday_outing_light.png') : require('@/assets/icon/ic_outing/ic_sunday_outing.png')
     }
   },
-  watch: {
-    goingout: function (val) {
-      this.outData = val
-    }
-  },
+
   methods: {
     applySaturday: function () {
       this.outData.isSaturdayGoingout = !this.outData.isSaturdayGoingout
@@ -48,21 +44,18 @@ export default {
       this.outData.isSundayGoingout = !this.outData.isSundayGoingout
     },
     apply: function () {
-      let fd = new FormData()
-      fd.append('sat', this.outData.isSaturdayGoingout)
-      fd.append('sun', this.outData.isSundayGoingout)
-      this.$http({
-        method: 'POST',
-        url: '/goingout',
-        data: fd,
+      this.$http.post('/student/apply/goingout', {
+        sun: this.outData.isSundayGoingout,
+        sat: this.outData.isSaturdayGoingout
+      }, {
         headers: {
           Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
         }
       }).then(res => {
         if (res.status === 201) {
           alert('주말외출 신청에 성공하였습니다.')
-        } else {
-          alert('주말외출 신청에 실패하였습니다.')
+        } else if (res.status === 204) {
+          alert('주말외출 신청 가능 시간이 아닙니다.')
         }
       }).catch(() => {
         alert('주말외출 신청에 실패하였습니다.')

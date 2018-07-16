@@ -2,10 +2,7 @@
   <div>
     <img id="modal-img" :src="require('@/assets/Menu_modal/ic_bug_report.png')">
     <div id="bug-form">
-      <input type="text" placeholder="제목" v-model="title">
-
       <textarea v-model="content"></textarea>
-
       <img :src="require('@/assets/Menu_modal/ic_bug_report_enter.png')" id="bug_enter" @click="submit">
     </div>
   </div>
@@ -16,19 +13,18 @@ export default {
   name: 'BugReport',
   data: function () {
     return {
-      title: '',
       content: ''
     }
   },
   methods: {
     submit: function () {
-      if (this.title === '' || this.content === '') {
+      if (this.content === '') {
         alert('입력하지 않은 칸이 있습니다.')
       } else {
-        let fd = new FormData()
-        fd.append('title', this.title)
-        fd.append('content', this.content)
-        this.$http.post('/report/bug', fd, {
+        this.$http.post('/student/report/bug', {
+          platform: 1,
+          content: this.content
+        }, {
           headers: {
             Authorization: 'JWT ' + this.$cookie.getCookie('JWT')
           }
