@@ -94,6 +94,7 @@ export default {
   #main-section {
     position: relative;
     min-height: 850px;
+    z-index: 0;
   }
 }
 
