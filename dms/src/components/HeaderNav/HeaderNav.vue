@@ -1,15 +1,15 @@
 <template>
-  <div id="header-wrapper" v-bind:style="menu ? { width: 'calc(100% - 350px)', 'border-top-right-radius' : '0', 'border-bottom-right-radius' : '0'} : { width: 'calc(100% - 100px)'}">
+  <div id="header-wrapper" :class="{mini: mini}" @click="mini = !mini" v-bind:style="menu ? { width: 'calc(100% - 350px)', 'border-top-right-radius' : '0', 'border-bottom-right-radius' : '0'} : { width: 'calc(100% - 100px)'}">
     <div id="brand-wrapper">
-      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" @click="$router.push('/')"/>
+      <img id="header-ic-logo" src="../../assets/icon/ic_logo.png" @click.stop="$router.push('/')"/>
     </div>
 
     <div id="header-menu-wrapper">
-      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/')">메인화면</span>
-      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/apply')">신청화면</span>
-      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="scrollRouting('/notice')">공지사항</span>
-      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
-      <div id="menu-btn-wrapper" @click="menuButton">
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click.stop="scrollRouting('/')">메인화면</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click.stop="scrollRouting('/apply')">신청화면</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click.stop="scrollRouting('/notice')">공지사항</span>
+      <span class="header-menu" :class="{'header-menu-responsive': menu}" @click.stop="loginButton">{{ !$store.getters.isLogin? '로그인': '로그아웃' }}</span>
+      <div id="menu-btn-wrapper" @click.stop="menuButton">
         <span>메뉴</span>
         <img id="header-ic-menu" :src="menu ? require('../../assets/Main_menu/ic_navigation/ic_nav_back.png') : require('../../assets/Main_menu/ic_navigation/ic_menu.png')" />
       </div>
@@ -34,7 +34,8 @@ export default {
   data: function () {
     return {
       loginModal: false,
-      menu: false
+      menu: false,
+      mini: true
     }
   },
   methods: {
@@ -88,6 +89,23 @@ export default {
 @media screen and (max-width: 950px) {
   .header-menu-responsive {
     display: none;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  #header-wrapper {
+    top: 0px !important;
+    cursor: pointer;
+    will-change: top;
+    transition: top .2s ease-out !important;
+  }
+
+  #header-wrapper.mini {
+    top: -70px !important;
+  }
+
+  #header-wrapper.mini:hover {
+    top: -60px !important; 
   }
 }
 
