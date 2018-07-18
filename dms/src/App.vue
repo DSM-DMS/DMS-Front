@@ -7,13 +7,6 @@
 <script>
 export default {
   name: 'app',
-  mounted: function () {
-    if (navigator.userAgent.match(/iPhone/) || navigator.userAgent.match(/iPad/)) {
-      this.$router.push('https://itunes.apple.com/us/app/dms-for-dsm/id1328234395?l=ko&ls=1&mt=8')
-    } else if (navigator.userAgent.match(/Android/)) {
-      this.$router.push('https://play.google.com/store/apps/details?id=teamdms.dms_kotlin')
-    }
-  },
   watch: {
     '$store.getters.isLogin': function (val) {
       if (!val) {
