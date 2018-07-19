@@ -159,4 +159,14 @@ export default {
   font-weight: bold;
   font-size: 15px;  
 }
+
+.header-menu {
+  display: inline-block;
+  transition: transform .15s ease-out;
+}
+
+.header-menu:hover {
+  transition: transform .15s ease-out;
+  transform: scale(1.15);
+}
 </style>
