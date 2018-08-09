@@ -338,16 +338,13 @@ export default {
 
 /* 다운로드 */
 
-  .download-contents {
-        margin-bottom: 50px;
-    }
 
   .select-icon {
       width: 250px;
       height: 60px;
       position: relative;
       left: 0;
-      z-index: 3;
+      z-index: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -460,8 +457,11 @@ export default {
 
   #contents {
       width: 100%;
-      height: calc(100% -150px);
       position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
   }
   
 </style>
