@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class = "Management-contents">
+        <div class = "management-content">
             <div class = "select-icon">
                 <div class = "select-inner">
                     <div class = "management-logo"></div>
@@ -339,39 +339,34 @@ export default {
 /* 다운로드 */
 
   .download-contents {
-        margin-bottom: 50px;
-    }
+  }
 
   .select-icon {
-      width: 250px;
-      height: 60px;
-      position: relative;
-      left: 0;
-      z-index: 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 30px;
+    margin-left: 20px;
+    width: 250px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
   }
 
   .select-icon::after {
-      width: 250px;
-      border-radius: 70px;
-      height: 60px;
-      content: "";
-      position: absolute;
-      background-color: white;
-      opacity: 0.5;
-      z-index: 1;
+    width: 250px;
+    border-radius: 70px;
+    height: 60px;
+    content: "";
+    position: absolute;
+    background-color: white;
+    opacity: 0.5;
+    z-index: 1;
   }
 
   .select-inner {
-      position: absolute;
       z-index: 2;
       color: #675094;
       font-weight: bold;
       font-size: 27px;
-      letter-spacing: -1px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -388,14 +383,10 @@ export default {
 
 
   .download-body {
-      width: 1300px;
-      height: 235px;
+      width: 1500px;
+      margin: 0 auto;
       overflow-x: scroll;
-      overflow-y: hidden;
-      align-items: center;
       white-space: nowrap;
-      position: relative;
-      display: inline-block;
       /* display: inline; */
   }
 
@@ -439,10 +430,13 @@ export default {
 
   /* management */
 
+  .management-content {
+    margin-top: 20px;
+  }
+
   .management-logo {
       width: 40px;
       height: 40px;
-      margin-right: 10px;
       background-image: url('../assets/icon/ic_setting2.png');
       background-size: cover;
       background-repeat: no-repeat;
@@ -450,12 +444,7 @@ export default {
 
   .management-body {
       width: 1300px;
-      height: 235px;
-      overflow: hidden;
-      align-items: center;
-      white-space: nowrap;
-      display: inline-block;
-
+      margin: 0 auto;
   }
 
   #contents {
